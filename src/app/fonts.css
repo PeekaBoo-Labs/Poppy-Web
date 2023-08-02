@@ -3,112 +3,112 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Sohne Extraleicht';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-extraleicht.woff2') format('woff2');
     font-weight: 200;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Sohne Extraleicht Kursiv';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-extraleicht-kursiv.woff2') format('woff2');
     font-weight: 200;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'Sohne Leicht';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-leicht.woff2') format('woff2');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Sohne Leicht Kursiv';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-leicht-kursiv.woff2') format('woff2');
     font-weight: 300;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'Sohne Buch';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-buch.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Sohne Buch Kursiv';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-buch-kursiv.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'Sohne Kraftig';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-kraftig.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Sohne Kraftig Kursiv';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-kraftig-kursiv.woff2') format('woff2');
     font-weight: 500;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'Sohne Halbfett';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-halbfett.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Sohne Halbfett Kursiv';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-halbfett-kursiv.woff2') format('woff2');
     font-weight: 600;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'Sohne Dreiviertelfett';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-dreiviertelfett.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Sohne Dreiviertelfett Kursiv';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-dreiviertelfett-kursiv.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'Sohne Fett';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-fett.woff2') format('woff2');
     font-weight: 800;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Sohne Fett Kursiv';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-fett-kursiv.woff2') format('woff2');
     font-weight: 800;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'Sohne Extrafett';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-extrafett.woff2') format('woff2');
     font-weight: 900;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Sohne Extrafett Kursiv';
+    font-family: 'Sohne';
     src: url('/fonts/sohne-extrafett-kursiv.woff2') format('woff2');
     font-weight: 900;
     font-style: italic;
@@ -121,23 +121,24 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
-  letter-spacing: 0;
+    margin: 0;
+    letter-spacing: 0;
 }
 
 h1 {
-    font-family: 'Sohne Halbfett', sans-serif;
+    font-family: 'Sohne', sans-serif;
+    font-weight: 500;
     font-size: 1.75rem;
     line-height: 2.5rem;
 }
 
 p {
-  font-family: 'Sohne Kraftig', sans-serif;
-  font-size: 1rem;
+    font-family: 'Sohne', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
 }
 
-caption {
-    font-family: 'Sohne Buch', sans-serif;
+.caption {
+    font-family: 'Sohne', sans-serif;
     font-size: 0.9rem;
-  }
-  
+}
