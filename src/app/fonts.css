@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Sohne Extraleicht';
+    src: url('/fonts/sohne-extraleicht.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sohne Extraleicht Kursiv';
+    src: url('/fonts/sohne-extraleicht-kursiv.woff2') format('woff2');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Sohne Leicht';
+    src: url('/fonts/sohne-leicht.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sohne Leicht Kursiv';
+    src: url('/fonts/sohne-leicht-kursiv.woff2') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Sohne Buch';
+    src: url('/fonts/sohne-buch.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sohne Buch Kursiv';
+    src: url('/fonts/sohne-buch-kursiv.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Sohne Kraftig';
+    src: url('/fonts/sohne-kraftig.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sohne Kraftig Kursiv';
+    src: url('/fonts/sohne-kraftig-kursiv.woff2') format('woff2');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Sohne Halbfett';
+    src: url('/fonts/sohne-halbfett.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sohne Halbfett Kursiv';
+    src: url('/fonts/sohne-halbfett-kursiv.woff2') format('woff2');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Sohne Dreiviertelfett';
+    src: url('/fonts/sohne-dreiviertelfett.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sohne Dreiviertelfett Kursiv';
+    src: url('/fonts/sohne-dreiviertelfett-kursiv.woff2') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Sohne Fett';
+    src: url('/fonts/sohne-fett.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sohne Fett Kursiv';
+    src: url('/fonts/sohne-fett-kursiv.woff2') format('woff2');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Sohne Extrafett';
+    src: url('/fonts/sohne-extrafett.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sohne Extrafett Kursiv';
+    src: url('/fonts/sohne-extrafett-kursiv.woff2') format('woff2');
+    font-weight: 900;
+    font-style: italic;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+    font-family: 'Sohne Halbfett', sans-serif;
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+}
+
+p {
+  font-family: 'Sohne Kraftig', sans-serif;
+  font-size: 1rem;
+}
+
+caption {
+    font-family: 'Sohne Buch', sans-serif;
+    font-size: 0.9rem;
+  }
+  
