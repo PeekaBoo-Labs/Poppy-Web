@@ -1,5 +1,5 @@
 export default function Screening(){
     return (
-        <div> hi am the screening page</div>
+        <div>i am screenig page hurheur</div>
     )
 }
