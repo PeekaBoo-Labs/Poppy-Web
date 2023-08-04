@@ -17,7 +17,7 @@ export default function Home() {
           <div></div>
           <div className="space-x-10 flex">
             <p>Screening</p>
-            <p>About</p>
+            <a href="/company/about"><p>About</p></a>
           </div>
         </div>
 
