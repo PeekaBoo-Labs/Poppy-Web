@@ -1,26 +1,16 @@
 import QuestionOption from '@/components/QuestionOption'
 import Caption from '@/components/Caption'
 import { LongButton } from '@/components/Buttons'
-
-import Image from 'next/image'
+import NavBar from '@/components/NavBar'
 
 import './page.css'
 import './fonts.css'
-
+// /screening, /about, /company, /resources, 
 export default function Home() {
   return (
     <body>
       <div className="flex flex-col m-4">
-        <div className="flex justify-between items-center mb-4">
-          <Image width={4} height={4} className="w-16" src="/poppyFull.svg" alt="Poppy"></Image>
-
-          <div className="flex flex-col justify-between h-3.5 w-5">
-            <div className="h-[2.5px] bg-black w-full"></div>
-            <div className="h-[2.5px] bg-black w-full"></div>
-            <div className="h-[2.5px] bg-black w-full"></div>
-          </div>
-        </div>
-
+        <NavBar/>
         <div className="bg-gray-300 h-px"></div>
 
         <div className="flex justify-between my-4">
