@@ -4,8 +4,8 @@ import { LongButton } from '@/components/Buttons'
 import NavBar from '@/components/NavBar'
 
 import './page.css'
-import './fonts.css'
-// /screening, /about, /company, /resources, 
+import '../styles/fonts.css'
+
 export default function Home() {
   return (
     <body>

@@ -4,6 +4,7 @@
 
 .menu {
     position: relative;
+
 }
 
 .menu-toggle {
@@ -14,41 +15,51 @@
 }
 
 .x {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1;
     cursor: pointer;
+    z-index: 99;
 }
 
 .x span {
     display: block;
-    width: 30px;
-    height: 3px;
-    background: black;
-    margin-bottom: 6px;
+    width: 20px;
+    height: 2.5px;
+    background: #262626;
     transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#menu-toggle:checked ~ .x span:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle:checked ~ .x span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+}
+
+#menu-toggle:checked ~ .x span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+#menu-toggle:checked ~ .x span {
+    background: white;
 }
 
 .mobile-menu {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    padding: 3em;
     position: fixed;
-    top: 0;
-    left: -100vw;
+    top: -100vh;
+    left: 0;
     width: 100vw;
-    min-height: 100vh;
-    background: #000000;
+    height: 100vh;
+    background: #262626;
     color: #ffffff;
     z-index: 5;
     transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 #menu-toggle:checked ~ .mobile-menu {
-    left: 0;
+    top: 0;
 }
 
 .mobile-menu > * {
