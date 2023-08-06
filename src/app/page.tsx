@@ -20,7 +20,7 @@ function QuestionBlock({ bgColor = '#FFFAF0', zIndex = 5 }) {
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-[#FFFAF0] text-[#262626]">
 
     <div className="flex flex-col m-4">
       {/* <ScrollHeader/> */}
@@ -69,14 +69,15 @@ export default function Home() {
       </div>
     </div>
 
-
       <div className="p-4">
-        <Image width={4} height={4} className="w-16" src="/poppyFullWhite.svg" alt="Poppy" />
+        <div className="bg-gray-300 h-px my-4"></div>
+
+        <Image width={4} height={4} className="w-16" src="/poppyFull.svg" alt="Poppy" />
 
         <div className="flex w-full">
           <div className="w-1/2">
             <div className="flex flex-col items-start">
-              <Caption>Overview</Caption>
+              <Caption className="text-gray-400">Overview</Caption>
               <p>Over</p>
               <p>Over</p>
             </div>
@@ -96,6 +97,6 @@ export default function Home() {
           <Caption>Copyright ©2023 Boom Supersonic. All rights reserved. Except as otherwise expressly permitted, no images or other content displayed on this website may be copied, reprinted, republished, modified, or distributed in any form without the express written permission of the copyright owner.</Caption>
         </div>
       </div>
-      </div>
+    </div>
   );
 }

@@ -6,8 +6,8 @@ import Caption from './Caption'
 
 export default function NavBar() {
   return (
-    <div className="flex justify-between items-center mb-4 z-10">
-      <Image width={4} height={4} className="w-16 z-[99] mix-blend-difference" src="/poppyFullWhite.svg" alt="Poppy" />
+    <div className="flex justify-between items-center mb-4 z-[99]">
+      <Image width={4} height={4} className="w-16 mix-blend-difference" src="/poppyFull.svg" alt="Poppy"/>
 
       <input type="checkbox" id="menu-toggle" className="menu-toggle" />
       <label htmlFor="menu-toggle" className="x">
