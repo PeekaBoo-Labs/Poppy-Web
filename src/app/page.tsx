@@ -5,9 +5,9 @@ import { LongButton } from '@/components/Buttons';
 import NavBar from '@/components/NavBar';
 import Image from 'next/image'
 
-function QuestionBlock({ bgColor = '#FFFAF0', zIndex = 5 }) {
+function QuestionBlock({ className = '' }) {
   return (
-    <div className={`flex justify-center p-2 bg-[${bgColor}] rounded-2xl border-2 border-black overflow-hidden h-[85vh] z-[${zIndex}]`}>
+    <div className={`flex justify-center p-2 rounded-2xl border-2 border-black overflow-hidden h-[600px] mb-[-500px] ${className}`}>
       <div className="flex-grow"></div>
       <div className="flex flex-col justify-between h-full items-start">
         <div className="flex-grow"></div>
@@ -17,6 +17,7 @@ function QuestionBlock({ bgColor = '#FFFAF0', zIndex = 5 }) {
     </div>
   );
 }
+
 
 export default function Home() {
   return (
@@ -36,8 +37,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col space-y-[-190%]">
-        <div className="flex flex-col justify-between p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[85vh] z-[6]">
+      <div className="flex flex-col mb-[500px]">
+      <div className="flex flex-col justify-between p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[600px] z-[6] mb-[-500px]">
           <div className="flex-grow"></div>
           <div className="flex flex-col justify-center mx-auto">
             <h1 className="text-center mb-3 px-10">What are the symptoms in the affected area?</h1>
@@ -57,22 +58,22 @@ export default function Home() {
           </div>
         </div>
 
-        <QuestionBlock bgColor="#FFFAF0" zIndex={5} />
-        <QuestionBlock bgColor="#FFFAF0" zIndex={4} />
-        <QuestionBlock bgColor="#FFA701" zIndex={3} />
-        <QuestionBlock bgColor="#FFA701" zIndex={2} />
-        <QuestionBlock bgColor="#FFFAF0" zIndex={1} />
+        <QuestionBlock className="bg-[#FFFAF0] z-[5]" />
+        <QuestionBlock className="bg-[#FFFAF0] z-[4]" />
+        <QuestionBlock className="bg-[#FFA701] z-[3]" />
+        <QuestionBlock className="bg-[#FFA701] z-[2]" />
+        <QuestionBlock className="bg-[#FFFAF0] z-[1]" />
       </div>
 
-      <div className="flex justify-center p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[40vh] mt-4">
+      <div className="flex justify-center p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[350px] mt-4">
         <div className="flex-grow"></div>
       </div>
     </div>
 
       <div className="p-4">
-        <div className="bg-gray-300 h-px my-4"></div>
+        <div className="bg-gray-300 h-px mt-4"></div>
 
-        <Image width={4} height={4} className="w-16" src="/poppyFull.svg" alt="Poppy" />
+        <Image width={4} height={4} className="w-32 my-8" src="/poppyFull.svg" alt="Poppy" />
 
         <div className="flex w-full">
           <div className="w-1/2">
