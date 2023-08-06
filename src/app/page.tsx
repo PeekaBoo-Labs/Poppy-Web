@@ -5,7 +5,7 @@ import { LongButton } from '@/components/Buttons';
 import NavBar from '@/components/NavBar';
 
 import './page.css';
-import '../styles/fonts.css';
+import '@/styles/fonts.css';
 
 function QuestionBlock({ bgColor = '#FFFAF0', zIndex = 5 }) {
   return (
@@ -85,6 +85,12 @@ export default function Home() {
             <p>Over</p>
           </div>
         </div>
+      </div>
+
+      <div className="bg-gray-300 h-px my-4"></div>
+
+      <div className="flex">
+        <p>Copyright ©2023 Boom Supersonic. All rights reserved. Except as otherwise expressly permitted, no images or other content displayed on this website may be copied, reprinted, republished, modified, or distributed in any form without the express written permission of the copyright owner.</p>
       </div>
     </div>
   );
