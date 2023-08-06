@@ -13,7 +13,7 @@ function QuestionBlock({ bgColor = '#FFFAF0', zIndex = 5 }) {
       <div className="flex-grow"></div>
       <div className="flex flex-col justify-between h-full items-start">
         <div className="flex-grow"></div>
-        <Caption>Choose all that apply</Caption>
+        <Caption className="caption text-center mb-10 px-10">Choose all that apply</Caption>
       </div>
       <div className="flex-grow"></div>
     </div>
@@ -41,7 +41,7 @@ export default function Home() {
           <div className="flex-grow"></div>
           <div className="flex flex-col justify-center mx-auto">
             <h1 className="text-center mb-3 px-10">What are the symptoms in the affected area?</h1>
-            <Caption>Choose all that apply</Caption>
+            <Caption className="caption text-center mb-10 px-10">Choose all that apply</Caption>
 
             <div className="flex flex-wrap justify-center items-center">
                 {["18-4", "Male", "AB+", "120 lbs", "5'7\""].map((text, index) => (

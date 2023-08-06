@@ -1,5 +1,5 @@
-export default function Caption({ children }: { children?: React.ReactNode }) {
+export default function Caption({ children, className }: { children?: React.ReactNode, className?: string }) {
   return (
-    <span className="caption text-center mb-10 px-10">{children}</span>
+    <span className={`caption ${className}`}>{children}</span>
   )
 }
