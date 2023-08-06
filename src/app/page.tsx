@@ -37,30 +37,24 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col space-y-[-190%]">
-        <div className="flex justify-between p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[85vh] z-[6]">
+        <div className="flex flex-col justify-between p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[85vh] z-[6]">
           <div className="flex-grow"></div>
-          <div className="flex flex-col justify-between">
-            <div className="flex-grow"></div>
-
+          <div className="flex flex-col justify-center mx-auto">
             <h1 className="text-center mb-3 px-10">What are the symptoms in the affected area?</h1>
             <Caption>Choose all that apply</Caption>
 
             <div className="flex flex-wrap justify-center items-center">
-              {
-                ["18-4", "Male", "AB+", "120 lbs", "5'7\""].map((text, index) => (
-                  <QuestionOption text={text} selected={index == 0} key={index} />
-                ))
-              }
-            </div>
-
-            <div className="flex-grow"></div>
-
-            <div className="flex w-full">
-              <LongButton type="secondary">Back</LongButton>
-              <LongButton type="primary">Next</LongButton>
+                {["18-4", "Male", "AB+", "120 lbs", "5'7\""].map((text, index) => (
+                    <QuestionOption text={text} selected={index == 0} key={index} />
+                ))}
             </div>
           </div>
           <div className="flex-grow"></div>
+
+          <div className="flex w-full">
+              <LongButton type="secondary">Back</LongButton>
+              <LongButton type="primary">Next</LongButton>
+          </div>
         </div>
 
         <QuestionBlock bgColor="#FFFAF0" zIndex={5} />
