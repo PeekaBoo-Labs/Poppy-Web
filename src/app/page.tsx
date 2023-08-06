@@ -3,6 +3,7 @@ import QuestionOption from '@/components/QuestionOption';
 import Caption from '@/components/Caption';
 import { LongButton } from '@/components/Buttons';
 import NavBar from '@/components/NavBar';
+import Image from 'next/image'
 
 import './page.css';
 import '@/styles/fonts.css';
@@ -22,6 +23,8 @@ function QuestionBlock({ bgColor = '#FFFAF0', zIndex = 5 }) {
 
 export default function Home() {
   return (
+    <div className="flex flex-col">
+
     <div className="flex flex-col m-4">
       {/* <ScrollHeader/> */}
 
@@ -67,31 +70,35 @@ export default function Home() {
       <div className="flex justify-center p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[40vh] mt-4">
         <div className="flex-grow"></div>
       </div>
-
-      <div className="bg-gray-300 h-px my-4 mt-10"></div>
-
-      <div className="flex w-full">
-        <div className="w-1/2">
-          <div className="flex flex-col items-start">
-            <Caption>Overview</Caption>
-            <p>Over</p>
-            <p>Over</p>
-          </div>
-        </div>
-        <div className="w-1/2">
-          <div className="flex flex-col items-start">
-            <Caption>Overview</Caption>
-            <p>Over</p>
-            <p>Over</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-gray-300 h-px my-4"></div>
-
-      <div className="flex">
-        <p>Copyright ©2023 Boom Supersonic. All rights reserved. Except as otherwise expressly permitted, no images or other content displayed on this website may be copied, reprinted, republished, modified, or distributed in any form without the express written permission of the copyright owner.</p>
-      </div>
     </div>
+
+
+      <div className="p-4">
+        <Image width={4} height={4} className="w-16" src="/poppyFullWhite.svg" alt="Poppy" />
+
+        <div className="flex w-full">
+          <div className="w-1/2">
+            <div className="flex flex-col items-start">
+              <Caption>Overview</Caption>
+              <p>Over</p>
+              <p>Over</p>
+            </div>
+          </div>
+          <div className="w-1/2">
+            <div className="flex flex-col items-start">
+              <Caption>Overview</Caption>
+              <p>Over</p>
+              <p>Over</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gray-300 h-px my-4"></div>
+
+        <div className="flex">
+          <Caption>Copyright ©2023 Boom Supersonic. All rights reserved. Except as otherwise expressly permitted, no images or other content displayed on this website may be copied, reprinted, republished, modified, or distributed in any form without the express written permission of the copyright owner.</Caption>
+        </div>
+      </div>
+      </div>
   );
 }
