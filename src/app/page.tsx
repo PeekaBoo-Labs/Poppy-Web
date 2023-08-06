@@ -73,14 +73,14 @@ export default function Home() {
       <div className="flex w-full">
         <div className="w-1/2">
           <div className="flex flex-col items-start">
-            <caption>Overview</caption>
+            <Caption>Overview</Caption>
             <p>Over</p>
             <p>Over</p>
           </div>
         </div>
         <div className="w-1/2">
           <div className="flex flex-col items-start">
-            <caption>Overview</caption>
+            <Caption>Overview</Caption>
             <p>Over</p>
             <p>Over</p>
           </div>
