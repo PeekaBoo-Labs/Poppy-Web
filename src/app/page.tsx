@@ -85,72 +85,24 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="h-[306px] flex flex-col justify-between">
-            <div className="flex justify-between">
-                <div className="flex space-x-6">
-                    <div>
-                        <div className="font-semibold text-sm text-gray-500">Products</div>
-                        <ul className="list-none">
-                            <li>
-                                <a href="/opal-c1" className="text-gray-700 hover:text-gray-600">
-                                    <span>Opal C1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/opal-composer" className="text-gray-700 hover:text-gray-600">
-                                    <span>Opal Composer</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div className="font-semibold text-sm text-gray-500">Company</div>
-                        <ul className="list-none">
-                            <li>
-                                <a href="/about" className="text-gray-700 hover:text-gray-600">
-                                    About us
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/terms" className="text-gray-700 hover:text-gray-600">
-                                    Terms
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/privacy" className="text-gray-700 hover:text-gray-600">
-                                    Privacy
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div className="font-semibold text-sm text-gray-500">Resources</div>
-                        <ul className="list-none">
-                            <li>
-                                <a href="mailto:support@opalcamera.com" target="_blank" rel="noopener" className="text-gray-700 hover:text-gray-600">
-                                    Support
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/media-kit" className="text-gray-700 hover:text-gray-600">
-                                    Media Kit
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/opal-composer/download" className="text-gray-700 hover:text-gray-600">
-                                    Downloads
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/newsletter" className="text-gray-700 hover:text-gray-600">
-                                    Newsletter
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+        <div className="bg-gray-300 h-px my-4"></div>
+
+        <div className="flex w-full">
+                <div className="w-1/2">
+                  <div className="flex flex-col items-start">
+                    <caption>Overview</caption>
+                    <p>Over</p>
+                    <p>Over</p>
+                  </div>
                 </div>
-            </div>
-        </div>
+                <div className="w-1/2">
+                  <div className="flex flex-col items-start">
+                    <caption>Overview</caption>
+                    <p>Over</p>
+                    <p>Over</p>
+                  </div>
+                </div>
+              </div>
 
 
       </div>
