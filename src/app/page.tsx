@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 function QuestionBlock({ className = '' }) {
   return (
-    <div className={`flex justify-center p-2 rounded-2xl border-2 border-black overflow-hidden h-[600px] mb-[-500px] ${className}`}>
+    <div className={`flex justify-center p-2 rounded-2xl border-2 border-black overflow-hidden h-[600px] mb-[-560px] ${className}`}>
       <div className="flex-grow"></div>
       <div className="flex flex-col justify-between h-full items-start">
         <div className="flex-grow"></div>
@@ -37,8 +37,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col mb-[500px]">
-      <div className="flex flex-col justify-between p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[600px] z-[6] mb-[-500px]">
+      <div className="flex flex-col mb-[560px]">
+      <div className="flex flex-col justify-between p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[600px] z-[6] mb-[-560px]">
           <div className="flex-grow"></div>
           <div className="flex flex-col justify-center mx-auto">
             <h1 className="text-center mb-3 px-10">What are the symptoms in the affected area?</h1>
@@ -77,17 +77,15 @@ export default function Home() {
 
         <div className="flex w-full">
           <div className="w-1/2">
-            <div className="flex flex-col items-start">
-              <Caption className="text-gray-400">Overview</Caption>
-              <p>Over</p>
-              <p>Over</p>
+            <div className="flex flex-col items-start space-y-1.5">
+              <h3>Over</h3>
+              <h3>Over</h3>
             </div>
           </div>
           <div className="w-1/2">
-            <div className="flex flex-col items-start">
-              <Caption>Overview</Caption>
-              <p>Over</p>
-              <p>Over</p>
+           <div className="flex flex-col items-start space-y-1.5">
+              <h3>Over</h3>
+              <h3>Over</h3>
             </div>
           </div>
         </div>

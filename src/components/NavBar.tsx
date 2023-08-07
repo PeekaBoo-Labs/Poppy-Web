@@ -18,21 +18,31 @@ export default function NavBar() {
         </div>
       </label>
 
-      <div className="mobile-menu p-5 pt-20">
-        <div className="flex w-full">
-          <div className="w-1/2">
-            <div className="flex flex-col items-start">
-              <Caption>Overview</Caption>
-              <p>Over</p>
-              <p>Over</p>
+      <div className="mobile-menu pt-20">
+        <div className="p-4">
+          <div className="bg-gray-300 h-px mt-4"></div>
+
+          <Image width={4} height={4} className="w-32 my-8" src="/poppyFullWhite.svg" alt="Poppy" />
+
+          <div className="flex w-full">
+            <div className="w-1/2">
+              <div className="flex flex-col items-start space-y-1.5">
+                <h3>Over</h3>
+                <h3>Over</h3>
+              </div>
+            </div>
+            <div className="w-1/2">
+            <div className="flex flex-col items-start space-y-1.5">
+                <h3>Over</h3>
+                <h3>Over</h3>
+              </div>
             </div>
           </div>
-          <div className="w-1/2">
-            <div className="flex flex-col items-start">
-              <Caption>Overview</Caption>
-              <p>Over</p>
-              <p>Over</p>
-            </div>
+
+          <div className="bg-gray-300 h-px my-4"></div>
+
+          <div className="flex">
+            <Caption>Copyright ©2023 Boom Supersonic. All rights reserved. Except as otherwise expressly permitted, no images or other content displayed on this website may be copied, reprinted, republished, modified, or distributed in any form without the express written permission of the copyright owner.</Caption>
           </div>
         </div>
       </div>
