@@ -45,7 +45,7 @@ export default function Home() {
             <h1 className="text-center mb-3 px-10">What are the symptoms in the affected area?</h1>
             <Caption className="text-center mb-10 px-10">Choose all that apply</Caption>
 
-            <div className="flex flex-wrap justify-center items-center">
+            <div className="flex flex-wrap justify-center items-center opacity-50">
               {["18-4", "Male", "AB+", "120 lbs", "5'7\""].map((text, index) => (
                 <QuestionOption text={text} selected={index == 0} key={index} />
               ))}
@@ -76,7 +76,7 @@ export default function Home() {
 
           <Image width={4} height={4} className="w-24 my-4" src="/poppyFull.svg" alt="Poppy" />
 
-          <Caption>Cal.com® is a registered trademark by Cal.com, Inc. All rights reserved.</Caption>
+          <Caption>Poppy.com® is a registered trademark by Poppy.com, Inc. All rights reserved.</Caption>
 
           <div className="mt-4 flex gap-4">
             <a className="[&amp;>svg]:fill-primary-300 [&amp;>svg]:transition-fill [&amp;>svg]:duration-150 [&amp;>svg]:hover:fill-white" aria-label="Discord" target="_blank" rel="noopener" href="https://go.cal.com/discord">
@@ -92,7 +92,7 @@ export default function Home() {
         </div>
 
 
-        <div className="flex w-full my-8">
+        <div className="flex w-full mt-8">
           <div className="w-1/2">
             <div className="flex flex-col items-start">
              <HeaderText>COMPANY</HeaderText>
@@ -108,12 +108,6 @@ export default function Home() {
               <h3>Downloads</h3>
             </div>
           </div>
-        </div>
-
-        <div className="bg-gray-300 h-px my-4"></div>
-
-        <div className="flex">
-          <Caption>Copyright ©2023 Boom Supersonic. All rights reserved. Except as otherwise expressly permitted, no images or other content displayed on this website may be copied, reprinted, republished, modified, or distributed in any form without the express written permission of the copyright owner.</Caption>
         </div>
       </div>
     </div>
