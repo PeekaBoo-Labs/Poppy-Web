@@ -18,15 +18,16 @@ export default function NavBar() {
         </div>
       </label>
 
-      <div className="mobile-menu pt-20">
+      <div className="mobile-menu">
         <div className="p-4">
-          <div className="bg-gray-300 h-px mt-4"></div>
+          <div className="bg-gray-300 h-px"></div>
 
           <Image width={4} height={4} className="w-32 my-8" src="/poppyFullWhite.svg" alt="Poppy" />
 
           <div className="flex w-full">
             <div className="w-1/2">
               <div className="flex flex-col items-start space-y-1.5">
+                <Caption>Caption</Caption>
                 <h3>Over</h3>
                 <h3>Over</h3>
               </div>
