@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionOption from '@/components/QuestionOption';
+import ProfileOption from '@/components/ProfileOption';
 import Caption from '@/components/Caption';
 import HeaderText from '@/components/HeaderText';
 import { LongButton } from '@/components/Buttons';
@@ -8,7 +9,7 @@ import Image from 'next/image'
 
 function QuestionBlock({ className = '' }) {
   return (
-    <div className={`flex justify-center p-2 rounded-2xl border-2 border-black overflow-hidden h-[600px] mb-[-560px] ${className}`}>
+    <div className={`flex justify-center p-2 rounded-2xl border-2 border-black overflow-hidden h-[600px] mb-[-580px] ${className}`}>
       <div className="flex-grow"></div>
       <div className="flex flex-col justify-between h-full items-start">
         <div className="flex-grow"></div>
@@ -38,8 +39,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col mb-[560px]">
-      <div className="flex flex-col justify-between p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[600px] z-[6] mb-[-560px]">
+      <div className="flex flex-col mb-[580px]">
+        <div className="flex flex-col justify-between p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[600px] z-[6] mb-[-580px]">
           <div className="flex-grow"></div>
           <div className="flex flex-col justify-center mx-auto">
             <h1 className="text-center mb-3 px-10">What are the symptoms in the affected area?</h1>
@@ -64,6 +65,16 @@ export default function Home() {
         <QuestionBlock className="bg-[#FFA701] z-[3]" />
         <QuestionBlock className="bg-[#FFA701] z-[2]" />
         <QuestionBlock className="bg-[#FFFAF0] z-[1]" />
+      </div>
+
+      <div className="flex flex-col my-8">
+        <div className="flex flex-wrap justify-initial items-center">
+          {["18-4", "Male", "AB+", "120 lbs", "5'7\""].map((text, index) => (
+            <ProfileOption text={text} selected={index == 0} key={index} />
+          ))}
+        </div>
+
+        <p className="p-2 pt-6">As a company that has achieved ISO 27001, SOC 2, CCPA, GDPR and HIPAA certifications, we understand the critical importance of information security in today's digital landscape. The increasing frequency and sophistication of cyber attacks highlight the necessity for businesses to prioritize security to safeguard their data and ensure the trust and confidence of their clients. By implementing industry-standard security measures and best practices, we demonstrate our unwavering commitment to the protection of sensitive information and the preservation of the integrity of our operations. We take pride in the rigorous security protocols we have in place and are dedicated to maintaining the highest standards of security excellence.</p>
       </div>
 
       <div className="flex justify-center p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[350px] mt-4">
