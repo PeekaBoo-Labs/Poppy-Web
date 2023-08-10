@@ -7,8 +7,9 @@ import HeaderText from '@/components/HeaderText';
 
 export default function NavBar() {
   return (
-    <div className="flex justify-between items-center mb-4 z-[99]">
-      <Image width={4} height={4} className="w-16 mix-blend-difference" src="/poppyFull.svg" alt="Poppy"/>
+    <div className="flex flex-col justify-between w-full max-w-[1100px]">
+    <div className="flex justify-between items-center mb-4 z-[99] m-4">
+      <Image width={4} height={4} className="w-20 mix-blend-difference" src="/poppyFull.svg" alt="Poppy"/>
 
       <input type="checkbox" id="menu-toggle" className="menu-toggle" />
       <label htmlFor="menu-toggle" className="x">
@@ -56,6 +57,11 @@ export default function NavBar() {
           </div>
         </div>
       </div>
+      </div>
+
+      <div className="bg-gray-300 h-px mx-4"></div>
+      <div className="flex-grow"></div>
+
     </div>
   )
 }

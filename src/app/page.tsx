@@ -1,6 +1,7 @@
 import React from 'react';
 import QuestionOption from '@/components/QuestionOption';
 import ProfileOption from '@/components/ProfileOption';
+import Title from '@/components/Title';
 import Caption from '@/components/Caption';
 import HeaderText from '@/components/HeaderText';
 import { LongButton } from '@/components/Buttons';
@@ -9,7 +10,7 @@ import Image from 'next/image'
 
 function QuestionBlock({ className = '' }) {
   return (
-    <div className={`flex justify-center p-2 rounded-2xl border-2 border-black overflow-hidden h-[600px] mb-[-580px] ${className}`}>
+    <div className={`flex justify-center p-2 rounded-3xl border-[2px] border-black overflow-hidden h-[600px] mb-[-570px] ${className}`}>
       <div className="flex-grow"></div>
       <div className="flex flex-col justify-between h-full items-start">
         <div className="flex-grow"></div>
@@ -20,37 +21,31 @@ function QuestionBlock({ className = '' }) {
   );
 }
 
-
 export default function Home() {
   return (
-    <div className="flex flex-col bg-[#FFFAF0] text-[#262626]">
+    <div className="flex flex-col justify-center items-center bg-[#FFFAF0] text-[#262626]">
+      {/* <ScrollHeader/> */}
 
-      <div className="flex flex-col m-4">
-        {/* <ScrollHeader/> */}
+      <NavBar />
+      <div className="flex flex-col mx-4 max-w-[750px]">
 
-        <NavBar />
-        <div className="bg-gray-300 h-px"></div>
-
-        <div className="flex justify-between my-4">
-          <div></div>
-          <div className="space-x-10 flex">
-            <p>Screening</p>
-            <a href="/company/about"><p>About</p></a>
-          </div>
+      <div className="flex flex-col mb-[570px] mt-8">
+        <div className="flex items-center justify-center h-12 w-12 border-[2px] rounded-full border-[#262626] bg-[#262626] my-4">
+            <h3 className="text-[#FFFAF0]">1</h3>
         </div>
 
-        <div className="flex flex-col mb-[580px]">
-          <div className="flex flex-col justify-between p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[600px] z-[6] mb-[-580px]">
-            <div className="flex-grow"></div>
-            <div className="flex flex-col justify-center mx-auto">
-              <h1 className="text-center mb-3 px-10">What are the symptoms in the affected area?</h1>
-              <Caption className="text-center mb-10 px-10">Choose all that apply</Caption>
+        <Title className="mb-6">Screening</Title>
 
-              <div className="flex flex-wrap justify-center items-center opacity-50">
-                {["18-4", "Male", "AB+", "120 lbs", "5'7\""].map((text, index) => (
-                  <QuestionOption text={text} selected={index == 0} key={index} />
-                ))}
-              </div>
+        <div className="flex flex-col justify-between p-2 bg-[#FFFAF0] rounded-3xl border-[2px] border-black overflow-hidden h-[600px] z-[6] mb-[-570px]">
+          <div className="flex-grow"></div>
+          <div className="flex flex-col justify-center mx-auto">
+            <h1 className="text-center mb-3 px-10">What are the symptoms in the affected area?</h1>
+            <Caption className="text-center mb-10 px-10">Choose all that apply</Caption>
+
+            <div className="flex flex-wrap justify-center items-center opacity-80">
+              {["18-4", "Male", "AB+", "120 lbs", "5'7\""].map((text, index) => (
+                <QuestionOption text={text} selected={index == 0} key={index} />
+              ))}
             </div>
             <div className="flex-grow"></div>
 
@@ -74,15 +69,17 @@ export default function Home() {
             ))}
           </div>
 
-          <p className="p-2 pt-6">As a company that has achieved ISO 27001, SOC 2, CCPA, GDPR and HIPAA certifications, we understand the critical importance of information security in today&apos;s digital landscape. The increasing frequency and sophistication of cyber attacks highlight the necessity for businesses to prioritize security to safeguard their data and ensure the trust and confidence of their clients. By implementing industry-standard security measures and best practices, we demonstrate our unwavering commitment to the protection of sensitive information and the preservation of the integrity of our operations. We take pride in the rigorous security protocols we have in place and are dedicated to maintaining the highest standards of security excellence.</p>
+      <div className="flex flex-col mt-8">
+        <div className="flex items-center justify-center h-12 w-12 border-[2px] rounded-full border-[#262626] bg-[#262626] my-4">
+            <h3 className="text-[#FFFAF0]">2</h3>
         </div>
 
-        <div className="flex justify-center p-2 bg-[#FFFAF0] rounded-2xl border-2 border-black overflow-hidden h-[350px] mt-4">
-          <div className="flex-grow"></div>
-        </div>
+        <Title>Diagnostic</Title>
+
+        <p className="pt-6">As a company that has achieved ISO 27001, SOC 2, CCPA, GDPR and HIPAA certifications, we understand the critical importance of information security in today's digital landscape. The increasing frequency and sophistication of cyber attacks highlight the necessity for businesses to prioritize security to safeguard their data and ensure the trust and confidence of their clients. By implementing industry-standard security measures and best practices, we demonstrate our unwavering commitment to the protection of sensitive information and the preservation of the integrity of our operations. We take pride in the rigorous security protocols we have in place and are dedicated to maintaining the highest standards of security excellence.</p>
       </div>
 
-      <div className="p-4">
+      <div className="mb-4 pt-8">
         <div className="bg-gray-300 h-px mt-4 mb-[30px]"></div>
 
         <Image width={4} height={4} className="w-24 my-4" src="/poppyFull.svg" alt="Poppy" />
@@ -106,21 +103,23 @@ export default function Home() {
         <div className="flex w-full mt-8">
           <div className="w-1/2">
             <div className="flex flex-col items-start">
-              <HeaderText>COMPANY</HeaderText>
-              <h3>About us</h3>
-              <h3>Terms</h3>
-              <h3>Privacy</h3>
+             <HeaderText>COMPANY</HeaderText>
+              <h4>About us</h4>
+              <h4>Terms</h4>
+              <h4>Privacy</h4>
             </div>
           </div>
           <div className="w-1/2">
-            <div className="flex flex-col items-start">
-              <HeaderText>RESOURCES</HeaderText>
-              <h3>FAQ</h3>
-              <h3>Downloads</h3>
+           <div className="flex flex-col items-start">
+              <HeaderText>SCREENING</HeaderText>
+              <h4>FAQ</h4>
+              <h4>Downloads</h4>
             </div>
           </div>
         </div>
       </div>
+      </div>
+
     </div>
   );
 }

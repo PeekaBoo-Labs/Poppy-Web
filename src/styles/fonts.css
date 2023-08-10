@@ -123,7 +123,7 @@ h6 {
 
 h1 {
     font-family: 'Sohne', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.75rem;
     line-height: 2.5rem;
 }
@@ -135,15 +135,31 @@ h3 {
     line-height: 2.4rem;
 }
 
+h4 {
+    font-family: 'Sohne', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 2.4rem;
+}
+
 p {
     font-family: 'Sohne', sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 1.1rem;
+    line-height: 2rem;
 }
 
 .caption {
     font-family: 'Sohne', sans-serif;
-    font-size: 0.9rem;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.title {
+    font-family: 'Sohne', sans-serif;
+    font-weight: 500;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
 }
 
 .headerText {
