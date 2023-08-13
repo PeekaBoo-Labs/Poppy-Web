@@ -1,4 +1,5 @@
 import React from 'react';
+import { Drawer } from 'vaul';
 import QuestionOption from '@/components/QuestionOption';
 import ProfileOption from '@/components/ProfileOption';
 import Title from '@/components/Title';
@@ -10,7 +11,7 @@ import Image from 'next/image'
 
 function QuestionBlock({ className = '' }) {
   return (
-    <div className={`flex justify-center p-2 rounded-3xl border-[2px] border-black overflow-hidden h-[600px] mb-[-570px] ${className}`}>
+    <div className={`flex justify-center p-2 rounded-3xl border-[2px] border-black bg-[#262626] overflow-hidden h-[700px] mb-[-670px] ${className}`}>
       <div className="flex-grow"></div>
       <div className="flex flex-col justify-between h-full items-start">
         <div className="flex-grow"></div>
@@ -23,20 +24,14 @@ function QuestionBlock({ className = '' }) {
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center items-center bg-[#FFFAF0] text-[#262626]">
+    <div className="flex flex-col justify-center items-center bg-[#F7F7F7] text-[#262626]">
       {/* <ScrollHeader/> */}
 
       <NavBar />
       <div className="flex flex-col mx-4 max-w-[750px]">
 
-      <div className="flex flex-col mb-[570px] mt-8">
-        <div className="flex items-center justify-center h-12 w-12 border-[2px] rounded-full border-[#262626] bg-[#262626] my-4">
-            <h3 className="text-[#FFFAF0]">1</h3>
-        </div>
-
-        <Title className="mb-6">Screening</Title>
-
-        <div className="flex flex-col justify-between p-2 bg-[#FFFAF0] rounded-3xl border-[2px] border-black overflow-hidden h-[600px] z-[6] mb-[-570px]">
+      <div className="flex flex-col mb-[570px] mt-[71px]">
+        <div className="flex flex-col justify-between p-2 bg-[#F7F7F7] rounded-3xl border-[2px] border-black overflow-hidden h-[700px] z-[6] mb-[-670px]">
           <div className="flex-grow"></div>
           <div className="flex flex-col justify-center mx-auto">
             <h1 className="text-center mb-3 px-10">What are the symptoms in the affected area?</h1>
@@ -56,29 +51,50 @@ export default function Home() {
           </div>
         </div>
 
-        <QuestionBlock className="bg-[#FFFAF0] z-[5]" />
-        <QuestionBlock className="bg-[#FFFAF0] z-[4]" />
+        <QuestionBlock className="bg-[#F7F7F7] z-[5]" />
+        <QuestionBlock className="bg-[#F7F7F7] z-[4]" />
         <QuestionBlock className="bg-[#FFA701] z-[3]" />
         <QuestionBlock className="bg-[#FFA701] z-[2]" />
-        <QuestionBlock className="bg-[#FFFAF0] z-[1]" />
+        <QuestionBlock className="bg-[#F7F7F7] z-[1]" />
       </div>
 
-      <div className="flex flex-col mt-8">
-        <div className="flex items-center justify-center h-12 w-12 border-[2px] rounded-full border-[#262626] bg-[#262626] my-4">
-            <h3 className="text-[#FFFAF0]">2</h3>
+      <div className="flex flex-col mt-24">
+        {/* <div className="flex items-center justify-center h-12 w-12 border-[2px] rounded-full border-[#262626] bg-[#262626] my-4">
+            <h3 className="text-[#F7F7F7]">2</h3>
+        </div> */}
+
+        <div className="flex justify-center items-center space-x-10 my-16">
+          <div className="flex flex-col justify-center items-center">
+            <h4 className="text-gray-400">Screened On</h4>
+            <h2>August 3</h2>
+          </div>
+
+          <div className="h-8 w-[1px] bg-gray-300"></div>
+        
+          <div className="flex flex-col justify-center items-center">
+            <h4 className="text-gray-400">Result</h4>
+            <h2>High Risk</h2>
+          </div>
         </div>
 
-        <Title>Diagnostic</Title>
+        <h2 className="mb-2">Description</h2>
 
-        <p className="pt-6">As a company that has achieved ISO 27001, SOC 2, CCPA, GDPR and HIPAA certifications, we understand the critical importance of information security in today's digital landscape. The increasing frequency and sophistication of cyber attacks highlight the necessity for businesses to prioritize security to safeguard their data and ensure the trust and confidence of their clients. By implementing industry-standard security measures and best practices, we demonstrate our unwavering commitment to the protection of sensitive information and the preservation of the integrity of our operations. We take pride in the rigorous security protocols we have in place and are dedicated to maintaining the highest standards of security excellence.</p>
+        <p>As a company that has achieved ISO 27001, SOC 2, CCPA, GDPR and HIPAA certifications, we understand the critical importance of information security in today's digital landscape. The increasing frequency and sophistication of cyber attacks highlight the necessity for businesses to prioritize security to safeguard their data and ensure the trust and confidence of their clients. By implementing industry-standard security measures and best practices, we demonstrate our unwavering commitment to the protection of sensitive information and the preservation of the integrity of our operations. We take pride in the rigorous security protocols we have in place and are dedicated to maintaining the highest standards of security excellence.</p>
       </div>
 
-      <div className="mb-4 pt-8">
-        <div className="bg-gray-300 h-px mt-4 mb-[30px]"></div>
 
-          <Image width={4} height={4} className="w-24 my-4" src="/poppyFull.svg" alt="Poppy" />
+      <div className="flex flex-col justify-center items-center my-16">
+        <div className="w-40 h-40 rounded-2xl border-[2px] border-[#262626] bg-[#F7F7F7] mb-8"></div>
 
-          <Caption>Poppy.com® is a registered trademark by Poppy.com, Inc. All rights reserved.</Caption>
+          <LongButton type="primary">Share</LongButton>
+
+        <Caption className="flex justify-center align-center text-center text-gray-400 mt-6 px-8">You can use this address to receive ETH and other Ethereum based tokens.</Caption>
+      </div>
+
+      <div className="flex flex-col justify-center p-2 rounded-3xl border-[2px] border-black mb-4 p-5">
+          <Image width={4} height={4} className="w-20 mb-4 mt-2" src="/poppyFull.svg" alt="Poppy" />
+
+          <Caption>Chute.health® is a registered trademark by Chute.health, Inc. All rights reserved.</Caption>
 
           <div className="mt-4 flex gap-4">
             <a className="[&amp;>svg]:fill-primary-300 [&amp;>svg]:transition-fill [&amp;>svg]:duration-150 [&amp;>svg]:hover:fill-white" aria-label="Discord" target="_blank" rel="noopener" href="https://go.cal.com/discord">
@@ -98,16 +114,16 @@ export default function Home() {
           <div className="w-1/2">
             <div className="flex flex-col items-start">
              <HeaderText>COMPANY</HeaderText>
-              <h4>About us</h4>
-              <h4>Terms</h4>
-              <h4>Privacy</h4>
+              <p>About us</p>
+              <p>Terms</p>
+              <p>Privacy</p>
             </div>
           </div>
           <div className="w-1/2">
            <div className="flex flex-col items-start">
               <HeaderText>SCREENING</HeaderText>
-              <h4>FAQ</h4>
-              <h4>Downloads</h4>
+              <p>FAQ</p>
+              <p>Downloads</p>
             </div>
           </div>
         </div>

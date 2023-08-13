@@ -7,14 +7,18 @@ import HeaderText from '@/components/HeaderText';
 
 export default function NavBar() {
   return (
-    <div className="flex flex-col justify-between w-full max-w-[1100px]">
+    <div className="flex flex-col justify-between w-full max-w-[1100px] fixed top-0 bg-[#F7F7F7] z-[99999]">
     <div className="flex justify-between items-center mb-4 z-[99] m-4">
-      <Image width={4} height={4} className="w-20 mix-blend-difference" src="/poppyFull.svg" alt="Poppy"/>
+      <Image width={4} height={4} className="w-14 mix-blend-difference" src="/poppyFull.svg" alt="Poppy"/>
+
+      {/* <div className="absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 rounded-[7px] border-[2px] border-[#262626] h-[25px] w-[37px]">
+          <div className="flex-grow"></div>
+      </div> */}
+
 
       <input type="checkbox" id="menu-toggle" className="menu-toggle" />
       <label htmlFor="menu-toggle" className="x">
-        <div className="flex flex-col justify-between h-3.5">
-          <span></span>
+        <div className="flex flex-col justify-between h-[10px]">
           <span></span>
           <span></span>
         </div>

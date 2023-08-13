@@ -21,22 +21,18 @@
 
 .x span {
     display: block;
-    width: 20px;
-    height: 2.5px;
+    width: 15px;
+    height: 2px;
     background: #262626;
     transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-#menu-toggle:checked ~ .x span:nth-child(2) {
-    opacity: 0;
-}
-
 #menu-toggle:checked ~ .x span:nth-child(1) {
-    transform: rotate(45deg) translateY(8px);
+    transform: rotate(45deg) translateY(5.5px);
 }
 
-#menu-toggle:checked ~ .x span:nth-child(3) {
-    transform: rotate(-45deg) translateY(-8px);
+#menu-toggle:checked ~ .x span:nth-child(2) {
+    transform: rotate(-45deg) translateY(-5.5px);
 }
 
 #menu-toggle:checked ~ .x span {

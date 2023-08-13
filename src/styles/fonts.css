@@ -128,6 +128,13 @@ h1 {
     line-height: 2.5rem;
 }
 
+h2 {
+    font-family: 'Sohne', sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+}
+
 h3 {
     font-family: 'Sohne', sans-serif;
     font-weight: 400;
@@ -139,7 +146,7 @@ h4 {
     font-family: 'Sohne', sans-serif;
     font-weight: 300;
     font-size: 1.1rem;
-    line-height: 2.4rem;
+    line-height: 2.1rem;
 }
 
 p {
@@ -158,7 +165,7 @@ p {
 .title {
     font-family: 'Sohne', sans-serif;
     font-weight: 500;
-    font-size: 2.25rem;
+    font-size: 2.2rem;
     line-height: 2.5rem;
 }
 
