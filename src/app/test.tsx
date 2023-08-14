@@ -30,61 +30,65 @@ export default function Home() {
       <NavBar />
       <div className="flex flex-col mx-4 max-w-[750px]">
 
-      <div className="flex flex-col mt-[70px]">
-        <div className="flex flex-col justify-between h-[90vh]">
+      <div className="flex flex-col mb-[570px] mt-[71px]">
+        <div className="flex flex-col justify-between p-2 bg-[#F7F7F7] rounded-3xl border-[2px] border-black overflow-hidden h-[700px] z-[6] mb-[-670px]">
           <div className="flex-grow"></div>
-            <div className="flex flex-col justify-center mx-auto">
-              <Caption className="text-center mb-4 px-10 font-[400]">Choose all that apply</Caption>
-              <Title className="text-center mb-8 px-10">What are the symptoms in the affected area?</Title>
+          <div className="flex flex-col justify-center mx-auto">
+            <h1 className="text-center mb-3 px-10">What are the symptoms in the affected area?</h1>
+            <Caption className="text-center mb-10 px-10">Choose all that apply</Caption>
 
-              <div className="flex flex-wrap justify-center items-center">
-                {["18-4", "Male", "AB+", "120 lbs", "5'7\""].map((text, index) => (
-                  <QuestionOption text={text} selected={index == 0} key={index} />
-                ))}
-              </div>
+            <div className="flex flex-wrap justify-center items-center opacity-80">
+              {["18-4", "Male", "AB+", "120 lbs", "5'7\""].map((text, index) => (
+                <QuestionOption text={text} selected={index == 0} key={index} />
+              ))}
             </div>
+          </div>
           <div className="flex-grow"></div>
 
-        <div className="flex w-full">
-          <LongButton type="secondary">Back</LongButton>
-          <LongButton type="primary">Next</LongButton>
+          <div className="flex w-full">
+            <LongButton type="secondary">Back</LongButton>
+            <LongButton type="primary">Next</LongButton>
+          </div>
         </div>
-      </div>
+
+        <QuestionBlock className="bg-[#F7F7F7] z-[5]" />
+        <QuestionBlock className="bg-[#F7F7F7] z-[4]" />
+        <QuestionBlock className="bg-[#FFA701] z-[3]" />
+        <QuestionBlock className="bg-[#FFA701] z-[2]" />
+        <QuestionBlock className="bg-[#F7F7F7] z-[1]" />
       </div>
 
-      <div className="bg-gray-300 h-px my-8"></div>
-
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-24">
         {/* <div className="flex items-center justify-center h-12 w-12 border-[2px] rounded-full border-[#262626] bg-[#262626] my-4">
             <h3 className="text-[#F7F7F7]">2</h3>
         </div> */}
+
+        <div className="flex justify-center items-center space-x-10 my-16">
+          <div className="flex flex-col justify-center items-center">
+            <h4 className="text-gray-400">Screened On</h4>
+            <h2>August 3</h2>
+          </div>
+
+          <div className="h-8 w-[1px] bg-gray-300"></div>
+        
+          <div className="flex flex-col justify-center items-center">
+            <h4 className="text-gray-400">Result</h4>
+            <h2>High Risk</h2>
+          </div>
+        </div>
 
         <h2 className="mb-2">Description</h2>
 
         <p>As a company that has achieved ISO 27001, SOC 2, CCPA, GDPR and HIPAA certifications, we understand the critical importance of information security in today's digital landscape. The increasing frequency and sophistication of cyber attacks highlight the necessity for businesses to prioritize security to safeguard their data and ensure the trust and confidence of their clients. By implementing industry-standard security measures and best practices, we demonstrate our unwavering commitment to the protection of sensitive information and the preservation of the integrity of our operations. We take pride in the rigorous security protocols we have in place and are dedicated to maintaining the highest standards of security excellence.</p>
       </div>
 
-      <div className="flex justify-center items-center space-x-10 my-16">
-        <div className="flex flex-col justify-center items-center">
-          <h4 className="text-gray-400">Screened On</h4>
-          <h2>August 3</h2>
-        </div>
 
-        <div className="h-8 w-[1px] bg-gray-300"></div>
-      
-        <div className="flex flex-col justify-center items-center">
-          <h4 className="text-gray-400">Result</h4>
-          <h2>High Risk</h2>
-        </div>
-      </div>
-
-
-      <div className="flex flex-col justify-center items-center mt-8 mb-16">
-        <div className="w-40 h-40 rounded-2xl border-[2px] border-[#262626] bg-[#F7F7F7] mb-8"></div>
+      <div className="flex flex-col justify-center items-center my-16">
+        <div className="w-30 h-40 rounded-2xl border-[2px] border-[#262626] bg-[#F7F7F7]"></div>
 
           <LongButton type="primary">Share</LongButton>
 
-        <Caption className="flex justify-center align-center text-center text-gray-400 mt-6 px-8">You can use this address to receive ETH and other Ethereum based tokens.</Caption>
+        <Caption className="flex justify-center align-center text-center text-gray-400 mt-4 px-8">You can use this address to receive ETH and other Ethereum based tokens such as USDC.</Caption>
       </div>
 
       <div className="flex flex-col justify-center p-2 rounded-3xl border-[2px] border-black mb-4 p-5">

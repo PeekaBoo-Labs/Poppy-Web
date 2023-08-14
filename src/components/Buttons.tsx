@@ -13,9 +13,9 @@ export function LongButton(
   return <>
     {
       type == "secondary" && (
-        <div className="px-7 py-2.5 m-1 bg-[#F7F7F7] rounded-[13px] border-[2px] border-black select-none cursor-default" >
+        <div className="px-7 py-2.5 m-1 select-none cursor-default" >
           {prefix}
-          <h4 className="text-center">{children}</h4>
+          <h4 className="text-center font-[400]">{children}</h4>
           {suffix}
         </div>
       )
@@ -23,9 +23,9 @@ export function LongButton(
 
     {
       type == "primary" && (
-        <div className="flex-grow justify-between px-5 py-2.5 m-1 bg-[#262626] rounded-[13px] border-[2px] border-black select-none cursor-default">
+        <div className="flex-grow justify-between px-5 py-2.5 m-1 bg-[#262626] rounded-[15px] border-[2px] border-black select-none cursor-default">
           {prefix}
-          <h4 className="text-center text-[#F7F7F7]">{children}</h4>
+          <h4 className="text-center text-[#F7F7F7] font-[400]">{children}</h4>
           {suffix}
         </div>
       )
