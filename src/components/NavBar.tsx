@@ -4,6 +4,7 @@ import './NavBar.css';
 import '../styles/fonts.css';
 import Caption from './Caption';
 import HeaderText from '@/components/HeaderText';
+import Title from '@/components/Title';
 
 export default function NavBar() {
   return (
@@ -22,25 +23,13 @@ export default function NavBar() {
       <div className="mobile-menu z-[10]">
         <div className="flex flex-col p-4 mt-4 justify-between">
 
-          <div className="flex w-full mt-8">
-            <div className="w-1/2">
-              <div className="flex flex-col items-start">
-              <HeaderText>COMPANY</HeaderText>
-                <h3>About us</h3>
-                <h3>Terms</h3>
-                <h3>Privacy</h3>
-              </div>
-            </div>
-            <div className="w-1/2">
-            <div className="flex flex-col items-start">
-                <HeaderText>RESOURCES</HeaderText>
-                <h3>FAQ</h3>
-                <h3>Downloads</h3>
-              </div>
-            </div>
+          <div className="flex flex-col h-[80vh] justify-center mt-8 space-y-[20px]">
+            <Title>Stories</Title>
+            <Title>Listen</Title>
+            <Title>Team</Title>
+            <Title>Tools</Title>
           </div>
 
-          <Caption>Poppy.com® is a registered trademark by Poppy.com, Inc. All rights reserved.</Caption>
           <div className="mt-4 flex gap-4">
               <a className="[&amp;>svg]:fill-primary-300 [&amp;>svg]:transition-fill [&amp;>svg]:duration-150 [&amp;>svg]:hover:fill-white" aria-label="Discord" target="_blank" rel="noopener" href="https://go.cal.com/discord">
                   <svg className="mt-0.5" width="22" height="22" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36">
@@ -52,7 +41,7 @@ export default function NavBar() {
                       <path d="M16.99 0H20.298L13.071 8.26L21.573 19.5H14.916L9.702 12.683L3.736 19.5H0.426L8.156 10.665L0 0H6.826L11.539 6.231L16.99 0ZM15.829 17.52H17.662L5.83 1.876H3.863L15.829 17.52Z"></path>
                   </svg>
               </a>
-          </div>
+            </div>
         </div>
       </div>
       </div>
