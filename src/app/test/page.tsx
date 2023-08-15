@@ -24,11 +24,12 @@ export default function Test() {
         {/* <ScrollHeader/> */}
 
         <NavBar />
-        <div className="flex items-center mt-[70px]">
-          <Image width={4} height={4} className="w-4 mr-[6px] mt-[1px]" src="/arrowLeft.svg" alt="Arrow Left" />
-
-          <Caption>Screening in progress</Caption>
-        </div>
+        <a href="./app">
+          <div className="flex items-center mt-[70px]">
+            <Image width={4} height={4} className="w-4 mr-[6px] mt-[1px]" src="/arrowLeft.svg" alt="Arrow Left" />
+            <Caption>Screening in progress</Caption>
+          </div>
+        </a>
 
         <div className="flex flex-col mx-4 max-w-[750px]">
 

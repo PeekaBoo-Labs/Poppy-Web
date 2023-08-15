@@ -24,11 +24,12 @@ export default function Home() {
         {/* <ScrollHeader/> */}
 
         <NavBar />
-        <div className="flex items-center mt-[70px]">
-          <Image width={4} height={4} className="w-4 mr-[6px] mt-[1px]" src="/arrowLeft.svg" alt="Arrow Left" />
-
-          <Caption>Past screenings</Caption>
-        </div>
+        <a href="./test">
+          <div className="flex items-center mt-[70px]">
+            <Image width={4} height={4} className="w-4 mr-[6px] mt-[1px]" src="/arrowLeft.svg" alt="Arrow Left" />
+            <Caption>Past screenings</Caption>
+          </div>
+        </a>
 
         <div className="flex flex-col mx-4 max-w-[750px]">
 
@@ -92,14 +93,6 @@ export default function Home() {
           <Caption className="flex justify-center align-center text-center text-gray-400 mt-6 px-8">You can use this address to receive ETH and other Ethereum based tokens.</Caption>
         </div>
         </div>
-
-        <div className="flex flex-col mt-[71px] mb-[200px]">
-        <QuestionBlock className="bg-[#F7F7F7] z-[5]" />
-        <QuestionBlock className="bg-[#F7F7F7] z-[4]" />
-        <QuestionBlock className="bg-[#FFA701] z-[3]" />
-        <QuestionBlock className="bg-[#FFA701] z-[2]" />
-        <QuestionBlock className="bg-[#F7F7F7] z-[1]" />
-      </div>
 
         <div className="flex flex-col justify-center bg-[#FFE819] text-[#262626] p-4 pt-16 w-full">
           <div className="flex flex-col justify-center mx-auto">
