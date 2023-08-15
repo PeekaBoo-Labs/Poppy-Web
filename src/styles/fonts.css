@@ -156,9 +156,15 @@ p {
     line-height: 2rem;
 }
 
-.caption {
+h5 {
     font-family: 'Sohne', sans-serif;
     font-size: 1rem;
+}
+
+
+.caption {
+    font-family: 'Sohne', sans-serif;
+    font-size: 0.9rem;
 }
 
 .title {
