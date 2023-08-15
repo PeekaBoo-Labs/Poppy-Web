@@ -25,8 +25,7 @@ export default function Home() {
 
         <NavBar />
         <div className="flex items-center mt-[70px]">
-            <div className="flex items-center justify-center h-2 w-2 border-[2px] rounded-full border-[#262626] bg-[#262626] mr-1.5">
-          </div>
+          <Image width={4} height={4} className="w-4 mr-[6px] mt-[1px]" src="/arrowLeft.svg" alt="Arrow Left" />
 
           <Caption>Past screenings</Caption>
         </div>
@@ -95,12 +94,12 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col mt-[71px] mb-[200px]">
-          <QuestionBlock className="bg-[#F7F7F7] z-[5]" />
-          <QuestionBlock className="bg-[#F7F7F7] z-[4]" />
-          <QuestionBlock className="bg-[#FFA701] z-[3]" />
-          <QuestionBlock className="bg-[#FFA701] z-[2]" />
-          <QuestionBlock className="bg-[#F7F7F7] z-[1]" />
-        </div>
+        <QuestionBlock className="bg-[#F7F7F7] z-[5]" />
+        <QuestionBlock className="bg-[#F7F7F7] z-[4]" />
+        <QuestionBlock className="bg-[#FFA701] z-[3]" />
+        <QuestionBlock className="bg-[#FFA701] z-[2]" />
+        <QuestionBlock className="bg-[#F7F7F7] z-[1]" />
+      </div>
 
         <div className="flex flex-col justify-center bg-[#FFE819] text-[#262626] p-4 pt-16 w-full">
           <div className="flex flex-col justify-center mx-auto">
