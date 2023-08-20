@@ -19,7 +19,7 @@ function QuestionBlock({ className = '' }) {
 
 export default function Home() {
   return (
-    <body>
+    <body className="bg-[#F7F7F7]">
       <div className="flex flex-col justify-center items-center bg-[#F7F7F7] text-[#262626]">
         {/* <ScrollHeader/> */}
 

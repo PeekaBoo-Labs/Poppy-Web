@@ -19,13 +19,13 @@ function QuestionBlock({ className = '' }) {
 
 export default function HomePage() {
   return (
-    <body>
+    <body className="bg-[#F7F7F7]">
       <div className="flex flex-col justify-center items-center bg-[#F7F7F7] text-[#262626]">
         {/* <ScrollHeader/> */}
 
         <NavBar />
 
-        <QuestionBlock className="fixed bottom-[180px] z-[99] w-full"/>
+        <Image width={1450} height={2936} className="fixed bottom-[-590px] z-[99] w-[95vw] mt-[1px]" src="/phone.png" alt="Phone" />
 
         <div className="flex flex-col mx-4 max-w-[750px]">
 
