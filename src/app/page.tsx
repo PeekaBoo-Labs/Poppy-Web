@@ -99,7 +99,9 @@ export default function Home() {
             </div>
 
 
-            <LongButton type="primary">Share</LongButton>
+            <div className="flex w-[25vw]">
+                <LongButton type="primary">Share</LongButton>
+            </div>
 
             <Caption className="flex justify-center align-center text-center text-gray-400 mt-6 px-8">You can use this
               address to receive ETH and other Ethereum based tokens.</Caption>

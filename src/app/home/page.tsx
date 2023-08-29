@@ -42,9 +42,7 @@ return (
                         <h1 className="text-center mb-12 px-10">do I have an STI?</h1>
                         <h3 className="text-center px-10 mb-12 font-[400]">An AI powered STI screening service.</h3>
 
-                        <div className="flex w-[39vw]">
-                            <LongButton type="primary">Get Started</LongButton>
-                        </div>
+                            <LongButton type="primary">Screen Now</LongButton>
                     </div>
 
                     <div className="flex-grow"></div>
