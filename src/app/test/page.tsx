@@ -10,20 +10,20 @@ import NavBar from '@/components/NavBar';
 import Image from 'next/image'
 
 function QuestionBlock({ className = '' }) {
-  return (
-    <div className={`flex justify-center items-center p-2 rounded-3xl overflow-hidden h-[230px] mb-[-175px] ${className}`}>
-      <h1 className="text-center px-10">Content</h1>
-    </div>
-  );
+return (
+<div className={`flex justify-center items-center p-2 rounded-3xl overflow-hidden h-[230px] mb-[-175px] ${className}`}>
+  <h1 className="text-center px-10">Content</h1>
+</div>
+);
 }
 
 function QuestionBlockUnder({ className = '' }) {
-  return (
-    <div className={`relative flex items-center p-2 rounded-3xl overflow-hidden h-[230px] mb-[-180px] ${className}`}>
-      <h1 className="text-center px-10 w-full">Content</h1>
-      <h5 className="absolute bottom-[14px] left-5">September 1, 2023</h5>
-    </div>
-  );
+return (
+<div className={`relative flex items-center p-2 rounded-3xl overflow-hidden h-[230px] mb-[-175px] ${className}`}>
+  <h1 className="text-center px-10 w-full">Content</h1>
+  <h5 className="absolute bottom-[14px] left-5">September 1, 2023</h5>
+</div>
+);
 }
 
 export default function Test() {
@@ -35,37 +35,66 @@ return (
     <ScrollHeader /> */}
 
     <NavBar />
-    <div className="flex justify-end mt-[70px] px-4 w-full">
+    {/* <div className="flex justify-end mt-[70px] px-4 w-full">
       <Caption>Logged as <b>Polarizz</b></Caption>
-    </div>
+    </div> */}
 
-    <div className="flex flex-col mx-4 max-w-[750px]">
+    <div className="flex flex-col px-4 mt-[50px] w-full">
+      <div className="flex justify-between mt-6 px-[3px] w-full">
+        <h3 className="font-[500]">Profile</h3>
+        <h5 className="font-[400] text-gray-400">Switch User</h5>
+      </div>
 
-      <div className="flex flex-col mt-4 mb-[200px]">
+      <div className="flex flex-col mt-5 mb-2 w-full">
+        <div
+          className="relative flex items-end rounded-3xl overflow-hidden h-[230px] bg-[#FFF] border-[2px] border-gray-200">
+          <div className="absolute flex justify-between items-center top-[20px] px-5 w-full">
+            <h3 className="text-[1.3rem] font-[500]">Polarizz</h3>
+            <h5 className="font-[400] text-gray-400">Edit Profile</h5>
+          </div>
+
+          {/* <div className="relative flex items-center p-2 rounded-3xl overflow-hidden h-[230px] mb-[-175px]">
+            <h1 className="text-center px-10 w-full">Polarizz</h1>
+            <h5 className="absolute bottom-[15px] right-5 font-[400] text-gray-400">Edit Profile</h5>
+          </div> */}
+
+          <div className="grid grid-cols-2 grid-rows-3 gap-x-4 gap-y-3 p-5 w-full text-gray-400">
+            <div className="flex"><span className="mr-2 font-[400] text-gray-300">1.</span>
+              <div className="border-b border-gray-200 w-full pb-[3px]">18-24</div>
+            </div>
+            <div className="flex"><span className="mr-2 font-[400] text-gray-300">2.</span>
+              <div className="border-b border-gray-200 w-full pb-[3px]">Male</div>
+            </div>
+            <div className="flex"><span className="mr-2 font-[400] text-gray-300">3.</span>
+              <div className="border-b border-gray-200 w-full pb-[3px]">Asian</div>
+            </div>
+            <div className="flex"><span className="mr-2 font-[400] text-gray-300">4.</span>
+              <div className="border-b border-gray-200 w-full pb-[3px]">AB+</div>
+            </div>
+            <div className="flex"><span className="mr-2 font-[400] text-gray-300">5.</span>
+              <div className="border-b border-gray-200 w-full pb-[3px]">125 lbs</div>
+            </div>
+            <div className="flex"><span className="mr-2 font-[400] text-gray-300">6.</span>
+              <div className="border-b border-gray-200 w-full pb-[3px]">170cm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-between mt-6 px-[3px] w-full">
+        <h3 className="font-[500]">Screening Results</h3>
+        <h3 className="font-[400] text-gray-400">4</h3>
+      </div>
+
+      <div className="flex flex-col mt-4 mb-[180px] pb-4">
         <QuestionBlock className="bg-[#FFF] border-[2px] border-gray-200 z-[5]" />
         <QuestionBlockUnder className="text-gray-400 bg-[#FFF] border-[2px] border-gray-200 z-[4]" />
         <QuestionBlockUnder className="text-white bg-[#FFA701] border-[2px] border-orange-200 z-[3]" />
         <QuestionBlockUnder className="text-white bg-[#FFA701] border-[2px] border-orange-200 z-[2]" />
         <QuestionBlockUnder className="text-gray-400 bg-[#FFF] border-[2px] border-gray-200 z-[1]" />
       </div>
-
-      <div className="flex flex-col mt-12">
-        {/* <div
-          className="flex items-center justify-center h-12 w-12 border-[2px] rounded-full border-[#262626] bg-[#262626] my-4">
-          <h3 className="text-[#F7F7F7]">2</h3>
-        </div> */}
-
-        <h2 className="mb-2">Description</h2>
-
-        <p>As a company that has achieved ISO 27001, SOC 2, CCPA, GDPR and HIPAA certifications, we understand the
-          critical importance of information security in today's digital landscape. The increasing frequency and
-          sophistication of cyber attacks highlight the necessity for businesses to prioritize security to safeguard
-          their data and ensure the trust and confidence of their clients. By implementing industry-standard security
-          measures and best practices, we demonstrate our unwavering commitment to the protection of sensitive
-          information and the preservation of the integrity of our operations. We take pride in the rigorous security
-          protocols we have in place and are dedicated to maintaining the highest standards of security excellence.</p>
-      </div>
     </div>
+
   </div>
 
 
