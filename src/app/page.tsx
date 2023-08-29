@@ -20,19 +20,19 @@ function QuestionBlock({ className = '' }) {
 
 export default function Home() {
   return (
-
     <body className="bg-[#F7F7F7]">
       <div className="flex flex-col justify-center items-center bg-[#F7F7F7] text-[#262626]">
-        {/*
-    <ScrollHeader /> */}
-
         <NavBar />
-        <a href="./test">
-          <div className="flex items-center mt-[70px]">
-            <Image width={4} height={4} className="w-4 mr-[6px] mt-[1px]" src="/arrowLeft.svg" alt="Arrow Left" />
-            <Caption>Past screenings</Caption>
-          </div>
-        </a>
+        <div className="flex justify-between mt-[70px] px-4 w-full">
+          <a href="./test">
+            <div className="flex items-center">
+              <Image width={4} height={4} className="w-4 mr-[6px] mt-[1px]" src="/arrowLeft.svg" alt="Arrow Left" />
+              <Caption>Past screenings</Caption>
+            </div>
+          </a>
+
+          <Caption>Logged as <b>Polarizz</b></Caption>
+        </div>
 
         <div className="flex flex-col mx-4 max-w-[750px]">
 
