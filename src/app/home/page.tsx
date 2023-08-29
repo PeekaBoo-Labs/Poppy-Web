@@ -38,7 +38,7 @@ return (
                 <div className="flex flex-col justify-between h-[90vh]">
                     <div className="flex-grow"></div>
                     <div className="flex flex-col justify-center items-center mx-auto">
-                        <LargeTitle className="text-center mb-8 px-10">Chute,</LargeTitle>
+                        <LargeTitle className="text-center mb-8 px-10">Poppy,</LargeTitle>
                         <h1 className="text-center mb-12 px-10">do I have an STI?</h1>
                         <h3 className="text-center px-10 mb-12 font-[400]">An AI powered STI screening service.</h3>
 
@@ -132,7 +132,7 @@ return (
             </div>
 
             <Caption className="flex justify-center align-center text-center text-[#262626] opacity-50 mt-16 mb-4 px-4">
-                By clicking send you'll receive occasional emails from Chute. You always have the choice to unsubscribe
+                By clicking send you'll receive occasional emails from Poppy. You always have the choice to unsubscribe
                 within every email you receive.</Caption>
 
         </div>
@@ -173,7 +173,7 @@ return (
                 </a>
             </div>
 
-            <Caption className="mt-4">© 2023 Chute</Caption>
+            <Caption className="mt-4">© 2023 Poppy</Caption>
 
         </div>
     </div>

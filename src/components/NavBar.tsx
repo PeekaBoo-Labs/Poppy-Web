@@ -11,7 +11,7 @@ return (
 <div className="flex flex-col justify-between w-full max-w-[1100px] fixed top-0 bg-[#F7F7F7] z-[99999]">
   <div className="flex justify-between items-center mb-4 z-[99] m-4">
     <a href="./home">
-      <Image width={55} height={90} className="mix-blend-exclusion z-[99]" src="/poppyFull.svg" alt="Poppy" />
+      <Image width={60} height={100} className="mix-blend-exclusion z-[99]" src="/poppyFull.svg" alt="Poppy" />
     </a>
 
     <input type="checkbox" id="menu-toggle" className="menu-toggle" />
@@ -60,7 +60,7 @@ return (
           </a>
         </div>
 
-        <Caption className="mt-4">© 2023 Chute</Caption>
+        <Caption className="mt-4">© 2023 Poppy</Caption>
 
       </div>
     </div>

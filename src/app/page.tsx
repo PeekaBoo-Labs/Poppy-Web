@@ -120,13 +120,13 @@ export default function Home() {
           </div>
 
           <Caption className="flex justify-center align-center text-center text-[#262626] opacity-50 mt-16 mb-4 px-4">By
-            clicking send you&apos;ll receive occasional emails from Chute. You always have the choice to unsubscribe within
+            clicking send you&apos;ll receive occasional emails from Poppy. You always have the choice to unsubscribe within
             every email you receive.</Caption>
 
         </div>
 
         <div className="flex flex-col justify-center bg-[#262626] text-[#F7F7F7] p-4 w-full">
-          <Image width={4} height={4} className="w-14 mt-4" src="/poppyFullWhite.svg" alt="Poppy" />
+          <Image width={60} height={100} className="mt-4" src="/poppyFullWhite.svg" alt="Poppy" />
 
           <div className="flex flex-col my-8">
             <h4>Stories</h4>
@@ -161,7 +161,7 @@ export default function Home() {
             </a>
           </div>
 
-          <Caption className="mt-4">© 2023 Chute</Caption>
+          <Caption className="mt-4">© 2023 Poppy</Caption>
 
         </div>
       </div>
