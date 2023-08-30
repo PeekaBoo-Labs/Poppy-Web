@@ -23,8 +23,8 @@ export default function Home() {
     <body className="bg-[#F7F7F7]">
       <div className="flex flex-col justify-center items-center bg-[#F7F7F7] text-[#262626]">
         <NavBar />
-        <div className="flex justify-between mt-[70px] px-4 w-full">
-          <a href="./test">
+        {/* <div className="flex justify-between mt-[70px] px-4 w-full"> */}
+          {/* <a href="./test">
             <div className="flex items-center">
               <Image width={4} height={4} className="w-4 mr-[6px] mt-[1px]" src="/arrowLeft.svg" alt="Arrow Left" />
               <Caption>Past screenings</Caption>
@@ -32,15 +32,22 @@ export default function Home() {
           </a>
 
           <Caption>Logged as <b>Polarizz</b></Caption>
-        </div>
+        </div> */}
 
-        <div className="flex flex-col mx-4 max-w-[750px]">
+        <div className="flex flex-col mx-4 max-w-[750px] mt-[70px]">
+          <div className="flex justify-center items-center space-x-[5px] pb-[20px]">
+              <div className="w-[15px] h-[3px] bg-gray-300 rounded"></div>
+              <div className="w-[30px] h-[3px] bg-[#262626] rounded"></div>
+              <div className="w-[15px] h-[3px] bg-gray-300 rounded"></div>
+              <div className="w-[15px] h-[3px] bg-gray-300 rounded"></div>
+              <div className="w-[15px] h-[3px] bg-gray-300 rounded"></div>
+          </div>
 
           <div className="flex flex-col">
             <div className="flex flex-col justify-between h-[87vh]">
               <div className="flex-grow"></div>
               <div className="flex flex-col justify-center mx-auto">
-                <h5 className="text-center mb-4 px-10 font-[400]">Choose all that apply</h5>
+                <h5 className="text-center mb-4 px-10 font-[400] text-gray-400">Choose all that apply</h5>
                 <Title className="text-center mb-8 px-10">What are the symptoms in the affected area?</Title>
 
                 <div className="flex flex-wrap justify-center items-center">
@@ -52,8 +59,8 @@ export default function Home() {
               <div className="flex-grow"></div>
 
               <div className="flex w-full">
-                <LongButton type="secondary">Back</LongButton>
-                <LongButton type="primary">Next</LongButton>
+                <LongButton type="secondaryFull">Back</LongButton>
+                <LongButton type="primaryFull">Next</LongButton>
               </div>
             </div>
           </div>
@@ -94,13 +101,13 @@ export default function Home() {
 
           <div className="flex flex-col justify-center items-center mt-8 mb-16">
             <div
-              className="w-40 h-40 rounded-2xl border-[2px] border-[#262626] bg-[#F7F7F7] mb-8 flex justify-center items-center">
+              className="w-40 h-40 rounded-2xl border-[2px] border-[#262626] bg-[#FFF] mb-8 flex justify-center items-center">
               <Image width={4} height={4} className="w-10" src="/code.svg" alt="Code" />
             </div>
 
 
             <div className="flex w-[25vw]">
-                <LongButton type="primary">Share</LongButton>
+                <LongButton type="primaryFull">Share</LongButton>
             </div>
 
             <Caption className="flex justify-center align-center text-center text-gray-400 mt-6 px-8">You can use this

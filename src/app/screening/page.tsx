@@ -12,7 +12,7 @@ import Image from 'next/image'
 function QuestionBlock({ className = '' }) {
 return (
 <div className={`flex justify-center items-center p-2 rounded-3xl overflow-hidden h-[230px] mb-[-175px] ${className}`}>
-  <h2 className="text-center px-10">In Progress</h2>
+  <h1 className="text-center px-10">In Progress</h1>
 </div>
 );
 }
@@ -20,8 +20,8 @@ return (
 function QuestionBlockUnder({ className = '' }) {
 return (
 <div className={`relative flex items-center p-2 rounded-3xl overflow-hidden h-[230px] mb-[-175px] ${className}`}>
-  <h2 className="text-center px-10 w-full">In Progress</h2>
-  <h5 className="absolute top-[14px] left-5">September 1, 2023</h5>
+  <h1 className="text-center px-10 w-full">In Progress</h1>
+  <h5 className="absolute bottom-[14px] left-5">September 1, 2023</h5>
 </div>
 );
 }
@@ -35,32 +35,17 @@ return (
     <ScrollHeader /> */}
 
     <NavBar />
-    <div className="flex flex-col px-4 w-full">
+    <div className="flex flex-col px-4 mt-[50px] w-full">
       {/* <div className="flex justify-between mt-6 px-[3px] w-full">
         <h3 className="font-[500]">Profile</h3>
         <h5 className="font-[400] text-gray-400">Switch User</h5>
       </div> */}
 
-      <div className="flex flex-col mb-2 w-full h-[100vh] justify-center">
-        <h1 className="flex justify-center align-center text-center px-4 font-[600]">Polarizz</h1>
-        <h5 className="justify-center align-center text-center font-[400] text-gray-400 mb-8">Switch User</h5>
-
+      <div className="flex flex-col mt-5 mb-2 w-full">
         <div
-          className="relative flex items-center rounded-3xl overflow-hidden h-[230px] text-[#FFF] bg-[#262626] justify-center">
-          <div className="absolute flex justify-between items-center top-[20px] px-5 w-full">
-            <h3 className="text-[1.1rem] font-[500]">Polarizz</h3>
-            <h5 className="font-[400] text-gray-400">Edit Profile</h5>
-          </div>
-
-            <div className="flex justify-center items-center mt-6">
-              <Image width={8} height={8} className="w-12 mix-blend-exclusion" src="/code.svg" alt="Code" />
-            </div>
-        </div>
-
-        {/* <div
           className="relative flex items-end rounded-3xl overflow-hidden h-[230px] bg-[#FFF] border-[2px] border-gray-200">
           <div className="absolute flex justify-between items-center top-[20px] px-5 w-full">
-            <h3 className="text-[1.1rem] font-[500]">Polarizz</h3>
+            <h3 className="text-[1.3rem] font-[500]">Polarizz</h3>
             <h5 className="font-[400] text-gray-400">Edit Profile</h5>
           </div>
 
@@ -84,47 +69,36 @@ return (
               <div className="border-b border-gray-200 w-full pb-[3px]">170cm</div>
             </div>
           </div>
-        </div> */}
-
-        <Caption className="flex justify-center align-center text-center text-gray-400 mt-8 mb-4 px-4">You can use this address to receive ETH and other Ethereum based tokens such as USDC. Sending other assets may result in permanent loss.</Caption>
-
-        <div className="flex justify-center mt-2">
-          <div className="relative bg-[#262626] px-3 py-2 rounded-[11px]">
-              <div className="absolute bg-[#262626] rounded-[3px] w-5 h-5 bottom-[5px] left-1/2 transform rotate-45 translate-x-[-50%] translate-y-1/2 z-[0]"></div>
-              <Caption className="relative text-white">Screen Now</Caption>
-          </div>
-
-
-
-
-
-
         </div>
       </div>
 
-      <div className="flex flex-col mt-[-63px] mb-[175px] pb-8">
-          <QuestionBlockUnder className="text-gray-400 bg-[#FFF] border-[2px] border-gray-200 z-[1]" />
-          <QuestionBlockUnder className="text-white bg-[#FFA701] border-[2px] border-orange-200 z-[2]" />
-          <QuestionBlockUnder className="text-white bg-[#FFA701] border-[2px] border-orange-200 z-[3]" />
-          <QuestionBlockUnder className="text-gray-400 bg-[#FFF] border-[2px] border-gray-200 z-[4]" />
-          <QuestionBlock className="bg-[#FFF] border-[2px] border-gray-200 z-[5]" />
+      <div className="flex justify-between mt-6 px-[3px] w-full">
+        <h3 className="font-[500]">Screening Results</h3>
+        <h3 className="font-[400] text-gray-400">4</h3>
       </div>
 
+      <div className="flex flex-col mt-4 mb-[180px] pb-4">
+        <QuestionBlock className="bg-[#FFF] border-[2px] border-gray-200 z-[5]" />
+        <QuestionBlockUnder className="text-gray-400 bg-[#FFF] border-[2px] border-gray-200 z-[4]" />
+        <QuestionBlockUnder className="text-white bg-[#FFA701] border-[2px] border-orange-200 z-[3]" />
+        <QuestionBlockUnder className="text-white bg-[#FFA701] border-[2px] border-orange-200 z-[2]" />
+        <QuestionBlockUnder className="text-gray-400 bg-[#FFF] border-[2px] border-gray-200 z-[1]" />
+      </div>
     </div>
   </div>
 
-  <div className="flex flex-col justify-center bg-[#FFA701] text-[#FFF] p-4 pt-16 w-full">
+  <div className="flex flex-col justify-center bg-[#FFE819] text-[#262626] p-4 pt-16 w-full">
     <div className="flex flex-col justify-center mx-auto">
       <Title className="text-center px-10 mb-8">Want results saved and sent straight to your inbox?</Title>
     </div>
 
     <div
-      className="flex flex-grow justify-between items-center px-4 py-2.5 rounded-[15px] border-[2px] border-orange-200 select-none cursor-default">
-      <h4 className="text-[#FFF] font-[400]">Enter your email</h4>
-      <Caption className="text-[#FFF] font-[500]">SEND</Caption>
+      className="flex flex-grow justify-between items-center px-4 py-2.5 rounded-[15px] border-[2px] border-black select-none cursor-default">
+      <h4 className="text-[#262626] font-[400]">Enter your email</h4>
+      <Caption className="text-[#262626] font-[500]">SEND</Caption>
     </div>
 
-    <Caption className="flex justify-center align-center text-center text-[#FFF] opacity-70 mt-16 mb-4 px-4">By
+    <Caption className="flex justify-center align-center text-center text-[#262626] opacity-50 mt-16 mb-4 px-4">By
       clicking send you'll receive occasional emails from Poppy. You always have the choice to unsubscribe within every
       email you receive.</Caption>
 
