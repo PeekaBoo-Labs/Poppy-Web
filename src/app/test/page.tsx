@@ -36,11 +36,6 @@ return (
 
     <NavBar />
     <div className="flex flex-col px-4 w-full">
-      {/* <div className="flex justify-between mt-6 px-[3px] w-full">
-        <h3 className="font-[500]">Profile</h3>
-        <h5 className="font-[400] text-gray-400">Switch User</h5>
-      </div> */}
-
       <div className="flex flex-col mb-2 w-full h-[100vh] justify-center">
         <h1 className="flex justify-center align-center text-center px-4 font-[600]">Polarizz</h1>
         <h5 className="justify-center align-center text-center font-[400] text-gray-400 mb-8">Switch User</h5>
@@ -52,62 +47,36 @@ return (
             <h5 className="font-[400] text-gray-400">Edit Profile</h5>
           </div>
 
-            <div className="flex justify-center items-center mt-6">
-              <Image width={8} height={8} className="w-12 mix-blend-exclusion" src="/code.svg" alt="Code" />
-            </div>
+          <div className="flex justify-center items-center mt-6">
+            <Image width={8} height={8} className="w-12 mix-blend-exclusion" src="/code.svg" alt="Code" />
+          </div>
         </div>
 
-        {/* <div
-          className="relative flex items-end rounded-3xl overflow-hidden h-[230px] bg-[#FFF] border-[2px] border-gray-200">
-          <div className="absolute flex justify-between items-center top-[20px] px-5 w-full">
-            <h3 className="text-[1.1rem] font-[500]">Polarizz</h3>
-            <h5 className="font-[400] text-gray-400">Edit Profile</h5>
+        <div className="flex flex-col mt-5 mb-2 w-full">
+        
+      </div>
+
+
+
+        <Caption className="flex justify-center align-center text-center text-gray-400 mt-8 mb-4 px-4">You can use this
+          address to receive ETH and other Ethereum based tokens such as USDC.</Caption>
+
+        <div className="flex justify-center mt-4">
+          <div className="relative bg-[#262626] px-[17px] py-[11px] rounded-[11px]">
+            {/* <div
+              className="absolute bg-[#262626] rounded-[3px] w-5 h-5 top-[-15px] left-1/2 transform rotate-45 translate-x-[-50%] translate-y-1/2 z-[0]">
+            </div> */}
+            <h5 className="relative text-white">Screen Now</h5>
           </div>
-
-          <div className="grid grid-cols-2 grid-rows-3 gap-x-4 gap-y-3 p-5 w-full text-gray-400">
-            <div className="flex"><span className="mr-2 font-[400] text-gray-300">1.</span>
-              <div className="border-b border-gray-200 w-full pb-[3px]">18-24</div>
-            </div>
-            <div className="flex"><span className="mr-2 font-[400] text-gray-300">2.</span>
-              <div className="border-b border-gray-200 w-full pb-[3px]">Male</div>
-            </div>
-            <div className="flex"><span className="mr-2 font-[400] text-gray-300">3.</span>
-              <div className="border-b border-gray-200 w-full pb-[3px]">Asian</div>
-            </div>
-            <div className="flex"><span className="mr-2 font-[400] text-gray-300">4.</span>
-              <div className="border-b border-gray-200 w-full pb-[3px]">AB+</div>
-            </div>
-            <div className="flex"><span className="mr-2 font-[400] text-gray-300">5.</span>
-              <div className="border-b border-gray-200 w-full pb-[3px]">125 lbs</div>
-            </div>
-            <div className="flex"><span className="mr-2 font-[400] text-gray-300">6.</span>
-              <div className="border-b border-gray-200 w-full pb-[3px]">170cm</div>
-            </div>
-          </div>
-        </div> */}
-
-        <Caption className="flex justify-center align-center text-center text-gray-400 mt-8 mb-4 px-4">You can use this address to receive ETH and other Ethereum based tokens such as USDC. Sending other assets may result in permanent loss.</Caption>
-
-        <div className="flex justify-center mt-2">
-          <div className="relative bg-[#262626] px-3 py-2 rounded-[11px]">
-              <div className="absolute bg-[#262626] rounded-[3px] w-5 h-5 bottom-[5px] left-1/2 transform rotate-45 translate-x-[-50%] translate-y-1/2 z-[0]"></div>
-              <Caption className="relative text-white">Screen Now</Caption>
-          </div>
-
-
-
-
-
-
         </div>
       </div>
 
       <div className="flex flex-col mt-[-63px] mb-[175px] pb-8">
-          <QuestionBlockUnder className="text-gray-400 bg-[#FFF] border-[2px] border-gray-200 z-[1]" />
-          <QuestionBlockUnder className="text-white bg-[#FFA701] border-[2px] border-orange-200 z-[2]" />
-          <QuestionBlockUnder className="text-white bg-[#FFA701] border-[2px] border-orange-200 z-[3]" />
-          <QuestionBlockUnder className="text-gray-400 bg-[#FFF] border-[2px] border-gray-200 z-[4]" />
-          <QuestionBlock className="bg-[#FFF] border-[2px] border-gray-200 z-[5]" />
+        <QuestionBlockUnder className="text-gray-400 bg-[#FFF] border-[2px] border-gray-200 z-[1]" />
+        <QuestionBlockUnder className="text-white bg-[#FFA701] border-[2px] border-orange-200 z-[2]" />
+        <QuestionBlockUnder className="text-white bg-[#FFA701] border-[2px] border-orange-200 z-[3]" />
+        <QuestionBlockUnder className="text-gray-400 bg-[#FFF] border-[2px] border-gray-200 z-[4]" />
+        <QuestionBlock className="bg-[#FFF] border-[2px] border-gray-200 z-[5]" />
       </div>
 
     </div>
