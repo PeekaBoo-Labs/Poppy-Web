@@ -1,7 +1,20 @@
-export default function QuestionOption({ text, selected }: { text: string, selected: boolean }) {
+import React, { useState } from 'react';
+
+function QuestionOption({ text, selected }) {
+  const [isSelected, setIsSelected] = useState(false);
+
   return (
-    <div className="px-5 py-3 m-1 bg-[#F7F7F7] rounded-full border-[2px] border-gray-300 select-none cursor-default">
-      <p className="text-center text-[#262626]">{text}</p>
+    <div
+      className={`px-5 py-3 m-1 rounded-full border-[2px] select-none cursor-pointer ${
+        isSelected
+          ? 'bg-orange-100 text-orange-500 border-orange-500'
+          : 'bg-[#F7F7F7] text-[#262626] border-gray-300'
+      }`}
+      onClick={() => setIsSelected(!isSelected)}
+    >
+      <p className="text-center">{text}</p>
     </div>
-  )
+  );
 }
+
+export default QuestionOption;

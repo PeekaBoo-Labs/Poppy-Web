@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 import { Drawer } from 'vaul';
 import QuestionOption from '@/components/QuestionOption';
 import ProfileOption from '@/components/ProfileOption';
@@ -8,6 +9,8 @@ import HeaderText from '@/components/HeaderText';
 import { LongButton } from '@/components/Buttons';
 import NavBar from '@/components/NavBar';
 import Image from 'next/image'
+import ProgressBar from '@/components/ProgressBar';
+import QuestionnairePage from '@/components/QuestionnairePage';
 
 function QuestionBlock({ className = '' }) {
   return (
@@ -23,55 +26,14 @@ export default function Home() {
     <body className="bg-[#F7F7F7]">
       <div className="flex flex-col justify-center items-center bg-[#F7F7F7] text-[#262626]">
         <NavBar />
-        {/* <div className="flex justify-between mt-[70px] px-4 w-full"> */}
-          {/* <a href="./test">
-            <div className="flex items-center">
-              <Image width={4} height={4} className="w-4 mr-[6px] mt-[1px]" src="/arrowLeft.svg" alt="Arrow Left" />
-              <Caption>Past screenings</Caption>
-            </div>
-          </a>
-
-          <Caption>Logged as <b>Polarizz</b></Caption>
-        </div> */}
 
         <div className="flex flex-col mx-4 max-w-[750px] mt-[70px]">
-          <div className="flex justify-center items-center space-x-[5px] pb-[20px]">
-              <div className="w-[15px] h-[3px] bg-gray-300 rounded"></div>
-              <div className="w-[30px] h-[3px] bg-[#262626] rounded"></div>
-              <div className="w-[15px] h-[3px] bg-gray-300 rounded"></div>
-              <div className="w-[15px] h-[3px] bg-gray-300 rounded"></div>
-              <div className="w-[15px] h-[3px] bg-gray-300 rounded"></div>
-          </div>
-
-          <div className="flex flex-col">
-            <div className="flex flex-col justify-between h-[87vh]">
-              <div className="flex-grow"></div>
-              <div className="flex flex-col justify-center mx-auto">
-                <h5 className="text-center mb-4 px-10 font-[400] text-gray-400">Choose all that apply</h5>
-                <Title className="text-center mb-8 px-10">What are the symptoms in the affected area?</Title>
-
-                <div className="flex flex-wrap justify-center items-center">
-                  {["18-4", "Male", "AB+", "120 lbs", "5'7\""].map((text, index) => (
-                    <QuestionOption text={text} selected={index == 0} key={index} />
-                  ))}
-                </div>
-              </div>
-              <div className="flex-grow"></div>
-
-              <div className="flex w-full">
-                <LongButton type="secondaryFull">Back</LongButton>
-                <LongButton type="primaryFull">Next</LongButton>
-              </div>
-            </div>
-          </div>
+          <ProgressBar/>
+          <QuestionnairePage />
 
           <div className="bg-gray-300 h-px my-8"></div>
 
           <div className="flex flex-col">
-            {/* <div
-          className="flex items-center justify-center h-12 w-12 border-[2px] rounded-full border-[#262626] bg-[#262626] my-4">
-          <h3 className="text-[#F7F7F7]">2</h3>
-        </div> */}
 
             <h2 className="mb-2">Description</h2>
 
