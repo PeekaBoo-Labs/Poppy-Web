@@ -1,4 +1,6 @@
-export interface ChatType{
-    role: string; // assistant or user
+type Role = "assistant" | "user"; // assistant or user
+
+export interface ChatType {
+    role: Role;
     content: string;
 }
