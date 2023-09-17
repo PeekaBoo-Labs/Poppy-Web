@@ -5,13 +5,11 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Poppy',
-  description: 'Get tested wooo',
+  title: 'Chute',
+  description: 'Get tested with our AI screening application',
 }
 
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout({ children }: {
   children: React.ReactNode
 }) {
   return (

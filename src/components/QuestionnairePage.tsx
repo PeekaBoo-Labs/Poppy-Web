@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 
-import { type QuestionOption } from '@/types/questionOption';
-import { QuestionType } from '../types/question';
+import { type QuestionOption } from '@/lib/types/questionOption';
+import { QuestionType } from '../lib/types/question';
 import QuestionCard from './QuestionCard';
 
-import { type ChatType } from '@/types/chat';
+import { type ChatType } from '@/lib/types/chat';
 
 import { LongButton } from './Buttons';
 

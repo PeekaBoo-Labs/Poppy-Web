@@ -8,16 +8,14 @@ import QuestionnaireForm from '@/components/questionnaire/QuestionnaireForm';
 export default function Home() {
 
   return (
-    <QuestionnaireContextProvider>
-      <body className="bg-[#F7F7F7]">
-        <div className="flex flex-col justify-center items-center bg-[#F7F7F7] text-[#262626]">
-          <NavBar />
+    <div className="flex flex-col justify-center items-center bg-[#F7F7F7] text-[#262626]">
+      <NavBar />
 
-          <QuestionnaireForm />
+      <QuestionnaireContextProvider>
+        <QuestionnaireForm />
+      </QuestionnaireContextProvider>
 
-          <Footer />
-        </div>
-      </body>
-    </QuestionnaireContextProvider>
+      <Footer />
+    </div>
   );
 }
