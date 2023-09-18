@@ -1,12 +1,9 @@
-'use client'
-
 import { LongButton } from "../Buttons";
-import { useQuestionnaireContext } from "@/contexts/questionnaire-context";
-
 
 export default function QuestionnaireControls({
-  handleBack, handleNext
+  loading, handleBack, handleNext
 }: {
+  loading: boolean,
   handleBack: () => void,
   handleNext: () => void,
 }) {

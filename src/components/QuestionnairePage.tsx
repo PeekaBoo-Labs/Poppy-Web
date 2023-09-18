@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { type QuestionOption } from '@/lib/types/questionOption';
 import { QuestionType } from '../lib/types/question';
-import QuestionCard from './QuestionCard';
+import QuestionCard from './QuestionCardd';
 
 import { type ChatType } from '@/lib/types/chat';
 

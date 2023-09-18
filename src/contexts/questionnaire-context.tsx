@@ -1,15 +1,17 @@
 'use client'
 
 import React, { createContext, useContext, useState } from "react";
-import { type QuestionType } from "@/lib/types/question";
+import { type Question } from "@/lib/types/question";
 import { StateType } from "@/lib/types/types";
-import { firstQuestion } from "@/lib/api/handler";
+import { continueChat, convertQuestionsToLog, firstQuestion } from "@/lib/api/handler";
 
 type QuestionnaireContextType = {
     pageState: StateType<number>;
-    questionsState: StateType<(null | QuestionType)[]>;
+    questionsState: StateType<(null | Question)[]>;
 
     loading: StateType<boolean>;
+
+    start: () => void;
 
     nextPage: () => void;
     prevPage: () => void;
@@ -19,7 +21,7 @@ export const QuestionnaireContext = createContext<QuestionnaireContextType | nul
 
 export default function QuestionnaireContextProvider({ children }: { children: React.ReactNode }) {
     const [page, setPage] = useState(0);
-    const [questions, setQuestions] = useState<(null | QuestionType)[]>([null]);
+    const [questions, setQuestions] = useState<(null | Question)[]>([null]);
     const [loading, setLoading] = useState(false);
 
     function prevPage() {
@@ -27,19 +29,43 @@ export default function QuestionnaireContextProvider({ children }: { children: R
     }
 
     async function handleNullQuestion() {
+        if (loading) return;
+        setLoading(true);
+
         const nullIndex = questions.length - 1;
 
-        if (nullIndex == 0) {
-            const question = await firstQuestion();
-            setQuestions([question, null]);
+        if (questions[nullIndex] !== null) return;
+
+        const chat_log = convertQuestionsToLog(questions);
+        const new_question = await continueChat(chat_log);
+
+        if (new_question) {
+            const new_questions = [...questions];
+            new_questions[nullIndex] = new_question;
+            new_questions.push(null);
+            setQuestions(new_questions);
+            console.info("New question was added!", questions);
         } else {
-            console.error("New question needs to be implemented.")
+            console.error("New question was invalid!", questions);
         }
+
+        setLoading(false);
     }
 
     async function nextPage() {
         setPage(Math.min(page + 1, questions.length - 1));
-        handleNullQuestion();
+
+        if (page >= questions.length - 2)
+            handleNullQuestion();
+    }
+
+    async function start() {
+        if (loading) return;
+
+        setLoading(true);
+        const new_question = await firstQuestion();
+        setQuestions([new_question, null]);
+        setLoading(false);
     }
 
     return (
@@ -48,6 +74,7 @@ export default function QuestionnaireContextProvider({ children }: { children: R
                 pageState: [page, setPage],
                 questionsState: [questions, setQuestions],
                 loading: [loading, setLoading],
+                start: start,
                 prevPage: prevPage,
                 nextPage: nextPage,
             }}

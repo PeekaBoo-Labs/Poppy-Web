@@ -1,14 +1,14 @@
 export function LongButton({
   children,
   type,
-  onClick, 
-  loading, 
-  prefix, 
+  onClick,
+  loading,
+  prefix,
   suffix
-} : {
+}: {
   children?: React.ReactNode,
   type?: "primary" | "primaryFull" | "secondary" | "secondaryFull",
-  onClick?: Function, 
+  onClick?: () => any,
   loading?: boolean,
   prefix?: React.ReactNode,
   suffix?: React.ReactNode
@@ -16,7 +16,7 @@ export function LongButton({
   return (
     <>
       {type === "secondary" && (
-        <div 
+        <div
           className="px-7 py-2.5 m-1 select-none cursor-pointer"
           onClick={onClick}
         >
@@ -27,8 +27,8 @@ export function LongButton({
       )}
 
       {type === "primary" && (
-        <div 
-          className="px-7 py-2.5 m-1 bg-[#262626] rounded-[15px] select-none cursor-pointer" 
+        <div
+          className="px-7 py-2.5 m-1 bg-[#262626] rounded-[15px] select-none cursor-pointer"
           onClick={onClick} // Pass the onClick handler here
         >
           {prefix}
@@ -38,9 +38,9 @@ export function LongButton({
       )}
 
       {type === "primaryFull" && (
-        <div 
-          className="flex-grow justify-between px-[3px] py-[9px] m-1 bg-[#262626] rounded-[15px] border-[2px] border-black select-none cursor-pointer" 
-          onClick={onClick} 
+        <div
+          className="flex-grow justify-between px-[3px] py-[9px] m-1 bg-[#262626] rounded-[15px] border-[2px] border-black select-none cursor-pointer"
+          onClick={onClick}
         >
           {prefix}
           <h4 className="text-center text-[#F7F7F7] font-[400]">{children}</h4>
@@ -49,9 +49,9 @@ export function LongButton({
       )}
 
       {type === "secondaryFull" && (
-        <div 
-          className="flex-grow justify-between px-[9px] py-[9px] m-1 select-none cursor-pointer" 
-          onClick={onClick} 
+        <div
+          className="flex-grow justify-between px-[9px] py-[9px] m-1 select-none cursor-pointer"
+          onClick={onClick}
         >
           {prefix}
           <h4 className="text-center text-[#262626] font-[400]">{children}</h4>
