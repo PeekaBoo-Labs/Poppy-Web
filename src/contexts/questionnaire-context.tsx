@@ -26,6 +26,7 @@ export default function QuestionnaireContextProvider({ children }: { children: R
 
     function prevPage() {
         setPage(Math.max(page - 1, 0));
+        console.log(questions, Math.max(page - 1, 0))
     }
 
     async function handleNullQuestion() {
@@ -54,6 +55,7 @@ export default function QuestionnaireContextProvider({ children }: { children: R
 
     async function nextPage() {
         setPage(Math.min(page + 1, questions.length - 1));
+        console.log(questions, Math.min(page + 1, questions.length - 1))
 
         if (page >= questions.length - 2)
             handleNullQuestion();

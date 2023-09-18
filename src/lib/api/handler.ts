@@ -57,6 +57,7 @@ export function convertEntryToQuestion(entry: ChatEntry): Question {
     });
 
   return {
+    id: Math.random().toString(36).substring(7),
     question: question,
     options: options
   }

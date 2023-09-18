@@ -5,7 +5,6 @@ import ProgressBar from "@/components/ProgressBar"
 import QuestionnaireControls from "./QuestionnaireControls"
 import QuestionnaireCard from "./QuestionnaireCard";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 
 export default function QuestionnaireForm() {
@@ -30,7 +29,7 @@ export default function QuestionnaireForm() {
       <ProgressBar index={page} total={Math.max(1, questions.length)} />
 
       {/* Tried my hardest to not use context here but i failed... */}
-      <QuestionnaireCard />
+      <QuestionnaireCard questionsState={questionsState} page={page} />
 
       <QuestionnaireControls loading={questions[page] === null} handleBack={prevPage} handleNext={nextPage} />
     </div>

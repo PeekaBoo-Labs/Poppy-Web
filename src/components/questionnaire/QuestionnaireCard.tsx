@@ -4,21 +4,25 @@ import QuestionInputOption from "../QuestionOption"
 
 import { motion, AnimatePresence } from "framer-motion"
 import Dots from "../general/animated/dots"
+
+import { type StateType } from "@/lib/types/types"
+
 import { useQuestionnaireContext } from "@/contexts/questionnaire-context"
 
 
-export default function QuestionnaireCard() {
-
-  let { questionsState, pageState } = useQuestionnaireContext();
+export default function QuestionnaireCard({
+  questionsState, page
+}: {
+  questionsState: StateType<(null | Question)[]>,
+  page: number
+}) {
   const [questions, setQuestions] = questionsState;
-  const [page,] = pageState;
-
   const questionObj = questions[page];
 
   return (
-    <AnimatePresence initial={true} mode="wait">
+    <AnimatePresence initial={false} mode="wait" >
       <motion.div
-        key={questionObj?.question}
+        key={questionObj?.id}
         className="flex flex-col justify-center mx-auto flex-grow"
         initial={{ scale: 0.98, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
