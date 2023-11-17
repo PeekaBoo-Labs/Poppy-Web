@@ -7,7 +7,7 @@ import Title from '@/components/Title';
 
 export default function NavBar() {
   return (
-    <div className="flex flex-col justify-between w-full max-w-[1100px] fixed top-0 bg-[#F7F7F7] z-[99999]">
+      <div className="flex flex-col justify-between w-[100vw] max-w-[1100px] fixed top-0 bg-[#F7F7F7] z-[999] sm:z-1 sm:bg-opacity-75 md:bg-opacity-100 min-[320px]:z-1">
       <div className="flex justify-between items-center mb-4 z-[99] m-4">
         <a href="./home">
           <Image priority={true} width={60} height={100} className="mix-blend-exclusion z-[99]" src="/poppyFull.svg" alt="Poppy" />
@@ -21,7 +21,7 @@ export default function NavBar() {
           </div>
         </label>
 
-        <div className="mobile-menu z-[10]">
+        <div className="mobile-menu z-[9999]">
           <div className="flex flex-col p-4 mt-4 justify-between">
 
             <div className="flex flex-col h-[80vh] justify-center mt-8 space-y-[20px]">
@@ -69,5 +69,7 @@ export default function NavBar() {
       <div className="flex-grow"></div>
 
     </div>
+
+    
   )
 }
