@@ -49,6 +49,7 @@ export default function HomePage() {
                     <h3 className="max-w-[560px] text-center px-10 mb-10 font-[400] flex flex-col">
                         <span className='font-bold'>In an era where technology shapes every aspect of our lives, it&apos;s time to embrace innovation in healthcare.</span> 
                         <span>Traditional STI screenings have been cumbersome, slow, and often embarrassingly public, deterring essential health checks. Now, AI technology offers a promise of change, ensuring screenings are swift, accessible, and confidential.</span>
+                        <br></br>
                         <span>Putting power into the hands of the individual, AI-driven screenings eliminate the dread of clinic visits and the wait for results. With this technology, users can receive timely, accurate health updates directly on their personal devices. The mission is simple: normalize STI screenings to be as routine and stigma-free as a basic health assessment, propelling us towards a new standard in public health.</span>
                     </h3>
 
