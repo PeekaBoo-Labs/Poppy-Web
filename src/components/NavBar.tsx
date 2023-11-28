@@ -5,9 +5,9 @@ import '../styles/fonts.css';
 import Caption from './Caption';
 import Title from '@/components/Title';
 
-export default function NavBar() {
+export default function NavBar({wide_mode}) {
   return (
-      <div className="flex flex-col justify-between w-[100vw] max-w-[1100px] fixed top-0 bg-[#F7F7F7] z-[999] sm:z-1 sm:bg-opacity-75 md:bg-opacity-100 min-[320px]:z-1">
+      <div className={`flex flex-col justify-between w-[100vw] fixed top-0 bg-[#F7F7F7] z-[999] sm:z-1 sm:bg-opacity-75 md:bg-opacity-100 min-[320px]:z-1 ${wide_mode ? "80vw" : "max-w-[1100px]"}`}>
       <div className="flex justify-between items-center mb-4 z-[99] m-4">
         <a href="./home">
           <Image priority={true} width={60} height={100} className="mix-blend-exclusion z-[99]" src="/poppyFull.svg" alt="Poppy" />

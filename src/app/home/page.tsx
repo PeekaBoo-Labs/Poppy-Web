@@ -16,7 +16,7 @@ export default function HomePage() {
         <body>
             
             <div className='flex flex-col justify-between items-center text-[#262626] '> 
-                <NavBar />
+                <NavBar wide_mode={false}/>
                 <div className='max-w-[750px] flex flex-col items-center text-center'>
                     <img className='mt-[-27rem] w-[400px] min-[426px]:z-[10000]' src='results_phone.svg'></img>
                     <LargeTitle className="text-center mb-12 px-10 pt-10 flex flex-col items-center gap-10">
@@ -65,24 +65,20 @@ export default function HomePage() {
 
                     <div className="w-full border-t-2 border-gray-20 my-10"></div>
                 </div>
-                <div>
-                    
-                    <div className='flex flex-row gap-2'>
-                    <div className='flex flex-col gap-2'>
-                            <img src='card1.svg'></img>
-                            <img src='card2.svg'></img>
+                <div className='grid grid-cols-3 grid-rows-9 gap-0 w-[1100px]'>
+                    <div className='row-span-3 row-start-1 '>
+                        <img src='card1.svg'></img>
                     </div>
-                    <div>
-                            <img src='card3.svg'></img>
+                    <div className='bg-orange row-start-4 row-span-2'>
+                        <img src='card2.svg'></img>
                     </div>
-                    <div className='flex flex-col gap-2'>
-                            <img src='card4.svg'></img>
-                            <img src='card5.svg'></img>
-                    </div>
-                    </div>
-                    <div>
-                        <img src='card6.svg'></img>
-                    </div>
+
+                    <div className='bg-green row-start-1 row-span-5 col-start-2 '><img src='card3.svg'></img></div>
+                    <div className='bg-blue row-start-1 row-span-4 col-start-3 '><img src='card4.svg'></img></div>
+                    <div className='bg-purple row-start-8 row-span-1 col-start-3'><img className='p-5' src='card5.svg'></img></div>
+
+                    <div className='bg-yellow row-span-2 row-start-9 col-span-3'><img src='card6.svg'></img></div>
+                   
                 </div>
                 
                 <footer className='my-10'>

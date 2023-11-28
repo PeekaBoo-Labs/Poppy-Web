@@ -9,12 +9,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-center items-center bg-[#F7F7F7] text-[#262626]">
-      <NavBar />
-
-      <QuestionnaireContextProvider>
-        <QuestionnaireForm />
-      </QuestionnaireContextProvider>
-
+      <NavBar wide_mode={true}/>
+      <div>
+        <QuestionnaireContextProvider>
+          <QuestionnaireForm />
+        </QuestionnaireContextProvider>
+      </div>
       <Footer />
     </div>
   );
