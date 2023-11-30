@@ -46,11 +46,9 @@ export default function HomePage() {
 
                     <h1 className='text-[40px] font-bold'>It&apos;s time to</h1>
                     <h1 className='text-[40px] font-bold mb-5'>reinvent screenings</h1>
-                    <h3 className="max-w-[560px] text-center px-10 mb-10 font-[400] flex flex-col">
-                        <span className='font-bold'>In an era where technology shapes every aspect of our lives, it&apos;s time to embrace innovation in healthcare.</span> 
-                        <span>Traditional STI screenings have been cumbersome, slow, and often embarrassingly public, deterring essential health checks. Now, AI technology offers a promise of change, ensuring screenings are swift, accessible, and confidential.</span>
-                        <br></br>
-                        <span>Putting power into the hands of the individual, AI-driven screenings eliminate the dread of clinic visits and the wait for results. With this technology, users can receive timely, accurate health updates directly on their personal devices. The mission is simple: normalize STI screenings to be as routine and stigma-free as a basic health assessment, propelling us towards a new standard in public health.</span>
+                    <h3 className="max-w-[600px] text-center px-10 mb-10 font-[400] flex flex-col">
+                        <span className='font-bold'>Embrace innovation in healthcare with AI-driven STI screenings</span> 
+                        <span>Swift, accessible, and confidential screenings. Eliminate clinic visits and get accurate health updates directly on your personal device. Our mission is to make STI screenings routine and stigma-free, setting a new standard in public health.</span>
                     </h3>
 
                     <div className='flex flex-row gap-3 items-center'>
@@ -66,21 +64,31 @@ export default function HomePage() {
 
                     <div className="w-full border-t-2 border-gray-20 my-10"></div>
                 </div>
-                <div className='grid grid-cols-3 grid-rows-9 gap-0 w-[1100px]'>
-                    <div className='row-span-3 row-start-1 '>
-                        <img src='card1.svg'></img>
+                <div className='grid grid-cols-3 grid-rows-9 gap-4 p-4 w-[1100px]'>
+                    <div className='row-span-3 row-start-1 col-span-1 flex justify-center items-center'>
+                        <img className=' object-cover' src='card1.svg' alt='Card 1' style={{ width: '100%', height: '100%' }}></img>
                     </div>
-                    <div className='bg-orange row-start-4 row-span-2'>
-                        <img src='card2.svg'></img>
+                    <div className='bg-orange row-start-4 row-span-2 col-span-1 flex justify-center items-center'>
+                        <img className='object-cover mr-4' src='card2.svg' alt='Card 2' style={{ width: '102%', height: '102%' }}></img>
                     </div>
 
-                    <div className='bg-green row-start-1 row-span-5 col-start-2 '><img src='card3.svg'></img></div>
-                    <div className='bg-blue row-start-1 row-span-4 col-start-3 '><img src='card4.svg'></img></div>
-                    <div className='bg-purple row-start-8 row-span-1 col-start-3'><img className='p-5' src='card5.svg'></img></div>
+                    <div className='bg-green row-start-1 row-span-5 col-start-2 flex justify-center items-center'>
+                        <img className=' object-cover' src='card3.svg' alt='Card 3' style={{ width: '100%', height: '100%' }}></img>
+                    </div>
+                    <div className='bg-blue row-start-1 row-span-4 col-start-3 flex justify-center items-center'>
+                        <img className=' object-cover' src='card4.svg' alt='Card 4' style={{ width: '100%', height: '100%' }}></img>
+                    </div>
+                    <div className='bg-purple row-start-8 row-span-1 col-start-3 flex justify-center items-center'>
+                        <img className=' object-cover' src='card5.svg' alt='Card 5' style={{ width: '100%', height: '100%' }}></img>
+                    </div>
 
-                    <div className='bg-yellow row-span-2 row-start-9 col-span-3'><img src='card6.svg'></img></div>
-                   
+                    <div className='bg-yellow row-span-2 row-start-9 col-span-3 flex justify-center items-center'>
+                        <img className=' object-cover' src='card6.svg' alt='Card 6' style={{ width: '100%', height: '100%' }}></img>
+                    </div>
                 </div>
+
+
+
                 
                 <footer className='my-10'>
                     <span className='p-[2rem] font-[#ACACAC]'>🧑🏻‍💻 with ❤️ from Irvine and Santa Cruz</span>
