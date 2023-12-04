@@ -8,15 +8,18 @@ import Dots from "../general/animated/dots"
 import { type StateType } from "@/lib/types/types"
 
 import { useQuestionnaireContext } from "@/contexts/questionnaire-context"
+import { Diagnosis } from "@/lib/types/diagnosis"
 
 
 export default function QuestionnaireCard({
-  questionsState, page
+  questionsState, page, diagnosisState
 }: {
   questionsState: StateType<(null | Question)[]>,
-  page: number
+  page: number,
+  diagnosisState: StateType<(null | Diagnosis)>,
 }) {
   const [questions, setQuestions] = questionsState;
+  const [diagnosis, setDiagnosis] = diagnosisState;
   const questionObj = questions[page];
 
   return (
@@ -30,7 +33,25 @@ export default function QuestionnaireCard({
         transition={{ duration: 0.1 }}
       >
         {
-          questionObj === null ? (<LoadingLabel />) : (<>
+          questionObj === null ? (<LoadingLabel />) : diagnosis !== null ?  <> 
+            <h1 className="text-center mb-8 px-10">Based on screening results, you are at risk of contacting the following STIs.</h1>
+
+            <div className="flex flex-wrap justify-center items-center w-4/6 mx-auto">
+                <div>
+                <ul>
+                    {diagnosis.percentages.map((percentage, index) => {
+                        const sti = diagnosis.possible_stis[index];
+                        return (
+                            <li key={`${diagnosis.id}-${index}`}>
+                                <h1>{percentage}% chance of {sti}</h1>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+            </div>
+          </> : (
+          <>
             <h5 className="text-center mb-4 px-10 font-[400] text-gray-400">Choose all that apply</h5>
             <Title className="text-center mb-8 px-10">{questionObj.question}</Title>
 
@@ -70,7 +91,7 @@ function LoadingLabel() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
         className="title text-center mb-8 px-10">
-        Loading next question <Dots />
+        Loading<Dots />
       </motion.span>
     </>
   )
