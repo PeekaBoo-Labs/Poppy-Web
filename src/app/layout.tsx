@@ -37,7 +37,9 @@ export default function RootLayout({ children }: {
 }) {
   return (
     <html lang="en" className={font.className}>
-      {children}
+      <body>
+        {children}
+      </body>
     </html >
   )
 }
