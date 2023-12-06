@@ -17,52 +17,58 @@ export default function HomePage() {
 
         <span className='flex-grow'></span>
 
-        <span className='bg-[#202221] text-[#F1EFED] p-4 text-sm rounded-[13px] w-[275px] text-center'>Screen now</span>
+        <span className='bg-[#202221] text-[#F1EFED] p-[13px] caption rounded-[11px] w-[230px] text-center'>Screen now</span>
 
       </section>
 
-      <section className='flex flex-col justify-center items-center '>
+      <section className='flex flex-col justify-center items-center py-32'>
         <h1 className='largeTitle max-w-2xl text-center'>
           Watch us <Image className='inline align-bottom' src={"/smallvideo.png"} width={120} height={40} alt="" />
-          reinvent screenings.
+          &nbsp;reinvent screenings.
         </h1>
 
         <p className='text-center max-w-2xl my-10'>In an era where technology shapes every aspect of our lives, it&apos;s time to embrace innovation in healthcare.</p>
 
-        <span className='flex flex-row items-center justify-center gap-2 p-4 text-sm rounded-[13px] w-[275px] text-center border-[#20222121] border-[2px]'>
+        <span className='flex flex-row items-center justify-center gap-[10px] p-[13px] caption rounded-[11px] w-[230px] text-center border-[#20222121] border-[1px]'>
           <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.971831 13C0.401408 13 0 12.5389 0 11.8026V1.19737C0 0.461098 0.401408 0 0.971831 0C1.27465 0 1.52817 0.111556 1.85211 0.312357L10.1479 5.38444C10.7606 5.75629 11 6.0389 11 6.5C11 6.9611 10.7606 7.24371 10.1479 7.61556L1.85211 12.6951C1.52817 12.8884 1.27465 13 0.971831 13Z" fill="#202221" />
           </svg>
-          Screen now
+          Watch the demo
         </span>
       </section>
 
-      <section className="flex justify-center items-center max-w-5xl w-full gap-4 mx-auto py-32">
-        <div className='p-14 flex flex-col gap-2 rounded-[20px] border-[2px] border-[#20222121]'>
-          <h1 className="text-3xl font-medium">Screening</h1>
-          <p>Get instant answers, find creative inspiration, learn something new.</p>
+      <section className='flex flex-col justify-center items-center py-32'>
+        <h1 className='title max-w-2xl text-center'>
+          Our API platform offers our latest models and research documentation.
+        </h1>
 
-          <span className="flex gap-2 mt-4 items-center ">
-            Screen now
-            <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 7C17 7.27132 16.8831 7.53359 16.6762 7.73256L10.7397 13.6925C10.5238 13.9005 10.2899 14 10.0381 14C9.48042 14 9.07566 13.593 9.07566 13.0504C9.07566 12.77 9.1836 12.5258 9.36349 12.354L11.3783 10.301L14.0317 7.85917L11.936 7.98579H0.998413C0.404762 7.98579 0 7.57881 0 7C0 6.41214 0.404762 6.01421 0.998413 6.01421H11.936L14.0228 6.14083L11.3783 3.69897L9.36349 1.64599C9.1836 1.46512 9.07566 1.22093 9.07566 0.940568C9.07566 0.397933 9.48042 0 10.0381 0C10.2899 0 10.5328 0.0904393 10.7577 0.316537L16.6762 6.26744C16.8831 6.45736 17 6.72868 17 7Z" fill="black" />
-            </svg>
+        <section className="flex justify-center items-center max-w-5xl w-full gap-4 mx-auto py-20">
+          <div className='p-10 flex flex-col gap-4 rounded-[20px] border-[1px] border-[#20222121]'>
+            <h1 className="text-2xl">Research</h1>
+            <p>Our Research is dedicated to showcasing the rigorous scientific inquiry and user-focused studies that form the backbone of Poppy. We believe in the power of data-driven, evidence-based solutions to revolutionize STI healthcare.</p>
 
-          </span>
-        </div>
+            <span className="flex gap-2 mt-2 items-center ">
+              Read More
+              <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 7C17 7.27132 16.8831 7.53359 16.6762 7.73256L10.7397 13.6925C10.5238 13.9005 10.2899 14 10.0381 14C9.48042 14 9.07566 13.593 9.07566 13.0504C9.07566 12.77 9.1836 12.5258 9.36349 12.354L11.3783 10.301L14.0317 7.85917L11.936 7.98579H0.998413C0.404762 7.98579 0 7.57881 0 7C0 6.41214 0.404762 6.01421 0.998413 6.01421H11.936L14.0228 6.14083L11.3783 3.69897L9.36349 1.64599C9.1836 1.46512 9.07566 1.22093 9.07566 0.940568C9.07566 0.397933 9.48042 0 10.0381 0C10.2899 0 10.5328 0.0904393 10.7577 0.316537L16.6762 6.26744C16.8831 6.45736 17 6.72868 17 7Z" fill="black" />
+              </svg>
 
-        <div className='p-14 flex flex-col gap-2 rounded-[20px] border-[2px] border-[#20222121]'>
-          <h1 className="text-3xl font-medium">Screening</h1>
-          <p>Get instant answers, find creative inspiration, learn something new.</p>
+            </span>
+          </div>
 
-          <span className="flex gap-2 mt-4 items-center">
-            Screen now
-            <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 7C17 7.27132 16.8831 7.53359 16.6762 7.73256L10.7397 13.6925C10.5238 13.9005 10.2899 14 10.0381 14C9.48042 14 9.07566 13.593 9.07566 13.0504C9.07566 12.77 9.1836 12.5258 9.36349 12.354L11.3783 10.301L14.0317 7.85917L11.936 7.98579H0.998413C0.404762 7.98579 0 7.57881 0 7C0 6.41214 0.404762 6.01421 0.998413 6.01421H11.936L14.0228 6.14083L11.3783 3.69897L9.36349 1.64599C9.1836 1.46512 9.07566 1.22093 9.07566 0.940568C9.07566 0.397933 9.48042 0 10.0381 0C10.2899 0 10.5328 0.0904393 10.7577 0.316537L16.6762 6.26744C16.8831 6.45736 17 6.72868 17 7Z" fill="black" />
-            </svg>
+          <div className='p-10 flex flex-col gap-4 rounded-[20px] border-[1px] border-[#20222121]'>
+            <h1 className="text-2xl">API</h1>
+            <p>Our API provides developers with robust access to Poppy's functionalities. Designed for seamless integration, it enables external applications to leverage our advanced tools for diagnosis, and management.</p>
 
-          </span>
-        </div>
+            <span className="flex gap-2 mt-2 items-center">
+              Learn More
+              <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 7C17 7.27132 16.8831 7.53359 16.6762 7.73256L10.7397 13.6925C10.5238 13.9005 10.2899 14 10.0381 14C9.48042 14 9.07566 13.593 9.07566 13.0504C9.07566 12.77 9.1836 12.5258 9.36349 12.354L11.3783 10.301L14.0317 7.85917L11.936 7.98579H0.998413C0.404762 7.98579 0 7.57881 0 7C0 6.41214 0.404762 6.01421 0.998413 6.01421H11.936L14.0228 6.14083L11.3783 3.69897L9.36349 1.64599C9.1836 1.46512 9.07566 1.22093 9.07566 0.940568C9.07566 0.397933 9.48042 0 10.0381 0C10.2899 0 10.5328 0.0904393 10.7577 0.316537L16.6762 6.26744C16.8831 6.45736 17 6.72868 17 7Z" fill="black" />
+              </svg>
+
+            </span>
+          </div>
+        </section>
       </section>
 
       <Yellow />
@@ -75,49 +81,40 @@ export default function HomePage() {
 
         <div className='flex-grow flex flex-col gap-2 text-[#acacacc9]'>
           <div className='flex items-center gap-2'>
-            <span className='text-lg font-regular text-[#202221]'>Resources</span>
-            <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.5 5.53857C4.1748 5.53857 3.91992 5.42432 3.64307 5.14746L0.540527 1.979C0.355957 1.78125 0.263672 1.56152 0.263672 1.29346C0.263672 0.739746 0.716309 0.282715 1.26123 0.282715C1.53809 0.282715 1.79297 0.401367 2.0083 0.616699L4.50879 3.21387L6.9917 0.616699C7.20264 0.392578 7.46191 0.282715 7.73438 0.282715C8.2749 0.282715 8.73193 0.739746 8.73193 1.29346C8.73193 1.56592 8.64404 1.78564 8.45068 1.979L5.35693 5.14746C5.08008 5.41553 4.82959 5.53418 4.5 5.53857Z" fill="#202221" />
-            </svg>
+            <span className='caption font-regular text-[#202221]'>Resources</span>
           </div>
 
-          <span>Research</span>
-          <span>Documentation</span>
-          <span>FAQs</span>
+          <span className='caption'>Research</span>
+          <span className='caption'>Documentation</span>
+          <span className='caption'>FAQs</span>
         </div>
 
         <div className='flex-grow flex flex-col gap-2 text-[#acacacc9]'>
           <div className='flex items-center gap-2 text-[#202221]'>
-            <span className='text-lg font-regular'>Product</span>
-            <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.5 5.53857C4.1748 5.53857 3.91992 5.42432 3.64307 5.14746L0.540527 1.979C0.355957 1.78125 0.263672 1.56152 0.263672 1.29346C0.263672 0.739746 0.716309 0.282715 1.26123 0.282715C1.53809 0.282715 1.79297 0.401367 2.0083 0.616699L4.50879 3.21387L6.9917 0.616699C7.20264 0.392578 7.46191 0.282715 7.73438 0.282715C8.2749 0.282715 8.73193 0.739746 8.73193 1.29346C8.73193 1.56592 8.64404 1.78564 8.45068 1.979L5.35693 5.14746C5.08008 5.41553 4.82959 5.53418 4.5 5.53857Z" fill="#202221" />
-            </svg>
+            <span className='caption font-regular'>Product</span>
           </div>
 
-          <span>Poppy</span>
-          <span>APIs</span>
-          <span>Change Log</span>
+          <span className='caption'>Poppy</span>
+          <span className='caption'>APIs</span>
+          <span className='caption'>Change Log</span>
         </div>
 
         <div className='flex-grow flex flex-col gap-2 text-[#acacacc9]'>
           <div className='flex items-center gap-2 text-[#202221]'>
-            <span className='text-lg font-regular'>Company</span>
-            <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.5 5.53857C4.1748 5.53857 3.91992 5.42432 3.64307 5.14746L0.540527 1.979C0.355957 1.78125 0.263672 1.56152 0.263672 1.29346C0.263672 0.739746 0.716309 0.282715 1.26123 0.282715C1.53809 0.282715 1.79297 0.401367 2.0083 0.616699L4.50879 3.21387L6.9917 0.616699C7.20264 0.392578 7.46191 0.282715 7.73438 0.282715C8.2749 0.282715 8.73193 0.739746 8.73193 1.29346C8.73193 1.56592 8.64404 1.78564 8.45068 1.979L5.35693 5.14746C5.08008 5.41553 4.82959 5.53418 4.5 5.53857Z" fill="#202221" />
-            </svg>
+            <span className='caption font-regular'>Company</span>
           </div>
 
-          <span>About</span>
-          <span>Contact</span>
-          <span>Terms & Privacy</span>
+          <span className='caption'>About</span>
+          <span className='caption'>Contact</span>
+          <span className='caption'>Terms & Privacy</span>
         </div>
 
         <div className='flex-grow flex flex-col gap-2'>
-          <div className='text-[#acacacc9] text-right'>
+          <div className='caption text-[#acacacc9] text-right'>
             🧑🏻‍💻 with ❤️️ from Irvine and Santa Cruz
           </div>
 
-          <div className='text-[#acacacc9] flex justify-end gap-2'>
+          <div className='text-[#acacacc9] flex align-center justify-end gap-2'>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_163_200)">
                 <path fillRule="evenodd" clipRule="evenodd" d="M8.00621 0.5C3.85547 0.5 0.5 3.93749 0.5 8.19012C0.5 11.5895 2.64996 14.467 5.63253 15.4854C6.00543 15.562 6.14202 15.3199 6.14202 15.1163C6.14202 14.9381 6.12973 14.327 6.12973 13.6903C4.04169 14.1487 3.60687 12.7735 3.60687 12.7735C3.27131 11.8823 2.77411 11.6532 2.77411 11.6532C2.09069 11.1821 2.82389 11.1821 2.82389 11.1821C3.58198 11.2331 3.97977 11.9715 3.97977 11.9715C4.65074 13.1428 5.73194 12.8118 6.16691 12.6081C6.22899 12.1115 6.42796 11.7678 6.63922 11.5768C4.97386 11.3985 3.22168 10.7365 3.22168 7.78263C3.22168 6.94232 3.51975 6.25482 3.99206 5.72013C3.91754 5.5292 3.6565 4.73967 4.06673 3.68296C4.06673 3.68296 4.70052 3.47921 6.12958 4.47233C6.74141 4.30399 7.37238 4.21836 8.00621 4.21764C8.63999 4.21764 9.28607 4.30686 9.88268 4.47233C11.3119 3.47921 11.9457 3.68296 11.9457 3.68296C12.3559 4.73967 12.0947 5.5292 12.0202 5.72013C12.505 6.25482 12.7907 6.94232 12.7907 7.78263C12.7907 10.7365 11.0386 11.3857 9.36075 11.5768C9.63424 11.8187 9.87024 12.277 9.87024 13.0028C9.87024 14.034 9.85794 14.8617 9.85794 15.1162C9.85794 15.3199 9.99469 15.562 10.3674 15.4856C13.35 14.4668 15.5 11.5895 15.5 8.19012C15.5123 3.93749 12.1445 0.5 8.00621 0.5Z" fill="#202221" fillOpacity="0.3" />

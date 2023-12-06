@@ -35,14 +35,13 @@ h4 {
 
 p {
     font-weight: 400;
-    font-size: 1.3125rem;
-    line-height: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.6rem;
 }
 
 h5 {
     font-size: 1rem;
 }
-
 
 .caption {
     font-size: 0.9rem;
@@ -56,7 +55,7 @@ h5 {
 
 .largeTitle {
     font-weight: 600;
-    font-size: 4rem;
+    font-size: 3.9rem;
     line-height: 1.1;
 }
 
