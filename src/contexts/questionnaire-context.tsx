@@ -46,7 +46,7 @@ export default function QuestionnaireContextProvider({ children }: { children: R
         // check if the new_question is of type 'Diagnosis', if it is, then the UI needs to change to diagnosis format
 
         if (new_question) {
-            if('possible_stis' in new_question){
+            if ('possible_stis' in new_question) {
                 // new question is actually a diagnosis 
                 console.info("Diagnosis has been made!", new_question)
                 const new_questions = [...questions];

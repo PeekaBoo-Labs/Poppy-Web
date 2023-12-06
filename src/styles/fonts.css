@@ -1,115 +1,3 @@
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-extraleicht.woff2') format('woff2');
-    font-weight: 200;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-extraleicht-kursiv.woff2') format('woff2');
-    font-weight: 200;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-leicht.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-leicht-kursiv.woff2') format('woff2');
-    font-weight: 300;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-buch.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-buch-kursiv.woff2') format('woff2');
-    font-weight: 400;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-kraftig.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-kraftig-kursiv.woff2') format('woff2');
-    font-weight: 500;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-halbfett.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-halbfett-kursiv.woff2') format('woff2');
-    font-weight: 600;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-dreiviertelfett.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-dreiviertelfett-kursiv.woff2') format('woff2');
-    font-weight: 700;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-fett.woff2') format('woff2');
-    font-weight: 800;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-fett-kursiv.woff2') format('woff2');
-    font-weight: 800;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-extrafett.woff2') format('woff2');
-    font-weight: 900;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/sohne-extrafett-kursiv.woff2') format('woff2');
-    font-weight: 900;
-    font-style: italic;
-}
-
 p,
 h1,
 h2,
@@ -122,80 +10,57 @@ h6 {
 }
 
 h1 {
-    font-family: 'Sohne', sans-serif;
     font-weight: 500;
     font-size: 1.75rem;
     line-height: 2.5rem;
 }
 
 h2 {
-    font-family: 'Sohne', sans-serif;
     font-weight: 500;
     font-size: 1.5rem;
     line-height: 2.3rem;
 }
 
 h3 {
-    font-family: 'Sohne', sans-serif;
     font-weight: 400;
     font-size: 1.1rem;
     line-height: 1.5rem;
 }
 
 h4 {
-    font-family: 'Sohne', sans-serif;
     font-weight: 400;
     font-size: 1rem;
     line-height: 2rem;
 }
 
 p {
-    font-family: 'Sohne', sans-serif;
-    font-weight: 300;
-    font-size: 1.1rem;
+    font-weight: 400;
+    font-size: 1.3125rem;
     line-height: 2rem;
 }
 
 h5 {
-    font-family: 'Sohne', sans-serif;
     font-size: 1rem;
 }
 
 
 .caption {
-    font-family: 'Sohne', sans-serif;
     font-size: 0.9rem;
 }
 
 .title {
-    font-family: 'Sohne', sans-serif;
     font-weight: 600;
     font-size: 2.2rem;
     line-height: 2.5rem;
 }
 
 .largeTitle {
-    font-family: 'Sohne', sans-serif;
     font-weight: 600;
-    font-size: 4.5rem;
-    line-height: 2rem;
-    @media screen and (min-width: 601px) {
-        div.example {
-          font-size: 80px;
-        }
-      }
+    font-size: 4rem;
+    line-height: 1.1;
 }
-@media screen and (max-width: 600px) {
-    .largeTitle {
-        font-family: 'Sohne', sans-serif;
-        font-weight: 600;
-        font-size: 3rem;
-        line-height: 2rem;
-    }
-  }
 
 .headerText {
-    font-family: 'Sohne', sans-serif;
     font-weight: 500;
     font-size: 1.1rem;
     line-height: 2.4rem;

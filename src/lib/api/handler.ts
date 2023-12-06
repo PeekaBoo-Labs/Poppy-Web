@@ -63,7 +63,7 @@ export function convertEntryToQuestion(entry: ChatEntry): Question {
     options: options
   }
 }
-function parseSTIData(text: string){
+function parseSTIData(text: string) {
   // Updated regular expression to capture more complex STI names
   const regex = /(\d+)%\s(?:probability of\s)?\*{0,2}([A-Za-z\s\(\)]+?)\*{0,2}(?=\s*\(?\d+%|$|\n)/g;
 
@@ -72,14 +72,14 @@ function parseSTIData(text: string){
 
   let match;
   while ((match = regex.exec(text)) !== null) {
-      percentages.push(parseInt(match[1]));
-      stis.push(match[2].trim());
+    percentages.push(parseInt(match[1]));
+    stis.push(match[2].trim());
   }
 
   return { percentages, stis };
 }
-export function convertEntryToText(entry: ChatEntry): Diagnosis{
-  const {percentages, stis} =parseSTIData(entry.content)
+export function convertEntryToText(entry: ChatEntry): Diagnosis {
+  const { percentages, stis } = parseSTIData(entry.content)
   console.log(percentages, stis)
   return {
     id: Math.random().toString(36).substring(7),
@@ -116,7 +116,7 @@ export async function continueChat(log: ChatLog): Promise<Question | Diagnosis> 
   console.log(`json: ${JSON.stringify(json)}`)
   const gpt_response: ChatEntry = json["gpt_response"]
 
-  if(json["end_of_convo"]){
+  if (json["end_of_convo"]) {
     return convertEntryToText(gpt_response)
   }
 
