@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Yellow from './yellow';
+import Hero from './hero';
 
 import "@/styles/fonts.css";
 
@@ -8,18 +9,7 @@ export default function HomePage() {
     <body className='text-[#202221] bg-[#F1EFED] relative'>
       {/* <NavBar /> */}
 
-      <section className='flex flex-col items-center justify-center min-h-screen pb-16'>
-
-        <span className='flex-grow'></span>
-
-        <span className='largeTitle max-w-2xl text-center opacity-[0.09]'>
-          Take the guesswork out of your sexual health with Poppy.</span>
-
-        <span className='flex-grow'></span>
-
-        <span className='bg-[#202221] text-[#F1EFED] p-[13px] caption rounded-[11px] w-[230px] text-center'>Screen now</span>
-
-      </section>
+      <Hero />
 
       <section className='flex flex-col justify-center items-center py-32'>
         <h1 className='largeTitle max-w-2xl text-center'>
