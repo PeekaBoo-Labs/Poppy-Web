@@ -1,9 +1,7 @@
 import NavBar from '@/components/NavBar';
-import ProgressBar from '@/components/ProgressBar';
-import QuestionnairePage from '@/components/QuestionnairePage';
-import QuestionnaireContextProvider from "@/contexts/questionnaire-context";
 import Footer from '@/components/general/Footer';
 import QuestionnaireForm from '@/components/questionnaire/QuestionnaireForm';
+import QuestionnaireContextProvider from "@/contexts/questionnaire-context";
 
 export default function Home() {
 
