@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import Yellow from './yellow';
 import Hero from './hero';
+import NavBar from '@/components/NavBar';
 
 import "@/styles/fonts.css";
 
 export default function HomePage() {
   return (
     <body className='text-[#202221] bg-[#F1EFED] relative'>
-      {/* <NavBar /> */}
+      <NavBar />
 
       <Hero />
 
