@@ -11,14 +11,17 @@ import { useQuestionnaireContext } from "@/contexts/questionnaire-context"
 import { Diagnosis } from "@/lib/types/diagnosis"
 
 import { LongButton } from "../Buttons"
+import ProgressBar from "../ProgressBar"
 
 
 export default function QuestionnaireCard({
-  questionsState, page, diagnosisState
+  questionsState, page, diagnosisState, handleBack, handleNext,
 }: {
   questionsState: StateType<(null | Question)[]>,
   page: number,
   diagnosisState: StateType<(null | Diagnosis)>,
+  handleBack: () => void,
+  handleNext: () => void,
 }) {
   const [questions, setQuestions] = questionsState;
   const [diagnosis, setDiagnosis] = diagnosisState;
@@ -122,49 +125,79 @@ export default function QuestionnaireCard({
                   
                 </div>
                 <div>
-                  <LongButton type="primaryFull" onClick={()=>{}}>Next</LongButton>
+                  <LongButton type="primaryFullNext" onClick={()=>{}}>Next</LongButton>
                 </div>
               </div>
             </div>
-            
-            {/* <h1 className="text-center mb-8 px-10">Based on screening results, you are at risk of contacting the following STIs.</h1>
-
-            <div className="flex flex-wrap justify-center items-center w-4/6 mx-auto">
-                <div>
-                <ul>
-                    {diagnosis.percentages.map((percentage, index) => {
-                        const sti = diagnosis.possible_stis[index];
-                        return (
-                            <li key={`${diagnosis.id}-${index}`}>
-                                <h1>{percentage}% chance of {sti}</h1>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
-            </div> */}
-
           </> : (
-          <>
-            <h5 className="text-center mb-4 px-10 font-[400] text-gray-400 mt-[70px]">Choose all that apply</h5>
-            <Title className="text-center mb-8 px-10">{questionObj.question}</Title>
+            <> 
 
-            <div className="flex flex-wrap justify-center items-center w-4/6 mx-auto">
-              {questionObj.options.map((option, index) => (
-                <QuestionInputOption
-                  key={index}
-                  text={option.content}
-                  selected={option.selected}
-                  onClick={() => {
-                    option.selected = !option.selected
-                    let newQuestions = [...questions]
-                    newQuestions[page] = questionObj
-                    setQuestions(newQuestions)
-                  }}
-                />
-              ))}
+            <div className="flex flex-grow flex-row w-[1000px] max-h-[600px] gap-4">
+              
+              <div className="rounded-3xl border border-[#D9D9D9] p-1 flex flex-col max-w-[65%]">
+                <div className="flex-grow flex align-middle items-center justify-center">
+                  <Title className="text-center mb-8 px-10 text-3xl align-middle">{questionObj.question}</Title>
+                </div>
+                <ProgressBar index={page} total={Math.max(1, questions.length)} diagnosisState={diagnosisState} />
+              </div>
+
+
+              <div className="flex flex-col justify-between px-5 flex-grow">
+                <div>
+                  <p className="text-3xl font-semibold">Choose one or</p>
+                  <p className="text-3xl font-semibold mb-5">more options</p>
+                  <div className="flex flex-col gap-1">
+                  {questionObj.options.map((option, index) => (
+                      <QuestionInputOption
+                        key={index}
+                        text={option.content}
+                        selected={option.selected}
+                        onClick={() => {
+                          option.selected = !option.selected
+                          let newQuestions = [...questions]
+                          newQuestions[page] = questionObj
+                          setQuestions(newQuestions)
+                        }}
+                      />
+                    ))}
+
+                  </div>
+                  
+                  
+                </div>
+                <div className="grid grid-cols-10 items-center justify-center">
+                  <div className="col-span-2 text-left">
+                    <LongButton type="secondaryFullBack" onClick={handleBack}></LongButton>
+                  </div>
+                  <div className="col-span-8 text-left">
+                    <LongButton type="primaryFullNext" onClick={handleNext}>Next Question</LongButton>
+                  </div>
+                </div>
+              </div>
             </div>
           </>)
+          // <>
+            
+          //   <h5 className="text-center mb-4 px-10 font-[400] text-gray-400 mt-[70px]">Choose all that apply</h5>
+          //   <Title className="text-center mb-8 px-10">{questionObj.question}</Title>
+
+          //   <div className="flex flex-wrap justify-center items-center w-4/6 mx-auto">
+          //     {questionObj.options.map((option, index) => (
+          //       <QuestionInputOption
+          //         key={index}
+          //         text={option.content}
+          //         selected={option.selected}
+          //         onClick={() => {
+          //           option.selected = !option.selected
+          //           let newQuestions = [...questions]
+          //           newQuestions[page] = questionObj
+          //           setQuestions(newQuestions)
+          //         }}
+          //       />
+          //     ))}
+          //   </div>
+
+          // </>)
         }
       </motion.div>
     </AnimatePresence >

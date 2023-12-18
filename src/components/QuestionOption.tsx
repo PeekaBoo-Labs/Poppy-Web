@@ -11,18 +11,20 @@ export default function QuestionInputOption({
   return (
     <motion.button
       animate={{
-        backgroundColor: selected ? 'rgba(0, 122, 225, 0.1)' : '#F7F7F7',
+        backgroundColor: selected ? '#FFCC00' : '#F7F7F7',
         color: '#262626',
-        borderColor: selected ? accent : 'rgb(209 213 219)',
+        borderColor: selected ? '#FFCC00' : 'rgb(209 213 219)',
       }}
       whileHover={{
-        y: -1
+        y: -1,
+        borderColor: '#FFCC00',
+        color: selected ? '#262626': '#FFCC00'
       }}
       initial={false}
       onClick={onClick}
-      className={`px-5 py-3 m-1 rounded-full border-[2px] select-none cursor-pointer`}
+      className={`px-5 py-3 m-1 rounded-xl border-[2px] select-none cursor-pointer`}
     >
-      <p className="text-center">{text}</p>
+      <p className="text-left">{text}</p>
     </motion.button>
   );
 }

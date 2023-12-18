@@ -1,3 +1,4 @@
+
 export function LongButton({
   children,
   type,
@@ -7,7 +8,7 @@ export function LongButton({
   suffix
 }: {
   children?: React.ReactNode,
-  type?: "primary" | "primaryFull" | "secondary" | "secondaryFull",
+  type?: "primary" | "primaryFull" | "secondary" | "secondaryFull" | "secondaryFullBack" | "primaryFullNext",
   onClick?: () => any,
   loading?: boolean,
   prefix?: React.ReactNode,
@@ -55,6 +56,28 @@ export function LongButton({
         >
           {prefix}
           <h4 className="text-center text-[#262626] font-[400]">{children}</h4>
+          {suffix}
+        </div>
+      )}
+
+      {type === "secondaryFullBack" && (
+        <div
+          className="flex-grow flex flex-row p-2 justify-center align-middle items-center min-w-5 py-[9px] m-1 rounded-xl border-[2px] select-none cursor-pointer border-[#D9D9D9]"
+          onClick={onClick}
+        >
+          {prefix}
+          <h4 className="text-left text-[#FFFFFF] font-[400]">{children}</h4><img className='w-4 min-w-4 h-7' src={'arrowBack.svg'}></img>
+          {suffix}
+        </div>
+      )}
+
+      {type === "primaryFullNext" && (
+          <div
+          className="flex-grow flex flex-row justify-between pl-5 pr-3 py-[9px] m-1 bg-[#202221] rounded-[15px] border-[2px] border-black select-none cursor-pointer"
+          onClick={onClick}
+        >
+          {prefix}
+          <h4 className="text-left text-[#FFFFFF] font-[400]">{children}</h4> <img className='w-4' src={'arrowRight.svg'}></img>
           {suffix}
         </div>
       )}
