@@ -26,7 +26,7 @@ export default function QuestionnaireForm() {
   }, []);
 
   return <>
-    <div className="flex flex-col mx-4 max-w-[800px] h-[85vh] w-full">
+    <div className="flex flex-col mx-4 max-w-[800px] h-[100vh] w-full">
       <ProgressBar index={page} total={Math.max(1, questions.length)} diagnosisState={diagnosisState} />
 
       {/* Tried my hardest to not use context here but i failed... */}
