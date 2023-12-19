@@ -132,7 +132,7 @@ export default function QuestionnaireCard({
           </> : (
             <> 
 
-            <div className="flex flex-grow flex-row w-[1000px] max-h-[600px] gap-4">
+            <div className="flex flex-grow flex-row bg-[#F1EFED] w-[1000px] max-h-[600px] gap-4">
               
               <div className="rounded-3xl border border-[#D9D9D9] p-1 flex flex-col max-w-[65%]">
                 <div className="flex-grow flex align-middle items-center justify-center">

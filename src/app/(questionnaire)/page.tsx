@@ -6,7 +6,7 @@ import QuestionnaireContextProvider from "@/contexts/questionnaire-context";
 export default function Home() {
 
   return (
-    <div className="flex flex-col justify-center items-center bg-[#F7F7F7]">
+    <div className="flex flex-col justify-center items-center bg-[#F1EFED]">
       <NavBar />
       <div>
         <QuestionnaireContextProvider>

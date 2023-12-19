@@ -11,7 +11,7 @@ export default function QuestionInputOption({
   return (
     <motion.button
       animate={{
-        backgroundColor: selected ? '#FFCC00' : '#F7F7F7',
+        backgroundColor: selected ? '#FFCC00' : '#F1EFED',
         color: '#262626',
         borderColor: selected ? '#FFCC00' : 'rgb(209 213 219)',
       }}
