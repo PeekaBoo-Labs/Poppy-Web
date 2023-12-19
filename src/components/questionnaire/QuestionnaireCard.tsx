@@ -40,10 +40,10 @@ export default function QuestionnaireCard({
         {
           questionObj === null ? (<LoadingLabel />) : diagnosis !== null ?  <> 
 
-            <div className="flex flex-grow flex-row w-[900px] max-h-[550px] gap-4">
-              <div className="bg-[#FFCC00] rounded-3xl p-10 text-left flex flex-col justify-between max-w-[65%] flex-grow">
+            <div className="flex flex-grow flex-row bg-[#F1EFED] w-[1050px] h-[600px] gap-4">
+              <div className="bg-[#FFCC00] rounded-[20px] p-10 text-left flex flex-col justify-between w-[55%] flex-grow">
                 <div>
-                  <p className="mb-7 font-semibold text-left">Based on screening results, you are at risk of contracting the following STIs.</p>
+                  <div className="title mb-[40px] text-left">Based on screening results, you are at risk of contracting the following STIs.</div>
 
                   <div className="flex text-left">
                     <div>
@@ -52,7 +52,7 @@ export default function QuestionnaireCard({
                               const sti = diagnosis.possible_stis[index];
                               return (
                                   <li key={`${diagnosis.id}-${index}`}>
-                                      <p className='text-sm uppercase	mb-2'><span className="font-semibold text-2xl">{percentage}</span>% chance of {sti}</p>
+                                      <p className='mb-2'><span className="title font-medium">{percentage}</span>% chance of {sti}</p>
                                   </li>
                               );
                           })}
@@ -61,7 +61,7 @@ export default function QuestionnaireCard({
                   </div>
                 </div>
                 <div className='flex flex-row gap-2'>
-                    <p className="text-xs">
+                    <p className="footnote">
                     Poppy’s recommendations are based on the data provided and should be confirmed with further medical consultation.
                     </p>
                     <img src='sample_qr.svg'></img>
@@ -69,17 +69,17 @@ export default function QuestionnaireCard({
               </div>
               <div className="flex flex-col justify-between px-5 flex-grow">
                 <div>
-                  <p className="text-3xl font-semibold">Choose your</p>
-                  <p className="text-3xl font-semibold mb-5">next steps</p>
+                  <p className="text-3xl font-medium">Choose your</p>
+                  <p className="text-3xl font-medium mb-5">next steps</p>
                   <div className="flex flex-col gap-5">
-                    <div className="border p-5 border-[#D9D9D9] rounded-xl flex flex-col">
-                      <p className="text-sm font-semibold">
+                    <div className="border p-5 border-[#D9D9D9] rounded-[13px] flex flex-col">
+                      <p className="font-medium">
                         Contact Local Clinics
                       </p>
                       <p className="border-b w-[100%] my-3 border-[#D9D9D9]"></p>
                       
-                      <div className="flex flex-row justify-between mb-2">
-                        <p className="text-xs">
+                      <div className="flex flex-row justify-between items-center">
+                        <p className="footnote">
                           UCI Student Health Center
                         </p>
                         <p className="text-xs text-[#202221] text-opacity-[39%]">
@@ -88,13 +88,13 @@ export default function QuestionnaireCard({
                       </div>
                     </div>
 
-                    <div className="border p-5 bg-[#FFCC00] border-[#D9D9D9] rounded-xl flex flex-col">
-                      <p className="text-sm font-semibold ">
+                    <div className="border p-5 bg-[#FFCC00] border-[#D9D9D9] rounded-[13px] flex flex-col">
+                      <p className="font-medium">
                         Request test kits
                       </p>
                       <p className="border-b w-[100%] my-3 border-[#D9D9D9]"></p>
-                      <div className="flex flex-row justify-between mb-2">
-                        <p className="text-xs">
+                      <div className="flex flex-row justify-between items-center mb-2">
+                        <p className="footnote">
                           Everlywell STD Test
                         </p>
                         <p className="text-xs text-[#202221] text-opacity-[39%]">
@@ -102,8 +102,8 @@ export default function QuestionnaireCard({
                         </p>
                       </div>
                       
-                      <div className="flex flex-row justify-between mb-2">
-                        <p className="text-xs">
+                      <div className="flex flex-row justify-between items-center mb-2">
+                        <p className="footnote">
                           CVS STD Test
                         </p>
                         <p className="text-xs text-[#202221] text-opacity-[39%]">
@@ -111,8 +111,8 @@ export default function QuestionnaireCard({
                         </p>
                       </div>
 
-                      <div className="flex flex-row justify-between">
-                        <p className="text-xs">
+                      <div className="flex flex-row justify-between items-center">
+                        <p className="footnote">
                           UCI SHC STD Test
                         </p>
                         <p className="text-xs text-[#202221] text-opacity-[39%]">
@@ -132,9 +132,8 @@ export default function QuestionnaireCard({
           </> : (
             <> 
 
-            <div className="flex flex-grow flex-row bg-[#F1EFED] w-[1000px] max-h-[600px] gap-4">
-              
-              <div className="rounded-3xl border border-[#D9D9D9] p-1 flex flex-col max-w-[65%]">
+            <div className="flex flex-row flex-grow bg-[#F1EFED] w-[1050px] h-[600px] gap-4">
+              <div className="rounded-[20px] border border-[#D9D9D9] p-1 flex flex-col w-[55%]">
                 <div className="flex-grow flex align-middle items-center justify-center">
                   <Title className="text-center mb-8 px-10 text-3xl align-middle">{questionObj.question}</Title>
                 </div>

@@ -22,7 +22,7 @@ export default function QuestionInputOption({
       }}
       initial={false}
       onClick={onClick}
-      className={`px-5 py-3 m-1 rounded-xl border-[2px] select-none cursor-pointer`}
+      className={`px-4 py-3 m-1 rounded-[13px] border-[1.5px] select-none cursor-pointer`}
     >
       <p className="text-left">{text}</p>
     </motion.button>

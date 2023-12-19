@@ -29,7 +29,7 @@ export function LongButton({
 
       {type === "primary" && (
         <div
-          className="px-7 py-2.5 m-1 bg-[#262626] rounded-[15px] select-none cursor-pointer"
+          className="px-7 py-2.5 m-1 bg-[#262626] rounded-[13px] select-none cursor-pointer"
           onClick={onClick} // Pass the onClick handler here
         >
           {prefix}
@@ -40,7 +40,7 @@ export function LongButton({
 
       {type === "primaryFull" && (
         <div
-          className="flex-grow justify-between px-[3px] py-[9px] m-1 bg-[#262626] rounded-[15px] border-[2px] border-black select-none cursor-pointer"
+          className="flex-grow justify-between px-[3px] py-[9px] m-1 bg-[#262626] rounded-[13px] border-[1.5px] border-black select-none cursor-pointer"
           onClick={onClick}
         >
           {prefix}
@@ -62,7 +62,7 @@ export function LongButton({
 
       {type === "secondaryFullBack" && (
         <div
-          className="flex-grow flex flex-row p-2 justify-center align-middle items-center min-w-5 py-[9px] m-1 rounded-xl border-[2px] select-none cursor-pointer border-[#D9D9D9]"
+          className="flex-grow flex flex-row px-4 py-2.5 justify-center align-middle items-center min-w-5  m-1 rounded-xl border-[1.5px] select-none cursor-pointer border-[#D9D9D9]"
           onClick={onClick}
         >
           {prefix}
@@ -73,7 +73,7 @@ export function LongButton({
 
       {type === "primaryFullNext" && (
           <div
-          className="flex-grow flex flex-row justify-between pl-5 pr-3 py-[9px] m-1 bg-[#202221] rounded-[15px] border-[2px] border-black select-none cursor-pointer"
+          className="flex-grow flex flex-row justify-between px-4 py-2 m-1 bg-[#202221] rounded-[13px] border-[1.5px] border-black select-none cursor-pointer"
           onClick={onClick}
         >
           {prefix}

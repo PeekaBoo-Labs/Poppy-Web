@@ -21,7 +21,7 @@ function NavDropdown({ text, children }: { text: string, children?: React.ReactN
 export default function NavBar() {
   return (
     <div className={`w-[100vw] fixed top-0 z-[999] px-5 bg-[#F1EFED]`}>
-      <div className="flex justify-between items-center max-w-4xl mx-auto py-5 border-b border-[#D9D9D9]">
+      <div className="flex justify-between items-center max-w-[1050px] mx-auto py-5 border-b border-[#D9D9D9]">
         <a href="./home">
           <Image priority={true} width={60} height={100} src="/poppyFull.svg" alt="Poppy" />
         </a>

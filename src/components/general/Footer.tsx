@@ -5,38 +5,38 @@ import Image from "next/image"
 export default function Footer() {
   return (
     <footer className='w-full flex-grow flex justify-center bg-[#F1EFED]'>
-      <div className='flex flex-col items-center max-w-[800px] w-full font-black'>
+      <div className='flex flex-col items-center max-w-[1050px] w-full font-black'>
         {/* Upper section for logo and navigation links */}
-        <div className='flex justify-between w-full p-6'>
+        <div className='flex justify-between w-full py-[70px]'>
           {/* Placeholder for the logo */}
           <div className='flex align-top items-start'>
             <Image src='/poppyPLogo.svg' alt='Logo' width={15} height={15} />
           </div>
           {/* Navigation links */}
           <div className='flex space-x-10 gap-2'>
-            <div className='flex flex-col items-start gap-1'>
-              <p className="text-xs font-semibold">Resources</p>
-              <p className="text-xs text-[#ACACAC]">Research</p>
-              <p className="text-xs text-[#ACACAC]">Documentation</p>
-              <p className="text-xs text-[#ACACAC]">FAQs</p>
+            <div className='flex flex-col items-start gap-2'>
+              <span className="footnote font-normal">Resources</span>
+              <span className="footnote font-normal text-[#ACACAC]">Research</span>
+              <span className="footnote font-normal text-[#ACACAC]">Documentation</span>
+              <span className="footnote font-normal text-[#ACACAC]">FAQs</span>
             </div>
-            <div className='flex flex-col items-start gap-1'>
-              <p className="text-xs font-semibold">Product</p>
-              <p className="text-xs text-[#ACACAC]">Poppy</p>
-              <p className="text-xs text-[#ACACAC]">APIs</p>
-              <p className="text-xs text-[#ACACAC]">Change Log</p>
+            <div className='flex flex-col items-start gap-2'>
+              <span className="footnote font-normal">Product</span>
+              <span className="footnote font-normal text-[#ACACAC]">Poppy</span>
+              <span className="footnote font-normal text-[#ACACAC]">API</span>
+              <span className="footnote font-normal text-[#ACACAC]">Change Log</span>
             </div>
-            <div className='flex flex-col items-star gap-1'>
-              <p className="text-xs font-semibold">Company</p>
-              <p className="text-xs text-[#ACACAC]">About</p>
-              <p className="text-xs text-[#ACACAC]">Contact</p>
-              <p className="text-xs text-[#ACACAC]">Terms & Privacy</p>
+            <div className='flex flex-col items-star gap-2'>
+              <span className="footnote font-normal">Company</span>
+              <span className="footnote font-normal text-[#ACACAC]">About</span>
+              <span className="footnote font-normal text-[#ACACAC]">Contact</span>
+              <span className="footnote font-normal text-[#ACACAC]">Terms & Privacy</span>
             </div>
           </div>
           {/* Social icons placeholder */}
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex flex-col items-end gap-3">
             <div className=''>
-              <p className='text-xs text-[#ACACAC]'>🧑🏻‍💻 with ❤️ from Irvine and Santa Cruz</p>
+              <span className='footnote font-normal text-[#ACACAC]'>🧑🏻‍💻 with ❤️ from Irvine and Santa Cruz</span>
             </div>
             <div className='flex items-center gap-3'>
               <Image src='/github.svg' alt='Icon' width={18} height={18} />

@@ -26,8 +26,8 @@ export default function QuestionnaireForm() {
   }, []);
 
   return <>
-    <div className="flex flex-col mx-4 max-w-[800px] h-[100vh] bg-[F1EFED] w-full">
-      <ProgressBar index={page} total={Math.max(1, questions.length)} diagnosisState={diagnosisState} />
+    <div className="flex flex-col max-w-[1050px] mt-[140px] bg-[F1EFED]">
+      {/* <ProgressBar index={page} total={Math.max(1, questions.length)} diagnosisState={diagnosisState} /> */}
 
       {/* Tried my hardest to not use context here but i failed... */}
       <QuestionnaireCard questionsState={questionsState} page={page} diagnosisState={diagnosisState} handleBack={prevPage} handleNext={nextPage}/>
