@@ -42,6 +42,7 @@ export function convertQuestionsToLog(questions: (Question | null)[]): ChatLog {
 }
 
 export function convertEntryToQuestion(entry: ChatEntry): Question {
+  console.log('the entry', entry)
   const question = entry.content.split('\n')[0]
   const options = entry.content.split('\n').slice(1)
     .map((option: string): QuestionOption => {
@@ -104,7 +105,6 @@ export async function firstQuestion(): Promise<Question> {
 
 export async function continueChat(log: ChatLog): Promise<Question | Diagnosis> {
   const url = CONTINUE_CHAT_URL;
-
   const res = await fetch(url, {
     method: "POST",
     body: JSON.stringify(log),
