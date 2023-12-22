@@ -9,7 +9,6 @@ export default function HomePage() {
   return (
     <body className='text-[#202221] bg-[#F1EFED] relative'>
       <NavBar />
-
       <Hero />
 
       <section className='flex flex-col justify-center items-center py-32'>

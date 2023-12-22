@@ -1,7 +1,10 @@
+'use client'
 import Image from 'next/image';
-
+import { LongButton } from './Buttons';
+import Link from 'next/link';
 import '../styles/fonts.css';
 import './NavBar.css';
+import { usePathname } from 'next/navigation'
 
 function NavDropdown({ text, children }: { text: string, children?: React.ReactNode }) {
   return (
@@ -19,15 +22,25 @@ function NavDropdown({ text, children }: { text: string, children?: React.ReactN
 }
 
 export default function NavBar() {
+  const pathname = usePathname()
   return (
     <div className={`w-[100vw] fixed top-0 z-[999] px-5 bg-[#F1EFED]`}>
       <div className="flex justify-between items-center max-w-[1050px] mx-auto py-5 border-b border-[#D9D9D9]">
         <a href="./home">
           <Image priority={true} width={60} height={100} src="/poppyFull.svg" alt="Poppy" />
         </a>
-        <div className='flex flex-row gap-10'>
-          <NavDropdown text='Resources'></NavDropdown>
-          <NavDropdown text='Get Started'></NavDropdown>
+        <div className='flex flex-row gap-8'>
+          {/* <NavDropdown text='Resources'></NavDropdown>
+          <NavDropdown text='Get Started'></NavDropdown> */}
+          {pathname === '/home' ? 
+          <Link href="/">
+          <div className=" w-full rounded-md bg-gradient-to-r from-[#202221] via-[#202221] to-[#202221] p-[3px]">
+            <div className="flex h-full w-full items-center text-[#ffffff] font-medium text-sm justify-center bg-[#202221] back px-3 py-[7px]">
+              Screen Now
+            </div>
+          </div>
+          </Link>
+          : <></>}
         </div>
       </div>
     </div>
