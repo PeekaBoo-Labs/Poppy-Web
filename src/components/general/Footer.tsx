@@ -15,28 +15,28 @@ export default function Footer() {
           {/* Navigation links */}
           <div className='flex space-x-10 gap-2'>
             <div className='flex flex-col items-start gap-2'>
-              <span className="footnote font-normal">Resources</span>
-              <span className="footnote font-normal text-[#ACACAC]">Research</span>
-              <span className="footnote font-normal text-[#ACACAC]">Documentation</span>
-              <span className="footnote font-normal text-[#ACACAC]">FAQs</span>
+              <span className="subheadline font-normal">Resources</span>
+              <span className="subheadline font-normal text-[#ACACAC]">Research</span>
+              <span className="subheadline font-normal text-[#ACACAC]">Documentation</span>
+              <span className="subheadline font-normal text-[#ACACAC]">FAQs</span>
             </div>
             <div className='flex flex-col items-start gap-2'>
-              <span className="footnote font-normal">Product</span>
-              <span className="footnote font-normal text-[#ACACAC]">Poppy</span>
-              <span className="footnote font-normal text-[#ACACAC]">API</span>
-              <span className="footnote font-normal text-[#ACACAC]">Change Log</span>
+              <span className="subheadline font-normal">Product</span>
+              <span className="subheadline font-normal text-[#ACACAC]">Poppy</span>
+              <span className="subheadline font-normal text-[#ACACAC]">API</span>
+              <span className="subheadline font-normal text-[#ACACAC]">Change Log</span>
             </div>
             <div className='flex flex-col items-star gap-2'>
-              <span className="footnote font-normal">Company</span>
-              <span className="footnote font-normal text-[#ACACAC]">About</span>
-              <span className="footnote font-normal text-[#ACACAC]">Contact</span>
-              <span className="footnote font-normal text-[#ACACAC]">Terms & Privacy</span>
+              <span className="subheadline font-normal">Company</span>
+              <span className="subheadline font-normal text-[#ACACAC]">About</span>
+              <span className="subheadline font-normal text-[#ACACAC]">Contact</span>
+              <span className="subheadline font-normal text-[#ACACAC]">Terms & Privacy</span>
             </div>
           </div>
           {/* Social icons placeholder */}
           <div className="flex flex-col items-end gap-3">
             <div className=''>
-              <span className='footnote font-normal text-[#ACACAC]'>🧑🏻‍💻 with ❤️ from Irvine and Santa Cruz</span>
+              <span className='subheadline font-normal text-[#ACACAC]'>🧑🏻‍💻 with ❤️ from Irvine and Santa Cruz</span>
             </div>
             <div className='flex items-center gap-3'>
               <Image src='/github.svg' alt='Icon' width={18} height={18} />
