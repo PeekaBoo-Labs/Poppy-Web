@@ -28,9 +28,7 @@ h3 {
 }
 
 h4 {
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 2rem;
+    font-size: 3rem;
 }
 
 p {
@@ -45,6 +43,11 @@ h5 {
 
 .caption {
     font-size: 0.9rem;
+}
+
+.subheadline {
+    font-weight: 400;
+    font-size: 15px;
 }
 
 .title {

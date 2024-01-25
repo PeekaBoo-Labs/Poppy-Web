@@ -25,22 +25,36 @@ export default function NavBar() {
   const pathname = usePathname()
   return (
     <div className={`w-[100vw] fixed top-0 z-[999] px-5 bg-[#F1EFED]`}>
-      <div className="flex justify-between items-center max-w-[1050px] mx-auto py-5 border-b border-[#D9D9D9]">
-        <a href="./home">
-          <Image priority={true} width={60} height={100} src="/poppyFull.svg" alt="Poppy" />
+      <div className="flex justify-between items-center max-w-[1050px] mx-auto py-[30px] border-b border-[#D9D9D9]">
+        <a href="./home" className="flex flex-row gap-[10px]">
+          <Image priority={true} width={65.02} height={19} src="/poppyFull.svg" alt="Poppy" />
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="44" height="24" viewBox="0 0 44 24" fill="none">
+            <rect width="44" height="24" rx="12" fill="#202221"/>
+            <path d="M11.4141 8C11.6602 8 11.8164 8.10156 11.9102 8.33203L14.1484 13.7969H14.2422L16.4805 8.33203C16.5742 8.10156 16.7305 8 16.9766 8H17.9609C18.2383 8 18.3906 8.15234 18.3906 8.42969V15.5703C18.3906 15.8477 18.2383 16 17.9609 16H17.4297C17.1523 16 17 15.8477 17 15.5703V10.5039H16.9258L14.8516 15.6406C14.7578 15.8672 14.6016 15.9766 14.3555 15.9766H14.0352C13.7891 15.9766 13.6289 15.8672 13.5391 15.6406L11.4648 10.4922H11.3906V15.5703C11.3906 15.8477 11.2383 16 10.9609 16H10.4297C10.1523 16 10 15.8477 10 15.5703V8.42969C10 8.15234 10.1523 8 10.4297 8H11.4141Z" fill="#F1EFED"/>
+            <path d="M23.1211 14.2969H23.2031L25.1641 8.35156C25.2422 8.10938 25.4023 8 25.6523 8H26.3516C26.668 8 26.8086 8.19531 26.7031 8.49219L24.1758 15.6523C24.0938 15.8906 23.9375 16 23.6875 16H22.6328C22.3828 16 22.2266 15.8906 22.1445 15.6523L19.6211 8.49219C19.5156 8.19531 19.6562 8 19.9727 8H20.668C20.918 8 21.0781 8.10938 21.1562 8.35156L23.1211 14.2969Z" fill="#F1EFED"/>
+            <path d="M27.9287 8.42969C27.9287 8.15234 28.0811 8 28.3584 8H30.9287C32.7686 8 33.749 9.12109 33.749 10.6484C33.749 12.1875 32.7568 13.2969 30.9092 13.2969H29.3779V15.5703C29.3779 15.8477 29.2256 16 28.9482 16H28.3584C28.0811 16 27.9287 15.8477 27.9287 15.5703V8.42969ZM29.3779 12.1055H30.7139C31.792 12.1055 32.2725 11.5 32.2725 10.6484C32.2725 9.79687 31.792 9.21094 30.7061 9.21094H29.3779V12.1055Z" fill="#F1EFED"/>
+          </svg>
         </a>
-        <div className='flex flex-row gap-8'>
-          {/* <NavDropdown text='Resources'></NavDropdown>
-          <NavDropdown text='Get Started'></NavDropdown> */}
-          {pathname === '/home' ? 
-          <Link href="/">
-          <div className=" w-full rounded-md bg-gradient-to-r from-[#202221] via-[#202221] to-[#202221] p-[3px]">
-            <div className="flex h-full w-full items-center text-[#ffffff] font-medium text-sm justify-center bg-[#202221] back px-3 py-[7px]">
-              Screen Now
-            </div>
+        
+        <div className='flex flex-row gap-[35px]'>
+        <span className="subheadline">Past Screenings</span>
+
+          <div className="flex flex-row items-center gap-[7px]">
+            <span className="subheadline">Resources</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="6" viewBox="0 0 9 6" fill="none">
+              <path d="M4.50244 5.45361C4.22998 5.45361 4.01025 5.35693 3.78174 5.12402L0.608887 1.88525C0.446289 1.71387 0.367188 1.5249 0.367188 1.29199C0.367188 0.817383 0.753906 0.421875 1.22412 0.421875C1.46143 0.421875 1.68115 0.522949 1.86133 0.70752L4.51123 3.44531L7.14795 0.70752C7.32812 0.518555 7.54785 0.421875 7.78076 0.421875C8.25098 0.421875 8.6377 0.817383 8.6377 1.29199C8.6377 1.5249 8.56299 1.71826 8.396 1.88086L5.22754 5.12402C4.99902 5.35254 4.78369 5.45361 4.50244 5.45361Z" fill="#202221"/>
+            </svg>
           </div>
-          </Link>
-          : <></>}
+
+          <div className="flex flex-row items-center gap-[7px]">
+            <span className="subheadline">Get Started</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="6" viewBox="0 0 9 6" fill="none">
+              <path d="M4.50244 5.45361C4.22998 5.45361 4.01025 5.35693 3.78174 5.12402L0.608887 1.88525C0.446289 1.71387 0.367188 1.5249 0.367188 1.29199C0.367188 0.817383 0.753906 0.421875 1.22412 0.421875C1.46143 0.421875 1.68115 0.522949 1.86133 0.70752L4.51123 3.44531L7.14795 0.70752C7.32812 0.518555 7.54785 0.421875 7.78076 0.421875C8.25098 0.421875 8.6377 0.817383 8.6377 1.29199C8.6377 1.5249 8.56299 1.71826 8.396 1.88086L5.22754 5.12402C4.99902 5.35254 4.78369 5.45361 4.50244 5.45361Z" fill="#202221"/>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
