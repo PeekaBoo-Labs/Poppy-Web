@@ -12,8 +12,6 @@ import { Diagnosis } from "@/lib/types/diagnosis";
 
 import { LongButton } from "../Buttons";
 import ProgressBar from "../ProgressBar";
-import NextSteps from "../endscreen/NextSteps";
-import EducationItem from "../education/EducationItem";
 import EducationScrollView from "../education/EducationScrollView";
 
 export default function QuestionnaireCard({
@@ -148,27 +146,6 @@ export default function QuestionnaireCard({
               </div>
             </>
           )
-          // <>
-
-          //   <h5 className="text-center mb-4 px-10 font-[400] text-gray-400 mt-[70px]">Choose all that apply</h5>
-          //   <Title className="text-center mb-8 px-10">{questionObj.question}</Title>
-
-          //   <div className="flex flex-wrap justify-center items-center w-4/6 mx-auto">
-          //     {questionObj.options.map((option, index) => (
-          //       <QuestionInputOption
-          //         key={index}
-          //         text={option.content}
-          //         selected={option.selected}
-          //         onClick={() => {
-          //           option.selected = !option.selected
-          //           let newQuestions = [...questions]
-          //           newQuestions[page] = questionObj
-          //           setQuestions(newQuestions)
-          //         }}
-          //       />
-          //     ))}
-          //   </div>
-          // </>)
         }
       </motion.div>
     </AnimatePresence>
