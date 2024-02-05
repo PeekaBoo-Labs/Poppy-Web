@@ -15,7 +15,7 @@ function EducationScrollView({ feedback_list }) {
     <div>
       <p className="text-3xl font-medium">Break Down</p>
       <div className="relative">
-        <div className="overflow-y-auto relative max-h-[500px]" onScroll={handleScroll}>
+        <div className="overflow-y-auto relative max-h-[500px] pr-3" onScroll={handleScroll}>
           {feedback_list.map((feedback, index) => (
             <EducationItem
               key={index}
