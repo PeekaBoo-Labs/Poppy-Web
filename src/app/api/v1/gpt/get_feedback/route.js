@@ -7,7 +7,7 @@ const openai = new OpenAI({
 });
 
 const instructions = `You are an STI expert who will look at patients' STI screening questionnaire responses to explain why their STI screening responses correspond to a risk for a single or multiple STIs. For symptomatic questions please be detailed on why certain behaviors or symptoms point to an STI(s). For asymptomatic STIs, leverage sexual behavior to help educate users about the existence and possibilities of asymptomatic STIs. `
-let prompt1 = `Given the questionnaire questions and user responses, create a list of raw json objects that each explain how the user's response affects the risk to an sti in this format: { question: str, response: str, feedback: str, }: now here is the list:`
+let prompt1 = `Given the questionnaire questions and user responses, create a list of raw json objects that each explain how the user's response affects the risk to an sti in this format: { question: str, response: str, feedback: str, related_stis[str] }: now here is the list:`
 
 export async function POST(req){
     if(req.method !== 'POST'){
@@ -109,31 +109,41 @@ export async function POST(req){
 // Example api response: 
 {
     "feedback_list": [
-        {
-            "question": "Have you ever had unprotected sex?",
-            "response": "Yes",
-            "feedback": "Having unprotected sex increases the risk of contracting STIs, as it allows for direct contact with bodily fluids that may contain infections. It is important to always use barrier methods such as condoms to reduce the risk of STI transmission."
-        },
-        {
-            "question": "Have you ever had multiple sexual partners?",
-            "response": "Yes",
-            "feedback": "Having multiple sexual partners increases the risk of STI transmission, as it increases the likelihood of coming into contact with someone who has an infection. It is important to practice safe sex and get regular STI screenings if you have multiple partners."
-        },
-        {
-            "question": "Have you ever had a previous STI diagnosis?",
-            "response": "Yes",
-            "feedback": "Having a previous STI diagnosis indicates a higher risk for contracting STIs in the future. Some STIs can recur or increase the susceptibility to other infections. It is important to follow the prescribed treatment and take necessary precautions to prevent future infections."
-        },
-        {
-            "question": "Have you ever shared needles or drug paraphernalia?",
-            "response": "Yes",
-            "feedback": "Sharing needles or drug paraphernalia significantly increases the risk of contracting blood-borne infections such as HIV or Hepatitis B and C. It is crucial to avoid sharing needles and seek help for substance abuse to reduce the risk of STIs."
-        },
-        {
-            "question": "Have you experienced any unusual genital discharge, sores, or itching?",
-            "response": "Yes",
-            "feedback": "Experiencing unusual genital discharge, sores, or itching can be indicative of an STI. These symptoms may be caused by infections such as chlamydia, gonorrhea, herpes, or trichomoniasis. It is important to get tested and seek medical attention if you are experiencing these symptoms."
-        }
-    ]
+    {
+        "question": "Have you had unprotected sexual intercourse in the last 6 months?",
+        "response": "Yes",
+        "answered": true,
+        "feedback": "Having unprotected sexual intercourse increases the risk of contracting STIs. It is important to use barrier methods such as condoms to reduce the risk of transmission.",
+        "related_stis": ["Chlamydia", "Gonorrhea", "HIV", "Syphilis"]
+    },
+    {
+        "question": "Do you experience any unusual symptoms such as itching, discharge, or pain in the genital area?",
+        "response": "No",
+        "answered": true,
+        "feedback": "While not experiencing any unusual symptoms is a good sign, it is important to note that some STIs can be asymptomatic. Regular STI screenings are still recommended.",
+        "related_stis": []
+    },
+    {
+        "question": "Have you been diagnosed with an STI in the past?",
+        "response": "No",
+        "answered": true,
+        "feedback": "Not having been diagnosed with an STI in the past reduces the risk of having a current infection. However, it is still important to practice safe sex and get regular screenings.",
+        "related_stis": []
+    },
+    {
+        "question": "Have you had new or multiple sexual partners in the last year?",
+        "response": "Yes",
+        "answered": true,
+        "feedback": "Having new or multiple sexual partners increases the risk of exposure to STIs. It is important to use barrier methods and get regular screenings.",
+        "related_stis": ["Chlamydia", "Gonorrhea", "HIV", "Syphilis"]
+    },
+    {
+        "question": "Select any of the following symptoms you are currently experiencing: sores or bumps on the genitals or in the oral or rectal area, painful or burning urination, unusual discharge from the penis or vagina, unusual vaginal bleeding, sore, swollen lymph nodes, particularly in the groin area, and a rash, particularly on the trunk, hands, or feet.",
+        "response": "None of the above",
+        "answered": true,
+        "feedback": "Not experiencing any of the listed symptoms is a good sign. However, it is important to note that some STIs can be asymptomatic. Regular screenings are still recommended.",
+        "related_stis": []
+    }
+]
 }
 */
