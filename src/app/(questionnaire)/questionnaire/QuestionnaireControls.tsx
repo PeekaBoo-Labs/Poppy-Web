@@ -1,4 +1,4 @@
-import { LongButton } from "../Buttons";
+import { LongButton } from "../../../components/Buttons";
 import { type Diagnosis } from "@/lib/types/diagnosis";
 import { StateType } from "@/lib/types/types";
 export default function QuestionnaireControls({
@@ -13,12 +13,12 @@ export default function QuestionnaireControls({
   return (
     <div className="flex w-full">
       {diagnosis !== null ? <>
-      
+
       </> :
-      <>
-        <LongButton type="secondaryFull" onClick={handleBack}>Back</LongButton>
-        <LongButton type="primaryFull" onClick={handleNext}>Next</LongButton>
-      </> 
+        <>
+          <LongButton type="secondaryFull" onClick={handleBack}>Back</LongButton>
+          <LongButton type="primaryFull" onClick={handleNext}>Next</LongButton>
+        </>
       }
     </div>
   );

@@ -1,18 +1,18 @@
 import { type Question } from "@/lib/types/question";
-import Title from "../Title";
-import QuestionInputOption from "../QuestionOption";
+import Title from "../../../components/Title";
+import QuestionInputOption from "../../../components/QuestionOption";
 
 import { motion, AnimatePresence } from "framer-motion";
-import Dots from "../general/animated/dots";
+import Dots from "../../../components/general/animated/dots";
 
 import { type StateType } from "@/lib/types/types";
 
 import { useQuestionnaireContext } from "@/contexts/questionnaire-context";
 import { Diagnosis } from "@/lib/types/diagnosis";
 
-import { LongButton } from "../Buttons";
-import ProgressBar from "../ProgressBar";
-import EducationScrollView from "../education/EducationScrollView";
+import { LongButton } from "../../../components/Buttons";
+import ProgressBar from "../../../components/ProgressBar";
+import EducationScrollView from "../../../components/education/EducationScrollView";
 
 export default function QuestionnaireCard({
   questionsState,
@@ -84,9 +84,9 @@ export default function QuestionnaireCard({
                 </div>
                 <div className="flex flex-col justify-between px-5 flex-grow max-h-[600px]">
                   {/* <NextSteps /> */}
-                  <EducationScrollView feedback_list = {test_list}/>
+                  <EducationScrollView feedback_list={test_list} />
                   <div>
-                    <LongButton type="primaryFullNext" onClick={() => {}}>
+                    <LongButton type="primaryFullNext" onClick={() => { }}>
                       Next
                     </LongButton>
                   </div>
