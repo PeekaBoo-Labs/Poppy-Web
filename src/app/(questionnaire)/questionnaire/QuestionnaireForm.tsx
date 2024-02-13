@@ -6,33 +6,16 @@ import QuestionnaireControls from "./QuestionnaireControls"
 import QuestionnaireCard from "./QuestionnaireCard";
 
 import { useEffect } from "react";
+import AIContextProvider from "@/lib/ai/ai-context";
 
 export default function QuestionnaireForm() {
-  const {
-    pageState,
-    questionsState,
-    diagnosisState,
-    start,
-    prevPage,
-    nextPage
-  } = useQuestionnaireContext();
-
-  const [page,] = pageState;
-  const [questions,] = questionsState;
-
-  // First time appear, start the questionnaire
-  useEffect(() => {
-    start();
-  }, []);
-
   return <>
     <div className="flex flex-col max-w-[1050px] mt-[140px] bg-[F1EFED]">
       {/* <ProgressBar index={page} total={Math.max(1, questions.length)} diagnosisState={diagnosisState} /> */}
 
-      {/* Tried my hardest to not use context here but i failed... */}
-      <QuestionnaireCard questionsState={questionsState} page={page} diagnosisState={diagnosisState} handleBack={prevPage} handleNext={nextPage}/>
-      
-      {/* <QuestionnaireControls loading={questions[page] === null} handleBack={prevPage} handleNext={nextPage} diagnosisState={diagnosisState}/> */}
+      <AIContextProvider>
+        <QuestionnaireCard />
+      </AIContextProvider>
     </div>
   </>
 }

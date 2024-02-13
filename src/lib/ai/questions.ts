@@ -1,7 +1,7 @@
 export enum STI {
   Chlamydia = "Chlamydia",
   Gonorrhoea = "Gonorrhoea",
-  GenitalWarts = "GenitalWarts",
+  GenitalWarts = "Genital Warts",
   Syphilis = "Syphilis",
 }
 
@@ -42,7 +42,7 @@ export type QuestionInput = {
   value: number,
 }
 
-enum WeightType {
+export enum WeightType {
   Additive = "Additive",
   Multiplicative = "Multiplicative",
   Exponential = "Exponential",
@@ -53,6 +53,11 @@ export type ScoreCalculation = {
   mul: number,
   exp: number,
 }
+
+export const getDefaultScore = (): ScoreCalculation => {
+  return { sum: 10, mul: 1, exp: 1 }
+}
+
 
 export const calculateScore = (scoreCalc: ScoreCalculation): number => {
   return (scoreCalc.sum * scoreCalc.mul) ** scoreCalc.exp
@@ -65,20 +70,19 @@ export type AIOutput = {
 }
 
 
-
 export interface Question {
   readonly label: string,
   readonly inputType: InputType,
   readonly inputOptions: QuestionInput[],
 
-  readonly selected?: string,
+  selected?: string,
 
   readonly weight: number,
   readonly weightType: WeightType,
   readonly riskFactors: Map<STI, number>,
   readonly tags: Tag[],
 
-  effects: (input: QuestionInput) => Effect[],
+  effects: (input: QuestionInput) => Array<Effect>,
 }
 
 const RISK_ALL_STI = (): Map<STI, number> => {
@@ -89,28 +93,41 @@ const RISK_ALL_STI = (): Map<STI, number> => {
   return riskFactors
 }
 
+const RISK_SET = (sti: STI, risk: number): Map<STI, number> => {
+  let riskFactors = new Map<STI, number>()
+  for (const sti of Object.values(STI)) {
+    riskFactors.set(sti, 1)
+  }
+  riskFactors.set(sti, risk)
+  return riskFactors
+}
+
+const RISK_MINUS = (sti: STI): Map<STI, number> => {
+  return RISK_SET(sti, 0)
+}
+
 export class Question_SexualActivity implements Question {
   label = "How many sexual partners have you had in the last 6 months?"
   inputType = InputType.SelectOne
   inputOptions = [
     { id: "NONE", label: "0", value: 0 },
-    { id: "2", label: "1-2", value: 1.5 },
-    { id: "3", label: "3-6", value: 4.5 },
-    { id: "4", label: "7-15", value: 11 },
-    { id: "5", label: "16+", value: 15 },
+    { id: "2", label: "1-2", value: 0.75 },
+    { id: "3", label: "3-6", value: 1.5 },
+    { id: "4", label: "7-15", value: 2.25 },
+    { id: "5", label: "16+", value: 3 },
   ]
   weight = 1
   weightType = WeightType.Multiplicative
   riskFactors = RISK_ALL_STI()
   tags = [Tag.Behavioral]
 
-  effects = (input: QuestionInput) => {
+  effects = (input: QuestionInput): Effect[] => {
     if (input.id === "NONE")
       return [{ type: EffectType.End, payload: [], reason: EndReason.NoSex }]
 
     return [{
       type: EffectType.AddQuestion,
-      question: [
+      questions: [
         new Question_UnsafeSexRate(),
       ],
     }]
@@ -121,17 +138,17 @@ class Question_UnsafeSexRate implements Question {
   label = "How often do you use protection during sex?"
   inputType = InputType.SelectOne
   inputOptions = [
-    { id: "1", label: "Never", value: 1.2 },
-    { id: "2", label: "Rarely", value: 1.15 },
+    { id: "1", label: "Never", value: 1.1 },
+    { id: "2", label: "Rarely", value: 1.01 },
     { id: "4", label: "Most of the time", value: 1 },
-    { id: "ALWAYS", label: "Always", value: 0.7 },
+    { id: "ALWAYS", label: "Always", value: 0.4 },
   ]
   weight = 1
   weightType = WeightType.Exponential
   riskFactors = RISK_ALL_STI()
   tags = [Tag.Behavioral]
 
-  effects = (input: QuestionInput) => {
+  effects = (input: QuestionInput): Effect[] => {
     let addedQuestions: Question[] = [
       new Question_SharingUnwashedToys(),
       new Question_InfectedSemenInEye(),
@@ -146,7 +163,7 @@ class Question_UnsafeSexRate implements Question {
 
     return [{
       type: EffectType.AddQuestion,
-      question: addedQuestions,
+      questions: addedQuestions,
     }]
   }
 }
@@ -160,11 +177,7 @@ class Question_UnprotectedContact implements Question {
   ]
   weight = 1
   weightType = WeightType.Additive
-  riskFactors = new Map([
-    [STI.Chlamydia, 1],
-    [STI.Gonorrhoea, 1],
-    [STI.Syphilis, 1]
-  ])
+  riskFactors = RISK_MINUS(STI.Gonorrhoea)
   tags = [Tag.Behavioral]
 
   effects = () => []
@@ -194,11 +207,7 @@ class Question_InfectedSemenInEye implements Question {
   ]
   weight = 1
   weightType = WeightType.Additive
-  riskFactors = new Map([
-    [STI.Chlamydia, 1],
-    [STI.Gonorrhoea, 1],
-    [STI.Syphilis, 1],
-  ])
+  riskFactors = RISK_MINUS(STI.GenitalWarts)
   tags = [Tag.Behavioral]
 
   effects = () => []
@@ -213,10 +222,7 @@ class Question_OralSex implements Question {
   ]
   weight = 1
   weightType = WeightType.Additive
-  riskFactors = new Map([
-    [STI.GenitalWarts, 1],
-    [STI.Syphilis, 1],
-  ])
+  riskFactors = RISK_SET(STI.GenitalWarts, 0.2)
   tags = [Tag.Behavioral]
 
   effects = () => []
@@ -235,7 +241,7 @@ class Question_ReproductiveOrgan implements Question {
   riskFactors = new Map()
   tags = [Tag.Behavioral]
 
-  effects = (input: QuestionInput) => {
+  effects = (input: QuestionInput): Effect[] => {
     if (input.id === "MALE") {
       return [{
         type: EffectType.PruneTags,
