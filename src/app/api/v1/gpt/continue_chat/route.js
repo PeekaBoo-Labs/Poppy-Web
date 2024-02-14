@@ -15,7 +15,6 @@ const DIAGNOSIS_PROMPT = `${"Utilizing all the information shared by the user, y
     '- 20% probability of Chlamydia\n' +
     '\n'}`;
 export async function POST(req) {
-
     if (req.method === 'POST') {
         const rawData = await req.body.getReader().read();
         const bodyString = new TextDecoder().decode(rawData.value);
