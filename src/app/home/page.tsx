@@ -48,7 +48,7 @@ export default function HomePage() {
 
           <div className='p-10 flex flex-col gap-4 rounded-[20px] border-[1px] border-[#20222121]'>
             <h1 className="text-2xl">API</h1>
-            <p>Our API provides developers with robust access to Poppy's functionalities. Designed for seamless integration, it enables external applications to leverage our advanced tools for diagnosis, and management.</p>
+            <p>Our API provides developers with robust access to Poppy&apos;s functionalities. Designed for seamless integration, it enables external applications to leverage our advanced tools for diagnosis, and management.</p>
 
             <span className="flex gap-2 mt-2 items-center">
               Learn More

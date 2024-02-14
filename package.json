@@ -13,7 +13,7 @@
     "autoprefixer": "10.4.14",
     "dotenv": "^16.3.1",
     "encoding": "^0.1.13",
-    "eslint": "8.45.0",
+    "eslint": "latest",
     "eslint-config-next": "13.4.12",
     "express-async-handler": "^1.2.0",
     "framer-motion": "^10.16.4",

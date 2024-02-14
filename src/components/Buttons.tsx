@@ -72,7 +72,7 @@ export function LongButton({
       )}
 
       {type === "primaryFullNext" && (
-          <div
+        <div
           className="flex-grow flex flex-row justify-between px-4 py-2 m-1 bg-[#202221] rounded-[13px] border-[1.5px] border-black select-none cursor-pointer"
           onClick={onClick}
         >

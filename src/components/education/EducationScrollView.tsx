@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import EducationItem from './EducationItem';
 
-function EducationScrollView({ feedback_list }) {
+function EducationScrollView({ feedback_list }: { feedback_list: any[] }) {
   const [isBottom, setIsBottom] = useState(false);
 
-  const handleScroll = useCallback((e) => {
+  const handleScroll = useCallback((e: any) => {
     const target = e.currentTarget; // Use currentTarget for consistency
     // Adjust the calculation to account for possible fractional values by rounding
     const bottomReached = Math.ceil(target.scrollTop + target.clientHeight) >= target.scrollHeight;

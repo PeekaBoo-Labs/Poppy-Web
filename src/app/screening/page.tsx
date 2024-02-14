@@ -99,7 +99,7 @@ export default function Test() {
         </div>
 
         <Caption className="flex justify-center align-center text-center text-[#262626] opacity-50 mt-16 mb-4 px-4">By
-          clicking send you'll receive occasional emails from Poppy. You always have the choice to unsubscribe within every
+          clicking send you&apos;ll receive occasional emails from Poppy. You always have the choice to unsubscribe within every
           email you receive.</Caption>
 
       </div>

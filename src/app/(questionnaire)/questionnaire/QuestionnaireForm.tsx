@@ -1,11 +1,6 @@
 'use client'
 
-import { useQuestionnaireContext } from "@/contexts/questionnaire-context"
-import ProgressBar from "@/components/ProgressBar"
-import QuestionnaireControls from "./QuestionnaireControls"
 import QuestionnaireCard from "./QuestionnaireCard";
-
-import { useEffect } from "react";
 import AIContextProvider from "@/lib/ai/ai-context";
 
 export default function QuestionnaireForm() {
