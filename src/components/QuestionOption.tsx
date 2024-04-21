@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion';
-import { accent } from '@/lib/constants/colors';
+import { cn } from "@/lib/utils";
 
 export default function QuestionInputOption({
   text, selected, onClick
@@ -9,22 +8,18 @@ export default function QuestionInputOption({
   onClick: () => void
 }) {
   return (
-    <motion.button
-      animate={{
-        backgroundColor: selected ? '#FFCC00' : '#F1EFED',
-        color: '#262626',
-        borderColor: selected ? '#FFCC00' : 'rgb(209 213 219)',
-      }}
-      whileHover={{
-        y: -1,
-        borderColor: '#FFCC00',
-        color: selected ? '#262626': '#FFCC00'
-      }}
-      initial={false}
+    <button
       onClick={onClick}
-      className={`px-4 py-3 m-1 rounded-[13px] border-[1.5px] select-none cursor-pointer`}
+      className={cn(
+        "group relative px-[16px] py-[13px] rounded-[13px] min-w-[75px]",
+        selected ? 'bg-accent' : 'hover:text-accent-darker'
+      )}
     >
-      <p className="text-left">{text}</p>
-    </motion.button>
+      <div className={cn(
+        "absolute inset-0 rounded-[13px] border border-border group-hover:border-[2px] ",
+        selected ? 'border-accent' : 'group-hover:border-accent-darker'
+      )} />
+      {text}
+    </button>
   );
 }

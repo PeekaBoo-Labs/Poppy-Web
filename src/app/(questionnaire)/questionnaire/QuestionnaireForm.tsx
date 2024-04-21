@@ -5,9 +5,8 @@ import AIContextProvider from "@/lib/ai/ai-context";
 
 export default function QuestionnaireForm() {
   return <>
-    <div className="flex flex-col max-w-[1050px] mt-[140px] bg-[F1EFED]">
+    <div className="mt-[105px] flex flex-grow flex-col">
       {/* <ProgressBar index={page} total={Math.max(1, questions.length)} diagnosisState={diagnosisState} /> */}
-
       <AIContextProvider>
         <QuestionnaireCard />
       </AIContextProvider>

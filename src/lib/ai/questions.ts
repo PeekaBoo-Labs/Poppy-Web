@@ -106,8 +106,13 @@ const RISK_MINUS = (sti: STI): Map<STI, number> => {
   return RISK_SET(sti, 0)
 }
 
+const RISK_NONE = (): Map<STI, number> => {
+  return new Map()
+}
+
 export class Question_SexualActivity implements Question {
-  label = "How many sexual partners have you had in the last 6 months?"
+  // label = "How many sexual partners have you had in the last 6 months?"
+  label = "this is a test question for development purposes"
   inputType = InputType.SelectOne
   inputOptions = [
     { id: "NONE", label: "0", value: 0 },
@@ -238,7 +243,7 @@ class Question_ReproductiveOrgan implements Question {
   ]
   weight = 0
   weightType = WeightType.Additive
-  riskFactors = new Map()
+  riskFactors = RISK_NONE()
   tags = [Tag.Behavioral]
 
   effects = (input: QuestionInput): Effect[] => {
@@ -257,3 +262,32 @@ class Question_ReproductiveOrgan implements Question {
     }
   }
 }
+
+// // Question that isn't scored just used to skip a category of questions
+// class Question_AnyBumpsOrSores implements Question {
+//   label = "Do you have any visible bumps or sores in your genital area, face, or mouth?"
+//   inputType: InputType = InputType.SelectOne
+//   inputOptions = [
+//     { id: "YES", label: "Yes", value: 1 },
+//     { id: "NO", label: "No", value: 1 },
+//   ]
+//   weight = 0
+//   weightType = WeightType.Additive
+//   riskFactors = RISK_NONE()
+//   tags = [Tag.Symptom]
+
+//   effects = (input: QuestionInput): Effect[] => {
+//     if (input.id === "YES") {
+//       return [{
+//         type: EffectType.AddQuestion,
+//         questions: [
+//           new Question_PainlessGenitalSores(),
+//           new Question_
+//           new 
+//         ],
+//       }]
+//     }
+//   }
+// }
+
+// class Question_

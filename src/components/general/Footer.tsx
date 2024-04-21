@@ -4,16 +4,16 @@ import Image from "next/image"
 
 export default function Footer() {
   return (
-    <footer className='w-full flex-grow flex justify-center bg-[#F1EFED]'>
-      <div className='flex flex-col items-center max-w-[1050px] w-full font-black'>
+    <footer className='flex h-[234px] w-full justify-center bg-[#F1EFED] py-[60px]'>
+      <div className='flex w-full flex-col items-center font-black'>
         {/* Upper section for logo and navigation links */}
-        <div className='flex justify-between w-full py-[70px]'>
+        <div className='flex w-full justify-between'>
           {/* Placeholder for the logo */}
-          <div className='flex align-top items-start'>
+          <div className='flex items-start align-top'>
             <Image src='/poppyPLogo.svg' alt='Logo' width={15} height={15} />
           </div>
           {/* Navigation links */}
-          <div className='flex space-x-10 gap-2'>
+          <div className='flex gap-2 space-x-10'>
             <div className='flex flex-col items-start gap-2'>
               <span className="subheadline font-normal">Resources</span>
               <span className="subheadline font-normal text-[#ACACAC]">Research</span>
@@ -26,7 +26,7 @@ export default function Footer() {
               <span className="subheadline font-normal text-[#ACACAC]">API</span>
               <span className="subheadline font-normal text-[#ACACAC]">Change Log</span>
             </div>
-            <div className='flex flex-col items-star gap-2'>
+            <div className='items-star flex flex-col gap-2'>
               <span className="subheadline font-normal">Company</span>
               <span className="subheadline font-normal text-[#ACACAC]">About</span>
               <span className="subheadline font-normal text-[#ACACAC]">Contact</span>

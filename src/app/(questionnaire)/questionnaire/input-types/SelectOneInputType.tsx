@@ -7,7 +7,7 @@ export default function SelectOneInputType({ inputOptions, answer, setAnswer }: 
   setAnswer: (answer: string) => void
 }) {
   return (
-    <div className="flex flex-col gap-1 ">
+    <div className="flex flex-wrap gap-[13px]">
       {
         inputOptions.map(option => (
           <QuestionInputOption

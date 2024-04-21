@@ -5,11 +5,9 @@ import QuestionnaireForm from '@/app/(questionnaire)/questionnaire/Questionnaire
 export default function Home() {
 
   return (
-    <div className="flex flex-col justify-between items-center h-screen bg-[#F1EFED]">
+    <div className='mx-auto flex h-full max-w-[1300px] flex-col'>
       <NavBar />
-      <div className="flex-grow">
-        <QuestionnaireForm />
-      </div>
+      <QuestionnaireForm />
       <Footer />
     </div>
   );

@@ -18,7 +18,7 @@ export function LongButton({
     <>
       {type === "secondary" && (
         <div
-          className="px-7 py-2.5 m-1 select-none cursor-pointer"
+          className="m-1 cursor-pointer select-none px-7 py-2.5"
           onClick={onClick}
         >
           {prefix}
@@ -29,55 +29,55 @@ export function LongButton({
 
       {type === "primary" && (
         <div
-          className="px-7 py-2.5 m-1 bg-[#262626] rounded-[13px] select-none cursor-pointer"
+          className="m-1 cursor-pointer select-none rounded-[13px] bg-[#262626] px-7 py-2.5"
           onClick={onClick} // Pass the onClick handler here
         >
           {prefix}
-          <h4 className="text-center text-[#F7F7F7] font-[500]">{children}</h4>
+          <h4 className="text-center font-[500] text-[#F7F7F7]">{children}</h4>
           {suffix}
         </div>
       )}
 
       {type === "primaryFull" && (
         <div
-          className="flex-grow justify-between px-[3px] py-[9px] m-1 bg-[#262626] rounded-[13px] border-[1.5px] border-black select-none cursor-pointer"
+          className="m-1 flex-grow cursor-pointer select-none justify-between rounded-[13px] border-[1.5px] border-black bg-[#262626] px-[3px] py-[9px]"
           onClick={onClick}
         >
           {prefix}
-          <h4 className="text-center text-[#F7F7F7] font-[400]">{children}</h4>
+          <h4 className="text-center font-[400] text-[#F7F7F7]">{children}</h4>
           {suffix}
         </div>
       )}
 
       {type === "secondaryFull" && (
         <div
-          className="flex-grow justify-between px-[9px] py-[9px] m-1 select-none cursor-pointer"
+          className="m-1 flex-grow cursor-pointer select-none justify-between px-[9px] py-[9px]"
           onClick={onClick}
         >
           {prefix}
-          <h4 className="text-center text-[#262626] font-[400]">{children}</h4>
+          <h4 className="text-center font-[400] text-[#262626]">{children}</h4>
           {suffix}
         </div>
       )}
 
       {type === "secondaryFullBack" && (
         <div
-          className="flex-grow flex flex-row px-4 py-2.5 justify-center align-middle items-center min-w-5  m-1 rounded-xl border-[1.5px] select-none cursor-pointer border-[#D9D9D9]"
+          className="min-w-5 m-1 flex flex-grow cursor-pointer select-none flex-row items-center justify-center rounded-xl border-[1.5px] border-[#D9D9D9] px-4 py-2.5 align-middle"
           onClick={onClick}
         >
           {prefix}
-          <h4 className="text-left text-[#FFFFFF] font-[400]">{children}</h4><img className='w-4 min-w-4 h-7' src={'arrowBack.svg'}></img>
+          <h4 className="text-left font-[400] text-[#FFFFFF]">{children}</h4><img className='min-w-4 h-7 w-4' src={'arrowBack.svg'}></img>
           {suffix}
         </div>
       )}
 
       {type === "primaryFullNext" && (
         <div
-          className="flex-grow flex flex-row justify-between px-4 py-2 m-1 bg-[#202221] rounded-[13px] border-[1.5px] border-black select-none cursor-pointer"
+          className="m-1 flex flex-grow cursor-pointer select-none flex-row justify-between rounded-[13px] border-[1.5px] border-black bg-[#202221] px-4 py-2"
           onClick={onClick}
         >
           {prefix}
-          <h4 className="text-left text-[#FFFFFF] font-[400]">{children}</h4> <img className='w-4' src={'arrowRight.svg'}></img>
+          <h4 className="text-left font-[400] text-[#FFFFFF]">{children}</h4> <img className='w-4' src={'arrowRight.svg'}></img>
           {suffix}
         </div>
       )}
