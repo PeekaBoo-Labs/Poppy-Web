@@ -10,7 +10,7 @@ module.exports = {
       xs: ['14px', '1.5em'],
       sm: ['15px', '1.5em'],
       base: ['16px', '1.6em'],
-      lg: ['1px', '1.6em'],
+      lg: ['17px', '1.6em'],
       'xl': ['21px', '1.5em'],
       '2xl': ['29px', '1.3em'],
       '3xl': ['39px', '1.3em']

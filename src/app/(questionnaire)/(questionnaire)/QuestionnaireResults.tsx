@@ -1,62 +1,48 @@
-import { LongButton } from "@/components/Buttons";
-import EducationScrollView from "@/components/education/EducationScrollView";
-import Image from "next/image";
 import { useAIContext } from "@/lib/ai/ai-context";
 import { AIOutput } from "@/lib/ai/questions";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function QuestionnaireResults() {
 
-  const { calculateOutput } = useAIContext();
+  const router = useRouter();
 
+  const { calculateOutput, answeredQuestions } = useAIContext();
   const output: AIOutput = calculateOutput();
 
-  console.log("FROM THE VIEW", output)
+  const searchParams = useSearchParams();
+  const page: "overview" | "breakdown" | "nextsteps" | string | null = searchParams.get("tab");
+
+  if (answeredQuestions.length == 0) {
+    router.push("/");
+    return null;
+  }
 
   return (
-    <div className="flex flex-grow flex-row bg-[#F1EFED] w-[1050px] h-[600px] gap-4">
-      <div className="bg-[#FFCC00] rounded-[20px] p-10 text-left flex flex-col justify-between min-w-[55%] flex-grow">
-        <div>
-          <div className="title mb-[40px] text-left">
-            Based on screening results, you are at risk of contracting
-            the following STIs.
-          </div>
+    <div className="z-10 mx-auto w-[calc(100%-50px)] flex-grow rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic">
+      <div className="flex h-full w-full gap-[60px] rounded-[13px] border border-border p-[48px]">
+        <div className="flex flex-col gap-[16px]">
+          <Link href={"?tab=overview"} className={cn("text-left", page == "overview" || page == null ? "" : "text-secondary")}>Overview</Link>
+          <Link href={"?tab=breakdown"} className={cn("text-left", page == "breakdown" ? "" : "text-secondary")}>Breakdown</Link>
+          <Link href={"?tab=nextsteps"} className={cn("text-left", page == "nextsteps" ? "" : "text-secondary")}>Next Steps</Link>
+        </div>
+        <div className="flex flex-grow flex-col gap-[20px] px-[60px]">
+          <h1 className="text-xl font-medium">Your screening results:</h1>
 
-          <div className="flex text-left">
-            <div>
-              <ul>
-                {<p>{JSON.stringify(output)}</p>}
-                {
-                  [...output.risks.entries()].map(([sti, value]) => {
-                    return (
-                      <li key={sti}>
-                        <p className="mb-2">
-                          <span className="title font-medium">
-                            {value.toFixed(0)}
-                          </span>
-                          % chance of {sti}
-                        </p>
-                      </li>
-                    );
-                  })}
-              </ul>
-            </div>
+          <div className="flex flex-col">
+            {
+              Array.from(output.risks).toSorted((a, b) => b[1] - a[1]).map(([sti, score]) => {
+                return (
+                  <div key={sti} className="flex items-center gap-[16px]">
+                    <h2 className="text-md font-medium">{sti}</h2>
+                    <p className="text-base">{score}</p>
+                  </div>
+                )
+              })
+            }
           </div>
-        </div>
-        <div className="flex flex-row gap-2">
-          <p className="footnote">
-            Poppy’s recommendations are based on the data provided and
-            should be confirmed with further medical consultation.
-          </p>
-          <Image src="sample_qr.svg" alt="" width={500} height={500} />
-        </div>
-      </div>
-      <div className="flex flex-col justify-between px-5 flex-grow max-h-[600px]">
-        {/* <NextSteps /> */}
-        <EducationScrollView feedback_list={test_list} />
-        <div>
-          <LongButton type="primaryFullNext" onClick={() => { }}>
-            Next
-          </LongButton>
         </div>
       </div>
     </div>

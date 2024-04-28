@@ -55,7 +55,7 @@ export type ScoreCalculation = {
 }
 
 export const getDefaultScore = (): ScoreCalculation => {
-  return { sum: 10, mul: 1, exp: 1 }
+  return { sum: 0, mul: 1, exp: 1 }
 }
 
 
@@ -111,8 +111,8 @@ const RISK_NONE = (): Map<STI, number> => {
 }
 
 export class Question_SexualActivity implements Question {
-  // label = "How many sexual partners have you had in the last 6 months?"
-  label = "this is a test question for development purposes"
+  label = "How many sexual partners have you had in the last 6 months?"
+  // label = "this is a test question for development purposes"
   inputType = InputType.SelectOne
   inputOptions = [
     { id: "NONE", label: "0", value: 0 },

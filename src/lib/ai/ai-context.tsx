@@ -35,15 +35,15 @@ export default function AIContextProvider({ children }: { children: React.ReactN
 
   const answerQuestion = (answer: QuestionInput): Question => {
     let current = getTopQuestion() ?? raise("Answering without a question!")
-
     let effects = current.effects(answer)
-
     let newQuestionStack = questionsStack.slice(1)
+
+    setQuestionsLeft(l => l - 1)
 
     for (const effect of effects) {
       if (effect.type === EffectType.AddQuestion) {
         newQuestionStack = [...effect.questions ?? [], ...newQuestionStack]
-        setQuestionsLeft(newQuestionStack.length)
+        setQuestionsLeft(l => l + newQuestionStack.length)
       }
       else if (effect.type === EffectType.End) {
         setQuestionsLeft(0)
@@ -83,6 +83,7 @@ export default function AIContextProvider({ children }: { children: React.ReactN
 
       const score = selectedAnswer.value * question.weight
 
+
       if (question.weightType === WeightType.Additive) {
         if (question.tags.includes(Tag.Behavioral))
           behavioral.sum += score
@@ -119,8 +120,6 @@ export default function AIContextProvider({ children }: { children: React.ReactN
       symptomatic: calculateScore(symptomatic),
       risks: new Map([...risks].map(([sti, score]) => [sti, calculateScore(score)]))
     }
-
-    console.log(output)
 
     return output
   }

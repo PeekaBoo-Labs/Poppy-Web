@@ -7,9 +7,7 @@ export default function QuestionnaireForm() {
   return <>
     <div className="mt-[105px] flex flex-grow flex-col">
       {/* <ProgressBar index={page} total={Math.max(1, questions.length)} diagnosisState={diagnosisState} /> */}
-      <AIContextProvider>
-        <QuestionnaireCard />
-      </AIContextProvider>
+      <QuestionnaireCard />
     </div>
   </>
 }

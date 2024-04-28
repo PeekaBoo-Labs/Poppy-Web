@@ -7,6 +7,8 @@ import { useAIContext } from "@/lib/ai/ai-context";
 import { Question } from "@/lib/ai/questions";
 import SelectOneInputType from "./input-types/SelectOneInputType";
 import QuestionnaireResults from "./QuestionnaireResults";
+import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export default function QuestionnaireCard() {
 
@@ -23,6 +25,8 @@ export default function QuestionnaireCard() {
   // If 0: show the current question; else show the previous questions
   const [page, setPage] = useState(0);
   const [answer, setAnswer] = useState<string>();
+
+  const router = useRouter();
 
   const handleBack = () => {
     setPage(Math.min(answeredQuestions.length, page + 1));
@@ -49,6 +53,12 @@ export default function QuestionnaireCard() {
 
   if (page === 0) {
     currentQuestion = getTopQuestion();
+
+    console.log(currentQuestion, questionsLeft, page)
+    if (!currentQuestion && questionsLeft == 0) {
+      router.push("/result");
+      return null;
+    }
   } else {
     currentQuestion = answeredQuestions[answeredQuestions.length - page];
   }
@@ -56,7 +66,7 @@ export default function QuestionnaireCard() {
   return (
     <>
       {
-        !currentQuestion ? <QuestionnaireResults /> :
+        !currentQuestion ? null :
           <div className="flex flex-grow flex-row gap-[40px]">
             <div className="z-10 w-[60%] rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic">
               <div className="grid h-full w-full place-content-center rounded-[13px] border border-border p-[135px]">
