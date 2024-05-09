@@ -30,7 +30,7 @@ export type Effect = {
   questions?: Question[];
 };
 
-enum InputType {
+export enum InputType {
   FreeText,
   SelectOne,
   MultiChoice,
@@ -267,6 +267,505 @@ class Question_ReproductiveOrgan implements Question {
     }
   };
 }
+
+class Question_SexFrequency implements Question {
+  label = "Sex Frequency";
+  inputType = InputType.SelectOne;
+  inputOptions = [{ id: "1", label: "Never", value: 0 }, { id: "2", label: "Rarely", value: 0.5 }, { id: "3", label: "Regularly", value: 1 }, { id: "4", label: "Frequently", value: 1.5 }, { id: "5", label: "Very frequently", value: 2 }];
+  weight = 1;
+  weightType = WeightType.Multiplicative;
+  riskFactors = new Map<STI, number>([[STI.Chlamydia, 1], [STI.Gonorrhoea, 1], [STI.GenitalWarts, 1], [STI.Syphilis, 1]]);
+  tags = [Tag.Behavioral];
+
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_UnprotectedSex implements Question {
+  label = "Unprotected Sex";
+  inputType = InputType.SelectOne;
+  inputOptions = [{ id: "1", label: "Yes", value: 1 }, { id: "2", label: "No", value: 0 }];
+  weight = 1;
+  weightType = WeightType.Multiplicative;
+  riskFactors = new Map<STI, number>([[STI.Chlamydia, 1], [STI.Gonorrhoea, 1], [STI.GenitalWarts, 1], [STI.Syphilis, 1]]);
+  tags = [Tag.Behavioral];
+
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_SharingUnwashedSexToys implements Question {
+  label = "Sharing Unwashed Sex Toys";
+  inputType = InputType.SelectOne;
+  inputOptions = [{ id: "1", label: "Yes", value: 1 }, { id: "2", label: "No", value: 0 }];
+  weight = 1;
+  weightType = WeightType.Multiplicative;
+  riskFactors = new Map<STI, number>([[STI.Chlamydia, 1], [STI.Gonorrhoea, 1], [STI.GenitalWarts, 1], [STI.Syphilis, 1]]);
+  tags = [Tag.Behavioral];
+
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_InfectedSemeninEye implements Question {
+  label = "Infected Semen in Eye";
+  inputType = InputType.SelectOne;
+  inputOptions = [{ id: "1", label: "Yes", value: 1 }, { id: "2", label: "No", value: 0 }];
+  weight = 1;
+  weightType = WeightType.Multiplicative;
+  riskFactors = new Map<STI, number>([[STI.Chlamydia, 1], [STI.Gonorrhoea, 1], [STI.GenitalWarts, 0], [STI.Syphilis, 1]]);
+  tags = [Tag.Behavioral];
+
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+// men questions 
+class Question_PainWhenPeeing implements Question {
+  label = "Do you experience pain when peeing?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 2],
+    [STI.Gonorrhoea, 2],
+    [STI.GenitalWarts, 2],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_UnusualDischargeFromPenis implements Question {
+  label = "Do you have any unusual discharge from your penis?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 2],
+    [STI.Gonorrhoea, 2],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom, Tag.Male];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_UnusualDischargeFromBottom implements Question {
+  label = "Do you have any unusual discharge from your bottom?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 2],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_GreenOrYellowDischarge implements Question {
+  label = "Do you have green or yellow discharge?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 2],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_PainInPenis implements Question {
+  label = "Do you experience pain in your penis?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 2],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom, Tag.Male];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_SwellingInPenis implements Question {
+  label = "Do you have any swelling in your penis?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 2],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom, Tag.Male];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_BloodPeeing implements Question {
+  label = "Do you ever see blood in your pee?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 2],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_ItchingOrBleedingInGenitalsOrAnus implements Question {
+  label = "Do you experience itching or bleeding in your genitals or anus?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 3],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_PainlessSoresInGenitalArea implements Question {
+  label = "Do you have painless sores in your genital area?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 3]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_SoresInMouthOrHands implements Question {
+  label = "Do you have sores in your mouth or on your hands?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 3]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_SoresInBottom implements Question {
+  label = "Do you have sores in your bottom area?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 3]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_WhiteOrGreyWartyGrowths implements Question {
+  label = "Do you have any white or grey warty growths?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 3],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_NonItchyRashAllOverBody implements Question {
+  label = "Do you have a non-itchy rash all over your body, especially on hands and feet?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 3]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_WhitePatchesInMouth implements Question {
+  label = "Do you have white patches in your mouth?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 3]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_FluSymptoms implements Question {
+  label = "Do you have symptoms of the flu?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 3]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_SwollenGlands implements Question {
+  label = "Do you have swollen glands?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 3]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_PatchyHairLoss implements Question {
+  label = "Do you experience patchy hair loss on your head, beard, or eyebrows?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 0],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 3]
+  ]);
+  tags = [Tag.Symptom];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_UnusualDischargeFromVagina implements Question {
+  label = "Do you experience unusual discharge from your vagina?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 2],
+    [STI.Gonorrhoea, 2],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom, Tag.Female];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_PainInTummy implements Question {
+  label = "Do you experience pain in your tummy?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 2],
+    [STI.Gonorrhoea, 0],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom, Tag.Female];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_BleedingAfterSex implements Question {
+  label = "Do you experience bleeding after sex?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 2],
+    [STI.Gonorrhoea, 2],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom, Tag.Female];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
+class Question_BleedingBetweenPeriods implements Question {
+  label = "Do you experience bleeding between periods?";
+  inputType = InputType.SelectOne;
+  inputOptions = [
+    { id: "1", label: "Yes", value: 1 },
+    { id: "2", label: "No", value: 0 }
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = new Map<STI, number>([
+    [STI.Chlamydia, 2],
+    [STI.Gonorrhoea, 2],
+    [STI.GenitalWarts, 0],
+    [STI.Syphilis, 0]
+  ]);
+  tags = [Tag.Symptom, Tag.Female];
+  effects = (input: QuestionInput): Effect[] => {
+    return [];
+  };
+}
+
 
 // // Question that isn't scored just used to skip a category of questions
 // class Question_AnyBumpsOrSores implements Question {
