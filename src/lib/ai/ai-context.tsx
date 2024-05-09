@@ -57,8 +57,13 @@ export default function AIContextProvider({
     setQuestionsLeft((l) => l - 1);
 
     for (const effect of effects) {
-      if (effect.type === EffectType.AddQuestion) {
-        newQuestionStack = [...(effect.questions ? effect.questions.filter(question => prunedTags.some(tag => question.tags.includes(tag)) ?? [])), ...newQuestionStack];
+      if (effect.type === EffectType.AddQuestion && effect.questions) {
+        newQuestionStack = [
+          ...effect.questions.filter((question) =>
+            prunedTags.some((tag) => question.tags.includes(tag)),
+          ),
+          ...newQuestionStack,
+        ];
         setQuestionsLeft((l) => l + newQuestionStack.length);
       } else if (effect.type === EffectType.End) {
         setQuestionsLeft(0);
