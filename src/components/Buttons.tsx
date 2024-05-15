@@ -66,7 +66,7 @@ export function LongButton({
           onClick={onClick}
         >
           {prefix}
-          <h4 className="text-left font-[400] text-[#FFFFFF]">{children}</h4><img className='min-w-4 h-7 w-4' src={'arrowBack.svg'}></img>
+          <h4 className="text-left font-[400] text-[#FFFFFF]">{children}</h4><img className='min-w-4 h-7 w-4' src={'arrowBack.svg'} alt=""></img>
           {suffix}
         </div>
       )}
@@ -77,7 +77,7 @@ export function LongButton({
           onClick={onClick}
         >
           {prefix}
-          <h4 className="text-left font-[400] text-[#FFFFFF]">{children}</h4> <img className='w-4' src={'arrowRight.svg'}></img>
+          <h4 className="text-left font-[400] text-[#FFFFFF]">{children}</h4> <img className='w-4' src={'arrowRight.svg'} alt=""></img>
           {suffix}
         </div>
       )}

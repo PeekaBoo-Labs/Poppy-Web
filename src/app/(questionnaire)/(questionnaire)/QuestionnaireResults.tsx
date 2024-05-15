@@ -10,6 +10,7 @@ export default function QuestionnaireResults() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
+
   const page: "overview" | "breakdown" | "nextsteps" | string | null = searchParams.get("tab");
 
   const { answeredQuestions } = useAIContext();

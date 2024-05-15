@@ -69,19 +69,17 @@ export default function Home() {
     };
   }, [mousePosition]);
 
-  console.log(mousePosition, cardData);
-
   return (
-    <div className="flex flex-col justify-between items-center h-screen bg-[#F1EFED] px-8">
+    <div className="flex h-screen flex-col items-center justify-between bg-[#F1EFED] px-8">
       <NavBar />
-      <div className="flex flex-col items-center justify-center flex-grow">
+      <div className="flex flex-grow flex-col items-center justify-center">
         <span>{mousePosition}</span>
         <span>{ }</span>
         <div className='relative flex items-center justify-center' style={{
           perspective: "1000px",
         }}>
           {
-            cardData.toReversed().map((card, i) => {
+            cardData.reverse().map((card, i) => {
               return <FlipCard key={card.id} state={i == 2 ? mousePosition : i == 1 ? "second" : "third"}>
                 {card.title}
               </FlipCard>
