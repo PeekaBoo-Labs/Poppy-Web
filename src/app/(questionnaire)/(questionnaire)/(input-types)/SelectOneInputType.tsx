@@ -1,5 +1,5 @@
 import QuestionInputOption from "@/components/QuestionOption";
-import type { Question, QuestionInput } from "@/lib/ai/question";
+import type { QuestionInput } from "@/lib/ai/question";
 
 export default function SelectOneInputType({ inputOptions, answer, setAnswer }: {
   inputOptions: QuestionInput[],
