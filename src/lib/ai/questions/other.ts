@@ -27,7 +27,7 @@ class Question_FluSymptoms implements Question {
 }
 
 class Question_SwollenGlands implements Question {
-  label = "Do you have swollen glands?";
+  label = "Do you have swollen glands or lymph nodes?";
   inputType = InputType.SelectOne;
   inputOptions = [
     { id: "1", label: "Yes", value: 1 },

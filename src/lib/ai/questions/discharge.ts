@@ -68,7 +68,7 @@ class Question_UnusualDischargeFromBottom implements Question {
 }
 
 class Question_GreenOrYellowDischarge implements Question {
-  label = "Do you have green or yellow discharge?";
+  label = "Do you have unusual white, green, or yellow discharge?";
   inputType = InputType.SelectOne;
   inputOptions = [
     { id: "1", label: "Yes", value: 1 },
@@ -77,8 +77,8 @@ class Question_GreenOrYellowDischarge implements Question {
   weight = 1;
   weightType = WeightType.Additive;
   riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 0],
-    [STI.Gonorrhoea, 2],
+    [STI.Chlamydia, 3],
+    [STI.Gonorrhoea, 3],
     [STI.GenitalWarts, 0],
     [STI.Syphilis, 0],
   ]);
