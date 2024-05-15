@@ -20,6 +20,8 @@ export default function QuestionnaireResults() {
     return null;
   }
 
+  console.log(answeredQuestions)
+
   return (
     <div className="z-10 mx-auto w-[calc(100%-50px)] flex-grow rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic">
       <div className="flex h-full w-full gap-[60px] rounded-[13px] border border-border p-[48px]">

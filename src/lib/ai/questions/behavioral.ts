@@ -81,7 +81,7 @@ class Question_UnprotectedContact implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = RISK_MINUS(STI.Gonorrhoea);
+  riskFactors = RISK_ALL_STI();
   tags = [Tag.Behavioral];
 
   effects = () => [];
