@@ -1,5 +1,5 @@
 import { useAIContext } from "@/lib/ai/ai-context";
-import { AIOutput } from "@/lib/ai/questions";
+import { AIOutput } from "@/lib/ai/question";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";

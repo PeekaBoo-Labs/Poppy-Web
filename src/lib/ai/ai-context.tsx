@@ -11,10 +11,10 @@ import {
   ScoreCalculation,
   calculateScore,
   getDefaultScore,
-} from "./questions";
+} from "./question";
 import { createContext, useContext, useState } from "react";
 
-import { Question_SexualActivity } from "./questions";
+import { Question_SexualActivity } from "./questions/behavioral";
 
 type AIContextType = {
   questionsLeft: number;
@@ -34,7 +34,6 @@ export default function AIContextProvider({
   children: React.ReactNode;
 }) {
   const [questionsLeft, setQuestionsLeft] = useState(1);
-
   const [questionsStack, setQuestionsStack] = useState<Question[]>([
     new Question_SexualActivity(),
   ]);
@@ -67,11 +66,12 @@ export default function AIContextProvider({
             !prunedTags.some((tag) => question.tags.includes(tag)),
         );
 
-        newQuestionStack = [
-          ...newQuestionStack,
-          ...prunedQuestions,
-        ];
-        setQuestionsLeft((l) => l + newQuestionStack.length);
+        if (effect.type === EffectType.AddQuestion) {
+          newQuestionStack = newQuestionStack.concat(prunedQuestions);
+        } else {
+          newQuestionStack = prunedQuestions.concat(newQuestionStack);
+        }
+        setQuestionsLeft(newQuestionStack.length);
       } else if (effect.type === EffectType.End) {
         setQuestionsLeft(0);
       } else if (effect.type === EffectType.PruneTags) {

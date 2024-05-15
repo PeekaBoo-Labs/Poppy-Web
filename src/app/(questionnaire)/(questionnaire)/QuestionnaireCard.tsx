@@ -3,7 +3,7 @@ import { useState } from "react";
 import Dots from "../../../components/general/animated/dots";
 
 import { useAIContext } from "@/lib/ai/ai-context";
-import { Question } from "@/lib/ai/questions";
+import { Question } from "@/lib/ai/question";
 import { useRouter } from "next/navigation";
 import SelectOneInputType from "./input-types/SelectOneInputType";
 
