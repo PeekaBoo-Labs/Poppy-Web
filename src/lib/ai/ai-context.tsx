@@ -20,7 +20,7 @@ type AIContextType = {
   questionsLeft: number;
   answeredQuestions: Question[];
 
-  resetQuesitons: () => Question;
+  resetQuestions: () => Question;
   answerQuestion: (answer: QuestionInput) => Question;
   calculateOutput: () => AIOutput;
   getTopQuestion: () => Question | undefined;
@@ -57,12 +57,19 @@ export default function AIContextProvider({
     setQuestionsLeft((l) => l - 1);
 
     for (const effect of effects) {
-      if (effect.type === EffectType.AddQuestion && effect.questions) {
+      if (
+        (effect.type === EffectType.AddQuestion ||
+          effect.type === EffectType.InsertQuestion) &&
+        effect.questions
+      ) {
+        const prunedQuestions = effect.questions.filter(
+          (question) =>
+            !prunedTags.some((tag) => question.tags.includes(tag)),
+        );
+
         newQuestionStack = [
-          ...effect.questions.filter((question) =>
-            prunedTags.some((tag) => question.tags.includes(tag)),
-          ),
           ...newQuestionStack,
+          ...prunedQuestions,
         ];
         setQuestionsLeft((l) => l + newQuestionStack.length);
       } else if (effect.type === EffectType.End) {

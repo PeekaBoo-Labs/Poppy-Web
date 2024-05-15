@@ -16,6 +16,7 @@ export enum EffectType {
   PruneTags = "PruneTags",
   End = "End",
   AddQuestion = "AddQuestion",
+  InsertQuestion = "InsertQuestion",
 }
 
 export enum EndReason {

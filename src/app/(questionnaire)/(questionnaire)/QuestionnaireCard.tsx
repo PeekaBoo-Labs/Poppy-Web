@@ -2,13 +2,10 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Dots from "../../../components/general/animated/dots";
 
-import Image from "next/image";
 import { useAIContext } from "@/lib/ai/ai-context";
 import { Question } from "@/lib/ai/questions";
+import { useRouter } from "next/navigation";
 import SelectOneInputType from "./input-types/SelectOneInputType";
-import QuestionnaireResults from "./QuestionnaireResults";
-import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
 
 export default function QuestionnaireCard() {
 
@@ -16,9 +13,7 @@ export default function QuestionnaireCard() {
     questionsLeft,
     answeredQuestions,
 
-    resetQuestions,
     answerQuestion,
-    calculateOutput,
     getTopQuestion
   } = useAIContext();
 
@@ -54,7 +49,6 @@ export default function QuestionnaireCard() {
   if (page === 0) {
     currentQuestion = getTopQuestion();
 
-    console.log(currentQuestion, questionsLeft, page)
     if (!currentQuestion && questionsLeft == 0) {
       router.push("/result");
       return null;
