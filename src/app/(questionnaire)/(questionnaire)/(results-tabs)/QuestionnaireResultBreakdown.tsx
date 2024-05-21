@@ -1,5 +1,6 @@
 import Bar from "@/components/general/Bar";
 import { useAIContext } from "@/lib/ai/ai-context"
+import { STI } from "@/lib/ai/question";
 
 const iconLinks = [
   "/dataLow.svg",
@@ -24,7 +25,7 @@ export default function QuestionnaireResultBreakdown() {
             const chosenIndex = choices.findIndex(o => o.id == question.selected ?? "")
             const percent = 100 * ((chosenIndex + 1) / choices.length) ** (6 / choices.length)
 
-            const riskFactors = Array.from(question.riskFactors)
+            const riskFactors: [STI, number][] = Array.from(question.riskFactors)
               .filter(risk => risk[1] > 0)
               .map(risk => [risk[0], Math.ceil(risk[1])])
 
