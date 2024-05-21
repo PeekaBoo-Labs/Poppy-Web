@@ -16,19 +16,22 @@ export default function QuestionnaireResults() {
   const { answeredQuestions } = useAIContext();
 
   if (answeredQuestions.length == 0) {
+    console.log("No answered questions, redirecting to home");
     router.push("/");
     return null;
   }
 
+  console.log(page)
+
   return (
-    <div className="z-10 mx-auto w-[calc(100%-50px)] flex-grow rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic">
+    <div className="z-10 mx-auto w-[calc(100%-50px)] max-w-4xl flex-grow rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic">
       <div className="flex h-full w-full gap-[60px] rounded-[13px] border border-border p-[48px]">
         <div className="flex flex-col gap-[16px]">
           <Link href={"?tab=overview"} className={cn("text-left", page == "overview" || page == null ? "" : "text-secondary")}>Overview</Link>
           <Link href={"?tab=breakdown"} className={cn("text-left", page == "breakdown" ? "" : "text-secondary")}>Breakdown</Link>
           <Link href={"?tab=nextsteps"} className={cn("text-left", page == "nextsteps" ? "" : "text-secondary")}>Next Steps</Link>
         </div>
-        <div className="flex flex-grow flex-col gap-[20px] px-[60px]">
+        <div className="flex flex-grow flex-col gap-[20px]">
           {page == "overview" || page == null ? <QuestionnaireResultOverview /> : null}
           {page == "breakdown" ? <QuestionnaireResultBreakdown /> : null}
           {page == "nextsteps" ? <QuestionnaireResultNextSteps /> : null}

@@ -1,7 +1,67 @@
+import Bar from "@/components/general/Bar";
+import { useAIContext } from "@/lib/ai/ai-context"
+
+const iconLinks = [
+  "/dataLow.svg",
+  "/dataMed.svg",
+  "/dataHigh.svg",
+]
+
 export default function QuestionnaireResultBreakdown() {
-  return <>
 
+  const { answeredQuestions } = useAIContext();
 
+  console.log("Loading breakdown", answeredQuestions)
 
-  </>
+  return (
+    <div className="mt-[-16px] flex flex-col gap-[16px]">
+      <div className="flex flex-col gap-[0]">
+
+        {
+          answeredQuestions.map((question, i) => {
+
+            const choices = question.inputOptions.sort((a, b) => a.value - b.value)
+            const chosenIndex = choices.findIndex(o => o.id == question.selected ?? "")
+            const percent = 100 * ((chosenIndex + 1) / choices.length) ** (6 / choices.length)
+
+            const riskFactors = Array.from(question.riskFactors)
+              .filter(risk => risk[1] > 0)
+              .map(risk => [risk[0], Math.ceil(risk[1])])
+
+            return (
+              <div key={i} className="flex flex-col gap-[10px] rounded-lg border border-secondary/0 p-5 transition-all hover:scale-[1.01] hover:border-secondary/5 hover:bg-stone-200/30">
+                <Bar className="mb-2" percent={percent} />
+
+                <h2 className="text-sm font-medium">{question.label}</h2>
+                <p className="text-sm font-extralight text-secondary">{choices.find(o => o.id == question.selected ?? "")?.label}</p>
+
+                {
+                  chosenIndex != 0 && (
+                    <>
+                      <p className="text-sm text-primary">
+                        Regular testing is crucial for detecting STIs that may not show symptoms. Its advisable to get tested at least once a year or more frequently if you engage in high-risk behaviors.
+                      </p>
+
+                      {
+                        riskFactors.length > 0 && <span className="mt-5 flex gap-[10px]">
+                          {
+                            riskFactors.map((risk, i) => (
+                              <span key={i} className="flex cursor-default select-none items-center justify-center gap-1 rounded-full bg-primary px-2 py-1 text-[12px] text-white">
+                                <img src={iconLinks[risk[1] - 1]} className="text-color" width={15} height={15} alt={""} />
+                                {risk[0]}
+                              </span>
+                            ))
+                          }
+                        </span>
+                      }
+                    </>
+                  )
+                }
+              </div>
+            )
+          })
+        }
+      </div>
+    </div>
+  )
 }

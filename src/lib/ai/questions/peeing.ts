@@ -6,7 +6,7 @@ export class Question_DiscomfortOrUnusualPatternsDuringPeeing implements Questio
   inputType: InputType = InputType.SelectOne
   inputOptions = [
     { id: "YES", label: "Yes", value: 1 },
-    { id: "NO", label: "No", value: 1 },
+    { id: "NO", label: "No", value: 0 },
   ]
   weight = 0
   weightType = WeightType.Additive

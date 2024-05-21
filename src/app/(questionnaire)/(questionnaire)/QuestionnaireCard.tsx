@@ -51,7 +51,7 @@ export default function QuestionnaireCard() {
 
     if (!currentQuestion && questionsLeft == 0) {
       router.push("/result");
-      return null;
+      return <p>Redirecting...</p>;
     }
   } else {
     currentQuestion = answeredQuestions[answeredQuestions.length - page];

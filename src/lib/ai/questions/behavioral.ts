@@ -50,10 +50,10 @@ class Question_UnsafeSexRate implements Question {
   label = "How often do you use protection during sex?";
   inputType = InputType.SelectOne;
   inputOptions = [
-    { id: "1", label: "Never", value: 1.1 },
-    { id: "2", label: "Rarely", value: 1.01 },
-    { id: "4", label: "Most of the time", value: 1 },
     { id: "ALWAYS", label: "Always", value: 0.4 },
+    { id: "4", label: "Most of the time", value: 1 },
+    { id: "2", label: "Rarely", value: 1.01 },
+    { id: "1", label: "Never", value: 1.1 },
   ];
   weight = 1;
   weightType = WeightType.Exponential;
