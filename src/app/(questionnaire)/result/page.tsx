@@ -1,7 +1,7 @@
 'use client'
 
 import { Suspense } from "react"
-import QuestionnaireResults from "../(questionnaire)/QuestionnaireResults"
+import QuestionnaireResults from "./QuestionnaireResults"
 
 export default function ResultPage() {
   return (
