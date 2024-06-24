@@ -1,6 +1,10 @@
 import Bar from "@/components/general/Bar";
 import { useAIContext } from "@/lib/ai/ai-context"
 import { STI } from "@/lib/ai/question";
+import QuestionnaireResultOverview from "./QuestionnaireResultOverview";
+import { getInsight } from "@/lib/openai";
+import { Suspense } from "react";
+import QuestionnaireGPT from "./QuestionnaireGPT";
 
 const iconLinks = [
   "/dataLow.svg",
@@ -12,12 +16,11 @@ export default function QuestionnaireResultBreakdown() {
 
   const { answeredQuestions } = useAIContext();
 
-  console.log("Loading breakdown", answeredQuestions)
-
   return (
     <div className="mt-[-16px] flex flex-col gap-[16px]">
-      <div className="flex flex-col gap-[0]">
+      <QuestionnaireResultOverview />
 
+      <div className="flex flex-col gap-[0]">
         {
           answeredQuestions.map((question, i) => {
 
@@ -40,7 +43,13 @@ export default function QuestionnaireResultBreakdown() {
                   chosenIndex != 0 && (
                     <>
                       <p className="text-sm text-primary">
-                        Regular testing is crucial for detecting STIs that may not show symptoms. Its advisable to get tested at least once a year or more frequently if you engage in high-risk behaviors.
+
+                        <QuestionnaireGPT
+                          question={question.label}
+                          answer={choices[chosenIndex].label}
+                          stis_detected={riskFactors.map(risk => risk[0])}
+                        />
+
                       </p>
 
                       {

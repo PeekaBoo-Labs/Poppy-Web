@@ -8,8 +8,6 @@ export default function QuestionnaireResultOverview() {
   const sortedRisks = Array.from(output.risks).sort((a, b) => b[1] - a[1]);
 
   return <>
-    <h1 className="text-xl font-medium">Screening Results</h1>
-
     <div className="flex gap-2 rounded-lg bg-amber-200 p-2">
       <span className="h-full w-1 rounded-full bg-primary" />
       <span className="text-xs">
