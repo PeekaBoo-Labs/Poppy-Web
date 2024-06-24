@@ -4,24 +4,25 @@ import { useAIContext } from "@/lib/ai/ai-context";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import QuestionnaireResultBreakdown from "./(results-tabs)/QuestionnaireResultBreakdown";
-import QuestionnaireResultOverview from "./(results-tabs)/QuestionnaireResultOverview";
-import QuestionnaireResultNextSteps from "./(results-tabs)/QuestionnaireResultNextSteps";
+import QuestionnaireResultBreakdown from "./QuestionnaireResultBreakdown";
+import QuestionnaireResultNextSteps from "./QuestionnaireResultNextSteps";
 
-type Page = "breakdown" | "nextsteps"
+export type Page = "breakdown" | "nextsteps"
 
 export default function QuestionnaireResults() {
 
-  const router = useRouter();
   const searchParams = useSearchParams();
-
   const pageParam = searchParams.get("tab");
+
   let page: Page;
+
   if (pageParam == "nextsteps") {
     page = "nextsteps";
   } else {
     page = "breakdown";
   }
+
+  const router = useRouter();
 
   const { answeredQuestions } = useAIContext();
 
