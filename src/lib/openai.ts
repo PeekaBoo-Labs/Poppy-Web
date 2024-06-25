@@ -5,8 +5,6 @@ export async function getInsight(question: string, answer: string, stis_detected
 
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
-    organization: "org-hIPJ7iCny72wWDjS2jNC3FY7",
-    project: "proj_dYUzamo5YH4aVfBltLyPVzBS"
   });
 
   const response = await openai.chat.completions.create({
