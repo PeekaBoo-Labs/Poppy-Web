@@ -8,45 +8,71 @@ const clinics = [
     link: "http://healthclinica.com",
     logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg",
     images: ["https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg", "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"],
-    services: ["General Checkup", "Blood Test", "Vaccination"]
+    services: [
+      ["General Checkup", "checkup"],
+      ["Blood Test", "blood-test"],
+      ["Vaccination", "vaccination"]
+    ] as [string, string][] // Ensure type is [string, string][]
   },
   {
     name: "Wellness Center B",
     link: "http://wellnesscenterb.com",
     logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg",
     images: ["https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg", "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"],
-    services: ["Physiotherapy", "Dermatology", "Nutrition"]
+    services: [
+      ["Physiotherapy", "physiotherapy"],
+      ["Dermatology", "dermatology"],
+      ["Nutrition", "nutrition"]
+    ] as [string, string][]
   },
   {
     name: "Health Clinic C",
     link: "http://healthclinicb.com",
     logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg",
     images: ["https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg", "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"],
-    services: ["General Checkup", "Blood Test", "Vaccination"]
+    services: [
+      ["General Checkup", "checkup"],
+      ["Blood Test", "blood-test"],
+      ["Vaccination", "vaccination"]
+    ] as [string, string][]
   },
   {
     name: "Wellness Center D",
     link: "http://wellnesscenterd.com",
     logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg",
     images: ["https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg", "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"],
-    services: ["Physiotherapy", "Dermatology", "Nutrition"]
+    services: [
+      ["Physiotherapy", "physiotherapy"],
+      ["Dermatology", "dermatology"],
+      ["Nutrition", "nutrition"]
+    ] as [string, string][]
   },
 ];
+
+
 
 const testKits = [
   {
     name: "COVID-19 Test Kit",
-    resources: ["Home Test Kit", "Blood Test", "Discreet Packaging"],
+    resources: [
+      ["Home Test Kit", "home-test-kit"],
+      ["Blood Test", "blood-test"],
+      ["Discreet Packaging", "discreet-packaging"]
+    ] as [string, string][], // Ensure type is [string, string][]
     resource_link: "http://covid19testkit.com/resources",
     logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg"
   },
   {
     name: "Diabetes Test Kit",
-    resources: ["Instruction Manual", "Support Contact"],
+    resources: [
+      ["Instruction Manual", "instruction-manual"],
+      ["Support Contact", "support-contact"]
+    ] as [string, string][], // Ensure type is [string, string][]
     resource_link: "http://diabetestestkit.com/resources",
     logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg"
   },
 ];
+
 
 export default function QuestionnaireResultNextSteps({ clinicsReplace = clinics, testKitsReplace = testKits }) {
   const [showMore, setShowMore] = useState(false);

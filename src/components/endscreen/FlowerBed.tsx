@@ -1,7 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, MouseEvent } from "react";
 
 interface FlowerBedProps {
   sti_scores: Array<[string, number]>; // An array of tuples, each containing a string and a number
+}
+
+interface GridCell {
+  emoji: string;
+  sti: string;
 }
 
 // Emoji representations for the STIs
@@ -16,10 +21,10 @@ const STI_EMOJIS: { [key: string]: string } = {
 const generateGrid = (
   sti_scores: Array<[string, number]>,
   gridSize: number
-) => {
+): GridCell[] => {
   const totalCells = gridSize * gridSize;
   let remainingCells = totalCells;
-  const grid = Array(totalCells).fill({ emoji: "🌲", sti: "" }); // Fill grid with tree emojis
+  const grid: GridCell[] = Array(totalCells).fill({ emoji: "🌲", sti: "" }); // Fill grid with tree emojis
 
   // Ensure at least one flower for each STI tested
   sti_scores.forEach(([sti]) => {
@@ -56,10 +61,10 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
   const gridSize = 16;
   const grid = generateGrid(sti_scores, gridSize);
 
-  const modalRef = useRef(null);
-  const hoveredCellRef = useRef(null);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  const hoveredCellRef = useRef<GridCell | null>(null);
 
-  const handleMouseEnter = (cell, event) => {
+  const handleMouseEnter = (cell: GridCell, event: MouseEvent<HTMLDivElement>) => {
     if (cell.emoji !== "🌲" && cell.sti !== "") {
       hoveredCellRef.current = cell;
       updateModalContent(cell);
@@ -67,7 +72,7 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
     }
   };
 
-  const handleMouseMove = (event) => {
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
     if (hoveredCellRef.current) {
       updateModalPosition(event);
     }
@@ -80,13 +85,13 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
     }
   };
 
-  const handleEmojiClick = (cell) => {
+  const handleEmojiClick = (cell: GridCell) => {
     if (cell.sti !== "") {
       window.open(`https://www.youtube.com/results?search_query=${cell.sti}`, "_blank");
     }
   };
 
-  const updateModalPosition = (event) => {
+  const updateModalPosition = (event: MouseEvent<HTMLDivElement>) => {
     if (modalRef.current) {
       modalRef.current.style.display = "block";
       modalRef.current.style.top = `${event.clientY + 20}px`;
@@ -94,7 +99,7 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
     }
   };
 
-  const updateModalContent = (cell) => {
+  const updateModalContent = (cell: GridCell) => {
     if (modalRef.current) {
       modalRef.current.innerHTML = `
         <div>
@@ -116,8 +121,8 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
           left: "-3.125%",
           right: "-3.125%",
           bottom: "-3.125%",
-          boxShadow: "inset 0px 0px 100px 100px #f7f7f7",// holy this took so long to find out
-          filter: "blur(5px)"
+          boxShadow: "inset 0px 0px 100px 100px #f7f7f7", // Holy this took so long to find out
+          filter: "blur(5px)",
         }}
       />
       <div
