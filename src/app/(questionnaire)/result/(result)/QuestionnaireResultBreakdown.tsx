@@ -18,7 +18,6 @@ export default function QuestionnaireResultBreakdown() {
 
   return (
     <div className="mt-[-16px] flex flex-col gap-[16px]">
-      <QuestionnaireResultOverview />
 
       <div className="flex flex-col gap-[0]">
         {

@@ -1,0 +1,42 @@
+/* styles.css */
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.corner-blur {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.8);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+  
+  .corner-blur-top-left {
+    top: 0;
+    left: 0;
+    border-top-left-radius: 50%;
+  }
+  
+  .corner-blur-top-right {
+    top: 0;
+    right: 0;
+    border-top-right-radius: 50%;
+  }
+  
+  .corner-blur-bottom-left {
+    bottom: 0;
+    left: 0;
+    border-bottom-left-radius: 50%;
+  }
+  
+  .corner-blur-bottom-right {
+    bottom: 0;
+    right: 0;
+    border-bottom-right-radius: 50%;
+  }
+
+  
