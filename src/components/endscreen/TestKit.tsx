@@ -1,3 +1,4 @@
+import Image from "next/image";
 type TestKitProps = {
     name: string;
     resources: Array<[desc: string, type: string]>; // Array of tuples with desc and type
@@ -6,11 +7,11 @@ type TestKitProps = {
   };
   
   const RESOURCE_ICONS: { [key: string]: string } = {
-    "home-test-kit": "github.svg",
-    "blood-test": "github.svg",
-    "discreet-packaging": "github.svg",
-    "instruction-manual": "github.svg",
-    "support-contact": "github.svg",
+    "home": "/icons/home.svg",
+    "blood": "/icons/blood.svg",
+    "package": "/icons/package.svg",
+    "rapid": "/icons/timer.svg",
+    "desktop": "/icons/desktop.svg",
   };
   
   export default function TestKit({ name, resources, resource_link, logo_image }: TestKitProps) {
@@ -31,11 +32,12 @@ type TestKitProps = {
               />
               {name}
             </div>
-            <img
-              src={logo_image}
-              alt={`${name} Logo`}
-              className="h-[30px] w-[30px]"
-            />
+            <Image
+            width={18}
+            height={18}
+            src="/arrowUpRight.svg"
+            alt="arrow link"
+          />
           </a>
         </div>
         <div className="resources flex flex-wrap gap-5 mt-3">

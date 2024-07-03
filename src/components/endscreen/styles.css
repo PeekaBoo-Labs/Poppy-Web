@@ -39,4 +39,10 @@
     border-bottom-right-radius: 50%;
   }
 
+  .gray-icon-wrapper {
+    color: #9CA3AF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
   
