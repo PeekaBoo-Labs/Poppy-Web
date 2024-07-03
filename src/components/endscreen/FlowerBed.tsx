@@ -1,4 +1,5 @@
 import React, { useRef, MouseEvent } from "react";
+import Image from "next/image";
 
 interface FlowerBedProps {
   sti_scores: Array<[string, number]>; // An array of tuples, each containing a string and a number
@@ -102,10 +103,17 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
   const updateModalContent = (cell: GridCell) => {
     if (modalRef.current) {
       modalRef.current.innerHTML = `
-        <div>
+        <div class="flex flex-col justify-center items-start text-center gap-1 p-2">
           <p class="text-xs font-light">${cell.sti}</p>
-          <a href="https://www.youtube.com/results?search_query=${cell.sti}" target="_blank" rel="noopener noreferrer">
-            <p class="text-gray-400 text-xs">Click to Learn more</p>
+          <a class="flex flex-row justify-center items-center gap-1" href="https://www.youtube.com/results?search_query=${cell.sti}" target="_blank" rel="noopener noreferrer">
+            <img
+              width="25"
+              height="25"
+              src="/icons/click.svg"
+              alt="arrow link"
+              class="h-4 w-4"
+            />
+            <p class="text-gray-400 text-xs">Click to learn more</p>
           </a>
         </div>
       `;
@@ -121,7 +129,7 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
           left: "-3.125%",
           right: "-3.125%",
           bottom: "-3.125%",
-          boxShadow: "inset 0px 0px 100px 100px #f7f7f7", // Holy this took so long to find out
+          boxShadow: "inset 0px 0px 100px 100px #f7f7f7",
           filter: "blur(5px)",
         }}
       />
@@ -129,12 +137,12 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
-          gap: "0", // Remove gap completely
-          width: "min(100vmin, 100%)", // Ensure the grid is square and responsive
-          height: "min(100vmin, 100%)", // Ensure the grid is square and responsive
+          gap: "0",
+          width: "min(100vmin, 100%)",
+          height: "min(100vmin, 100%)",
           justifyContent: "start",
           alignContent: "start",
-          aspectRatio: "1 / 1", // Maintain square aspect ratio
+          aspectRatio: "1 / 1",
           position: "relative",
         }}
       >
@@ -149,7 +157,7 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
               marginBottom: "-7px",
               marginLeft: "-0px",
               marginRight: "-0px",
-            }} // Adjust margins as needed
+            }}
             onMouseEnter={(event) => handleMouseEnter(cell, event)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -162,16 +170,15 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
           ref={modalRef}
           style={{
             position: "fixed",
-            width: "150px",
-            height: "70px",
+            width: "190px",
+            maxWidth: "190px",
             background: "white",
             padding: "10px",
             borderRadius: "8px",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
             zIndex: 1000,
             display: "none",
-            alignItems: "center",
-            justifyContent: "center",
+            border: "1px solid #d3d3d3" // Light grey border
           }}
         />
       </div>
