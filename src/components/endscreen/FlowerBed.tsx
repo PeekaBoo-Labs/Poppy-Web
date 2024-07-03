@@ -125,12 +125,19 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
       <div
         className="absolute inset-0 pointer-events-none z-10"
         style={{
+          boxShadow: "inset 0px 0px 100px 100px #f7f7f7",
+          filter: "blur(100px)", // Full blur covering the entire square
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none z-20"
+        style={{
           top: "-3.125%",
           left: "-3.125%",
           right: "-3.125%",
           bottom: "-3.125%",
           boxShadow: "inset 0px 0px 100px 100px #f7f7f7",
-          filter: "blur(5px)",
+          filter: "blur(5px)", // Corner blur effect
         }}
       />
       <div
