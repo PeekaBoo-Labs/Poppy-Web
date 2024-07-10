@@ -95,17 +95,16 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
   const updateModalPosition = (event: MouseEvent<HTMLDivElement>) => {
     if (modalRef.current) {
       modalRef.current.style.display = "block";
-      modalRef.current.style.top = `${event.clientY + 20}px`;
-      modalRef.current.style.left = `${event.clientX + 20}px`;
+      modalRef.current.style.transform = `translate(${event.clientX + 20}px, ${event.clientY + 20}px)`
     }
   };
 
   const updateModalContent = (cell: GridCell) => {
     if (modalRef.current) {
       modalRef.current.innerHTML = `
-        <div class="flex flex-col justify-center items-start text-center gap-1 p-2">
+        <div class="flex flex-col items-start justify-center gap-1 p-2 text-center will-change-transform">
           <p class="text-xs font-light">${cell.sti}</p>
-          <a class="flex flex-row justify-center items-center gap-1" href="https://www.youtube.com/results?search_query=${cell.sti}" target="_blank" rel="noopener noreferrer">
+          <a class="flex flex-row items-center justify-center gap-1" href="https://www.youtube.com/results?search_query=${cell.sti}" target="_blank" rel="noopener noreferrer">
             <img
               width="25"
               height="25"
@@ -113,7 +112,7 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
               alt="arrow link"
               class="h-4 w-4"
             />
-            <p class="text-gray-400 text-xs">Click to learn more</p>
+            <p class="text-xs text-gray-400">Click to learn more</p>
           </a>
         </div>
       `;
@@ -122,15 +121,15 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
 
   return (
     <div className="relative p-4">
-      <div
-        className="absolute inset-0 pointer-events-none z-10"
+      {/* <div
+        className="pointer-events-none absolute inset-0 z-10"
         style={{
           boxShadow: "inset 0px 0px 100px 100px #f7f7f7",
           filter: "blur(100px)", // Full blur covering the entire square
         }}
-      />
-      <div
-        className="absolute inset-0 pointer-events-none z-20"
+      /> */}
+      {/* <div
+        className="pointer-events-none absolute inset-0 z-20"
         style={{
           top: "-3.125%",
           left: "-3.125%",
@@ -139,7 +138,7 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
           boxShadow: "inset 0px 0px 100px 100px #f7f7f7",
           filter: "blur(5px)", // Corner blur effect
         }}
-      />
+      /> */}
       <div
         style={{
           display: "grid",
@@ -155,15 +154,15 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
       >
         {grid.map((cell, index) => (
           <div
-            className="flower-cell grayscale filter hover:grayscale-0 transition duration-0 text-center relative group cursor-pointer"
+            className="flower-cell group relative cursor-pointer text-center grayscale filter transition duration-0 hover:grayscale-0"
             key={index}
             style={{
               fontSize: "30px",
               position: "relative",
-              marginTop: "-7px",
-              marginBottom: "-7px",
-              marginLeft: "-0px",
-              marginRight: "-0px",
+              marginTop: "-6px",
+              marginBottom: "-6px",
+              marginLeft: "1px",
+              marginRight: "1px",
             }}
             onMouseEnter={(event) => handleMouseEnter(cell, event)}
             onMouseMove={handleMouseMove}
@@ -177,6 +176,9 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
           ref={modalRef}
           style={{
             position: "fixed",
+            transition: "transform 0.01s ease-out",
+            top: "0",
+            left: "0",
             width: "190px",
             maxWidth: "190px",
             background: "white",
