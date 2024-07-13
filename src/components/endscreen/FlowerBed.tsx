@@ -1,53 +1,39 @@
 import React, { useRef, MouseEvent, useMemo, useState } from "react";
-import Plant, { type PlantType } from "./Plant";
-import { distance } from "framer-motion";
+import Plant from "./Plant";
 import { STI } from "@/lib/ai/question";
+import { cn } from "@/lib/utils";
+import { m } from "framer-motion";
 
-interface FlowerBedProps {
-  sti_scores: Array<[string, number]>; // An array of tuples, each containing a string and a number
-}
-
-interface GridCell {
-  emoji: string;
-  sti: STI | "tree";
-}
-
-// Emoji repressentations for the STIs
-const : { [key: string]: STI | "tree" } = {
-  Chlamydia: STI.Chlamydia,
-  Gonorrhoea: STI.Gonorrhoea,
-  "Genital Warts": STI.GenitalWarts,
-  Syphilis: STI.Syphilis,
+type FlowerBedProps = {
+  sti_scores: [STI, number][];
 };
 
 // A function to generate the grid with flower placements
 const generateGrid = (
-  sti_scores: Array<[string, number]>,
+  sti_scores: [STI, number][],
   gridSize: number,
-): GridCell[] => {
+): (STI | "tree")[] => {
   const totalCells = gridSize * gridSize;
+  const grid: (STI | "tree")[] = Array(totalCells).fill("tree");
+
   let remainingCells = totalCells;
-  const grid: GridCell[] = Array(totalCells).fill({ emoji: "🌲", sti: "tree" }); // Fill grid with tree emojis
 
   // Ensure at least one flower for each STI tested
   sti_scores.forEach(([sti]) => {
     const randomIndex = Math.floor(Math.random() * totalCells);
-    grid[randomIndex] = { emoji: STI_EMOJIS[sti], sti };
+    grid[randomIndex] = sti;
     remainingCells--;
   });
 
   // Distribute the remaining flowers according to their scores
   sti_scores.forEach(([sti, score]) => {
-    const flowerCount = Math.max(
-      1,
-      Math.floor((score / totalCells) * totalCells),
-    );
+    const flowerCount = Math.max(1, score);
     for (let i = 0; i < flowerCount; i++) {
       let placed = false;
       while (!placed) {
         const randomIndex = Math.floor(Math.random() * totalCells);
-        if (grid[randomIndex].emoji === "🌲") {
-          grid[randomIndex] = { emoji: STI_EMOJIS[sti], sti };
+        if (grid[randomIndex] == "tree") {
+          grid[randomIndex] = sti;
           placed = true;
           remainingCells--;
         }
@@ -59,40 +45,32 @@ const generateGrid = (
   return grid;
 };
 
-// Use React.FC for a functional component with TypeScript
-const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
-  const gridSize = 16;
+export default function FlowerBed({ sti_scores }: FlowerBedProps) {
+  const gridSize = 9;
   const grid = useMemo(() => generateGrid(sti_scores, gridSize), [sti_scores]);
 
   const [center, setCenter] = useState<{ x: number; y: number }>({
-    x: 0,
-    y: 0,
+    x: gridSize / 2,
+    y: gridSize / 2,
   });
+
+  const [focused, setFocused] = useState<boolean>(false);
 
   const modalRef = useRef<HTMLDivElement | null>(null);
 
-  const updateModalContent = (cell: GridCell) => {
-    if (modalRef.current) {
-      modalRef.current.innerHTML = `
-        <div class="flex flex-col items-start justify-center gap-1 p-2 text-center will-change-transform">
-          <p class="text-xs font-light">${cell.sti}</p>
-          <a class="flex flex-row items-center justify-center gap-1" href="https://www.youtube.com/results?search_query=${cell.sti}" target="_blank" rel="noopener noreferrer">
-            <img
-              width="25"
-              height="25"
-              src="/i3cons/click.svg"
-              alt="arrow link"
-              class="h-4 w-4"
-            />
-            <p class="text-xs text-gray-400">Click to learn more</p>
-          </a>
-        </div>
-      `;
-    }
-  };
-
   return (
-    <div className="relative p-4">
+    <div
+      onMouseEnter={() => setFocused(true)}
+      onMouseLeave={() => setFocused(false)}
+      className={cn(
+        "border p-2 shadow-md bg-stone-100 border-b-[3px]",
+        "relative rounded-lg",
+      )}
+      style={{
+        transform: `perspective(500px) rotateX(10deg) translateZ(50px)`,
+        transition: "all 2s cubic-bezier(.04,1,.11,.97)",
+      }}
+    >
       <div
         style={{
           display: "grid",
@@ -100,13 +78,13 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
           gap: "3px",
           width: "min(100vmin, 100%)",
           height: "min(100vmin, 100%)",
-          justifyContent: "start",
-          alignContent: "start",
+          justifyContent: "center",
+          alignContent: "center",
           aspectRatio: "1 / 1",
           position: "relative",
         }}
       >
-        {grid.map((cell, index) => {
+        {grid.map((sti, index) => {
           const coord = {
             x: Math.floor(index / gridSize),
             y: index % gridSize,
@@ -117,7 +95,7 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
             Math.abs(coord.y - gridSize / 2),
           );
           const defaultOpacity =
-            0.3 * Math.min(1, Math.exp(-distanceFromCenter + gridSize * 0.37));
+            0.7 * Math.min(1, Math.exp(-distanceFromCenter + gridSize * 0.2));
 
           return (
             <Plant
@@ -125,7 +103,8 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
               center={center}
               coord={coord}
               default_opacity={defaultOpacity}
-              type={cell.sti}
+              type={sti}
+              focusedOnGarden={focused}
               onMouseEnter={() => {
                 setCenter(coord);
               }}
@@ -153,6 +132,4 @@ const FlowerBed: React.FC<FlowerBedProps> = ({ sti_scores }) => {
       </div>
     </div>
   );
-};
-
-export default FlowerBed;
+}
