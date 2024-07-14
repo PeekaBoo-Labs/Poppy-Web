@@ -8,6 +8,7 @@ type PlantProps = {
   center: { x: number; y: number };
   default_opacity: number;
   focusedOnGarden: boolean;
+  focusOne: STI | null;
   onMouseEnter: MouseEventHandler<HTMLDivElement>;
 };
 
@@ -20,8 +21,12 @@ export default function Plant(props: PlantProps) {
     center,
     default_opacity,
     focusedOnGarden,
+    focusOne,
     onMouseEnter,
   } = props;
+
+  const focusMode = focusOne != null;
+  const focusMe = focusOne == type;
 
   const magnitude = (center.x - coord.x) ** 2 + (center.y - coord.y) ** 2;
   const gradient = Math.max(0, 1 - magnitude / RADIUS ** 2);
@@ -33,7 +38,7 @@ export default function Plant(props: PlantProps) {
   return (
     <div
       onMouseEnter={onMouseEnter}
-      className="aspect-square hover:scale-105 "
+      className="aspect-square hover:scale-105"
       style={{
         transform: `scale(${flowerScale})`,
         opacity: flowerOpacity,

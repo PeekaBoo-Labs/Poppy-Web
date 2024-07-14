@@ -1,8 +1,7 @@
-import React, { useRef, MouseEvent, useMemo, useState } from "react";
-import Plant from "./Plant";
 import { STI } from "@/lib/ai/question";
 import { cn } from "@/lib/utils";
-import { m } from "framer-motion";
+import { useMemo, useRef, useState } from "react";
+import Plant from "./Plant";
 
 type FlowerBedProps = {
   sti_scores: [STI, number][];
@@ -55,6 +54,7 @@ export default function FlowerBed({ sti_scores }: FlowerBedProps) {
   });
 
   const [focused, setFocused] = useState<boolean>(false);
+  const [focusOne, setFocusOne] = useState<STI | null>(null);
 
   const modalRef = useRef<HTMLDivElement | null>(null);
 
@@ -63,7 +63,7 @@ export default function FlowerBed({ sti_scores }: FlowerBedProps) {
       onMouseEnter={() => setFocused(true)}
       onMouseLeave={() => setFocused(false)}
       className={cn(
-        "border p-2 shadow-md bg-stone-100 border-b-[3px]",
+        "border border-b-[3px] bg-white p-2 shadow-lg",
         "relative rounded-lg",
       )}
       style={{
@@ -105,8 +105,10 @@ export default function FlowerBed({ sti_scores }: FlowerBedProps) {
               default_opacity={defaultOpacity}
               type={sti}
               focusedOnGarden={focused}
+              focusOne={focusOne}
               onMouseEnter={() => {
                 setCenter(coord);
+                setFocusOne(sti == "tree" ? null : sti);
               }}
             />
           );
