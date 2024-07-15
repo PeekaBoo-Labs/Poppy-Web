@@ -45,7 +45,7 @@ export default function AIContextProvider({
   const [grid, setGrid] = useState<(STI | "tree")[]>([]);
 
   // A function to generate the grid with flower placements
-  const generateGrid = (gridSize: number): (STI | "tree")[] => {
+  const generateGrid = (gridSize: number) => {
     const scores = calculateOutput();
 
     const sti_scores: [STI, number][] = Array.from(scores.risks).sort(

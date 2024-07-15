@@ -23,6 +23,7 @@ export default function QuestionnaireResultOverview() {
             (sti: STI) => {
               return (
                 <FlowerCard
+                  key={sti}
                   type={sti}
                   focused={sti == focusedObject}
                   onMouseLeave={() => {

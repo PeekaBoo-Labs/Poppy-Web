@@ -41,6 +41,7 @@ export default function QuestionnaireResults() {
         <div className="flex flex-col gap-[16px]">
           {PAGES_SLUG.map((p, i) => (
             <Link
+              key={p}
               href={`?tab=${p}`}
               className={cn("text-left", page != p && "text-secondary")}
             >
