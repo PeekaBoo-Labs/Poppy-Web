@@ -17,6 +17,7 @@ import { createContext, useContext, useState } from "react";
 import { Question_SexualActivity } from "./questions/behavioral";
 
 type AIContextType = {
+  grid: (STI | "tree")[];
   questionsLeft: number;
   answeredQuestions: Question[];
 
@@ -24,6 +25,7 @@ type AIContextType = {
   answerQuestion: (answer: QuestionInput) => Question;
   calculateOutput: () => AIOutput;
   getTopQuestion: () => Question | undefined;
+  generateGrid: (gridSize: number) => void;
 };
 
 export const AIContext = createContext<AIContextType | null>(null);
@@ -39,6 +41,48 @@ export default function AIContextProvider({
   ]);
   const [prunedTags, setPrunedTags] = useState<Tag[]>([]);
   const [answeredQuestions, setAnsweredQuestions] = useState<Question[]>([]);
+
+  const [grid, setGrid] = useState<(STI | "tree")[]>([]);
+
+  // A function to generate the grid with flower placements
+  const generateGrid = (gridSize: number): (STI | "tree")[] => {
+    const scores = calculateOutput();
+
+    const sti_scores: [STI, number][] = Array.from(scores.risks).sort(
+      (a, b) => b[1] - a[1],
+    );
+
+    const totalCells = gridSize * gridSize;
+    const grid: (STI | "tree")[] = Array(totalCells).fill("tree");
+
+    let remainingCells = totalCells;
+
+    // Ensure at least one flower for each STI tested
+    sti_scores.forEach(([sti]) => {
+      const randomIndex = Math.floor(Math.random() * totalCells);
+      grid[randomIndex] = sti;
+      remainingCells--;
+    });
+
+    // Distribute the remaining flowers according to their scores
+    sti_scores.forEach(([sti, score]) => {
+      const flowerCount = Math.max(1, score);
+      for (let i = 0; i < flowerCount; i++) {
+        let placed = false;
+        while (!placed) {
+          const randomIndex = Math.floor(Math.random() * totalCells);
+          if (grid[randomIndex] == "tree") {
+            grid[randomIndex] = sti;
+            placed = true;
+            remainingCells--;
+          }
+          if (remainingCells <= 0) break; // Break if no more cells available
+        }
+      }
+    });
+
+    setGrid(grid);
+  };
 
   const getTopQuestion = (): Question | undefined => {
     return questionsStack[0];
@@ -62,8 +106,7 @@ export default function AIContextProvider({
         effect.questions
       ) {
         const prunedQuestions = effect.questions.filter(
-          (question) =>
-            !prunedTags.some((tag) => question.tags.includes(tag)),
+          (question) => !prunedTags.some((tag) => question.tags.includes(tag)),
         );
 
         if (effect.type === EffectType.AddQuestion) {
@@ -155,6 +198,7 @@ export default function AIContextProvider({
   return (
     <AIContext.Provider
       value={{
+        grid,
         questionsLeft,
         answeredQuestions,
 
@@ -162,6 +206,7 @@ export default function AIContextProvider({
         answerQuestion,
         calculateOutput,
         getTopQuestion,
+        generateGrid,
       }}
     >
       {children}

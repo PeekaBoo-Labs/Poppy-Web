@@ -1,46 +1,42 @@
 import FlowerBed from "@/components/endscreen/FlowerBed";
 import { useAIContext } from "@/lib/ai/ai-context";
-import { AIOutput } from "@/lib/ai/question";
 import Image from "next/image";
 
-import type { STI } from "@/lib/ai/question";
 import { LongButton } from "@/components/Buttons";
+import FlowerCard from "@/components/endscreen/FlowerCard";
+import { STI } from "@/lib/ai/question";
+import {
+  OverviewFocusState,
+  useFlowerContext,
+} from "@/lib/contexts/FlowerContext";
+import Link from "next/link";
 
 export default function QuestionnaireResultOverview() {
-  const { calculateOutput } = useAIContext();
-
-  const output: AIOutput = calculateOutput();
-  const sortedRisks: [STI, number][] = Array.from(output.risks).sort(
-    (a, b) => b[1] - a[1],
-  );
+  const { grid } = useAIContext();
+  const { focusedObject, setFocusState, setFocusedObject } = useFlowerContext();
 
   return (
     <>
-      <div className="min-h flex justify-between gap-[39px]">
-        {" "}
-        {/* Hero section right */}
-        <div className="flex-grow">
-          <div className="flex cursor-pointer gap-4 rounded-lg border bg-white p-4 transition-all duration-1000 ease-velocity hover:shadow-lg">
-            <div className="relative aspect-square self-start rounded-full border bg-white shadow-sm">
-              <Image
-                className="p-2"
-                src={"/emojis/cherry.png"}
-                width={70}
-                height={70}
-                alt=""
-              />
-              <span className="absolute bottom-[-8px] right-[-8px] rounded-full border px-2 text-xs shadow-sm backdrop-blur-sm">
-                &times;2
-              </span>
-            </div>
-            <div className="flex flex-1 flex-col">
-              <h2 className="text-lg font-medium">Chlamydia</h2>
-              <p className="text-xs text-secondary">
-                Often has no symptoms but can cause serious health problems,
-                even without symptoms.
-              </p>
-            </div>
-          </div>
+      <div className="min-h flex justify-between gap-[59px]">
+        <div className="flex flex-grow flex-col gap-4">
+          {[STI.GenitalWarts, STI.Syphilis, STI.Chlamydia, STI.Gonorrhoea].map(
+            (sti: STI) => {
+              return (
+                <FlowerCard
+                  type={sti}
+                  focused={sti == focusedObject}
+                  onMouseLeave={() => {
+                    setFocusState(OverviewFocusState.None);
+                    setFocusedObject(null);
+                  }}
+                  onMouseEnter={() => {
+                    setFocusState(OverviewFocusState.Card);
+                    setFocusedObject(sti);
+                  }}
+                />
+              );
+            },
+          )}
         </div>
         <div className="max-w-[50%] flex-grow pr-10">
           <div className="mb-14">
@@ -49,8 +45,8 @@ export default function QuestionnaireResultOverview() {
               Based on your responses, this garden illustrates potential sexual
               health considerations relevant to you.
             </p>
-          </div>{" "}
-          <FlowerBed sti_scores={sortedRisks} />
+          </div>
+          <FlowerBed gridSize={11} grid={grid} />
           <div className="mt-10 flex items-center justify-center gap-1 text-center text-xs text-secondary opacity-50">
             <Image
               className="object-contain"
@@ -62,18 +58,20 @@ export default function QuestionnaireResultOverview() {
             Hover to interact
           </div>
           <div className="mt-8">
-            <LongButton type="primaryFullNext">
-              <span className="flex gap-2">
-                <Image
-                  className="object-contain"
-                  src="/icons/step2.svg"
-                  width={18}
-                  height={18}
-                  alt=""
-                />
-                Response breakdown
-              </span>
-            </LongButton>
+            <Link href={"?tab=breakdown"}>
+              <LongButton type="primaryFullNext">
+                <span className="flex gap-2">
+                  <Image
+                    className="object-contain"
+                    src="/icons/step2.svg"
+                    width={18}
+                    height={18}
+                    alt=""
+                  />
+                  Response breakdown
+                </span>
+              </LongButton>
+            </Link>
           </div>
           <div className="h-[200px]"></div>
         </div>

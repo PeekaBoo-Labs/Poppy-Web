@@ -2,66 +2,34 @@ import { STI } from "@/lib/ai/question";
 import { cn } from "@/lib/utils";
 import { useMemo, useRef, useState } from "react";
 import Plant from "./Plant";
+import {
+  OverviewFocusState,
+  useFlowerContext,
+} from "@/lib/contexts/FlowerContext";
 
 type FlowerBedProps = {
-  sti_scores: [STI, number][];
+  gridSize: number;
+  grid: (STI | "tree")[];
 };
 
-// A function to generate the grid with flower placements
-const generateGrid = (
-  sti_scores: [STI, number][],
-  gridSize: number,
-): (STI | "tree")[] => {
-  const totalCells = gridSize * gridSize;
-  const grid: (STI | "tree")[] = Array(totalCells).fill("tree");
-
-  let remainingCells = totalCells;
-
-  // Ensure at least one flower for each STI tested
-  sti_scores.forEach(([sti]) => {
-    const randomIndex = Math.floor(Math.random() * totalCells);
-    grid[randomIndex] = sti;
-    remainingCells--;
-  });
-
-  // Distribute the remaining flowers according to their scores
-  sti_scores.forEach(([sti, score]) => {
-    const flowerCount = Math.max(1, score);
-    for (let i = 0; i < flowerCount; i++) {
-      let placed = false;
-      while (!placed) {
-        const randomIndex = Math.floor(Math.random() * totalCells);
-        if (grid[randomIndex] == "tree") {
-          grid[randomIndex] = sti;
-          placed = true;
-          remainingCells--;
-        }
-        if (remainingCells <= 0) break; // Break if no more cells available
-      }
-    }
-  });
-
-  return grid;
-};
-
-export default function FlowerBed({ sti_scores }: FlowerBedProps) {
-  const gridSize = 9;
-  const grid = useMemo(() => generateGrid(sti_scores, gridSize), [sti_scores]);
+export default function FlowerBed({ gridSize, grid }: FlowerBedProps) {
+  const { focusState, focusedObject, setFocusState, setFocusedObject } =
+    useFlowerContext();
 
   const [center, setCenter] = useState<{ x: number; y: number }>({
     x: gridSize / 2,
     y: gridSize / 2,
   });
 
-  const [focused, setFocused] = useState<boolean>(false);
-  const [focusOne, setFocusOne] = useState<STI | null>(null);
-
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <div
-      onMouseEnter={() => setFocused(true)}
-      onMouseLeave={() => setFocused(false)}
+      onMouseEnter={() => setFocusState(OverviewFocusState.Map)}
+      onMouseLeave={() => {
+        setFocusedObject(null);
+        setFocusState(OverviewFocusState.None);
+      }}
       className={cn(
         "border border-b-[3px] bg-white p-2 shadow-lg",
         "relative rounded-lg",
@@ -104,11 +72,11 @@ export default function FlowerBed({ sti_scores }: FlowerBedProps) {
               coord={coord}
               default_opacity={defaultOpacity}
               type={sti}
-              focusedOnGarden={focused}
-              focusOne={focusOne}
+              focusedOnGarden={focusState == OverviewFocusState.Map}
+              focusOne={focusedObject}
               onMouseEnter={() => {
                 setCenter(coord);
-                setFocusOne(sti == "tree" ? null : sti);
+                setFocusedObject(sti == "tree" ? null : sti);
               }}
             />
           );
