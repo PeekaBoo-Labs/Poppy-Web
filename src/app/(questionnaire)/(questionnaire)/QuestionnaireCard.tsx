@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Dots from "../../../components/general/animated/dots";
 
 import { useAIContext } from "@/lib/ai/ai-context";
@@ -48,14 +48,14 @@ export default function QuestionnaireCard() {
 
   if (page === 0) {
     currentQuestion = getTopQuestion();
-
-    if (!currentQuestion && questionsLeft == 0) {
-      router.push("/result");
-      return <p>Redirecting...</p>;
-    }
   } else {
     currentQuestion = answeredQuestions[answeredQuestions.length - page];
   }
+
+  useEffect(() => {
+    if (page === 0 && currentQuestion == null && questionsLeft == 0)
+        router.push("/result")
+  }, [page, currentQuestion, questionsLeft, router])
 
   return (
     <>

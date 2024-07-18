@@ -7,7 +7,8 @@ import Link from "next/link";
 import QuestionnaireResultBreakdown from "./QuestionnaireResultBreakdown";
 import QuestionnaireResultNextSteps from "./QuestionnaireResultNextSteps";
 import QuestionnaireResultOverview from "./QuestionnaireResultOverview";
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
+import { generateKey } from "crypto";
 
 const PAGES_LABEL = ["Overview", "Breakdown", "Next Steps"] as const;
 const PAGES_SLUG = ["overview", "breakdown", "next-steps"] as const;
@@ -18,22 +19,21 @@ type SLUG_UNIONS = (typeof PAGES_SLUG)[number];
 export default function QuestionnaireResults() {
   const { generateGrid, answeredQuestions } = useAIContext();
 
-  useMemo(() => {
-    generateGrid(GARDEN_SIZE);
-    console.log("Calculating Scores...");
-  }, [answeredQuestions]);
-
   const searchParams = useSearchParams();
   const pageParam = searchParams.get("tab");
   const page: SLUG_UNIONS = (pageParam as SLUG_UNIONS) ?? PAGES_SLUG[0];
 
   const router = useRouter();
 
-  if (answeredQuestions.length == 0) {
-    console.log("No answered questions, redirecting to home");
-    router.push("/");
-    return null;
-  }
+  useEffect(() => {
+    if (answeredQuestions.length == 0) {
+      console.log("No answered questions, redirecting to home");
+      router.push("/");
+    } else {
+      generateGrid(GARDEN_SIZE);
+      console.log("Generating Grid...");
+    }
+  }, [answeredQuestions, router]);
 
   return (
     <div className="z-10 mx-auto w-[calc(100%-50px)] max-w-5xl flex-grow rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic">

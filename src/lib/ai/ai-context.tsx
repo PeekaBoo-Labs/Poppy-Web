@@ -47,6 +47,7 @@ export default function AIContextProvider({
   // A function to generate the grid with flower placements
   const generateGrid = (gridSize: number) => {
     const scores = calculateOutput();
+    console.log(scores)
 
     const sti_scores: [STI, number][] = Array.from(scores.risks).sort(
       (a, b) => b[1] - a[1],

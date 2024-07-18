@@ -41,16 +41,11 @@ export default function QuestionnaireResultBreakdown() {
                 {
                   chosenIndex != 0 && (
                     <>
-                      <p className="text-sm text-primary">
-
-                        <QuestionnaireGPT
-                          question={question.label}
-                          answer={choices[chosenIndex].label}
-                          stis_detected={riskFactors.map(risk => risk[0])}
-                        />
-
-                      </p>
-
+                      <QuestionnaireGPT
+                        question={question.label}
+                        answer={choices[chosenIndex].label}
+                        stis_detected={riskFactors.map(risk => risk[0])}
+                      />
                       {
                         riskFactors.length > 0 && <span className="mt-5 flex gap-[10px]">
                           {

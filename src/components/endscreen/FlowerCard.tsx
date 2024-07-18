@@ -6,6 +6,7 @@ import { DESC, IMAGE } from "./STIUI";
 type FlowerCardProps = {
   type: STI;
   focused: boolean;
+  count: number;
   onMouseLeave: MouseEventHandler<HTMLDivElement>;
   onMouseEnter: MouseEventHandler<HTMLDivElement>;
 };
@@ -13,6 +14,7 @@ type FlowerCardProps = {
 export default function FlowerCard({
   type,
   focused,
+  count,
   onMouseLeave,
   onMouseEnter,
 }: FlowerCardProps) {
@@ -27,12 +29,12 @@ export default function FlowerCard({
         <Image
           className="p-2"
           src={IMAGE[type]}
-          width={70}
-          height={70}
+          width={60}
+          height={60}
           alt=""
         />
         <span className="absolute bottom-[-8px] right-[-8px] rounded-full border px-2 text-xs shadow-sm backdrop-blur-sm">
-          &times;2
+          &times;{count}
         </span>
       </div>
       <div className="flex flex-1 flex-col">

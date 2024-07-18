@@ -21,10 +21,14 @@ export default function QuestionnaireResultOverview() {
         <div className="flex flex-grow flex-col gap-4">
           {[STI.GenitalWarts, STI.Syphilis, STI.Chlamydia, STI.Gonorrhoea].map(
             (sti: STI) => {
+
+              const count = grid.filter(e => e == sti).length;
+
               return (
                 <FlowerCard
                   key={sti}
                   type={sti}
+                  count={count}
                   focused={sti == focusedObject}
                   onMouseLeave={() => {
                     setFocusState(OverviewFocusState.None);
