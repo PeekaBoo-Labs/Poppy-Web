@@ -4,12 +4,12 @@ import TestKit from "@/components/endscreen/TestKit";
 
 const clinics = [
   {
-    name: "Health Clinic A",
-    link: "http://healthclinica.com",
-    logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg",
+    name: "SAY Detroit Family health Clinic",
+    link: "http://www.saydetroitclinic.com/",
+    logo_image: "https://cdn-saydetroit-org.b-cdn.net/wp-content/webp-express/webp-images/uploads/say-detroit-bubble-logo2.png.webp",
     images: [
-      "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
-      "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"
+      "https://lh3.googleusercontent.com/p/AF1QipORoGy7GYAxQ-JHjVqKLfZqssgPdeE-tIdk8mfX=s680-w680-h510",
+      "https://lh3.googleusercontent.com/p/AF1QipNS-KX0mUOEsB6qLTJ21W3tA9bRYNCSjQzaEPnr=s680-w680-h510"
     ],
     services: [
       ["LGBTQ+ Friendly", "lgbtq"],
@@ -18,12 +18,12 @@ const clinics = [
     ] as [string, string][] // Ensure type is [string, string][]
   },
   {
-    name: "Wellness Center B",
-    link: "http://wellnesscenterb.com",
-    logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg",
+    name: "Wayne Health Detroit Canfield Health Center",
+    link: "http://waynehealthcares.org/",
+    logo_image: "https://d3ogvqw9m2inp7.cloudfront.net/assets/dynamic/assets/recruiters/images/1953449/logo.png",
     images: [
-      "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
-      "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"
+      "https://news.wayne.edu/storage/files/wayne-health-sign-5f6220791a8c9.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMDPTtScyKOkiZF2bR-fhJsqc4hwhda69ATg&s"
     ],
     services: [
       ["Appointment Booking", "appointment"],
@@ -32,12 +32,12 @@ const clinics = [
     ] as [string, string][]
   },
   {
-    name: "Health Clinic C",
-    link: "http://healthclinicb.com",
-    logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg",
+    name: "Detroit Community Health Connection",
+    link: "http://dchcquality.org/",
+    logo_image: "https://static.wixstatic.com/media/712c2d_0b9b4170a1e44fbdba55b2cef2938ff4~mv2.png/v1/fill/w_161,h_65,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/LOGO.png",
     images: [
-      "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
-      "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"
+      "https://s3-media2.fl.yelpcdn.com/bphoto/bEXVI9sNgeSi94cJhD316A/l.jpg",
+      "https://static.wixstatic.com/media/712c2d_350a941300b543e88a2620dafbb4b236~mv2.png/v1/fill/w_320,h_151,al_c,lg_1,q_85,enc_auto/712c2d_350a941300b543e88a2620dafbb4b236~mv2.png"
     ],
     services: [
       ["LGBTQ+ Friendly", "lgbtq"],
@@ -46,12 +46,12 @@ const clinics = [
     ] as [string, string][]
   },
   {
-    name: "Wellness Center D",
-    link: "http://wellnesscenterd.com",
-    logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg",
+    name: "HUDA Clinic",
+    link: "https://www.hudaclinic.org/",
+    logo_image: "https://media.licdn.com/dms/image/C4E0BAQEafDBvc-CmGQ/company-logo_200_200/0/1630566206643/hudaclinic_logo?e=2147483647&v=beta&t=bzKg5jQNhgmQAfLVH8gLr2Xh-6kOVZmFO-TvZx71Whs",
     images: [
-      "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
-      "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"
+      "https://lh3.googleusercontent.com/p/AF1QipNomkZo6pcuqeFBi-67SznHu7iFqpBHhm_pDMNj=s680-w680-h510",
+      "https://lh3.googleusercontent.com/p/AF1QipNpMgreI3rZ8bzAE_sRWZpW02YOE_oyzn5D4s6m=s680-w680-h510"
     ],
     services: [
       ["Appointment Booking", "appointment"],
@@ -63,34 +63,33 @@ const clinics = [
 
 const testKits = [
   {
-    name: "COVID-19 Test Kit",
+    name: "DHD Free Home HIV Test Kit",
     resources: [
       ["Home Test Kit", "home"],
       ["Blood Test", "blood"],
       ["Discreet Packaging", "package"]
     ] as [string, string][], // Ensure type is [string, string][]
-    resource_link: "http://covid19testkit.com/resources",
-    logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg"
+    resource_link: "https://detroitmi.gov/departments/detroit-health-department/programs-and-services/hivsti-program/hivsti-prevention-program/order-free-home-hiv-test-kit",
+    logo_image: "https://pbs.twimg.com/profile_images/1805224909729124352/HwIj4Rtl_400x400.jpg"
   },
   {
-    name: "Diabetes Test Kit",
+    name: "Detroit HIV and STI Testing",
     resources: [
       ["Instruction Manual", "desktop"],
       ["Support Contact", "rapid"]
     ] as [string, string][], // Ensure type is [string, string][]
-    resource_link: "http://diabetestestkit.com/resources",
-    logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg"
+    resource_link: "https://miunified.org/Services/PreventionandTesting/Testing",
+    logo_image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfiK3PBE3T7fWoAsa5EJ1k7rUHe23DnQcznw&s"
   },
   {
-    name: "Cholesterol Test Kit",
+    name: "TBD Health At-Home Kits",
     resources: [
-      ["Home Test Kit", "home"],
-      ["Rapid Results", "rapid"],
-      ["Blood Test", "blood"]
+      ["Instruction Manual", "desktop"],
+      ["At home", "rapid"]
     ] as [string, string][], // Ensure type is [string, string][]
-    resource_link: "http://cholesteroltestkit.com/resources",
-    logo_image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Ucirvinemedicalcenter.jpg"
-  }
+    resource_link: "https://www.tbd.health/locations/sti-std-testing-screening-treatment-near-me/detroit-mi",
+    logo_image: "https://www.tbd.health/_next/static/media/logoDark.1ea38712.svg"
+  },
 ];
 
 export default function QuestionnaireResultNextSteps({ clinicsReplace = clinics, testKitsReplace = testKits }) {
