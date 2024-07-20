@@ -2,14 +2,16 @@
 
 import QuestionnaireResults from "./(result)/QuestionnaireResults";
 import { FlowerContextProvider } from "@/lib/contexts/FlowerContext";
+import AIContextProvider from "@/lib/ai/ai-context";
 
 export default function ResultPage() {
   return (
     <div className="mt-[105px] flex flex-grow flex-col">
-      <FlowerContextProvider>
-        <QuestionnaireResults />
-      </FlowerContextProvider>
+      <AIContextProvider>
+        <FlowerContextProvider>
+          <QuestionnaireResults />
+        </FlowerContextProvider>
+      </AIContextProvider>
     </div>
   );
 }
-
