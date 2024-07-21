@@ -10,13 +10,14 @@ import {
   useFlowerContext,
 } from "@/lib/contexts/FlowerContext";
 import Link from "next/link";
+import ResultSidebar from "../sidebar";
 
-export default function QuestionnaireResultOverview() {
+export default function ResultOverview() {
   const { grid } = useAIContext();
   const { focusedObject, setFocusState, setFocusedObject } = useFlowerContext();
 
   return (
-    <>
+    <ResultSidebar slug="">
       <div className="min-h flex justify-between gap-[59px]">
         <div className="flex flex-grow flex-col gap-4">
           {[STI.GenitalWarts, STI.Syphilis, STI.Chlamydia, STI.Gonorrhoea].map(
@@ -80,6 +81,6 @@ export default function QuestionnaireResultOverview() {
           <div className="h-[201px]"></div>
         </div>
       </div>
-    </>
+    </ResultSidebar>
   );
 }

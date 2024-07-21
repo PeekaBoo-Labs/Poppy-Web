@@ -7,8 +7,7 @@ import Link from "next/link";
 import QuestionnaireResultBreakdown from "./QuestionnaireResultBreakdown";
 import QuestionnaireResultNextSteps from "./QuestionnaireResultNextSteps";
 import QuestionnaireResultOverview from "./QuestionnaireResultOverview";
-import { useMemo, useEffect } from "react";
-import { generateKey } from "crypto";
+import { useEffect } from "react";
 
 const PAGES_LABEL = ["Overview", "Breakdown", "Next Steps"] as const;
 const PAGES_SLUG = ["overview", "breakdown", "next-steps"] as const;

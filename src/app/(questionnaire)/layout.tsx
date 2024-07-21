@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { font } from "@/lib/constants/fonts";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/general/Footer";
+import AIContextProvider from "@/lib/ai/ai-context";
 
 export const metadata: Metadata = {
   title: "Chute",
@@ -17,11 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={font.className}>
       <body className="h-screen">
-        <div className="mx-auto flex h-full max-w-[1300px] flex-col px-[35px]">
-          <NavBar />
-          {children}
-          <Footer />
-        </div>
+        <AIContextProvider>
+          <div className="mx-auto flex h-full max-w-[1300px] flex-col px-[35px]">
+            <NavBar />
+            {children}
+            <Footer />
+          </div>
+        </AIContextProvider>
       </body>
     </html>
   );

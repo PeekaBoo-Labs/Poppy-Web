@@ -1,6 +1,9 @@
+"use client";
+
 import { useState } from "react";
 import Clinic from "@/components/endscreen/Clinic";
 import TestKit from "@/components/endscreen/TestKit";
+import ResultSidebar from "../sidebar";
 
 const clinics = [
   {
@@ -64,6 +67,7 @@ const clinics = [
     ] as [string, string][],
   },
 ];
+
 const testKits = [
   {
     name: "DHD Free Home HIV Test Kit",
@@ -101,10 +105,11 @@ const testKits = [
   },
 ];
 
-export default function QuestionnaireResultNextSteps({
-  clinicsReplace = clinics,
-  testKitsReplace = testKits,
-}) {
+export default function ResultNextSteps() {
+  return <NextSteps />;
+}
+
+function NextSteps({ clinicsReplace = clinics, testKitsReplace = testKits }) {
   const [showMoreClinics, setShowMoreClinics] = useState(false);
   const [showMoreTestKits, setShowMoreTestKits] = useState(false);
 
@@ -116,7 +121,7 @@ export default function QuestionnaireResultNextSteps({
     : testKitsReplace.slice(0, 2);
 
   return (
-    <>
+    <ResultSidebar slug="nextsteps">
       <section
         id="clinics"
         className="rounded-xl border border-[1] border-gray-300 p-6"
@@ -170,6 +175,6 @@ export default function QuestionnaireResultNextSteps({
           {showMoreTestKits ? "Show Less" : "Show More"}
         </div>
       </section>
-    </>
+    </ResultSidebar>
   );
 }
