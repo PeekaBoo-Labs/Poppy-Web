@@ -30,7 +30,7 @@ export default function ResultSidebar({
   slug: string;
 }) {
   return (
-    <div className="z-10 mx-auto mt-[120px] flex-grow rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic">
+    <div className="z-10 mt-[120px] flex-grow rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic">
       <div className="flex h-full w-full gap-[100px] rounded-[13px] border border-border p-[48px]">
         <div className="flex flex-col gap-[16px]">
           {PAGES.map((p, i) => (

@@ -31,10 +31,6 @@ export default function FlowerBed({ grid }: FlowerBedProps) {
         setFocusedObject(null);
         setFocusState(OverviewFocusState.None);
       }}
-      className={cn(
-        "border border-b-[3px] bg-white p-2 shadow-lg",
-        "relative rounded-lg",
-      )}
       style={{
         // transform: `perspective(500px) rotateX(10deg) translateZ(50px)`,
         transition: "all 2s cubic-bezier(.04,1,.11,.97)",

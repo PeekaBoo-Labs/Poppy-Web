@@ -1,15 +1,11 @@
 import FlowerBed from "@/components/endscreen/FlowerBed";
-import { useAIContext } from "@/lib/ai/ai-context";
-import Image from "next/image";
-
-import { LongButton } from "@/components/Buttons";
 import FlowerCard from "@/components/endscreen/FlowerCard";
+import { useAIContext } from "@/lib/ai/ai-context";
 import { STI } from "@/lib/ai/question";
 import {
   OverviewFocusState,
   useFlowerContext,
 } from "@/lib/contexts/FlowerContext";
-import Link from "next/link";
 import ResultSidebar from "../sidebar";
 
 export default function ResultOverview() {
@@ -23,7 +19,7 @@ export default function ResultOverview() {
           <FlowerBed grid={grid} />
         </div>
         <div className="max-w-[349px]">
-          <div className="mb-4 flex flex-col gap-2 p-4">
+          <div className="mb-4 flex flex-col gap-2 px-4">
             <p className="text-secondary">
               Based on your responses, this garden illustrates potential sexual
               health considerations relevant to you.
