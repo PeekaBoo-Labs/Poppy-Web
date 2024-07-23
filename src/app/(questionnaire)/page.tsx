@@ -2,9 +2,14 @@
 
 import QuestionnaireForm from "@/app/(questionnaire)/(questionnaire)/QuestionnaireForm";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  if (window.innerWidth < 1000) {
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 1000);
+  }, []);
+  if (isMobile) {
     return (
       <div className="flex h-full flex-col items-center justify-center gap-4">
         <Image
