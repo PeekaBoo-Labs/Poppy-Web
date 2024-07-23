@@ -18,10 +18,24 @@ export default function ResultOverview() {
 
   return (
     <ResultSidebar slug="">
-      <div className="min-h flex justify-between gap-[59px]">
-        <div className="flex flex-grow flex-col gap-4">
-          {[STI.GenitalWarts, STI.Syphilis, STI.Chlamydia, STI.Gonorrhoea].map(
-            (sti: STI) => {
+      <div className="min-h flex justify-between gap-10">
+        <div className="flex flex-grow flex-col gap-8">
+          <FlowerBed grid={grid} />
+        </div>
+        <div className="max-w-[349px]">
+          <div className="mb-4 flex flex-col gap-2 p-4">
+            <p className="text-secondary">
+              Based on your responses, this garden illustrates potential sexual
+              health considerations relevant to you.
+            </p>
+          </div>
+          <div className="flex flex-col gap-1">
+            {[
+              STI.GenitalWarts,
+              STI.Syphilis,
+              STI.Chlamydia,
+              STI.Gonorrhoea,
+            ].map((sti: STI) => {
               const count = grid.filter((e) => e == sti).length;
 
               return (
@@ -40,45 +54,8 @@ export default function ResultOverview() {
                   }}
                 />
               );
-            },
-          )}
-        </div>
-        <div className="max-w-[50%] flex-grow pr-10">
-          <div className="mb-14">
-            <h1 className="mb-3 text-2xl font-semibold">Your Garden</h1>
-            <p className="text-sm text-secondary">
-              Based on your responses, this garden illustrates potential sexual
-              health considerations relevant to you.
-            </p>
+            })}
           </div>
-          <FlowerBed gridSize={12} grid={grid} />
-          <div className="mt-9 flex items-center justify-center gap-1 text-center text-xs text-secondary opacity-50">
-            <Image
-              className="object-contain"
-              src="/icons/glassplus.svg"
-              width={14}
-              height={14}
-              alt=""
-            />
-            Hover to interact
-          </div>
-          <div className="mt-7">
-            <Link href={"?tab=breakdown"}>
-              <LongButton type="primaryFullNext">
-                <span className="flex gap-1">
-                  <Image
-                    className="object-contain"
-                    src="/icons/step3.svg"
-                    width={19}
-                    height={19}
-                    alt=""
-                  />
-                  Response breakdown
-                </span>
-              </LongButton>
-            </Link>
-          </div>
-          <div className="h-[201px]"></div>
         </div>
       </div>
     </ResultSidebar>

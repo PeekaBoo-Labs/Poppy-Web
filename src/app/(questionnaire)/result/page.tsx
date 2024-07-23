@@ -5,7 +5,7 @@ import ResultOverview from "./(overview)/page";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const GARDEN_SIZE = 11;
+const GARDEN_SIZE = 14;
 
 export default function ResultPage() {
   const { generateGrid, answeredQuestions } = useAIContext();
@@ -19,7 +19,7 @@ export default function ResultPage() {
       generateGrid(GARDEN_SIZE);
       console.log("Generating grid...");
     }
-  });
+  }, []);
 
   return <ResultOverview />;
 }

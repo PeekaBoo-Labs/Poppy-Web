@@ -8,11 +8,12 @@ import {
 } from "@/lib/contexts/FlowerContext";
 
 type FlowerBedProps = {
-  gridSize: number;
   grid: (STI | "tree")[];
 };
 
-export default function FlowerBed({ gridSize, grid }: FlowerBedProps) {
+export default function FlowerBed({ grid }: FlowerBedProps) {
+  const gridSize = Math.round(Math.sqrt(grid.length));
+
   const { focusState, focusedObject, setFocusState, setFocusedObject } =
     useFlowerContext();
 
@@ -35,7 +36,7 @@ export default function FlowerBed({ gridSize, grid }: FlowerBedProps) {
         "relative rounded-lg",
       )}
       style={{
-        transform: `perspective(500px) rotateX(10deg) translateZ(50px)`,
+        // transform: `perspective(500px) rotateX(10deg) translateZ(50px)`,
         transition: "all 2s cubic-bezier(.04,1,.11,.97)",
       }}
     >

@@ -2,6 +2,7 @@ import { STI } from "@/lib/ai/question";
 import { MouseEventHandler } from "react";
 import Image from "next/image";
 import { DESC, IMAGE } from "./STIUI";
+import { cn } from "@/lib/utils";
 
 type FlowerCardProps = {
   type: STI;
@@ -23,22 +24,22 @@ export default function FlowerCard({
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
       data-focused={focused}
-      className="flex cursor-pointer gap-5 rounded-lg border bg-white p-4 transition-all duration-1000 ease-velocity data-[focused=true]:shadow-lg"
+      className={cn(
+        "flex cursor-pointer flex-col gap-2 rounded-[12px] border border-transparent p-4 transition-all ease-velocity",
+        "data-[focused=true]:border-border data-[focused=true]:bg-white data-[focused=true]:shadow-realistic",
+      )}
     >
-      <div className="relative aspect-square self-start rounded-full border bg-white shadow-sm">
+      <div className="flex items-center gap-2">
         <Image
-          className="p-2"
+          className="aspect-square object-contain"
           src={IMAGE[type]}
-          width={60}
-          height={60}
+          width={22}
+          height={22}
           alt=""
         />
-        <span className="absolute bottom-[-8px] right-[-8px] rounded-full border px-2 text-xs shadow-sm backdrop-blur-sm">
-          &times;{count}
-        </span>
+        <h3 className="font-medium">{type}</h3>
       </div>
       <div className="flex flex-1 flex-col">
-        <h2 className="text-lg font-medium">{type}</h2>
         <p className="text-xs text-secondary">{DESC[type]}</p>
       </div>
     </div>
