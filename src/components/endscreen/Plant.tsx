@@ -33,8 +33,8 @@ export default function Plant(props: PlantProps) {
   const gradient = Math.max(0, 1 - magnitude / RADIUS ** 2);
 
   // CSS values
-  const flowerScale = focusMe ? 1.2 : focusedOnGarden ? gradient / 5 + 1 : 1;
-
+  // const flowerScale = focusMe ? 1.2 : focusedOnGarden ? gradient / 5 + 1 : 1;
+  const flowerScale = gradient == 1 ? 1.5 : 1;
   const flowerOpacity = focusMe
     ? 1
     : focusedOnGarden
