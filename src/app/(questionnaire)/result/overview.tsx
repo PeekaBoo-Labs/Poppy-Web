@@ -6,7 +6,7 @@ import {
   OverviewFocusState,
   useFlowerContext,
 } from "@/lib/contexts/FlowerContext";
-import ResultSidebar from "../sidebar";
+import ResultSidebar from "./sidebar";
 
 export default function ResultOverview() {
   const { grid } = useAIContext();

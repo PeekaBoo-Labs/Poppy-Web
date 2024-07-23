@@ -50,7 +50,7 @@ export default function QuestionnaireResultOverview() {
               health considerations relevant to you.
             </p>
           </div>
-          <FlowerBed gridSize={12} grid={grid} />
+          <FlowerBed grid={grid} />
           <div className="mt-9 flex items-center justify-center gap-1 text-center text-xs text-secondary opacity-50">
             <Image
               className="object-contain"

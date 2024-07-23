@@ -1,7 +1,7 @@
 "use client";
 
 import { useAIContext } from "@/lib/ai/ai-context";
-import ResultOverview from "./(overview)/page";
+import ResultOverview from "./overview";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
