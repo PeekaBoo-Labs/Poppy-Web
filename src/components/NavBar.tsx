@@ -86,9 +86,11 @@ export default function NavBar() {
             </svg>
           </div>
 
-          <div className="rounded-[10px] bg-[#202221] px-[21px] py-[12px] text-xs text-white">
-            Screen Now
-          </div>
+          <Link href={"/"}>
+            <div className="rounded-[10px] bg-[#202221] px-[21px] py-[12px] text-xs text-white">
+              Screen Now
+            </div>
+          </Link>
         </div>
       </div>
     </div>
