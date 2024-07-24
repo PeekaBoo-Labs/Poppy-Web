@@ -20,10 +20,10 @@ export default function RootLayout({
     <html lang="en" className={font.className}>
       <body className="h-screen">
         <AIContextProvider>
-          <div className="mx-auto flex h-full max-w-[1300px] flex-col px-[35px]">
+          <div className="mx-auto flex h-full max-w-[1300px] flex-col px-[35px] pb-8">
             <NavBar />
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </AIContextProvider>
       </body>

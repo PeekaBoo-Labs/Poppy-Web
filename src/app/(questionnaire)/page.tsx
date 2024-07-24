@@ -19,7 +19,9 @@ export default function Home() {
           alt=""
           className="object-fit"
         />
-        <p className="font-medium text-secondary">Mobile not supported yet</p>
+        <p className="font-medium text-secondary">
+          Mobile not supported yet, please view on desktop.
+        </p>
       </div>
     );
   }

@@ -1,4 +1,18 @@
-import { Effect, EffectType, EndReason, InputType, Question, QuestionInput, RISK_ALL_STI, RISK_MINUS, RISK_NONE, RISK_SET, STI, Tag, WeightType } from "../question";
+import {
+  Effect,
+  EffectType,
+  EndReason,
+  InputType,
+  Question,
+  QuestionInput,
+  RISK_ALL_STI,
+  RISK_MINUS,
+  RISK_NONE,
+  RISK_SET,
+  STI,
+  Tag,
+  WeightType,
+} from "../question";
 import { Question_AnyBumpsOrSores } from "./bumps-or-sores";
 import { Question_UnusualDischarge } from "./discharge";
 import { Question_DiscomfortItchingOrBleedingInGenitalArea } from "./discomfort-in-genitals";
@@ -34,12 +48,12 @@ export class Question_SexualActivity implements Question {
           new Question_SharingUnwashedToys(),
           new Question_InfectedSemenInEye(),
           new Question_OralSex(),
-          new Question_ReproductiveOrgan(),
-          new Question_AnyBumpsOrSores(),
-          new Question_DiscomfortItchingOrBleedingInGenitalArea(),
-          new Question_UnusualDischarge(),
-          new Question_DiscomfortOrUnusualPatternsDuringPeeing(),
-          ...otherQuestions()
+          // new Question_ReproductiveOrgan(),
+          // new Question_AnyBumpsOrSores(),
+          // new Question_DiscomfortItchingOrBleedingInGenitalArea(),
+          // new Question_UnusualDischarge(),
+          // new Question_DiscomfortOrUnusualPatternsDuringPeeing(),
+          // ...otherQuestions()
         ],
       },
     ];
@@ -62,12 +76,14 @@ class Question_UnsafeSexRate implements Question {
 
   effects = (input: QuestionInput): Effect[] => {
     if (input.id !== "ALWAYS") {
-      return [{
-        type: EffectType.InsertQuestion,
-        questions: [new Question_UnprotectedContact()],
-      }]
+      return [
+        {
+          type: EffectType.InsertQuestion,
+          questions: [new Question_UnprotectedContact()],
+        },
+      ];
     }
-    return []
+    return [];
   };
 }
 
@@ -165,3 +181,4 @@ class Question_ReproductiveOrgan implements Question {
     }
   };
 }
+

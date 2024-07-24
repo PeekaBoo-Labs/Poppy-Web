@@ -51,7 +51,7 @@ export default function NavBar() {
           />
         </a>
 
-        <div className="flex cursor-default flex-row gap-[35px]">
+        <div className="flex hidden cursor-default flex-row gap-[35px]">
           <div className="flex flex-row items-center gap-[7px]">
             <span className="subheadline">Product</span>
 
@@ -96,4 +96,3 @@ export default function NavBar() {
     </div>
   );
 }
-
