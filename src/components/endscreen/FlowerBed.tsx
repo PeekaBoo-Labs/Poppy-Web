@@ -23,6 +23,8 @@ export default function FlowerBed({ grid }: FlowerBedProps) {
   });
 
   const modalRef = useRef<HTMLDivElement | null>(null);
+  const focusOnMap = focusState == OverviewFocusState.Map;
+  console.log(focusState, focusedObject);
 
   return (
     <div
@@ -31,9 +33,12 @@ export default function FlowerBed({ grid }: FlowerBedProps) {
         setFocusedObject(null);
         setFocusState(OverviewFocusState.None);
       }}
+      className={cn(
+        "border border-b-[3px] bg-white p-2 shadow-lg",
+        "relative rounded-lg duration-[2000ms] ease-velocity",
+      )}
       style={{
-        // transform: `perspective(500px) rotateX(10deg) translateZ(50px)`,
-        transition: "all 2s cubic-bezier(.04,1,.11,.97)",
+        transform: `perspective(500px) rotateX(${focusOnMap ? 0 : 10}deg) translateZ(${focusOnMap ? 50 : 0}px)`,
       }}
     >
       <div

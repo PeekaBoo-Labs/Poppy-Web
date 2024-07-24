@@ -14,15 +14,15 @@ export default function ResultOverview() {
 
   return (
     <ResultSidebar slug="">
-      <div className="min-h flex justify-between gap-10">
-        <div className="flex flex-grow flex-col gap-8">
+      <div className="min-h flex items-center gap-[100px]">
+        <div className="mb-10">
           <FlowerBed grid={grid} />
         </div>
-        <div className="max-w-[349px]">
+        <div className="w-[389px]">
           <div className="mb-4 flex flex-col gap-2 px-4">
             <p className="text-secondary">
-              Based on your responses, this garden illustrates potential sexual
-              health considerations relevant to you.
+              We&apos;ve created this visual garden to represent sexual health
+              factors that may be relevant to you, based on your responses.
             </p>
           </div>
           <div className="flex flex-col gap-1">
