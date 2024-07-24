@@ -6,8 +6,9 @@ import Footer from "@/components/general/Footer";
 import AIContextProvider from "@/lib/ai/ai-context";
 
 export const metadata: Metadata = {
-  title: "Chute",
-  description: "Get tested with our AI screening application",
+  title: "Poppy: AI Screening",
+  description:
+    "Learn more about your sexual health profile with our AI screening application",
 };
 
 export default function RootLayout({
