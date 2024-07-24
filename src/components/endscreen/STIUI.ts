@@ -18,3 +18,11 @@ export const DESC: Record<STI, string> = {
     "Progresses in stages. Causes sores and rashes. Serious if untreated.",
   [STI.GenitalWarts]: "Caused by HPV. Appears as small bumps in genital area.",
 } as const;
+
+export const LEARN: Record<STI, string> = {
+  [STI.Chlamydia]: "https://www.cdc.gov/chlamydia/about/index.html",
+  [STI.Gonorrhoea]: "https://www.cdc.gov/gonorrhea/about/index.html",
+  [STI.Syphilis]: "https://www.cdc.gov/syphilis/about/index.html",
+  [STI.GenitalWarts]:
+    "https://www.cdc.gov/sti/about/about-genital-hpv-infection.html",
+} as const;
