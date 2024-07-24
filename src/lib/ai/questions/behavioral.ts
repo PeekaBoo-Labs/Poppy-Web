@@ -48,12 +48,12 @@ export class Question_SexualActivity implements Question {
           new Question_SharingUnwashedToys(),
           new Question_InfectedSemenInEye(),
           new Question_OralSex(),
-          // new Question_ReproductiveOrgan(),
-          // new Question_AnyBumpsOrSores(),
-          // new Question_DiscomfortItchingOrBleedingInGenitalArea(),
-          // new Question_UnusualDischarge(),
-          // new Question_DiscomfortOrUnusualPatternsDuringPeeing(),
-          // ...otherQuestions()
+          new Question_ReproductiveOrgan(),
+          new Question_AnyBumpsOrSores(),
+          new Question_DiscomfortItchingOrBleedingInGenitalArea(),
+          new Question_UnusualDischarge(),
+          new Question_DiscomfortOrUnusualPatternsDuringPeeing(),
+          ...otherQuestions(),
         ],
       },
     ];
