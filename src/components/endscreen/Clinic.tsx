@@ -24,13 +24,13 @@ export default function Clinic({
   services,
 }: ClinicProps) {
   return (
-    <div className="clinic-card rounded-lg mt-5">
+    <div className="clinic-card mt-5 rounded-lg">
       <div className="clinic-header">
         <a
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-lg underline mb-2 flex items-center justify-between"
+          className="mb-2 flex items-center justify-between text-lg underline"
         >
           <div className="flex flex-row gap-3">
             <img
@@ -50,7 +50,7 @@ export default function Clinic({
         </a>
       </div>
 
-      <div className="clinic-images flex flex-row gap-3">
+      <div className="clinic-images flex flex-row gap-3 overflow-scroll">
         {images.map((image_url, index) => (
           <img
             src={image_url}
@@ -61,11 +61,11 @@ export default function Clinic({
         ))}
       </div>
 
-      <div className="clinic-services flex flex-row flex-wrap gap-5 mt-3">
+      <div className="clinic-services mt-3 flex flex-row flex-wrap gap-5">
         {services.map(([desc, type], index) => (
           <div
             key={index}
-            className="font-light text-gray-400 flex flex-row gap-2 align-middle"
+            className="flex flex-row gap-2 align-middle font-light text-gray-400"
           >
             <img className="h-[22px] w-[22px]" src={ICONS[type]} alt={desc} />
             {desc}

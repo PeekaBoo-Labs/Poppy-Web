@@ -20,7 +20,8 @@ import { otherQuestions } from "./other";
 import { Question_DiscomfortOrUnusualPatternsDuringPeeing } from "./peeing";
 
 export class Question_SexualActivity implements Question {
-  label = "How many sexual partners have you had in the last 6 months?";
+  label =
+    "In the past 6 months, how many people have you been sexually intimate with, including any non-penetrative genital contact or kissing?";
   // label = "this is a test question for development purposes"
   inputType = InputType.SelectOne;
   inputOptions = [
@@ -181,4 +182,3 @@ class Question_ReproductiveOrgan implements Question {
     }
   };
 }
-

@@ -30,21 +30,31 @@ export default function ResultSidebar({
   slug: string;
 }) {
   return (
-    <div className="z-10 mt-[120px] flex-grow rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic">
-      <div className="flex h-full w-full gap-[100px] rounded-[13px] border border-border p-[48px]">
-        <div className="flex flex-col gap-[16px]">
+    <div className="z-10 flex-grow border-border bg-secondary-background pt-[70px] md:mt-[120px] md:rounded-[20px] md:border md:p-[7px] md:shadow-realistic">
+      <div className="h-full w-full md:flex md:gap-[100px] md:rounded-[13px] md:border md:border-border md:p-[48px]">
+        <div className="relative my-4 flex justify-around md:my-0 md:flex-col md:justify-start md:gap-[16px]">
           {PAGES.map((p, i) => (
             <Link
               key={i}
               href={`/result/${p.slug}`}
-              className={cn("text-left", p.slug != slug && "text-secondary")}
+              className={cn(
+                "text-left",
+                p.slug != slug
+                  ? "text-secondary"
+                  : "underline underline-offset-4 md:no-underline",
+                "bg-secondary-background px-1",
+              )}
               prefetch={true}
             >
               {p.label}
             </Link>
           ))}
+
+          <span className="absolute left-0 top-[50%] z-[-1] w-full border-b-2"></span>
         </div>
-        <div className="flex flex-grow flex-col gap-[20px]">{children}</div>{" "}
+        <div className="flex flex-grow flex-col gap-[20px] overflow-visible">
+          {children}
+        </div>{" "}
       </div>
     </div>
   );

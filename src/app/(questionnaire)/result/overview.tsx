@@ -14,18 +14,18 @@ export default function ResultOverview() {
 
   return (
     <ResultSidebar slug="">
-      <div className="min-h flex items-center gap-[100px]">
-        <div className="mb-10">
+      <div className="items-center gap-[100px] lg:flex">
+        <div className="mb-10 lg:max-w-none">
           <FlowerBed grid={grid} />
         </div>
-        <div className="w-[389px]">
+        <div className="lg:w-[389px]">
           <div className="mb-4 flex flex-col gap-2 px-4">
             <p className="text-secondary">
               We&apos;ve created this visual garden to represent sexual health
               factors that may be relevant to you, based on your responses.
             </p>
           </div>
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col md:gap-1">
             {[
               STI.GenitalWarts,
               STI.Syphilis,

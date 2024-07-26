@@ -124,7 +124,7 @@ function NextSteps({ clinicsReplace = clinics, testKitsReplace = testKits }) {
     <ResultSidebar slug="nextsteps">
       <section
         id="clinics"
-        className="rounded-xl border border-[1] border-gray-300 p-6"
+        className="m-4 rounded-xl border border-[1] border-gray-300 p-6 md:m-0"
       >
         <span className="font-semibold">Find local clinics</span>
         <div className="flex flex-col gap-2">
@@ -151,7 +151,7 @@ function NextSteps({ clinicsReplace = clinics, testKitsReplace = testKits }) {
       </section>
       <section
         id="test-kits"
-        className="mt-5 rounded-xl border border-[2] border-gray-300 p-5"
+        className="m-4 mt-5 rounded-xl border border-[2] border-gray-300 p-5 md:m-0"
       >
         <span className="font-semibold">Relevant test kits</span>
         <div className="flex flex-col gap-1">

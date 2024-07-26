@@ -48,26 +48,34 @@ export default function Plant(props: PlantProps) {
         ? 0.5
         : 1;
 
-  return (
-    <Link href={type != "tree" ? LEARN[type] : ""} target="_blank">
-      <div
-        onMouseEnter={onMouseEnter}
-        className="aspect-square transition-all duration-[5000ms] ease-velocity hover:scale-105 hover:duration-[700ms]"
-        style={{
-          cursor: type != "tree" ? "pointer" : "default",
-          filter: `saturate(${focusOneFlowerType && !focusMe ? 0 : 1}) ${focusMe ? "drop-shadow(0 0 15px #ffcc00)" : ""}`,
-          transform: `scale(${flowerScale})`,
-          opacity: flowerOpacity,
-        }}
-      >
-        <Image
-          className="w-full"
-          src={IMAGE[type]}
-          width={30}
-          height={30}
-          alt={type}
-        />
-      </div>
-    </Link>
+  const Plant = (
+    <div
+      onMouseEnter={onMouseEnter}
+      className="aspect-square transition-all duration-[5000ms] ease-velocity hover:scale-105 hover:duration-[700ms]"
+      style={{
+        cursor: type != "tree" ? "pointer" : "default",
+        filter: `saturate(${focusOneFlowerType && !focusMe ? 0 : 1}) ${focusMe ? "drop-shadow(0 0 15px #ffcc00)" : ""}`,
+        transform: `scale(${flowerScale})`,
+        opacity: flowerOpacity,
+      }}
+    >
+      <Image
+        className="w-full"
+        src={IMAGE[type]}
+        width={30}
+        height={30}
+        alt={type}
+      />
+    </div>
   );
+
+  if (type == "tree") {
+    return Plant;
+  } else {
+    return (
+      <Link href={LEARN[type]} target="_blank">
+        {Plant}
+      </Link>
+    );
+  }
 }

@@ -34,7 +34,7 @@ export default function FlowerBed({ grid }: FlowerBedProps) {
         setFocusState(OverviewFocusState.None);
       }}
       className={cn(
-        "border border-b-[3px] bg-white p-2 shadow-lg",
+        "m-8 border border-b-[3px] bg-white p-2 shadow-lg lg:m-0",
         "relative rounded-lg duration-[2000ms] ease-velocity",
       )}
       style={{

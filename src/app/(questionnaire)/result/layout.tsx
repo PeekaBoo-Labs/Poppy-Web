@@ -15,7 +15,7 @@ export default function ResultLayout({ children }: { children: ReactNode }) {
       console.log("No answered questions, redirecting to screening page");
       router.push("/");
     } else {
-      generateGrid(GARDEN_SIZE);
+      generateGrid(window.innerWidth > 768 ? GARDEN_SIZE : 9);
       console.log("Generating grid...");
     }
   }, []);

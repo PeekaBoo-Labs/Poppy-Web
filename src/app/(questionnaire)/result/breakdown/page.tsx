@@ -51,8 +51,52 @@ export default function ResultBreakdown() {
 
   return (
     <ResultSidebar slug="breakdown">
-      <div className="flex justify-between gap-[89px]">
-        <div className="flex max-w-lg flex-col gap-10">
+      <div className="mx-4 flex flex-col justify-between gap-8 md:flex-row-reverse md:gap-[89px]">
+        <div className="flex flex-col gap-4">
+          <div className="flex gap-2 rounded-lg bg-amber-200 p-2">
+            <span className="h-full w-1 rounded-full bg-primary" />
+            <span className="text-xs">
+              STIs are often <u>asymptomatic</u>. When symptoms occur, they can
+              be non-specific.
+            </span>
+          </div>
+          <div className="flex flex-col gap-2 rounded-lg border border-border bg-white p-5 text-sm font-medium shadow-realistic">
+            <h3>
+              Behavioral risks:{" "}
+              <span className="font-normal">
+                {
+                  visibleQuestions.filter((q) =>
+                    q.question.tags.includes(Tag.Behavioral),
+                  ).length
+                }
+              </span>
+            </h3>
+            <h3>
+              Symptomatic risks:{" "}
+              <span className="font-normal">
+                {
+                  visibleQuestions.filter((q) =>
+                    q.question.tags.includes(Tag.Symptom),
+                  ).length
+                }
+              </span>
+            </h3>
+          </div>
+        </div>
+
+        <div className="mx-4 flex flex-col gap-10 md:mx-0 md:max-w-lg">
+          {visibleQuestions.length == 0 && (
+            <p className="rounded-lg border bg-white p-4 text-sm">
+              <span className="font-medium">
+                Some STIs can be acquired without direct sexual contact
+              </span>
+              , primarily through mother-to-child transmission during pregnancy,
+              childbirth, or breastfeeding. While less common, a few STIs can
+              also spread through contact with contaminated objects or surfaces,
+              though this route of transmission is rare for most STIs.
+            </p>
+          )}
+
           {visibleQuestions.map((metadata: QuestionWithMetadata, i) => {
             return (
               <div
@@ -112,38 +156,6 @@ export default function ResultBreakdown() {
 
           {/* little bit of space here */}
           <span className="h-[20px]"></span>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <div className="flex gap-2 rounded-lg bg-amber-200 p-2">
-            <span className="h-full w-1 rounded-full bg-primary" />
-            <span className="text-xs">
-              STIs are often <u>asymptomatic</u>. When symptoms occur, they can
-              be non-specific.
-            </span>
-          </div>
-          <div className="flex flex-col gap-2 rounded-lg border border-border bg-white p-5 text-sm font-medium shadow-realistic">
-            <h3>
-              Behavioral risks:{" "}
-              <span className="font-normal">
-                {
-                  visibleQuestions.filter((q) =>
-                    q.question.tags.includes(Tag.Behavioral),
-                  ).length
-                }
-              </span>
-            </h3>
-            <h3>
-              Symptomatic risks:{" "}
-              <span className="font-normal">
-                {
-                  visibleQuestions.filter((q) =>
-                    q.question.tags.includes(Tag.Symptom),
-                  ).length
-                }
-              </span>
-            </h3>
-          </div>
         </div>
       </div>
     </ResultSidebar>

@@ -40,7 +40,7 @@ export default function NavBar() {
     <div
       className={`fixed left-0 top-0 z-[999] flex h-[70px] w-[100dvw] items-center justify-center border-b border-[#D9D9D9] bg-[#F1EFED]`}
     >
-      <div className="flex w-full items-center justify-between px-[35px]">
+      <div className="flex w-full items-center justify-between px-4 md:px-[35px]">
         <a href="https://poppyml.com" className="flex flex-row gap-[10px]">
           <Image
             priority={true}
