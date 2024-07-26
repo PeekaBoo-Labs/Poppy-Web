@@ -35,14 +35,14 @@ function NavDropdown({
 }
 
 export default function NavBar() {
-  const pathname = usePathname();
   return (
     <div
-      className={`fixed left-0 top-0 z-[999] flex h-[70px] w-[100dvw] items-center justify-center border-b border-[#D9D9D9] bg-[#F1EFED]`}
+      className={`fixed left-0 top-0 z-[999] flex h-[56px] w-[100dvw] items-center justify-center border-b border-[#D8D9D9] bg-[#F1EFED] md:h-[70px]`}
     >
       <div className="flex w-full items-center justify-between px-4 md:px-[35px]">
         <a href="https://poppyml.com" className="flex flex-row gap-[10px]">
           <Image
+            className="w-[55px] md:w-[65.02px]"
             priority={true}
             width={65.02}
             height={19}
