@@ -2,11 +2,11 @@
 
 import { useAIContext } from "@/lib/ai/ai-context";
 import { QuestionInput, STI, Tag } from "@/lib/ai/question";
-import QuestionnaireGPT from "../(result)/QuestionnaireGPT";
+import QuestionnaireGPT from "../../../../components/results/QuestionnaireGPT";
 import ResultSidebar from "../sidebar";
 import { Question } from "@/lib/ai/question";
 import Link from "next/link";
-import { LEARN } from "@/components/endscreen/STIUI";
+import { LEARN } from "@/components/results/STIUI";
 
 const iconLinks = ["/dataLow.svg", "/dataMed.svg", "/dataHigh.svg"];
 
@@ -146,6 +146,7 @@ export default function ResultBreakdown() {
                         src={"/arrowUpRight.svg"}
                         width={11}
                         height={11}
+                        alt=""
                       />
                     </Link>
                   ))}

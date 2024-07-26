@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Clinic from "@/components/endscreen/Clinic";
-import TestKit from "@/components/endscreen/TestKit";
+import Clinic from "@/components/results/Clinic";
+import TestKit from "@/components/results/TestKit";
 import ResultSidebar from "../sidebar";
 
 const clinics = [

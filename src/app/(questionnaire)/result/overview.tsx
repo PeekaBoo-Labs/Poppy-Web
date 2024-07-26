@@ -1,5 +1,5 @@
-import FlowerBed from "@/components/endscreen/FlowerBed";
-import FlowerCard from "@/components/endscreen/FlowerCard";
+import FlowerBed from "@/components/results/FlowerBed";
+import FlowerCard from "@/components/results/FlowerCard";
 import { useAIContext } from "@/lib/ai/ai-context";
 import { STI } from "@/lib/ai/question";
 import {

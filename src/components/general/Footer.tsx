@@ -1,5 +1,3 @@
-import Title from "../Title";
-import Caption from "../Caption";
 import Image from "next/image";
 
 export default function Footer() {
