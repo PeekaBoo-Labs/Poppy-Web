@@ -1,36 +1,50 @@
-import { Question, InputType, WeightType, RISK_NONE, Tag, QuestionInput, Effect, EffectType, STI, RISK_SET } from "../question"
+import {
+  Question,
+  InputType,
+  WeightType,
+  RISK_NONE,
+  Tag,
+  QuestionInput,
+  Effect,
+  EffectType,
+  STI,
+  RISK_SET,
+} from "../question";
 
 // Question that isn't scored just used to skip a category of questions
 export class Question_AnyBumpsOrSores implements Question {
-  label = "Do you have any visible bumps or sores in your genital area, face, or mouth?"
-  inputType: InputType = InputType.SelectOne
+  label =
+    "Do you have any visible bumps or sores in your genital area, face, or mouth?";
+  inputType: InputType = InputType.SelectOne;
   inputOptions = [
     { id: "YES", label: "Yes", value: 1 },
     { id: "NO", label: "No", value: 0 },
-  ]
-  weight = 0
-  weightType = WeightType.Additive
-  riskFactors = RISK_NONE()
-  tags = [Tag.Symptom]
+  ];
+  weight = 0;
+  weightType = WeightType.Additive;
+  riskFactors = RISK_NONE();
+  tags = [Tag.Symptom];
 
   effects = (input: QuestionInput): Effect[] => {
     if (input.id === "YES") {
-      return [{
-        type: EffectType.InsertQuestion,
-        questions: [
-          new Question_PainlessSoresInGenitalArea(),
-          new Question_WhiteOrGreyWartyGrowths(),
-          new Question_SoresInMouthOrHands(),
-          new Question_SoresInBottom(),
-          new Question_WhitePatchesInMouth(),
-          new Question_NonItchyRashAllOverBody(),
-          new Question_SmallRoughLumpsNearGenitals()
-        ],
-      }]
+      return [
+        {
+          type: EffectType.InsertQuestion,
+          questions: [
+            new Question_PainlessSoresInGenitalArea(),
+            new Question_WhiteOrGreyWartyGrowths(),
+            new Question_SoresInMouthOrHands(),
+            new Question_SoresInBottom(),
+            new Question_WhitePatchesInMouth(),
+            new Question_NonItchyRashAllOverBody(),
+            new Question_SmallRoughLumpsNearGenitals(),
+          ],
+        },
+      ];
     }
 
-    return []
-  }
+    return [];
+  };
 }
 
 class Question_PainlessSoresInGenitalArea implements Question {
@@ -49,11 +63,8 @@ class Question_PainlessSoresInGenitalArea implements Question {
     [STI.Syphilis, 3],
   ]);
   tags = [Tag.Symptom];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
-
 class Question_SoresInMouthOrHands implements Question {
   label = "Do you have sores in your mouth or on your hands?";
   inputType = InputType.SelectOne;
@@ -70,9 +81,7 @@ class Question_SoresInMouthOrHands implements Question {
     [STI.Syphilis, 3],
   ]);
   tags = [Tag.Symptom];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
 
 class Question_SoresInBottom implements Question {
@@ -91,9 +100,7 @@ class Question_SoresInBottom implements Question {
     [STI.Syphilis, 3],
   ]);
   tags = [Tag.Symptom];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
 
 class Question_WhiteOrGreyWartyGrowths implements Question {
@@ -112,9 +119,7 @@ class Question_WhiteOrGreyWartyGrowths implements Question {
     [STI.Syphilis, 0],
   ]);
   tags = [Tag.Symptom];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
 
 class Question_NonItchyRashAllOverBody implements Question {
@@ -134,9 +139,7 @@ class Question_NonItchyRashAllOverBody implements Question {
     [STI.Syphilis, 3],
   ]);
   tags = [Tag.Symptom];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
 
 class Question_WhitePatchesInMouth implements Question {
@@ -155,22 +158,21 @@ class Question_WhitePatchesInMouth implements Question {
     [STI.Syphilis, 3],
   ]);
   tags = [Tag.Symptom];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
 
 class Question_SmallRoughLumpsNearGenitals implements Question {
-  label = "Do you have small rough lumps near your genitals?"
-  inputType = InputType.SelectOne
+  label = "Do you have small rough lumps near your genitals?";
+  inputType = InputType.SelectOne;
   inputOptions = [
     { id: "YES", label: "Yes", value: 1 },
     { id: "NO", label: "No", value: 0 },
-  ]
-  weight = 1
-  weightType = WeightType.Additive
-  riskFactors = RISK_SET(STI.GenitalWarts, 3)
-  tags = [Tag.Symptom]
+  ];
+  weight = 1;
+  weightType = WeightType.Additive;
+  riskFactors = RISK_SET(STI.GenitalWarts, 3);
+  tags = [Tag.Symptom];
 
   effects = () => [];
 }
+

@@ -1,35 +1,49 @@
-import { Question, InputType, WeightType, RISK_NONE, Tag, QuestionInput, Effect, EffectType, STI } from "../question"
+import {
+  Question,
+  InputType,
+  WeightType,
+  RISK_NONE,
+  Tag,
+  QuestionInput,
+  Effect,
+  EffectType,
+  STI,
+} from "../question";
 
 // Question that isn't scored just used to skip a category of questions
-export class Question_DiscomfortItchingOrBleedingInGenitalArea implements Question {
-  label = "Do you have discomfort, itching, or bleeding in your genital area?"
-  inputType: InputType = InputType.SelectOne
+export class Question_DiscomfortItchingOrBleedingInGenitalArea
+  implements Question
+{
+  label = "Do you have discomfort, itching, or bleeding in your genital area?";
+  inputType: InputType = InputType.SelectOne;
   inputOptions = [
     { id: "YES", label: "Yes", value: 1 },
     { id: "NO", label: "No", value: 0 },
-  ]
-  weight = 0
-  weightType = WeightType.Additive
-  riskFactors = RISK_NONE()
-  tags = [Tag.Symptom]
+  ];
+  weight = 0;
+  weightType = WeightType.Additive;
+  riskFactors = RISK_NONE();
+  tags = [Tag.Symptom];
 
   effects = (input: QuestionInput): Effect[] => {
     if (input.id === "YES") {
-      return [{
-        type: EffectType.InsertQuestion,
-        questions: [
-          new Question_BloodPeeing(),
-          new Question_ItchingOrBleedingInGenitalsOrAnus(),
-          new Question_BleedingBetweenPeriods(),
-          new Question_BleedingAfterSex(),
-          new Question_PainInPenis(),
-          new Question_SwellingInPenis(),
-        ],
-      }]
+      return [
+        {
+          type: EffectType.InsertQuestion,
+          questions: [
+            new Question_BloodPeeing(),
+            new Question_ItchingOrBleedingInGenitalsOrAnus(),
+            new Question_BleedingBetweenPeriods(),
+            new Question_BleedingAfterSex(),
+            new Question_PainInPenis(),
+            new Question_SwellingInPenis(),
+          ],
+        },
+      ];
     }
 
-    return []
-  }
+    return [];
+  };
 }
 
 class Question_BloodPeeing implements Question {
@@ -48,9 +62,7 @@ class Question_BloodPeeing implements Question {
     [STI.Syphilis, 0],
   ]);
   tags = [Tag.Symptom];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
 
 class Question_ItchingOrBleedingInGenitalsOrAnus implements Question {
@@ -69,9 +81,7 @@ class Question_ItchingOrBleedingInGenitalsOrAnus implements Question {
     [STI.Syphilis, 0],
   ]);
   tags = [Tag.Symptom];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
 
 class Question_BleedingBetweenPeriods implements Question {
@@ -90,9 +100,7 @@ class Question_BleedingBetweenPeriods implements Question {
     [STI.Syphilis, 0],
   ]);
   tags = [Tag.Symptom, Tag.Female];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
 
 class Question_BleedingAfterSex implements Question {
@@ -111,9 +119,7 @@ class Question_BleedingAfterSex implements Question {
     [STI.Syphilis, 0],
   ]);
   tags = [Tag.Symptom, Tag.Female];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
 
 class Question_PainInPenis implements Question {
@@ -132,9 +138,7 @@ class Question_PainInPenis implements Question {
     [STI.Syphilis, 0],
   ]);
   tags = [Tag.Symptom, Tag.Male];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
 
 class Question_SwellingInPenis implements Question {
@@ -153,7 +157,6 @@ class Question_SwellingInPenis implements Question {
     [STI.Syphilis, 0],
   ]);
   tags = [Tag.Symptom, Tag.Male];
-  effects = (input: QuestionInput): Effect[] => {
-    return [];
-  };
+  effects = () => [];
 }
+
