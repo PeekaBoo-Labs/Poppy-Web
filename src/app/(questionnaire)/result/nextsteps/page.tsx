@@ -122,6 +122,10 @@ function NextSteps({ clinicsReplace = clinics, testKitsReplace = testKits }) {
 
   return (
     <ResultSidebar slug="nextsteps">
+      <span className="rounded-lg border border-border p-2 text-center">
+        🤗 Did you know? Most STIs are curable!
+      </span>
+
       <section
         id="clinics"
         className="m-4 rounded-xl border border-[1] border-gray-300 p-6 md:m-0"
