@@ -50,11 +50,11 @@ export default function ResultSidebar({
             </Link>
           ))}
 
-          <span className="absolute left-0 top-[50%] z-[-1] w-full border-b-2"></span>
+          <span className="absolute left-0 right-0 top-[50%] z-[-1] m-auto w-[70%] border-b-2 md:hidden"></span>
         </div>
         <div className="flex flex-grow flex-col gap-[20px] overflow-visible">
           {children}
-        </div>{" "}
+        </div>
       </div>
     </div>
   );
