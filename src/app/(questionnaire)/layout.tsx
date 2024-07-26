@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={font.className}>
-      <body className="h-screen">
+      <body>
         <AIContextProvider>
           <div className="mx-auto flex h-full max-w-[1300px] flex-col md:px-[35px] md:pb-8">
             <NavBar />

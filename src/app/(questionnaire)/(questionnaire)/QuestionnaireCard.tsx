@@ -73,7 +73,7 @@ export default function QuestionnaireCard() {
           </div>
 
           <div className="flex flex-shrink-0 flex-grow basis-0 flex-col justify-between gap-4">
-            <div className="mt-[20px] flex flex-col gap-[20px]">
+            <div className="mb-24 mt-[20px] flex flex-col gap-[20px]">
               <p className="max-w-sm text-sm text-secondary">
                 Choose one or more options
               </p>
