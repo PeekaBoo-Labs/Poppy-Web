@@ -61,7 +61,7 @@ export default function QuestionnaireCard() {
       {!currentQuestion ? null : (
         <div className="flex flex-grow flex-col md:flex-row md:gap-[40px]">
           <div className="aspect-[0.948333/1] rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic md:w-[60%]">
-            <div className="grid h-full w-full place-content-center rounded-[13px] border border-border p-[20px] md:p-[135px]">
+            <div className="grid aspect-[0.948333/1] place-content-center rounded-[13px] border border-border p-[20px] md:p-[135px]">
               <h1 className="flex items-center justify-center text-center text-xl font-medium">
                 {currentQuestion.label}
               </h1>
