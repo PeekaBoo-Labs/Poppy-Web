@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { font } from "@/lib/constants/fonts";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/general/Footer";
+import { Analytics } from "@vercel/analytics/react";
 import AIContextProvider from "@/lib/ai/ai-context";
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({
           <div className="mx-auto flex h-full max-w-[1300px] flex-col md:px-[35px] md:pb-8">
             <NavBar />
             {children}
+            <Analytics />
             {/* <Footer /> */}
           </div>
         </AIContextProvider>
