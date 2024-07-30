@@ -123,7 +123,7 @@ function NextSteps({ clinicsReplace = clinics, testKitsReplace = testKits }) {
   return (
     <ResultSidebar slug="nextsteps">
       <span className="m-4 rounded-lg border border-border p-2 text-center md:m-0">
-        🤗 Did you know? Most STIs are curable!
+        🚧 Hang tight! This page is currently under construction.{" "}
       </span>
 
       <section
