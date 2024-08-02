@@ -25,7 +25,7 @@ export default function ResultBreakdown() {
     (question: Question) => {
       const choices = question.inputOptions.sort((a, b) => a.value - b.value);
       const chosenIndex = choices.findIndex(
-        (o) => o.id == question.selected ?? "",
+        (o) => o.id == question.selected,
       );
       const percent =
         100 * ((chosenIndex + 1) / choices.length) ** (6 / choices.length);
@@ -51,8 +51,11 @@ export default function ResultBreakdown() {
 
   return (
     <ResultSidebar slug="breakdown">
-      <div className="mx-4 flex flex-col justify-between gap-8 md:flex-row-reverse md:gap-[89px]">
+      <div className="mx-4 flex flex-col justify-between gap-8 lg:flex-row-reverse lg:gap-[89px]">
         <div className="flex flex-col gap-4">
+          <span className="rounded-lg border border-border p-2 text-center md:m-0">
+            🚧 Hang tight! This page is currently under construction.{" "}
+          </span>
           <div className="flex gap-2 rounded-lg bg-amber-200 p-2">
             <span className="h-full w-1 rounded-full bg-primary" />
             <span className="text-xs">
@@ -84,7 +87,7 @@ export default function ResultBreakdown() {
           </div>
         </div>
 
-        <div className="mx-4 flex flex-col gap-10 md:mx-0 md:max-w-lg">
+        <div className="flex flex-col gap-10 md:mx-0 md:max-w-lg">
           {visibleQuestions.length == 0 && (
             <p className="rounded-lg border bg-white p-4 text-sm">
               <span className="font-medium">

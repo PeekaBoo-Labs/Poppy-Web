@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/general/Footer";
 import { useAIContext } from "@/lib/ai/ai-context";
 import { FlowerContextProvider } from "@/lib/contexts/FlowerContext";
 import { useRouter } from "next/navigation";
@@ -20,5 +21,11 @@ export default function ResultLayout({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  return <FlowerContextProvider>{children}</FlowerContextProvider>;
+  return <FlowerContextProvider>
+    {children}
+
+    <div className="md:bg-transparent bg-secondary-background md:mt-10 max-w-[1000px] mx-auto w-full">
+      <Footer />
+    </div>
+  </FlowerContextProvider>;
 }

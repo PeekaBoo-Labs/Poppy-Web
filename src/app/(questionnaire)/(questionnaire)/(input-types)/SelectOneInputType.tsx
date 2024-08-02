@@ -17,6 +17,7 @@ export default function SelectOneInputType({
           key={option.id}
           text={option.label}
           selected={answer === option.id}
+          equalWidth={inputOptions.length < 3}
           onClick={() => setAnswer(option.id)}
         />
       ))}

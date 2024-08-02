@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
+import Footer from "@/components/general/Footer";
 
 type Page = {
   label: string;
@@ -30,7 +31,7 @@ export default function ResultSidebar({
   slug: string;
 }) {
   return (
-    <div className="z-10 flex-grow border-border bg-secondary-background pt-[70px] md:mt-[120px] md:rounded-[20px] md:border md:p-[7px] md:shadow-realistic">
+    <div className="z-10 md:mx-auto border-border max-w-[1300px] bg-secondary-background md:w-[calc(100%-60px)] md:mt-8 md:rounded-[20px] md:border md:p-[7px] md:shadow-realistic">
       <div className="h-full w-full md:flex md:gap-[100px] md:rounded-[13px] md:border md:border-border md:p-[48px]">
         <div className="relative my-4 flex justify-around md:my-0 md:flex-col md:justify-start md:gap-[16px]">
           {PAGES.map((p, i) => (
@@ -56,6 +57,8 @@ export default function ResultSidebar({
           {children}
         </div>
       </div>
+
+
     </div>
   );
 }

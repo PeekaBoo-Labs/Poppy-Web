@@ -37,7 +37,7 @@ function NavDropdown({
 export default function NavBar() {
   return (
     <div
-      className={`fixed left-0 top-0 z-[999] flex h-[56px] w-[100dvw] items-center justify-center border-b border-[#D8D9D9] bg-[#F1EFED] md:h-[70px]`}
+      className={`sticky left-0 top-0 z-[999] flex h-[56px] items-center justify-center border-b border-[#D8D9D9] bg-[#F1EFED] md:h-[70px]`}
     >
       <div className="flex w-full items-center justify-between px-4 md:px-[35px]">
         <a href="https://poppyml.com" className="flex flex-row gap-[10px]">

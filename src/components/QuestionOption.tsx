@@ -3,10 +3,12 @@ import { ANIMATION, cn } from "@/lib/utils";
 export default function QuestionInputOption({
   text,
   selected,
+  equalWidth,
   onClick,
 }: {
   text: string;
   selected: boolean;
+  equalWidth?: boolean;
   onClick: () => void;
 }) {
   return (
@@ -14,6 +16,7 @@ export default function QuestionInputOption({
       onClick={onClick}
       className={cn(
         "group relative min-w-[75px] rounded-[13px] px-[16px] py-[13px]",
+        equalWidth && "flex-grow",
         ANIMATION,
         selected ? "bg-accent" : "hover:text-accent-darker",
       )}
