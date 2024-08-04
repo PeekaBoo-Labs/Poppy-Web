@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Footer({ border }: { border?: boolean }) {
   return (
     <footer className={cn(
-      border && "border-t border-border",
+      border && "md:border-0 border-t border-border",
       "flex text-xs flex-col md:flex-row md:justify-between gap-8 justify-center py-8 px-4 md:px-8"
     )}>
       {/* Made in Irvine and Santa Cruz */}
@@ -32,17 +32,17 @@ export default function Footer({ border }: { border?: boolean }) {
       {/* Links */}
 
       <section className="flex gap-4 text-secondary md:text-right md:gap-28">
-        <div className="flex flex-col gap-1 flex-grow">
+        <div className="flex flex-col gap-[10px] flex-grow">
           <h3 className="font-medium text-primary">Product</h3>
           <Link href="https://poppyml.com/research">Research</Link>
-          <span className="blur-sm">APIs</span>
+          <span className="blur-[3px] pointer-events-none">APIs</span>
           <Link href="https://poppyml.com/terms&privacy">Terms & Privacy</Link>
         </div>
-        <div className="flex flex-col  gap-1 flex-grow">
+        <div className="flex flex-col gap-[10px] flex-grow">
           <h3 className="font-medium text-primary">Resources</h3>
-          <span className="blur-sm">Documentation</span>
-          <span className="blur-sm">Change Log</span>
-          <span className="blur-sm">Contact Us</span>
+          <span className="blur-[3px] pointer-events-none">Documentation</span>
+          <span className="blur-[3px] pointer-events-none">Change Log</span>
+          <span className="blur-[3px] pointer-events-none">Contact Us</span>
         </div>
       </section>
 
