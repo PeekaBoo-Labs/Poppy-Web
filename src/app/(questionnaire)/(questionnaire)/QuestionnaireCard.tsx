@@ -60,7 +60,7 @@ export default function QuestionnaireCard() {
   return (
     <>
       {!currentQuestion ? null : (
-        <div className="flex flex-grow flex-col md:min-h-[390px] min-h-[67dvh] w-full md:flex-row md:gap-[30px] md:p-8">
+        <div className="flex flex-grow flex-col md:min-h-[390px] min-h-[calc(100dvh-56px-83px)] pb-8 w-full md:flex-row md:gap-[30px] md:p-8">
           <div className="flex md:m-0 mx-4 mt-4 flex-grow md:flex-grow-0 basis-auto rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic md:w-[60%]">
             <div className="flex flex-col justify-center items-center flex-grow rounded-[13px] border border-border p-[20px] md:p-[60px] lg:p-[135px]">
               <h1 className="flex items-center justify-center text-center text-xl font-medium">
@@ -73,7 +73,7 @@ export default function QuestionnaireCard() {
               /> */}
           </div>
 
-          <div className="flex md:m-0 mx-4 flex-grow basis-0 flex-col justify-between gap-4">
+          <div className="flex md:m-0 mx-4 md:flex-grow basis-0 flex-col justify-between gap-4">
             <div className="mt-[20px] flex flex-col gap-[20px]">
               <p className="max-w-sm text-sm text-secondary">
                 Choose an option
@@ -93,7 +93,8 @@ export default function QuestionnaireCard() {
 
         </div>
       )}
-      <Footer />
+
+      <Footer border={true} />
       <div className="sticky px-4 bottom-0 left-0 py-[15px] z-10 flex border-t border-border bg-[#F1EFED] md:hidden">
         <NextButton handleNext={handleNext} />
       </div>
