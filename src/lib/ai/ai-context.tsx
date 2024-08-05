@@ -15,6 +15,7 @@ import {
 import { createContext, useContext, useState } from "react";
 
 import { Question_SexualActivity } from "./questions/behavioral";
+import { usePersistentState } from "../saves";
 
 type AIContextType = {
   grid: (STI | "tree")[];
@@ -30,24 +31,39 @@ type AIContextType = {
 
 export const AIContext = createContext<AIContextType | null>(null);
 
+const GROUP_ID = "AI_CONTEXT" as const;
+
 export default function AIContextProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [questionsLeft, setQuestionsLeft] = useState(1);
-  const [questionsStack, setQuestionsStack] = useState<Question[]>([
-    new Question_SexualActivity(),
-  ]);
-  const [prunedTags, setPrunedTags] = useState<Tag[]>([]);
+  const [questionsLeft, setQuestionsLeft] = usePersistentState(
+    GROUP_ID,
+    "questionsLeft",
+    1,
+  );
+  const [questionsStack, setQuestionsStack] = usePersistentState(
+    GROUP_ID,
+    "questionsStack",
+    [new Question_SexualActivity()],
+  );
+  const [prunedTags, setPrunedTags] = usePersistentState<Tag[]>(
+    GROUP_ID,
+    "prunedTags",
+    [],
+  );
   const [answeredQuestions, setAnsweredQuestions] = useState<Question[]>([]);
 
   const [grid, setGrid] = useState<(STI | "tree")[]>([]);
 
+  // Custom save state!
+  useEffect(() => {}, []);
+
   // A function to generate the grid with flower placements
   const generateGrid = (gridSize: number) => {
     const scores = calculateOutput();
-    console.log(scores)
+    console.log(scores);
 
     const sti_scores: [STI, number][] = Array.from(scores.risks).sort(
       (a, b) => b[1] - a[1],
