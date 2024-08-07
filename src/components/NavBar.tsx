@@ -1,10 +1,9 @@
 "use client";
+
 import Image from "next/image";
-import { LongButton } from "./Buttons";
-import Link from "next/link";
 import "../styles/fonts.css";
 import "./NavBar.css";
-import { usePathname } from "next/navigation";
+import NewScreenButton from "./NewScreenButton";
 
 function NavDropdown({
   text,
@@ -51,8 +50,8 @@ export default function NavBar() {
           />
         </a>
 
-        <div className="flex hidden cursor-default flex-row gap-[35px]">
-          <div className="flex flex-row items-center gap-[7px]">
+        <div className="flex cursor-default flex-row gap-[35px]">
+          <div className="flex hidden flex-row items-center gap-[7px]">
             <span className="subheadline">Product</span>
 
             <svg
@@ -69,7 +68,7 @@ export default function NavBar() {
             </svg>
           </div>
 
-          <div className="flex flex-row items-center gap-[7px]">
+          <div className="flex hidden flex-row items-center gap-[7px]">
             <span className="subheadline">Resources</span>
 
             <svg
@@ -86,11 +85,7 @@ export default function NavBar() {
             </svg>
           </div>
 
-          <Link href={"/"}>
-            <div className="rounded-[10px] bg-[#202221] px-[21px] py-[12px] text-xs text-white">
-              Screen Now
-            </div>
-          </Link>
+          <NewScreenButton />
         </div>
       </div>
     </div>

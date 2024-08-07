@@ -49,7 +49,7 @@ export function usePersistentState<T>(
     saveData(group, key, newValue);
   };
 
-  return [value, setPersistentValue] as const;
+  return [value, setPersistentValue, setValue] as const;
 }
 
 export function clearPersistentGroup(group: string) {
@@ -61,4 +61,18 @@ export function clearPersistentGroup(group: string) {
   keys.forEach((key) => {
     localStorage.removeItem(key);
   });
+}
+
+export function persistentGroupExists(group: string): boolean {
+  for (const key in localStorage) {
+    if (key.startsWith(`${group}$`)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+export function persistentKeyExists(group: string, key: string): boolean {
+  return localStorage.getItem(`${group}$${key}`) !== null;
 }

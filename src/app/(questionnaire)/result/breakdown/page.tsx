@@ -24,13 +24,13 @@ export default function ResultBreakdown() {
   const answeredQuestionsWithMetadata = answeredQuestions.map(
     (question: Question) => {
       const choices = question.inputOptions.sort((a, b) => a.value - b.value);
-      const chosenIndex = choices.findIndex(
-        (o) => o.id == question.selected,
-      );
+      const chosenIndex = choices.findIndex((o) => o.id == question.selected);
       const percent =
         100 * ((chosenIndex + 1) / choices.length) ** (6 / choices.length);
 
-      const riskFactors: [STI, number][] = Array.from(question.riskFactors)
+      const riskFactors: [STI, number][] = (
+        Object.entries(question.riskFactors) as [STI, number][]
+      )
         .filter((risk) => risk[1] > 0)
         .map((risk) => [risk[0], Math.ceil(risk[1])]);
 
