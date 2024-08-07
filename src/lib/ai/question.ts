@@ -78,33 +78,34 @@ export interface Question {
 
   readonly weight: number;
   readonly weightType: WeightType;
-  readonly riskFactors: Map<STI, number>;
+  readonly riskFactors: Record<STI, number>;
   readonly tags: Tag[];
 
   effects: (input: QuestionInput) => Array<Effect>;
 }
 
-export const RISK_ALL_STI = (): Map<STI, number> => {
-  let riskFactors = new Map<STI, number>();
+export const RISK_ALL_STI = (): Record<STI, number> => {
+  const riskFactors: Partial<Record<STI, number>> = {};
   for (const sti of Object.values(STI)) {
-    riskFactors.set(sti, 1);
+    riskFactors[sti] = 1;
   }
+  return riskFactors as Record<STI, number>;
+};
+
+export const RISK_SET = (sti: STI, risk: number): Record<STI, number> => {
+  const riskFactors = RISK_NONE();
+  riskFactors[sti] = risk;
   return riskFactors;
 };
 
-export const RISK_SET = (sti: STI, risk: number): Map<STI, number> => {
-  let riskFactors = new Map<STI, number>();
-  for (const sti of Object.values(STI)) {
-    riskFactors.set(sti, 1);
-  }
-  riskFactors.set(sti, risk);
-  return riskFactors;
-};
-
-export const RISK_MINUS = (sti: STI): Map<STI, number> => {
+export const RISK_MINUS = (sti: STI): Record<STI, number> => {
   return RISK_SET(sti, 0);
 };
 
-export const RISK_NONE = (): Map<STI, number> => {
-  return new Map();
+export const RISK_NONE = (): Record<STI, number> => {
+  const riskFactors: Partial<Record<STI, number>> = {};
+  for (const sti of Object.values(STI)) {
+    riskFactors[sti] = 0;
+  }
+  return riskFactors as Record<STI, number>;
 };

@@ -24,7 +24,6 @@ export default function FlowerBed({ grid }: FlowerBedProps) {
 
   const modalRef = useRef<HTMLDivElement | null>(null);
   const focusOnMap = focusState == OverviewFocusState.Map;
-  console.log(focusState, focusedObject);
 
   return (
     <div

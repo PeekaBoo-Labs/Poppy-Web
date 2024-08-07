@@ -12,7 +12,7 @@ import {
   calculateScore,
   getDefaultScore,
 } from "./question";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import { Question_SexualActivity } from "./questions/behavioral";
 import { usePersistentState } from "../saves";
@@ -53,12 +53,19 @@ export default function AIContextProvider({
     "prunedTags",
     [],
   );
-  const [answeredQuestions, setAnsweredQuestions] = useState<Question[]>([]);
+  const [answeredQuestions, setAnsweredQuestions] = usePersistentState<
+    Question[]
+  >(GROUP_ID, "answeredQuestions", []);
 
-  const [grid, setGrid] = useState<(STI | "tree")[]>([]);
+  const [grid, setGrid] = usePersistentState<(STI | "tree")[]>(
+    GROUP_ID,
+    "grid",
+    [],
+  );
 
-  // Custom save state!
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log("AI Context reload.");
+  }, []);
 
   // A function to generate the grid with flower placements
   const generateGrid = (gridSize: number) => {
@@ -142,7 +149,7 @@ export default function AIContextProvider({
     }
 
     current.selected = answer.id;
-    setAnsweredQuestions((prev) => [...prev, current]);
+    setAnsweredQuestions((prev) => [...(prev ?? []), current]);
     setQuestionsStack(newQuestionStack);
 
     return newQuestionStack[0];
@@ -175,20 +182,20 @@ export default function AIContextProvider({
       if (question.weightType === WeightType.Additive) {
         if (question.tags.includes(Tag.Behavioral)) behavioral.sum += score;
         if (question.tags.includes(Tag.Symptom)) symptomatic.sum += score;
-        for (const [sti, risk] of question.riskFactors) {
-          risks.get(sti)!.sum += score * risk;
+        for (const [sti, risk] of Object.entries(question.riskFactors)) {
+          risks.get(sti as STI)!.sum += score * risk;
         }
       } else if (question.weightType === WeightType.Multiplicative) {
         if (question.tags.includes(Tag.Behavioral)) behavioral.mul *= score;
         if (question.tags.includes(Tag.Symptom)) symptomatic.mul *= score;
-        for (const [sti, risk] of question.riskFactors) {
-          risks.get(sti)!.mul *= score * risk;
+        for (const [sti, risk] of Object.entries(question.riskFactors)) {
+          risks.get(sti as STI)!.mul *= score * risk;
         }
       } else if (question.weightType === WeightType.Exponential) {
         if (question.tags.includes(Tag.Behavioral)) behavioral.exp *= score;
         if (question.tags.includes(Tag.Symptom)) symptomatic.exp *= score;
-        for (const [sti, risk] of question.riskFactors) {
-          risks.get(sti)!.exp *= score * risk;
+        for (const [sti, risk] of Object.entries(question.riskFactors)) {
+          risks.get(sti as STI)!.exp *= score * risk;
         }
       }
     }
