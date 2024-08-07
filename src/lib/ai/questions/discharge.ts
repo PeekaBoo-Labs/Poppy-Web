@@ -1,4 +1,15 @@
-import { Question, InputType, WeightType, RISK_NONE, Tag, QuestionInput, Effect, EffectType, STI, RISK_SET } from "../question"
+import {
+  Question,
+  InputType,
+  WeightType,
+  RISK_NONE,
+  Tag,
+  QuestionInput,
+  Effect,
+  EffectType,
+  STI,
+  RISK_SET,
+} from "../question";
 
 export class Question_UnusualDischarge implements Question {
   label = "Do you have any unusual discharge?";
@@ -14,19 +25,21 @@ export class Question_UnusualDischarge implements Question {
 
   effects = (input: QuestionInput): Effect[] => {
     if (input.id === "YES") {
-      return [{
-        type: EffectType.InsertQuestion,
-        questions: [
-          new Question_UnusualDischargeFromPenis(),
-          new Question_UnusualDischargeFromBottom(),
-          new Question_GreenOrYellowDischarge(),
-          new Question_UnusualDischargeFromVagina(),
-        ],
-      }]
+      return [
+        {
+          type: EffectType.InsertQuestion,
+          questions: [
+            new Question_UnusualDischargeFromPenis(),
+            new Question_UnusualDischargeFromBottom(),
+            new Question_GreenOrYellowDischarge(),
+            new Question_UnusualDischargeFromVagina(),
+          ],
+        },
+      ];
     }
 
-    return []
-  }
+    return [];
+  };
 }
 
 class Question_UnusualDischargeFromPenis implements Question {
@@ -38,12 +51,12 @@ class Question_UnusualDischargeFromPenis implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 2],
-    [STI.Gonorrhoea, 2],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 0],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 2,
+    [STI.Gonorrhoea]: 2,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 0,
+  };
   tags = [Tag.Symptom, Tag.Male];
   effects = () => [];
 }
@@ -57,12 +70,12 @@ class Question_UnusualDischargeFromBottom implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 2],
-    [STI.Gonorrhoea, 0],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 0],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 2,
+    [STI.Gonorrhoea]: 0,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 0,
+  };
   tags = [Tag.Symptom];
   effects = () => [];
 }
@@ -76,12 +89,12 @@ class Question_GreenOrYellowDischarge implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 3],
-    [STI.Gonorrhoea, 3],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 0],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 3,
+    [STI.Gonorrhoea]: 3,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 0,
+  };
   tags = [Tag.Symptom];
   effects = () => [];
 }
@@ -95,12 +108,12 @@ class Question_UnusualDischargeFromVagina implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 2],
-    [STI.Gonorrhoea, 2],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 0],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 2,
+    [STI.Gonorrhoea]: 2,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 0,
+  };
   tags = [Tag.Symptom, Tag.Female];
   effects = () => [];
 }

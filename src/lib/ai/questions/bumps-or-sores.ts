@@ -56,12 +56,12 @@ class Question_PainlessSoresInGenitalArea implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 0],
-    [STI.Gonorrhoea, 0],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 3],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 0,
+    [STI.Gonorrhoea]: 0,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 3,
+  };
   tags = [Tag.Symptom];
   effects = () => [];
 }
@@ -74,12 +74,12 @@ class Question_SoresInMouthOrHands implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 0],
-    [STI.Gonorrhoea, 0],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 3],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 0,
+    [STI.Gonorrhoea]: 0,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 3,
+  };
   tags = [Tag.Symptom];
   effects = () => [];
 }
@@ -93,12 +93,12 @@ class Question_SoresInBottom implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 0],
-    [STI.Gonorrhoea, 0],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 3],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 0,
+    [STI.Gonorrhoea]: 0,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 3,
+  };
   tags = [Tag.Symptom];
   effects = () => [];
 }
@@ -112,12 +112,12 @@ class Question_WhiteOrGreyWartyGrowths implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 0],
-    [STI.Gonorrhoea, 0],
-    [STI.GenitalWarts, 3],
-    [STI.Syphilis, 0],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 0,
+    [STI.Gonorrhoea]: 0,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 3,
+  };
   tags = [Tag.Symptom];
   effects = () => [];
 }
@@ -132,12 +132,12 @@ class Question_NonItchyRashAllOverBody implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 0],
-    [STI.Gonorrhoea, 0],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 3],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 0,
+    [STI.Gonorrhoea]: 0,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 3,
+  };
   tags = [Tag.Symptom];
   effects = () => [];
 }
@@ -151,12 +151,12 @@ class Question_WhitePatchesInMouth implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 0],
-    [STI.Gonorrhoea, 0],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 3],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 0,
+    [STI.Gonorrhoea]: 0,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 3,
+  };
   tags = [Tag.Symptom];
   effects = () => [];
 }
@@ -175,4 +175,3 @@ class Question_SmallRoughLumpsNearGenitals implements Question {
 
   effects = () => [];
 }
-

@@ -8,6 +8,7 @@ import {
   Effect,
   EffectType,
   STI,
+  RISK_SET,
 } from "../question";
 
 // Question that isn't scored just used to skip a category of questions
@@ -55,12 +56,7 @@ class Question_BloodPeeing implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 0],
-    [STI.Gonorrhoea, 0],
-    [STI.GenitalWarts, 2],
-    [STI.Syphilis, 0],
-  ]);
+  riskFactors = RISK_SET(STI.GenitalWarts, 2);
   tags = [Tag.Symptom];
   effects = () => [];
 }
@@ -74,12 +70,7 @@ class Question_ItchingOrBleedingInGenitalsOrAnus implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 0],
-    [STI.Gonorrhoea, 0],
-    [STI.GenitalWarts, 3],
-    [STI.Syphilis, 0],
-  ]);
+  riskFactors = RISK_SET(STI.GenitalWarts, 3);
   tags = [Tag.Symptom];
   effects = () => [];
 }
@@ -93,12 +84,12 @@ class Question_BleedingBetweenPeriods implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 2],
-    [STI.Gonorrhoea, 2],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 0],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 2,
+    [STI.Gonorrhoea]: 2,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 0,
+  };
   tags = [Tag.Symptom, Tag.Female];
   effects = () => [];
 }
@@ -112,12 +103,12 @@ class Question_BleedingAfterSex implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 2],
-    [STI.Gonorrhoea, 2],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 0],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 2,
+    [STI.Gonorrhoea]: 2,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 0,
+  };
   tags = [Tag.Symptom, Tag.Female];
   effects = () => [];
 }
@@ -131,12 +122,12 @@ class Question_PainInPenis implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 2],
-    [STI.Gonorrhoea, 0],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 0],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 2,
+    [STI.Gonorrhoea]: 0,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 0,
+  };
   tags = [Tag.Symptom, Tag.Male];
   effects = () => [];
 }
@@ -150,13 +141,12 @@ class Question_SwellingInPenis implements Question {
   ];
   weight = 1;
   weightType = WeightType.Additive;
-  riskFactors = new Map<STI, number>([
-    [STI.Chlamydia, 2],
-    [STI.Gonorrhoea, 0],
-    [STI.GenitalWarts, 0],
-    [STI.Syphilis, 0],
-  ]);
+  riskFactors = {
+    [STI.Chlamydia]: 2,
+    [STI.Gonorrhoea]: 0,
+    [STI.GenitalWarts]: 0,
+    [STI.Syphilis]: 0,
+  };
   tags = [Tag.Symptom, Tag.Male];
   effects = () => [];
 }
-

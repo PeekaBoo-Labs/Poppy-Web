@@ -15,7 +15,11 @@ import {
 import { createContext, useContext, useEffect, useState } from "react";
 
 import { Question_SexualActivity } from "./questions/behavioral";
-import { usePersistentState } from "../saves";
+import {
+  persistentGroupExists,
+  persistentKeyExists,
+  usePersistentState,
+} from "../saves";
 
 type AIContextType = {
   grid: (STI | "tree")[];
@@ -31,7 +35,7 @@ type AIContextType = {
 
 export const AIContext = createContext<AIContextType | null>(null);
 
-const GROUP_ID = "AI_CONTEXT" as const;
+export const GROUP_AI = "AI_CONTEXT" as const;
 
 export default function AIContextProvider({
   children,
@@ -39,38 +43,41 @@ export default function AIContextProvider({
   children: React.ReactNode;
 }) {
   const [questionsLeft, setQuestionsLeft] = usePersistentState(
-    GROUP_ID,
+    GROUP_AI,
     "questionsLeft",
     1,
   );
   const [questionsStack, setQuestionsStack] = usePersistentState(
-    GROUP_ID,
+    GROUP_AI,
     "questionsStack",
     [new Question_SexualActivity()],
   );
   const [prunedTags, setPrunedTags] = usePersistentState<Tag[]>(
-    GROUP_ID,
+    GROUP_AI,
     "prunedTags",
     [],
   );
   const [answeredQuestions, setAnsweredQuestions] = usePersistentState<
     Question[]
-  >(GROUP_ID, "answeredQuestions", []);
+  >(GROUP_AI, "answeredQuestions", []);
 
-  const [grid, setGrid] = usePersistentState<(STI | "tree")[]>(
-    GROUP_ID,
+  const [grid, setGrid, setGridTemp] = usePersistentState<(STI | "tree")[]>(
+    GROUP_AI,
     "grid",
     [],
   );
 
   useEffect(() => {
-    console.log("AI Context reload.");
+    // Grid storage indicates user has reached the end of the questionnaire
+    // Reset the questions to start over if in the middle of a questionnaire
+    if (!persistentKeyExists(GROUP_AI, "grid")) {
+      resetQuestions();
+    }
   }, []);
 
   // A function to generate the grid with flower placements
   const generateGrid = (gridSize: number) => {
     const scores = calculateOutput();
-    console.log(scores);
 
     const sti_scores: [STI, number][] = Array.from(scores.risks).sort(
       (a, b) => b[1] - a[1],
@@ -216,6 +223,7 @@ export default function AIContextProvider({
     setAnsweredQuestions([]);
     setQuestionsStack([start]);
     setQuestionsLeft(1);
+    setGridTemp([]);
     return start;
   };
 
