@@ -1,23 +1,35 @@
 // Standard: key is `{GROUP}${key}`
 // Example: `AI_CONTEXT$grid`
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function getPersistentData(
   group: string,
   key: string,
   defaultValue: any = null,
 ): any {
+  if (typeof window === "undefined") {
+    // This is to prevent SSR from breaking.
+    return defaultValue;
+  }
+
   const item = localStorage.getItem(`${group}$${key}`);
 
   if (!item) {
     return defaultValue;
   }
 
-  return JSON.parse(item);
+  return item ? JSON.parse(item) : item;
 }
 
-export function saveData(group: string, key: string, value: any): void {
+export function saveData<T>(
+  group: string,
+  key: string,
+  value: T | ((prev: T) => T),
+): void {
+  if (value instanceof Function) {
+    value = value(getPersistentData(group, key));
+  }
   localStorage.setItem(`${group}$${key}`, JSON.stringify(value));
 }
 
@@ -26,11 +38,13 @@ export function usePersistentState<T>(
   key: string,
   defaultValue: T,
 ) {
-  const [value, setValue] = useState<T>(() =>
-    getPersistentData(group, key, defaultValue),
-  );
+  const [value, setValue] = useState<T>(defaultValue);
 
-  const setPersistentValue = (newValue: T) => {
+  useEffect(() => {
+    setValue(getPersistentData(group, key, defaultValue));
+  }, []);
+
+  const setPersistentValue = (newValue: T | ((prev: T) => T)) => {
     setValue(newValue);
     saveData(group, key, newValue);
   };
