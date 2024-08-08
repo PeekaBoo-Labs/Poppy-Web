@@ -55,7 +55,7 @@ export default function Plant(props: PlantProps) {
   const Plant = (
     <div
       onMouseEnter={onMouseEnter}
-      className="aspect-square transition-all duration-[5000ms] ease-velocity hover:scale-105 hover:duration-[700ms]"
+      className="flex aspect-square items-center justify-center transition-all duration-[5000ms] ease-velocity hover:scale-105 hover:duration-[700ms]"
       style={{
         cursor: type != "tree" ? "pointer" : "default",
         filter: `saturate(${focusOneFlowerType && !focusMe ? 0 : 1}) ${focusMe ? "drop-shadow(0 0 15px #ffcc00)" : ""}`,

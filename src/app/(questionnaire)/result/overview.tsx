@@ -27,7 +27,7 @@ export default function ResultOverview() {
           >
             <motion.div
               variants={scaleVariantParent}
-              className="max-w-[500px] lg:max-w-none"
+              className="max-w-[500px] flex-grow lg:max-w-none"
             >
               <FlowerBed grid={grid} />
             </motion.div>

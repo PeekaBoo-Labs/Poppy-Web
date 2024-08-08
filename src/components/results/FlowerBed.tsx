@@ -47,8 +47,6 @@ export default function FlowerBed({ grid }: FlowerBedProps) {
           display: "grid",
           gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
           gap: "3px",
-          width: "min(100vmin, 100%)",
-          height: "min(100vmin, 100%)",
           justifyContent: "center",
           alignContent: "center",
           aspectRatio: "1 / 1",
