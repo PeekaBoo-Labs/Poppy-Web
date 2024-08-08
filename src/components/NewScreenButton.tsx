@@ -15,7 +15,7 @@ export default function NewScreenButton() {
       }}
     >
       <div className="rounded-[10px] bg-[#202221] px-[21px] py-[12px] text-xs text-white">
-        New Screen Paulyboy
+        New Screen
       </div>
     </button>
   );
