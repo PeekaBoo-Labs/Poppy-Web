@@ -3,6 +3,8 @@ import Image from "next/image";
 import { MouseEventHandler } from "react";
 import { IMAGE, LEARN } from "./STIUI";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { scaleVariantFast } from "@/lib/motion";
 
 type PlantProps = {
   type: STI | "tree";
@@ -15,6 +17,8 @@ type PlantProps = {
 };
 
 const RADIUS = 6;
+
+const MotionImage = motion(Image);
 
 export default function Plant(props: PlantProps) {
   const {
@@ -59,7 +63,8 @@ export default function Plant(props: PlantProps) {
         opacity: flowerOpacity,
       }}
     >
-      <Image
+      <MotionImage
+        variants={scaleVariantFast}
         className="w-full"
         src={IMAGE[type]}
         width={30}

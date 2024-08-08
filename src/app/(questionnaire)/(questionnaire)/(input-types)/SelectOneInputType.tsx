@@ -14,7 +14,7 @@ export default function SelectOneInputType({
     <div className="flex flex-wrap gap-[13px]">
       {inputOptions.map((option) => (
         <QuestionInputOption
-          key={option.id}
+          key={option.id + option.label}
           text={option.label}
           selected={answer === option.id}
           equalWidth={inputOptions.length < 3}
@@ -24,4 +24,3 @@ export default function SelectOneInputType({
     </div>
   );
 }
-

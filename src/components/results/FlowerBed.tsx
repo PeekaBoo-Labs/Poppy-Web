@@ -36,9 +36,11 @@ export default function FlowerBed({ grid }: FlowerBedProps) {
         "m-8 border border-b-[3px] bg-white p-2 shadow-lg lg:m-0",
         "relative rounded-lg duration-[2000ms] ease-velocity",
       )}
-      style={{
-        transform: `perspective(500px) rotateX(${focusOnMap ? 0 : 10}deg) translateZ(${focusOnMap ? 50 : 0}px)`,
-      }}
+      style={
+        {
+          // transform: `perspective(500px) rotateX(${focusOnMap ? 0 : 10}deg) translateZ(${focusOnMap ? 50 : 0}px)`,
+        }
+      }
     >
       <div
         style={{

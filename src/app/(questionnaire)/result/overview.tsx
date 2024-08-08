@@ -7,6 +7,8 @@ import {
   useFlowerContext,
 } from "@/lib/contexts/FlowerContext";
 import ResultSidebar from "./sidebar";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { fadeUp, fadeUpParent, scaleVariantParent } from "@/lib/motion";
 
 export default function ResultOverview() {
   const { grid } = useAIContext();
@@ -14,12 +16,21 @@ export default function ResultOverview() {
 
   return (
     <ResultSidebar slug="">
-      <div className="flex flex-col items-center gap-4 lg:flex-row lg:gap-[100px]">
-        {grid.length > 0 ? (
-          <>
-            <div className="max-w-[500px] lg:max-w-none">
+      <AnimatePresence initial={true}>
+        {grid.length > 5 ? (
+          <motion.div
+            className="flex flex-col items-center gap-4 lg:flex-row lg:gap-[100px]"
+            variants={fadeUpParent}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            <motion.div
+              variants={scaleVariantParent}
+              className="max-w-[500px] lg:max-w-none"
+            >
               <FlowerBed grid={grid} />
-            </div>
+            </motion.div>
             <div className="lg:w-[389px]">
               <div className="mb-8 flex flex-col gap-8 px-4">
                 <span className="m-4 rounded-lg border border-border p-2 text-center md:m-0 lg:text-left">
@@ -59,11 +70,9 @@ export default function ResultOverview() {
                 })}
               </div>
             </div>
-          </>
-        ) : (
-          <p>Loading your results Pauly boy</p>
-        )}
-      </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </ResultSidebar>
   );
 }
