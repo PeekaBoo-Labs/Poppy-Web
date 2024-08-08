@@ -4,6 +4,8 @@ import Image from "next/image";
 import { DESC, IMAGE, LEARN } from "./STIUI";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Variants, motion } from "framer-motion";
+import { fadeUp } from "@/lib/motion";
 
 type FlowerCardProps = {
   type: STI;
@@ -22,7 +24,8 @@ export default function FlowerCard({
 }: FlowerCardProps) {
   return (
     <Link href={LEARN[type]} target="_blank">
-      <div
+      <motion.div
+        variants={fadeUp}
         onMouseLeave={onMouseLeave}
         onMouseEnter={onMouseEnter}
         data-focused={focused}
@@ -56,7 +59,7 @@ export default function FlowerCard({
         <div className="flex flex-1 flex-col">
           <p className="text-xs text-secondary">{DESC[type]}</p>
         </div>
-      </div>
+      </motion.div>
     </Link>
   );
 }
