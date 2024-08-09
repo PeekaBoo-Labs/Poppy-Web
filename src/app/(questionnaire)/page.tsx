@@ -1,6 +1,7 @@
 "use client";
 
 import QuestionnaireForm from "@/app/(questionnaire)/(questionnaire)/QuestionnaireForm";
+import NavBar from "@/components/NavBar";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -26,5 +27,10 @@ export default function Home() {
   //   );
   // }
   //
-  return <QuestionnaireForm />;
+  return (
+    <div className="flex min-h-screen flex-col">
+      <NavBar />
+      <QuestionnaireForm />
+    </div>
+  );
 }

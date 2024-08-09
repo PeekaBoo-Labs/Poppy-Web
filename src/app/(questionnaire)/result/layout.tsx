@@ -1,8 +1,10 @@
 "use client";
 
+import NavBar from "@/components/NavBar";
 import Footer from "@/components/general/Footer";
 import { GROUP_AI, useAIContext } from "@/lib/ai/ai-context";
 import { FlowerContextProvider } from "@/lib/contexts/FlowerContext";
+import { ResultsScrollProvider } from "@/lib/contexts/ResultsScrollContext";
 import { persistentKeyExists } from "@/lib/saves";
 import { useRouter } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
@@ -24,11 +26,15 @@ export default function ResultLayout({ children }: { children: ReactNode }) {
 
   return (
     <FlowerContextProvider>
-      {children}
+      <ResultsScrollProvider>
+        <NavBar />
 
-      <div className="mx-auto w-full max-w-[1000px] bg-secondary-background md:mt-10 md:bg-transparent">
-        <Footer />
-      </div>
+        {children}
+
+        <div className="mx-auto w-full max-w-[1000px] bg-secondary-background md:mt-10 md:bg-transparent">
+          <Footer />
+        </div>
+      </ResultsScrollProvider>
     </FlowerContextProvider>
   );
 }
