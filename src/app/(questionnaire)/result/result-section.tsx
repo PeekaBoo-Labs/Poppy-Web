@@ -3,10 +3,16 @@ import {
   useResultsScrollContext,
 } from "@/lib/contexts/ResultsScrollContext";
 import { useMotionValueEvent, useScroll } from "framer-motion";
-import { useRef } from "react";
+import { ReactNode, useRef } from "react";
 
-export default function ResultSection({ section }: { section: Section }) {
-  const { show, hide, visibleSections } = useResultsScrollContext();
+export default function ResultSection({
+  section,
+  children,
+}: {
+  section: Section;
+  children: ReactNode;
+}) {
+  const { show, hide, currentSection } = useResultsScrollContext();
 
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -16,15 +22,15 @@ export default function ResultSection({ section }: { section: Section }) {
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (latest == 1 || latest == 0) {
-      if (visibleSections.includes(section)) {
-        hide(section);
-      }
+      hide(section);
     } else {
-      if (!visibleSections.includes(section)) {
-        show(section);
-      }
+      show(section);
     }
   });
 
-  return <section ref={ref} className="min-h-screen outline"></section>;
+  return (
+    <section ref={ref} className="outline">
+      {children}
+    </section>
+  );
 }

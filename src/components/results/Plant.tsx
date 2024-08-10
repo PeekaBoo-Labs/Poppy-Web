@@ -16,7 +16,7 @@ type PlantProps = {
   onMouseEnter: MouseEventHandler<HTMLDivElement>;
 };
 
-const RADIUS = 6;
+const RADIUS = 5;
 
 const MotionImage = motion(Image);
 
@@ -47,10 +47,8 @@ export default function Plant(props: PlantProps) {
   const flowerOpacity = focusMe
     ? 1
     : focusedOnGarden
-      ? gradient + default_opacity
-      : focusOneFlowerType
-        ? 0.5
-        : 1;
+      ? default_opacity + gradient
+      : default_opacity;
 
   const Plant = (
     <div
