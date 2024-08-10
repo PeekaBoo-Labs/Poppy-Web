@@ -1,9 +1,9 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 
 export enum Section {
-  "Overview",
-  "Breakdown",
-  "NextSteps",
+  Overview,
+  Breakdown,
+  NextSteps,
 }
 
 type ResultsScrollContent = {
@@ -17,11 +17,11 @@ const ResultsScrollContext = createContext<ResultsScrollContent | null>(null);
 export function ResultsScrollProvider({ children }: { children: ReactNode }) {
   const [visibleSections, setVisibleSections] = useState<Section[]>([]);
 
-  function show(section: Section) {
+  function hide(section: Section) {
     setVisibleSections((prev) => prev.filter((s) => s !== section));
   }
 
-  function hide(section: Section) {
+  function show(section: Section) {
     setVisibleSections((prev) => [...prev, section]);
   }
 
@@ -32,11 +32,11 @@ export function ResultsScrollProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useResultsScroll() {
-  const context = ResultsScrollContext;
+export function useResultsScrollContext() {
+  const context = useContext(ResultsScrollContext);
   if (!context) {
     throw new Error(
-      "useResultsScroll must be used within a ResultsScrollProvider",
+      "useResultsScrollContext must be used within a ResultsScrollProvider",
     );
   }
   return context;
