@@ -1,9 +1,16 @@
+import plugin from "tailwindcss/plugin";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  plugins: [
+    plugin(function ({ addVariant }) {
+      addVariant("not-last", "&:not(:last-child)");
+    }),
   ],
   theme: {
     fontSize: {
@@ -25,7 +32,7 @@ module.exports = {
         "accent-darker": "rgb(241, 188, 0)",
       },
       transitionTimingFunction: {
-        "velocity": "cubic-bezier(.04,1,.11,.97)"
+        velocity: "cubic-bezier(.04,1,.11,.97)",
       },
       boxShadow: {
         realistic:
@@ -39,4 +46,3 @@ module.exports = {
     },
   },
 };
-

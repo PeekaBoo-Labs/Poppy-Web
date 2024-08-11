@@ -29,8 +29,8 @@ export default function ResultSection({
   });
 
   return (
-    <section ref={ref} className="outline">
-      {children}
+    <section ref={ref}>
+      <div className="min-h-[calc(100vh/2)] outline">{children}</div>
     </section>
   );
 }
