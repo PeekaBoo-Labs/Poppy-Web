@@ -1,6 +1,6 @@
 "use client";
 
-import ResultOverview from "./overview";
+import ResultOverview from "./(overview)/overview";
 import ResultContainer from "./result-container";
 
 export default function ResultPage() {

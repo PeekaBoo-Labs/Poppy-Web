@@ -6,7 +6,7 @@ import {
   OverviewFocusState,
   useFlowerContext,
 } from "@/lib/contexts/FlowerContext";
-import ResultSidebar from "./sidebar";
+import ResultSidebar from "../sidebar";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { fadeUp, fadeUpParent, scaleVariantParent } from "@/lib/motion";
 
