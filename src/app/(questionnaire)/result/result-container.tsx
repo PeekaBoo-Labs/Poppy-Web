@@ -53,7 +53,7 @@ export default function ResultContainer() {
 "
           section={Section.NextSteps}
         >
-          <div className="h-[10px]" />
+          <div className="h-[600px]" />
         </ResultSection>
       </div>
 
