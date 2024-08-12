@@ -32,10 +32,7 @@ export default function FlowerBed({ grid }: FlowerBedProps) {
         setFocusedObject(null);
         setFocusState(OverviewFocusState.None);
       }}
-      className={cn(
-        "m-8 p-2 lg:m-0",
-        "relative rounded-lg duration-[2000ms] ease-velocity",
-      )}
+      className={cn("", "relative rounded-lg duration-[2000ms] ease-velocity")}
       style={
         {
           // transform: `perspective(500px) rotateX(${focusOnMap ? 0 : 10}deg) translateZ(${focusOnMap ? 50 : 0}px)`,

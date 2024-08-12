@@ -7,9 +7,13 @@ import { ReactNode, useRef } from "react";
 
 export default function ResultSection({
   section,
+  title,
+  subtitle,
   children,
 }: {
   section: Section;
+  title?: string;
+  subtitle?: string;
   children: ReactNode;
 }) {
   const { show, hide, currentSection } = useResultsScrollContext();
@@ -30,7 +34,13 @@ export default function ResultSection({
 
   return (
     <section ref={ref}>
-      <div className="min-h-[calc(100vh/2)] outline">{children}</div>
+      <div className="flex min-h-[calc(100vh/2)] flex-col gap-[20px] pt-[30px]">
+        <div className="space-y-[5px] text-xl font-medium">
+          <h1 className="leading-[1.2em] text-secondary">{title ?? "Title"}</h1>
+          <h2 className="leading-[1.2em]">{subtitle ?? "Subtitle"}</h2>
+        </div>
+        {children}
+      </div>
     </section>
   );
 }

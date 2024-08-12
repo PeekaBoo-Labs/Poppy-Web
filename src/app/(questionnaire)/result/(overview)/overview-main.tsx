@@ -5,7 +5,7 @@ export default function OverviewMain() {
   const { grid } = useAIContext();
 
   return (
-    <div className="p-[120px]">
+    <div className="flex h-full flex-col justify-center p-[7%] lg:p-[20%]">
       <FlowerBed grid={grid} />
     </div>
   );

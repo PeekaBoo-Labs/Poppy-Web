@@ -7,6 +7,7 @@ import FlowerBed from "@/components/results/FlowerBed";
 import { useAIContext } from "@/lib/ai/ai-context";
 import OverviewList from "./(overview)/overview-list";
 import OverviewMain from "./(overview)/overview-main";
+import ResultScrollBar from "./result-scrollbar";
 
 export default function ResultContainer() {
   const { currentSection } = useResultsScrollContext();
@@ -15,10 +16,10 @@ export default function ResultContainer() {
   console.log(currentSection);
 
   return (
-    <div className="relative mx-auto mt-[44px] flex max-w-[1300px] items-start gap-[30px]">
-      <div className="sticky top-[114px] h-1 min-h-[85vh] flex-grow">
-        <div className="h-full w-full rounded-[20px] border bg-white p-[7px] shadow-realistic">
-          <div className="flex h-full flex-col rounded-[13px] border bg-white">
+    <div className="relative mx-auto mt-[44px] flex w-[calc(100%-70px)] max-w-[1300px] items-start gap-[20px]">
+      <div className="sticky top-[114px] h-1 min-h-[75vh] w-[60%] basis-auto xl:min-h-[85vh] xl:w-[70%]">
+        <div className="h-full w-full rounded-[20px] border border-border bg-white p-[7px] shadow-realistic">
+          <div className="flex h-full flex-col rounded-[13px] border border-border bg-white">
             {
               {
                 [Section.Overview]: <OverviewMain />,
@@ -30,19 +31,33 @@ export default function ResultContainer() {
         </div>
       </div>
 
-      <div className="*:pb-[200px] flex max-w-sm flex-grow flex-col last:pb-0">
-        <ResultSection section={Section.Overview}>
+      <div className="not-last:pb-[60px] flex flex-grow basis-0 flex-col">
+        <ResultSection
+          title="Step One"
+          subtitle="Learn about your STI risks"
+          section={Section.Overview}
+        >
           <OverviewList />
         </ResultSection>
-        <ResultSection section={Section.Breakdown}>
-          <div className="h-[1000px]" />
+        <ResultSection
+          title="Step Two"
+          subtitle="Break down your questions and answers
+"
+          section={Section.Breakdown}
+        >
+          <div className="h-[10px]" />
         </ResultSection>
-        <ResultSection section={Section.NextSteps}>
-          <div className="h-[1000px]" />
+        <ResultSection
+          title="Step Three"
+          subtitle="Recommended actions to take
+"
+          section={Section.NextSteps}
+        >
+          <div className="h-[10px]" />
         </ResultSection>
       </div>
 
-      <div className="sticky top-1/2">{currentSection}</div>
+      <ResultScrollBar section={currentSection} />
     </div>
   );
 }

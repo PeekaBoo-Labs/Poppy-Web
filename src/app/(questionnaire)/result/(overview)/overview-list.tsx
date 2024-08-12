@@ -11,7 +11,7 @@ export default function OverviewList() {
   const { focusedObject, setFocusState, setFocusedObject } = useFlowerContext();
 
   return (
-    <div className="flex flex-col md:gap-1">
+    <div className="flex flex-col md:gap-[13px]">
       {[STI.GenitalWarts, STI.Syphilis, STI.Chlamydia, STI.Gonorrhoea].map(
         (sti: STI) => {
           const count = grid.filter((e) => e == sti).length;
