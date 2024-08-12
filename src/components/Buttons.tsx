@@ -49,7 +49,7 @@ export function LongButton({
           onClick={onClick}
         >
           {prefix}
-          <h4 className="text-center font-[400] text-[#F7F7F7]">{children}</h4>
+          <h4 className="text-center font-[500] text-[#F7F7F7]">{children}</h4>
           {suffix}
         </div>
       )}
@@ -83,7 +83,7 @@ export function LongButton({
           onClick={onClick}
         >
           {prefix}
-          <h4 className="text-left font-[400] text-[#FFFFFF]">
+          <h4 className="text-left font-[500] text-[#FFFFFF]">
             {children}
           </h4>{" "}
           <img className="w-4 invert" src={"arrowRight.svg"} alt=""></img>

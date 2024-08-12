@@ -2,12 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --accent-rgb: 0, 122, 255;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,7 +27,7 @@ body {
     )
     rgb(var(--background-start-rgb)); */
 
-  background-color: #F1EFED;
+  background-color: #f1efed;
 }
 
 .no-scrollbar::-webkit-scrollbar {

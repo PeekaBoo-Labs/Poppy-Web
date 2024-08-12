@@ -42,18 +42,18 @@ export default function FlowerCard({
             height={39}
             alt=""
           />
-          <div className="flex flex-1 flex-col">
-            <h3 className="text-sm font-medium transition-all group-hover:text-[#F1BC00]">
+          <div className="flex flex-col gap-[3px]">
+            <h3 className="text-sm font-semibold transition-all group-hover:text-[#F1BC00]">
               {type}
             </h3>
             <p className="text-sm text-secondary transition-all group-hover:text-[#F1BC00]">
               {DESC[type]}
             </p>
           </div>
-          <ArrowUpRight className="text-primary group-hover:text-[#F1BC00]" />
+          <ArrowUpRight className="flex-shrink-0 text-primary group-hover:text-[#F1BC00]" />
         </div>
 
-        <div className="absolute box-border h-full w-full rounded-[12px] border border-border transition-all group-hover:border-2 group-hover:border-[#F1BC00]" />
+        <div className="pointer-events-none absolute box-border h-full w-full rounded-[12px] border border-border transition-all group-hover:border-2 group-hover:border-[#F1BC00]" />
       </motion.div>
     </Link>
   );

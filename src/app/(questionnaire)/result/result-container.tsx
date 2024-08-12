@@ -8,6 +8,8 @@ import { useAIContext } from "@/lib/ai/ai-context";
 import OverviewList from "./(overview)/overview-list";
 import OverviewMain from "./(overview)/overview-main";
 import ResultScrollBar from "./result-scrollbar";
+import BreakdownList from "./(breakdown)/breakdown-list";
+import { AnimatePresence } from "framer-motion";
 
 export default function ResultContainer() {
   const { currentSection } = useResultsScrollContext();
@@ -19,19 +21,21 @@ export default function ResultContainer() {
     <div className="relative mx-auto mt-[44px] flex w-[calc(100%-70px)] max-w-[1300px] items-start gap-[20px]">
       <div className="sticky top-[114px] h-1 min-h-[75vh] w-[60%] basis-auto xl:min-h-[85vh] xl:w-[70%]">
         <div className="h-full w-full rounded-[20px] border border-border bg-white p-[7px] shadow-realistic">
-          <div className="flex h-full flex-col rounded-[13px] border border-border bg-white">
-            {
+          <div className="flex h-full flex-col items-center justify-center rounded-[13px] border border-border bg-white">
+            <AnimatePresence initial={true}>
               {
-                [Section.Overview]: <OverviewMain />,
-                [Section.Breakdown]: <p>Breakdown</p>,
-                [Section.NextSteps]: <p>Next Steps</p>,
-              }[currentSection]
-            }
+                {
+                  [Section.Overview]: <OverviewMain />,
+                  [Section.Breakdown]: <p className="absolute">Breakdown</p>,
+                  [Section.NextSteps]: <p className="absolute">Next Steps</p>,
+                }[currentSection]
+              }
+            </AnimatePresence>
           </div>
         </div>
       </div>
 
-      <div className="not-last:pb-[60px] flex flex-grow basis-0 flex-col">
+      <div className="not-last:pb-[200px] flex flex-grow basis-0 flex-col">
         <ResultSection
           title="Step One"
           subtitle="Learn about your STI risks"
@@ -45,7 +49,7 @@ export default function ResultContainer() {
 "
           section={Section.Breakdown}
         >
-          <div className="h-[10px]" />
+          <BreakdownList />
         </ResultSection>
         <ResultSection
           title="Step Three"
@@ -53,7 +57,8 @@ export default function ResultContainer() {
 "
           section={Section.NextSteps}
         >
-          <div className="h-[600px]" />
+          <div className="h-[200px] rounded-[13px] border border-border" />
+          <div className="h-[200px] rounded-[13px] border border-border" />
         </ResultSection>
       </div>
 

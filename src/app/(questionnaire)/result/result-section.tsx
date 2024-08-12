@@ -34,8 +34,8 @@ export default function ResultSection({
 
   return (
     <section ref={ref}>
-      <div className="flex min-h-[calc(100vh/2)] flex-col gap-[20px] pt-[30px]">
-        <div className="space-y-[5px] text-xl font-medium">
+      <div className="flex flex-col gap-[20px] pt-[30px]">
+        <div className="space-y-[5px] text-xl font-semibold">
           <h1 className="leading-[1.2em] text-secondary">{title ?? "Title"}</h1>
           <h2 className="leading-[1.2em]">{subtitle ?? "Subtitle"}</h2>
         </div>
