@@ -15,7 +15,7 @@ export default function QuestionInputOption({
     <button
       onClick={onClick}
       className={cn(
-        "group relative min-w-[75px] rounded-[13px] px-[16px] py-[13px]",
+        "group relative min-w-[75px] rounded-[13px] px-[16px] py-[13px] font-medium",
         equalWidth && "flex-grow",
         ANIMATION,
         selected ? "bg-accent" : "hover:text-accent-darker",
@@ -23,7 +23,7 @@ export default function QuestionInputOption({
     >
       <div
         className={cn(
-          "absolute inset-0 rounded-[13px] border border-border group-hover:border-[1px]",
+          "absolute inset-0 rounded-[13px] border border-border transition-all group-hover:border-2",
           ANIMATION,
           selected ? "border-accent" : "group-hover:border-accent-darker",
         )}

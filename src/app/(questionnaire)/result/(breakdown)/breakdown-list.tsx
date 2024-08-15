@@ -15,16 +15,24 @@ export default function BreakdownList() {
   return (
     <div className="flex flex-col gap-[10px]">
       <LayoutGroup>
-        {answeredQuestions.map((question, index) => (
-          <BreakdownCard
-            key={index}
-            question={question}
-            expanded={expanded === index}
-            onClick={() =>
-              setExpanded((prev) => (prev === index ? null : index))
-            }
-          />
-        ))}
+        {answeredQuestions.map((question, index) => {
+          const selectedOption = question.inputOptions.find(
+            (option) => option.id === question.selected,
+          );
+
+          if (!selectedOption || selectedOption.value == 0) return null;
+
+          return (
+            <BreakdownCard
+              key={index}
+              question={question}
+              expanded={expanded === index}
+              onClick={() =>
+                setExpanded((prev) => (prev === index ? null : index))
+              }
+            />
+          );
+        })}
       </LayoutGroup>
     </div>
   );

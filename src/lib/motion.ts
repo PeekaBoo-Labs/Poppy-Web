@@ -1,6 +1,6 @@
 import { Variants } from "framer-motion";
 
-export const defaultSpring = {
+const defaultSpring = {
   type: "spring",
   damping: 20,
   stiffness: 200,

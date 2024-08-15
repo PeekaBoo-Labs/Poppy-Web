@@ -12,14 +12,10 @@ import {
   calculateScore,
   getDefaultScore,
 } from "./question";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect } from "react";
 
 import { Question_SexualActivity } from "./questions/behavioral";
-import {
-  persistentGroupExists,
-  persistentKeyExists,
-  usePersistentState,
-} from "../saves";
+import { persistentKeyExists, usePersistentState } from "../saves";
 
 type AIContextType = {
   grid: (STI | "tree")[];
@@ -33,7 +29,7 @@ type AIContextType = {
   generateGrid: (gridSize: number) => void;
 };
 
-export const AIContext = createContext<AIContextType | null>(null);
+const AIContext = createContext<AIContextType | null>(null);
 
 export const GROUP_AI = "AI_CONTEXT" as const;
 

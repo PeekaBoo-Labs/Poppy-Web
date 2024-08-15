@@ -4,6 +4,7 @@ import { blurVariant } from "@/lib/motion";
 import type { Question } from "@/lib/ai/question";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import QuestionnaireGPT from "@/components/results/QuestionnaireGPT";
 
 export default function BreakdownCard({
   question,
@@ -30,15 +31,20 @@ export default function BreakdownCard({
         <span>{question.label}</span>
         <AnimatePresence mode="popLayout">
           {expanded && (
-            <motion.span
-              className="origin-center font-normal text-secondary"
+            <motion.div
               variants={blurVariant}
+              className="flex origin-center flex-col gap-[5px] font-normal text-secondary"
               initial="hidden"
               animate="visible"
               exit="hidden"
             >
-              {getAnswerLabel(question)}
-            </motion.span>
+              <span>{getAnswerLabel(question)}</span>
+              <QuestionnaireGPT
+                question={question.label}
+                answer={getAnswerLabel(question) ?? "Unanswered"}
+                stis_detected={[]}
+              />
+            </motion.div>
           )}
         </AnimatePresence>
       </motion.div>

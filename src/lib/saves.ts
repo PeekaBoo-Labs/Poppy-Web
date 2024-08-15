@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react";
 
-export function getPersistentData(
+function getPersistentData(
   group: string,
   key: string,
   defaultValue: any = null,
@@ -22,7 +22,7 @@ export function getPersistentData(
   return item ? JSON.parse(item) : item;
 }
 
-export function saveData<T>(
+function saveData<T>(
   group: string,
   key: string,
   value: T | ((prev: T) => T),
@@ -63,7 +63,7 @@ export function clearPersistentGroup(group: string) {
   });
 }
 
-export function persistentGroupExists(group: string): boolean {
+function persistentGroupExists(group: string): boolean {
   for (const key in localStorage) {
     if (key.startsWith(`${group}$`)) {
       return true;
