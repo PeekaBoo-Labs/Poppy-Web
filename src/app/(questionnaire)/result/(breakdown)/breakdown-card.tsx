@@ -25,7 +25,7 @@ export default function BreakdownCard({
     >
       <motion.div
         layout="position"
-        className="relative flex flex-grow basis-0 flex-col items-start gap-[20px] font-semibold"
+        className="relative flex flex-grow basis-0 flex-col items-start gap-[5px] font-semibold"
       >
         <span>{question.label}</span>
         <AnimatePresence mode="popLayout">
