@@ -29,14 +29,39 @@ export const fadeUp: Variants = {
   hidden: {
     opacity: 0,
     translateY: 50,
+    filter: "blur(0px)",
+    scale: 1,
     transition: defaultSpring,
   },
   visible: {
     opacity: 1,
     translateY: 0,
+    filter: "blur(0)",
+    scale: 1,
+    transition: defaultSpring,
+  },
+  exit: {
+    opacity: 0,
+    filter: "blur(5px)",
+    scale: 0.8,
     transition: defaultSpring,
   },
 } as const;
+
+export const blurVariant: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.9,
+    filter: "blur(5px)",
+    transition: defaultSpring,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: defaultSpring,
+  },
+};
 
 export const scaleVariantParent: Variants = {
   hidden: {

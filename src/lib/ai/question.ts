@@ -84,6 +84,16 @@ export interface Question {
   effects: (input: QuestionInput) => Array<Effect>;
 }
 
+export function getAnswerLabel(question: Question): string | null {
+  if (!question.selected) {
+    return null;
+  }
+  const answer = question.inputOptions.find(
+    (option) => option.id === question.selected,
+  );
+  return answer ? answer.label : null;
+}
+
 export const RISK_ALL_STI = (): Record<STI, number> => {
   const riskFactors: Partial<Record<STI, number>> = {};
   for (const sti of Object.values(STI)) {
