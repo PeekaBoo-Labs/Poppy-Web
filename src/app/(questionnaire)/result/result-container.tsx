@@ -10,12 +10,11 @@ import OverviewMain from "./(overview)/overview-main";
 import ResultScrollBar from "./result-scrollbar";
 import BreakdownList from "./(breakdown)/breakdown-list";
 import { AnimatePresence } from "framer-motion";
+import ChatBox from "./(breakdown)/chatbox";
 
 export default function ResultContainer() {
   const { currentSection } = useResultsScrollContext();
   const { grid } = useAIContext();
-
-  console.log(currentSection);
 
   return (
     <div className="relative mx-auto mt-[44px] flex w-[calc(100%-70px)] max-w-[1300px] items-start gap-[20px]">
@@ -26,7 +25,16 @@ export default function ResultContainer() {
               {
                 {
                   [Section.Overview]: <OverviewMain />,
-                  [Section.Breakdown]: <p className="absolute">Breakdown</p>,
+                  [Section.Breakdown]: (
+                    <ChatBox
+                      presets={[
+                        {
+                          behavior: "prompt",
+                          value: "what color is an apple?",
+                        },
+                      ]}
+                    />
+                  ),
                   [Section.NextSteps]: <p className="absolute">Next Steps</p>,
                 }[currentSection]
               }
@@ -35,7 +43,7 @@ export default function ResultContainer() {
         </div>
       </div>
 
-      <div className="not-last:pb-[200px] flex flex-grow basis-0 flex-col">
+      <div className="flex flex-grow basis-0 flex-col not-last:pb-[200px]">
         <ResultSection
           title="Step One"
           subtitle="Learn about your STI risks"

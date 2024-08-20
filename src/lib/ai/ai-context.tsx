@@ -1,21 +1,22 @@
 "use client";
 
+import { createContext, useContext, useEffect } from "react";
 import {
-  WeightType,
   AIOutput,
   EffectType,
   Question,
   QuestionInput,
   STI,
-  Tag,
   ScoreCalculation,
+  Tag,
+  WeightType,
   calculateScore,
   getDefaultScore,
 } from "./question";
-import { createContext, useContext, useEffect } from "react";
 
-import { Question_SexualActivity } from "./questions/behavioral";
+import { createAI } from "ai/rsc";
 import { persistentKeyExists, usePersistentState } from "../saves";
+import { Question_SexualActivity } from "./questions/behavioral";
 
 type AIContextType = {
   grid: (STI | "tree")[];
@@ -30,6 +31,8 @@ type AIContextType = {
 };
 
 const AIContext = createContext<AIContextType | null>(null);
+
+const PoppyAI = createAI();
 
 export const GROUP_AI = "AI_CONTEXT" as const;
 
