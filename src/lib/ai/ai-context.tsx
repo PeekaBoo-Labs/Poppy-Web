@@ -32,8 +32,6 @@ type AIContextType = {
 
 const AIContext = createContext<AIContextType | null>(null);
 
-const PoppyAI = createAI();
-
 export const GROUP_AI = "AI_CONTEXT" as const;
 
 export default function AIContextProvider({
