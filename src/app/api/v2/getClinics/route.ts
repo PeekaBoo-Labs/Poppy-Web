@@ -5,7 +5,8 @@ interface Clinic {
   link: string;
   logo_image: string;
   images: string[];
-  services: [string, string][];
+  categories: string[]; // extracted from yelp 
+  distance: number; // in meters
 }
 
 interface GeoapifyResponse {
@@ -21,6 +22,10 @@ interface YelpResponse {
     name: string;
     url: string;
     image_url: string;
+    categories: Array<{
+      title: string;
+    }>;
+    distance: number;
   }>;
 }
 
@@ -59,6 +64,7 @@ export async function GET(request: Request) {
         term: 'STI clinic',
         latitude: lat,
         longitude: lon,
+        radius: 40000
       },
     });
 
@@ -67,7 +73,8 @@ export async function GET(request: Request) {
       link: business.url,
       logo_image: business.image_url,
       images: [business.image_url], // Assuming only one image is available
-      services: [], // Empty array since tags are not included
+      categories: business.categories.map(category => category.title), // Extracting category titles
+      distance: business.distance, // Adding distance
     }));
 
     return new Response(JSON.stringify({ clinics }), {
