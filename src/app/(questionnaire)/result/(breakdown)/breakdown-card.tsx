@@ -5,6 +5,7 @@ import type { Question } from "@/lib/ai/question";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import QuestionnaireGPT from "@/components/results/QuestionnaireGPT";
+import MinuCircle from "@/lib/icons/minus-circle";
 
 export default function BreakdownCard({
   question,
@@ -28,7 +29,9 @@ export default function BreakdownCard({
         layout="position"
         className="relative flex flex-grow basis-0 flex-col items-start gap-[5px] font-semibold"
       >
-        <span>{question.label}</span>
+        <span className={!expanded && "group-hover:text-[#F1BC00]"}>
+          {question.label}
+        </span>
         <AnimatePresence mode="popLayout">
           {expanded && (
             <motion.div
@@ -50,7 +53,16 @@ export default function BreakdownCard({
       </motion.div>
 
       <motion.div layout>
-        <PlusCircle className="h-[16px] w-[16px] text-primary" />
+        {expanded ? (
+          <MinuCircle />
+        ) : (
+          <PlusCircle
+            className={cn(
+              "h-[16px] w-[16px] text-primary",
+              "group-hover:text-[#F1BC00]",
+            )}
+          />
+        )}
       </motion.div>
 
       <div

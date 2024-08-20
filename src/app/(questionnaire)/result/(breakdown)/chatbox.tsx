@@ -27,7 +27,7 @@ export default function ChatBox(props: ChatBoxProps) {
   });
 
   return (
-    <div className="flex w-full flex-col gap-2">
+    <div className="flex w-full flex-col gap-2 overflow-scroll p-8">
       {messages.map((m) => (
         <div key={m.id}>
           {m.role}: {m.content}
@@ -36,20 +36,20 @@ export default function ChatBox(props: ChatBoxProps) {
 
       <form onSubmit={handleSubmit}>
         <div className="mb-2 w-full">
-          {props.presets.map((p, i) => (
-            <button
-              className="rounded-full bg-zinc-200"
-              key={i}
-              onClick={() => {
-                if (inputRef && inputRef.current) {
-                  setInput(p.value);
-                  // inputRef.current.value = p.value;
-                }
-              }}
-            >
-              {p.value}
-            </button>
-          ))}
+          {/* {props.presets.map((p, i) => ( */}
+          {/*   <button */}
+          {/*     className="rounded-full bg-zinc-200" */}
+          {/*     key={i} */}
+          {/*     onClick={() => { */}
+          {/*       if (inputRef && inputRef.current) { */}
+          {/*         setInput(p.value); */}
+          {/*         // inputRef.current.value = p.value; */}
+          {/*       } */}
+          {/*     }} */}
+          {/*   > */}
+          {/*     {p.value} */}
+          {/*   </button> */}
+          {/* ))} */}
         </div>
 
         <input
