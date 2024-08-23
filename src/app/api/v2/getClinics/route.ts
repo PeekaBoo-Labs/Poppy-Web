@@ -28,6 +28,9 @@ interface YelpResponse {
     distance: number;
   }>;
 }
+async function getClinicTagging(clinic_categories: Array<{titile: string}>){
+
+}
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

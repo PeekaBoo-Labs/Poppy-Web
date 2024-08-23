@@ -74,6 +74,7 @@ const testKits = [
   resources: [
     ["Home Test Kit", "home"],
     ["Blood Test", "blood"],
+    ["Test kit delivery", "package"]
   ] as [string, string][], // Ensure type is [string, string][]
   resource_link:
     "https://www.cvs.com/shop/home-health-care/home-tests/std-hiv-tests",
@@ -84,6 +85,8 @@ const testKits = [
   name: "Lemonaid Online STD Test Kit",
   resources: [
     ["Home Test Kit", "home"],
+    ["Quick Testing", "rapid"],
+    ["Online Appointment", "desktop"]
   ] as [string, string][], // Ensure type is [string, string][]
   resource_link:
     "https://www.lemonaidhealth.com/services/std-testing",
@@ -94,6 +97,8 @@ const testKits = [
   name: "TBD Health STI/STD Convenient Test Kit",
   resources: [
     ["Home Test Kit", "home"],
+    ["Test Kit Subscription", "package"],
+    ["Message Clinicians", "desktop"],
   ] as [string, string][], // Ensure type is [string, string][]
   resource_link:
     "https://www.tbd.health/locations/sti-std-testing-screening-treatment-near-me/",
@@ -104,6 +109,8 @@ const testKits = [
   name: "Nurx STD Test Kit",
   resources: [
     ["Home Test Kit", "home"],
+    ["Insurance Coverage", "cross"],
+    ["Message Clinicians", "desktop"],
   ] as [string, string][], // Ensure type is [string, string][]
   resource_link:
     "https://www.nurx.com/sti-testing/",
