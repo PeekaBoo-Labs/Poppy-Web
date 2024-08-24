@@ -27,6 +27,7 @@ body {
     )
     rgb(var(--background-start-rgb)); */
 
+  @apply text-primary;
   background-color: #f1efed;
 }
 
@@ -37,4 +38,8 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.prose li p {
+  margin: 0;
 }
