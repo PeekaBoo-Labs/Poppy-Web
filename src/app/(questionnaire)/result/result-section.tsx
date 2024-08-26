@@ -2,7 +2,7 @@ import {
   Section,
   useResultsScrollContext,
 } from "@/lib/contexts/ResultsScrollContext";
-import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { ReactNode, useRef } from "react";
 
 export default function ResultSection({
@@ -33,7 +33,7 @@ export default function ResultSection({
   });
 
   return (
-    <section ref={ref}>
+    <motion.section layout ref={ref}>
       <div className="flex flex-col gap-[20px] pt-[30px]">
         <div className="space-y-[5px] text-xl font-semibold">
           <h1 className="leading-[1.2em] text-secondary">{title ?? "Title"}</h1>
@@ -41,6 +41,6 @@ export default function ResultSection({
         </div>
         {children}
       </div>
-    </section>
+    </motion.section>
   );
 }

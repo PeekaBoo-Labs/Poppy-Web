@@ -1,8 +1,12 @@
 import { useChatContext } from "@/lib/ai/chat-context";
+import { Section } from "@/lib/contexts/ResultsScrollContext";
 import Sparkle from "@/lib/icons/sparkle";
+import { fadeUp, fadeUpParent } from "@/lib/motion";
 import { cleanupQuestion } from "@/lib/utils";
+import { generateId } from "ai";
 import { Message } from "ai/react";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -11,13 +15,32 @@ type ChatInputType = "prompt" | "action";
 type ChatPresets = {
   behavior: ChatInputType;
   value: string;
+  label: string;
 };
 
 type ChatBoxProps = {
-  presets: ChatPresets[];
+  presets: readonly ChatPresets[];
 };
 
-export default function ChatBox(props: ChatBoxProps) {
+export const PRESETS: Record<Section, readonly ChatPresets[]> = {
+  [Section.Breakdown]: [
+    {
+      behavior: "prompt",
+      label: "What are the stages of syphilis?",
+      value: "What are the different stages of syphilis?",
+    },
+    {
+      behavior: "prompt",
+      label: "Give personalized advice.",
+      value:
+        "Can you provide actionable steps to enhance my approach for better sexual health?",
+    },
+  ],
+  [Section.NextSteps]: [],
+  [Section.Overview]: [],
+} as const;
+
+export default function ChatBox({ presets }: ChatBoxProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -28,13 +51,64 @@ export default function ChatBox(props: ChatBoxProps) {
     handleSubmit,
     setInput,
     isLoading,
+    append,
   } = useChatContext();
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+
+    if (scrollContainer) {
+      scrollContainer.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [presets]);
+
   return (
-    <div
+    <motion.div
       ref={scrollRef}
-      className="relative flex h-full w-full flex-col overflow-y-scroll"
+      variants={fadeUpParent}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      className="relative flex h-full w-full flex-col-reverse overflow-y-scroll"
     >
-      <div className="flex flex-grow flex-col gap-[16px] p-[40px]">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full rounded-[13px] px-[30px] pb-[30px] pt-[30px]"
+      >
+        <div className="mb-[20px] flex flex-wrap gap-[15px]">
+          {presets.map((p, i) => (
+            <button
+              type="button"
+              className="box-border rounded-[13px] border border-border bg-white px-[13px] py-[16px] hover:outline hover:outline-[#f1bc00]"
+              key={i}
+              onClick={() => {
+                if (inputRef && inputRef.current) {
+                  append({
+                    id: generateId(),
+                    role: "user",
+                    content: p.value,
+                  });
+                }
+              }}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+        <input
+          className="h-[57px] w-full rounded-[13px] border border-border bg-secondary-background p-[21px] text-base leading-none shadow-realistic outline-[1px] focus:outline-[#f1bc00]"
+          ref={inputRef}
+          value={input}
+          onChange={handleInputChange}
+          disabled={isLoading}
+          placeholder="Ask a question or pick a prompt."
+        />
+      </form>
+
+      <div className="flex flex-grow flex-col gap-[16px] p-[30px]">
         {messages.map((m: Message) =>
           m.role == "assistant" ? (
             <div
@@ -56,41 +130,13 @@ export default function ChatBox(props: ChatBoxProps) {
               className="flex items-center gap-[13px] text-secondary"
             >
               <Sparkle className="text-black" />
-              <span className="text-base">{cleanupQuestion(m.content)}</span>
+              <span className="flex-grow basis-0 text-base">
+                {cleanupQuestion(m.content)}
+              </span>
             </div>
           ),
         )}
       </div>
-
-      <form
-        onSubmit={handleSubmit}
-        className="sticky bottom-0 left-0 w-full rounded-[13px] px-[40px] pb-[30px] pt-[30px]"
-      >
-        <div className="mb-[20px]">
-          {props.presets.map((p, i) => (
-            <button
-              type="button"
-              className="box-border rounded-[13px] border border-border px-[13px] py-[16px] hover:outline hover:outline-[#f1bc00]"
-              key={i}
-              onClick={() => {
-                if (inputRef && inputRef.current) {
-                  setInput(p.value);
-                }
-              }}
-            >
-              {p.value}
-            </button>
-          ))}
-        </div>
-        <input
-          className="h-[57px] w-full rounded-[13px] border border-border bg-secondary-background p-[21px] text-base leading-none outline-[1px] focus:outline-[#f1bc00]"
-          ref={inputRef}
-          value={input}
-          onChange={handleInputChange}
-          disabled={isLoading}
-          placeholder="Ask a question or pick a prompt."
-        />
-      </form>
-    </div>
+    </motion.div>
   );
 }

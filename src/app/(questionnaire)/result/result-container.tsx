@@ -9,8 +9,9 @@ import OverviewList from "./(overview)/overview-list";
 import OverviewMain from "./(overview)/overview-main";
 import ResultScrollBar from "./result-scrollbar";
 import BreakdownList from "./(breakdown)/breakdown-list";
-import { AnimatePresence } from "framer-motion";
-import ChatBox from "./(breakdown)/chatbox";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import ChatBox, { PRESETS } from "./(breakdown)/chatbox";
+import { fadeUpParent } from "@/lib/motion";
 
 export default function ResultContainer() {
   const { currentSection } = useResultsScrollContext();
@@ -21,53 +22,47 @@ export default function ResultContainer() {
       <div className="sticky top-[114px] h-1 min-h-[75vh] w-[60%] basis-auto xl:min-h-[85vh] xl:w-[70%]">
         <div className="h-full w-full rounded-[20px] border border-border bg-white p-[7px] shadow-realistic">
           <div className="flex h-full flex-col items-center justify-center overflow-hidden rounded-[13px] border border-border bg-white">
-            <AnimatePresence initial={true}>
-              {
-                {
-                  [Section.Overview]: <OverviewMain />,
-                  [Section.Breakdown]: (
-                    <ChatBox
-                      presets={[
-                        {
-                          behavior: "prompt",
-                          value: "what color is an apple?",
-                        },
-                      ]}
-                    />
-                  ),
-                  [Section.NextSteps]: <p className="absolute">Next Steps</p>,
-                }[currentSection]
-              }
+            <AnimatePresence mode="wait" initial={true}>
+              {currentSection == Section.Overview ? (
+                <OverviewMain key={Section.Overview} />
+              ) : (
+                <ChatBox
+                  key={Section.Breakdown}
+                  presets={PRESETS[currentSection]}
+                />
+              )}
             </AnimatePresence>
           </div>
         </div>
       </div>
 
       <div className="flex flex-grow basis-0 flex-col not-last:pb-[200px]">
-        <ResultSection
-          title="Step One"
-          subtitle="Learn about your STI risks"
-          section={Section.Overview}
-        >
-          <OverviewList />
-        </ResultSection>
-        <ResultSection
-          title="Step Two"
-          subtitle="Break down your questions and answers
+        <LayoutGroup>
+          <ResultSection
+            title="Step One"
+            subtitle="Learn about your STI risks"
+            section={Section.Overview}
+          >
+            <OverviewList />
+          </ResultSection>
+          <ResultSection
+            title="Step Two"
+            subtitle="Break down your questions and answers
 "
-          section={Section.Breakdown}
-        >
-          <BreakdownList />
-        </ResultSection>
-        <ResultSection
-          title="Step Three"
-          subtitle="Recommended actions to take
+            section={Section.Breakdown}
+          >
+            <BreakdownList />
+          </ResultSection>
+          <ResultSection
+            title="Step Three"
+            subtitle="Recommended actions to take
 "
-          section={Section.NextSteps}
-        >
-          <div className="h-[200px] rounded-[13px] border border-border" />
-          <div className="h-[200px] rounded-[13px] border border-border" />
-        </ResultSection>
+            section={Section.NextSteps}
+          >
+            <div className="h-[200px] rounded-[13px] border border-border" />
+            <div className="h-[200px] rounded-[13px] border border-border" />
+          </ResultSection>
+        </LayoutGroup>
       </div>
 
       <ResultScrollBar section={currentSection} />

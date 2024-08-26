@@ -10,6 +10,7 @@ import {
   useEffect,
 } from "react";
 import { getPersistentData, saveData } from "../saves";
+import { ChatRequestOptions } from "ai";
 
 type ChatContextType = {
   messages: Message[];
@@ -18,6 +19,10 @@ type ChatContextType = {
   handleSubmit: FormEventHandler;
   setInput: Dispatch<SetStateAction<string>>;
   isLoading: boolean;
+  append: (
+    message: Message,
+    chatRequestOptions?: ChatRequestOptions,
+  ) => Promise<string | null | undefined>;
 };
 
 const ChatContext = createContext<ChatContextType | null>(null);
@@ -37,6 +42,7 @@ export default function ChatContextProvider({
     setInput,
     isLoading,
     setMessages,
+    append,
   } = useChat({
     api: "/api/v2/chat",
   });
@@ -64,6 +70,7 @@ export default function ChatContextProvider({
         handleSubmit,
         setInput,
         isLoading,
+        append,
       }}
     >
       {children}
