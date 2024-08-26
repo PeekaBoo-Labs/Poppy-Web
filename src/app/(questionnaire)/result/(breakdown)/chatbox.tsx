@@ -1,11 +1,16 @@
 import { useChatContext } from "@/lib/ai/chat-context";
 import { Section } from "@/lib/contexts/ResultsScrollContext";
 import Sparkle from "@/lib/icons/sparkle";
-import { fadeUp, fadeUpParent } from "@/lib/motion";
+import {
+  blurVariant,
+  fadeUp,
+  fadeUpParent,
+  scaleVariantFast,
+} from "@/lib/motion";
 import { cleanupQuestion } from "@/lib/utils";
 import { generateId } from "ai";
 import { Message } from "ai/react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -36,7 +41,13 @@ export const PRESETS: Record<Section, readonly ChatPresets[]> = {
         "Can you provide actionable steps to enhance my approach for better sexual health?",
     },
   ],
-  [Section.NextSteps]: [],
+  [Section.NextSteps]: [
+    {
+      behavior: "prompt",
+      label: "Which STIs are curable?",
+      value: "Which STIs on my screening results are curable?",
+    },
+  ],
   [Section.Overview]: [],
 } as const;
 
@@ -78,27 +89,31 @@ export default function ChatBox({ presets }: ChatBoxProps) {
         onSubmit={handleSubmit}
         className="w-full rounded-[13px] px-[30px] pb-[30px] pt-[30px]"
       >
-        <div className="mb-[20px] flex flex-wrap gap-[15px]">
-          {presets.map((p, i) => (
-            <button
-              type="button"
-              className="box-border rounded-[13px] border border-border bg-white px-[13px] py-[16px] hover:outline hover:outline-[#f1bc00]"
-              key={i}
-              onClick={() => {
-                if (inputRef && inputRef.current) {
-                  append({
-                    id: generateId(),
-                    role: "user",
-                    content: p.value,
-                  });
-                }
-              }}
-            >
-              {p.label}
-            </button>
-          ))}
-        </div>
-        <input
+        <motion.div className="mb-[20px] flex flex-wrap gap-[15px]">
+          <AnimatePresence mode="wait">
+            {presets.map((p, i) => (
+              <motion.button
+                variants={blurVariant}
+                type="button"
+                className="box-border rounded-[13px] border border-border bg-white px-[13px] py-[16px] hover:outline hover:outline-[#f1bc00]"
+                key={p.label}
+                onClick={() => {
+                  if (inputRef && inputRef.current) {
+                    append({
+                      id: generateId(),
+                      role: "user",
+                      content: p.value,
+                    });
+                  }
+                }}
+              >
+                {p.label}
+              </motion.button>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+        <motion.input
+          variants={fadeUp}
           className="h-[57px] w-full rounded-[13px] border border-border bg-secondary-background p-[21px] text-base leading-none shadow-realistic outline-[1px] focus:outline-[#f1bc00]"
           ref={inputRef}
           value={input}
@@ -108,7 +123,10 @@ export default function ChatBox({ presets }: ChatBoxProps) {
         />
       </form>
 
-      <div className="flex flex-grow flex-col gap-[16px] p-[30px]">
+      <motion.div
+        layout
+        className="flex flex-grow flex-col gap-[16px] p-[30px]"
+      >
         {messages.map((m: Message) =>
           m.role == "assistant" ? (
             <div
@@ -136,7 +154,7 @@ export default function ChatBox({ presets }: ChatBoxProps) {
             </div>
           ),
         )}
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
