@@ -3,6 +3,7 @@
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/general/Footer";
 import { GROUP_AI, useAIContext } from "@/lib/ai/ai-context";
+import ChatContextProvider from "@/lib/ai/chat-context";
 import { FlowerContextProvider } from "@/lib/contexts/FlowerContext";
 import { ResultsScrollProvider } from "@/lib/contexts/ResultsScrollContext";
 import { persistentKeyExists } from "@/lib/saves";
@@ -25,16 +26,18 @@ export default function ResultLayout({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <FlowerContextProvider>
-      <ResultsScrollProvider>
-        <NavBar />
+    <ChatContextProvider>
+      <FlowerContextProvider>
+        <ResultsScrollProvider>
+          <NavBar />
 
-        {children}
+          {children}
 
-        <div className="mx-auto w-full max-w-[1000px] bg-secondary-background md:mt-10 md:bg-transparent">
-          <Footer />
-        </div>
-      </ResultsScrollProvider>
-    </FlowerContextProvider>
+          <div className="mx-auto w-full max-w-[1000px] bg-secondary-background md:mt-10 md:bg-transparent">
+            <Footer />
+          </div>
+        </ResultsScrollProvider>
+      </FlowerContextProvider>
+    </ChatContextProvider>
   );
 }

@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react";
 
-function getPersistentData(
+export function getPersistentData(
   group: string,
   key: string,
   defaultValue: any = null,
@@ -22,7 +22,7 @@ function getPersistentData(
   return item ? JSON.parse(item) : item;
 }
 
-function saveData<T>(
+export function saveData<T>(
   group: string,
   key: string,
   value: T | ((prev: T) => T),

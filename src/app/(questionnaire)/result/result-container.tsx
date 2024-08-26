@@ -20,7 +20,7 @@ export default function ResultContainer() {
     <div className="relative mx-auto mt-[44px] flex w-[calc(100%-70px)] max-w-[1300px] items-start gap-[20px]">
       <div className="sticky top-[114px] h-1 min-h-[75vh] w-[60%] basis-auto xl:min-h-[85vh] xl:w-[70%]">
         <div className="h-full w-full rounded-[20px] border border-border bg-white p-[7px] shadow-realistic">
-          <div className="flex h-full flex-col items-center justify-center rounded-[13px] border border-border bg-white">
+          <div className="flex h-full flex-col items-center justify-center overflow-hidden rounded-[13px] border border-border bg-white">
             <AnimatePresence initial={true}>
               {
                 {

@@ -14,7 +14,6 @@ import {
   getDefaultScore,
 } from "./question";
 
-import { createAI } from "ai/rsc";
 import { persistentKeyExists, usePersistentState } from "../saves";
 import { Question_SexualActivity } from "./questions/behavioral";
 

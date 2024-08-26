@@ -1,7 +1,8 @@
+import { useChatContext } from "@/lib/ai/chat-context";
 import Sparkle from "@/lib/icons/sparkle";
 import { cleanupQuestion } from "@/lib/utils";
-import { Message, useChat } from "ai/react";
-import { useEffect, useRef } from "react";
+import { Message } from "ai/react";
+import { useRef } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -27,20 +28,7 @@ export default function ChatBox(props: ChatBoxProps) {
     handleSubmit,
     setInput,
     isLoading,
-  } = useChat({
-    api: "/api/v2/chat",
-    onFinish() {
-      const container = scrollRef.current;
-      if (!container) return;
-
-      container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
-    },
-  });
-
-  useEffect(() => {
-    console.log(messages);
-  }, [messages]);
-
+  } = useChatContext();
   return (
     <div
       ref={scrollRef}
@@ -81,6 +69,7 @@ export default function ChatBox(props: ChatBoxProps) {
         <div className="mb-[20px]">
           {props.presets.map((p, i) => (
             <button
+              type="button"
               className="box-border rounded-[13px] border border-border px-[13px] py-[16px] hover:outline hover:outline-[#f1bc00]"
               key={i}
               onClick={() => {
