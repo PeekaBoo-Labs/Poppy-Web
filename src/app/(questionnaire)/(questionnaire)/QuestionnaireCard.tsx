@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Dots from "../../../components/general/animated/dots";
 
@@ -57,6 +57,32 @@ export default function QuestionnaireCard() {
       router.push("/result");
   }, [page, currentQuestion, questionsLeft, router]);
 
+  useEffect(() => {
+    if (currentQuestion == null) return;
+
+    const inputOptions = currentQuestion.inputOptions;
+
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.keyCode == 13) {
+        handleNext();
+        return;
+      }
+
+      inputOptions.forEach((option, i) => {
+        if (e.key == String(i + 1)) {
+          setAnswer(option.id);
+          return;
+        }
+      });
+    };
+
+    window.addEventListener("keypress", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keypress", handleKeyPress);
+    };
+  }, [currentQuestion, handleNext]);
+
   return (
     <>
       {!currentQuestion ? null : (
@@ -104,6 +130,7 @@ export default function QuestionnaireCard() {
 function NextButton({ handleNext }: { handleNext: () => void }) {
   return (
     <button
+      type="submit"
       className="z-1 group flex flex-grow items-center justify-between rounded-[13px] border-2 border-primary bg-primary px-[16px] py-[12px] font-medium text-white md:relative md:m-0 md:hover:bg-transparent md:hover:text-primary"
       onClick={handleNext}
     >

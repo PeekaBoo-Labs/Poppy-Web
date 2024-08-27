@@ -126,6 +126,7 @@ export default function ChatBox({ presets }: ChatBoxProps) {
         <span className="my-2 block w-full text-center text-[13px] text-secondary">
           Powered by Claude Sonnet 3.5
           <button
+            type="reset"
             className="ml-2 underline"
             onClick={() => {
               resetChat();

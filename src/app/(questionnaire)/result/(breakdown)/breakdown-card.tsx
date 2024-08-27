@@ -16,9 +16,15 @@ export default function BreakdownCard({
   expanded: boolean;
   onClick: () => void;
 }) {
+  const relevantRisks = getRiskList(question).filter((r) => r[1] > 0);
+
   return (
     <motion.button
       layout
+      variants={blurVariant}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
       onClick={onClick}
       className={cn(
         expanded && "bg-[#F1BC00]",
@@ -36,29 +42,29 @@ export default function BreakdownCard({
           {expanded && (
             <motion.div
               variants={blurVariant}
-              className="flex origin-center flex-col gap-[5px] font-normal text-secondary"
+              className="flex origin-center flex-col gap-[10px] font-normal text-secondary"
               initial="hidden"
               animate="visible"
               exit="hidden"
             >
               <span className="italic">{getAnswerLabel(question)}</span>
               <QuestionnaireGPT
-                className="mb-4 mt-2"
                 question={question.label}
                 answer={getAnswerLabel(question) ?? "Unanswered"}
                 stis_detected={[]}
               />
-              <motion.div layout className="flex flex-wrap gap-2">
-                {getRiskList(question).map(([sti, rank]) => (
-                  <span
-                    className="group rounded-[9px] bg-primary px-[11px] py-[5px] text-[13px] font-medium text-accent-darker"
-                    key={sti}
-                  >
-                    <span>{sti}</span>
-                    <span>{rank}</span>
-                  </span>
-                ))}
-              </motion.div>
+              {relevantRisks.length > 0 && (
+                <motion.div className="mt-2 flex flex-wrap gap-2">
+                  {relevantRisks.map(([sti]) => (
+                    <span
+                      className="group rounded-[9px] bg-primary px-[11px] py-[5px] text-[13px] font-medium text-accent-darker"
+                      key={sti}
+                    >
+                      <span>{sti}</span>
+                    </span>
+                  ))}
+                </motion.div>
+              )}
             </motion.div>
           )}
         </AnimatePresence>

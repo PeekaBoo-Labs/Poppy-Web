@@ -13,6 +13,7 @@ export default function QuestionInputOption({
 }) {
   return (
     <button
+      type="button"
       onClick={onClick}
       className={cn(
         "group relative min-w-[75px] rounded-[13px] px-[16px] py-[13px] font-medium",

@@ -74,6 +74,7 @@ export default function AIContextProvider({
   // A function to generate the grid with flower placements
   const generateGrid = (gridSize: number) => {
     const scores = calculateOutput();
+    console.log("User scores:", scores);
 
     const sti_scores: [STI, number][] = Array.from(scores.risks).sort(
       (a, b) => b[1] - a[1],
@@ -93,7 +94,7 @@ export default function AIContextProvider({
 
     // Distribute the remaining flowers according to their scores
     sti_scores.forEach(([sti, score]) => {
-      const flowerCount = Math.max(1, score);
+      const flowerCount = Math.max(0, score);
       for (let i = 0; i < flowerCount; i++) {
         let placed = false;
         while (!placed) {

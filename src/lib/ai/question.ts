@@ -94,10 +94,28 @@ export function getAnswerLabel(question: Question): string | null {
   return answer ? answer.label : null;
 }
 
+export function selectedOption(question: Question): QuestionInput | null {
+  if (!question.selected) return null;
+
+  return question.inputOptions.find((o) => o.id == question.selected) ?? null;
+}
+
 export function getRiskList(question: Question): [STI, number][] {
   const risks = Object.entries(question.riskFactors) as [STI, number][];
   risks.sort((r1, r2) => r2[1] - r1[1]);
   return risks;
+}
+
+export function hasNegibleRisk(question: Question): boolean {
+  const selection = selectedOption(question);
+
+  if (!selection) return false;
+
+  if (question.weightType == WeightType.Additive) {
+    return question.weight * selection.value == 0;
+  } else {
+    return question.weight * selection.value < 1;
+  }
 }
 
 export const RISK_ALL_STI = (): Record<STI, number> => {

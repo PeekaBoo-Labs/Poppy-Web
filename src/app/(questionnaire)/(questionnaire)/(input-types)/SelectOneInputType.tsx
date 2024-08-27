@@ -1,5 +1,6 @@
 import QuestionInputOption from "@/components/QuestionOption";
 import type { QuestionInput } from "@/lib/ai/question";
+import { useEffect } from "react";
 
 export default function SelectOneInputType({
   inputOptions,
