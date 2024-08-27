@@ -11,6 +11,7 @@ import { cleanupQuestion } from "@/lib/utils";
 import { generateId } from "ai";
 import { Message } from "ai/react";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -63,6 +64,7 @@ export default function ChatBox({ presets }: ChatBoxProps) {
     setInput,
     isLoading,
     append,
+    resetChat,
   } = useChatContext();
 
   useEffect(() => {
@@ -87,7 +89,7 @@ export default function ChatBox({ presets }: ChatBoxProps) {
     >
       <form
         onSubmit={handleSubmit}
-        className="w-full rounded-[13px] px-[30px] pb-[30px] pt-[30px]"
+        className="w-full rounded-[13px] px-[30px] pb-[10px] pt-[30px]"
       >
         <motion.div className="mb-[20px] flex flex-wrap gap-[15px]">
           {presets.map((p, i) => (
@@ -110,6 +112,7 @@ export default function ChatBox({ presets }: ChatBoxProps) {
             </motion.button>
           ))}
         </motion.div>
+
         <motion.input
           variants={fadeUp}
           className="h-[57px] w-full rounded-[13px] border border-border bg-secondary-background p-[21px] text-base leading-none shadow-realistic outline-[1px] focus:outline-[#f1bc00]"
@@ -119,40 +122,78 @@ export default function ChatBox({ presets }: ChatBoxProps) {
           disabled={isLoading}
           placeholder="Ask a question or pick a prompt."
         />
+
+        <span className="my-2 block w-full text-center text-[13px] text-secondary">
+          Powered by Claude Sonnet 3.5
+          <button
+            className="ml-2 underline"
+            onClick={() => {
+              resetChat();
+              setInput("");
+            }}
+          >
+            Clear Chat
+          </button>
+        </span>
       </form>
 
-      <motion.div
-        layout
-        className="flex flex-grow flex-col gap-[16px] p-[30px]"
-      >
-        {messages.map((m: Message) =>
-          m.role == "assistant" ? (
-            <div
-              key={m.id}
-              className="rounded-[13px] border border-border px-[35px] py-[20px]"
-            >
-              {
-                <Markdown
-                  className="prose prose-sm prose-zinc prose-p:text-sm prose-li:*:my-0"
-                  remarkPlugins={[remarkGfm]}
+      <AnimatePresence mode="popLayout">
+        {messages.length == 0 ? (
+          <motion.div
+            key="p-logo"
+            variants={blurVariant}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="flex w-full flex-1 items-center justify-center pt-[20px]"
+          >
+            <Image
+              src={"/poppyPLogo.svg"}
+              alt=""
+              width={69}
+              height={69}
+              className="opacity-10"
+            />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="chat"
+            variants={blurVariant}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="flex flex-grow flex-col gap-[16px] p-[30px]"
+          >
+            {messages.map((m: Message) =>
+              m.role == "assistant" ? (
+                <div
+                  key={m.id}
+                  className="rounded-[13px] border border-border px-[35px] py-[20px]"
                 >
-                  {m.content}
-                </Markdown>
-              }
-            </div>
-          ) : (
-            <div
-              key={m.id}
-              className="flex items-center gap-[13px] text-secondary"
-            >
-              <Sparkle className="text-black" />
-              <span className="flex-grow basis-0 text-base">
-                {cleanupQuestion(m.content)}
-              </span>
-            </div>
-          ),
+                  {
+                    <Markdown
+                      className="prose prose-sm prose-zinc prose-p:text-sm prose-li:*:my-0"
+                      remarkPlugins={[remarkGfm]}
+                    >
+                      {m.content}
+                    </Markdown>
+                  }
+                </div>
+              ) : (
+                <div
+                  key={m.id}
+                  className="flex items-center gap-[13px] text-secondary"
+                >
+                  <Sparkle className="text-black" />
+                  <span className="flex-grow basis-0 text-base">
+                    {cleanupQuestion(m.content)}
+                  </span>
+                </div>
+              ),
+            )}
+          </motion.div>
         )}
-      </motion.div>
+      </AnimatePresence>
     </motion.div>
   );
 }

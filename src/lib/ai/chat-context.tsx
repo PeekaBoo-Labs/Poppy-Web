@@ -64,6 +64,7 @@ export default function ChatContextProvider({
 
   const resetChat = () => {
     clearPersistentGroup(CHAT_GROUP);
+    setMessages([]);
   };
 
   return (

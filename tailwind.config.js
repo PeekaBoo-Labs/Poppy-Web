@@ -27,6 +27,7 @@ module.exports = {
       colors: {
         primary: "#202221",
         secondary: "#20222180",
+        tertiary: "rgba(187, 187, 187, 0.15)",
         border: "#d9d9d9",
         "secondary-background": "#f7f7f7",
         accent: "rgb(255, 204, 0)",

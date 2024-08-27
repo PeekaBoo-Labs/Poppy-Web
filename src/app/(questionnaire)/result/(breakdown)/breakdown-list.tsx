@@ -2,7 +2,7 @@ import { useAIContext } from "@/lib/ai/ai-context";
 import { LayoutGroup } from "framer-motion";
 import { useState } from "react";
 import BreakdownCard from "./breakdown-card";
-import { Question, QuestionInput } from "@/lib/ai/question";
+import Warning from "@/lib/icons/warning";
 
 export default function BreakdownList() {
   const { answeredQuestions } = useAIContext();
@@ -17,14 +17,19 @@ export default function BreakdownList() {
     <div className="flex flex-col gap-[10px]">
       <LayoutGroup>
         {relevantQuestions.length == 0 ? (
-          <div className="rounded-[13px] border-2 border-accent-darker px-[19px] py-[21px]">
-            <strong>
-              Some STIs can be acquired without direct sexual contact
-            </strong>
-            , primarily through mother-to-child transmission during pregnancy,
-            childbirth, or breastfeeding. While less common, a few STIs can also
-            spread through contact with contaminated objects or surfaces, though
-            this route of transmission is rare for most STIs.
+          <div className="flex items-center gap-[28px] rounded-[13px] border border-border bg-tertiary px-[19px] py-[21px]">
+            <div className="flex flex-1 flex-col gap-[5px]">
+              <span className="text-sm font-semibold">Warning</span>
+              <p className="text-sm">
+                STIs can spread without direct sexual contact, mainly via
+                mother-to-child transmission during pregnancy, birth, or
+                breastfeeding. Rarely, some STIs may spread through contact with
+                contaminated objects or surfaces, though this is uncommon for
+                most STIs.
+              </p>
+            </div>
+
+            <Warning />
           </div>
         ) : null}
         {relevantQuestions.map((question, index) => (

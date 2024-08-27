@@ -1,4 +1,4 @@
-export default function MinuCircle(props: React.SVGProps<SVGSVGElement>) {
+export default function MinusCircle(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       data-testid="geist-icon"
