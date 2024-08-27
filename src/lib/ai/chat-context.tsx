@@ -9,7 +9,7 @@ import {
   useContext,
   useEffect,
 } from "react";
-import { getPersistentData, saveData } from "../saves";
+import { clearPersistentGroup, getPersistentData, saveData } from "../saves";
 import { ChatRequestOptions } from "ai";
 
 type ChatContextType = {
@@ -19,6 +19,7 @@ type ChatContextType = {
   handleSubmit: FormEventHandler;
   setInput: Dispatch<SetStateAction<string>>;
   isLoading: boolean;
+  resetChat: () => void;
   append: (
     message: Message,
     chatRequestOptions?: ChatRequestOptions,
@@ -27,7 +28,7 @@ type ChatContextType = {
 
 const ChatContext = createContext<ChatContextType | null>(null);
 
-const CHAT_GROUP = "AI_CHAT" as const;
+export const CHAT_GROUP = "AI_CHAT" as const;
 
 export default function ChatContextProvider({
   children,
@@ -51,15 +52,19 @@ export default function ChatContextProvider({
     const cachedMessages = getPersistentData(CHAT_GROUP, "default");
     setMessages(cachedMessages);
 
-    console.log("[*] Loading cached state for messages:", cachedMessages);
+    // console.log("[*] Loading cached state for messages:", cachedMessages);
   }, [setMessages]);
 
   useEffect(() => {
     if (messages.length > 0) {
       saveData(CHAT_GROUP, "default", messages);
-      console.log("[*] Caching messages:", messages);
+      // console.log("[*] Caching messages:", messages);
     }
   }, [messages]);
+
+  const resetChat = () => {
+    clearPersistentGroup(CHAT_GROUP);
+  };
 
   return (
     <ChatContext.Provider
@@ -71,6 +76,7 @@ export default function ChatContextProvider({
         setInput,
         isLoading,
         append,
+        resetChat,
       }}
     >
       {children}

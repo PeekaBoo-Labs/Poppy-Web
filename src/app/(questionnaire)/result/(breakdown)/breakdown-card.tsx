@@ -1,4 +1,4 @@
-import { getAnswerLabel } from "@/lib/ai/question";
+import { getAnswerLabel, getRiskList } from "@/lib/ai/question";
 import PlusCircle from "@/lib/icons/plus-circle";
 import { blurVariant } from "@/lib/motion";
 import type { Question } from "@/lib/ai/question";
@@ -29,7 +29,7 @@ export default function BreakdownCard({
         layout="position"
         className="relative flex flex-grow basis-0 flex-col items-start gap-[5px] font-semibold"
       >
-        <span className={!expanded && "group-hover:text-[#F1BC00]"}>
+        <span className={!expanded ? "group-hover:text-[#F1BC00]" : undefined}>
           {question.label}
         </span>
         <AnimatePresence mode="popLayout">
@@ -41,12 +41,24 @@ export default function BreakdownCard({
               animate="visible"
               exit="hidden"
             >
-              <span>{getAnswerLabel(question)}</span>
+              <span className="italic">{getAnswerLabel(question)}</span>
               <QuestionnaireGPT
+                className="mb-4 mt-2"
                 question={question.label}
                 answer={getAnswerLabel(question) ?? "Unanswered"}
                 stis_detected={[]}
               />
+              <motion.div layout className="flex flex-wrap gap-2">
+                {getRiskList(question).map(([sti, rank]) => (
+                  <span
+                    className="group rounded-[9px] bg-primary px-[11px] py-[5px] text-[13px] font-medium text-accent-darker"
+                    key={sti}
+                  >
+                    <span>{sti}</span>
+                    <span>{rank}</span>
+                  </span>
+                ))}
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>

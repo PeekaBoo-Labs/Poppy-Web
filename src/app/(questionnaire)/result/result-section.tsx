@@ -33,7 +33,7 @@ export default function ResultSection({
   });
 
   return (
-    <motion.section layout ref={ref}>
+    <motion.section layout="position" ref={ref}>
       <div className="flex flex-col gap-[20px] pt-[30px]">
         <div className="space-y-[5px] text-xl font-semibold">
           <h1 className="leading-[1.2em] text-secondary">{title ?? "Title"}</h1>

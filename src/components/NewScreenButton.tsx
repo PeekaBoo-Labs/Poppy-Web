@@ -1,4 +1,5 @@
 import { GROUP_AI, useAIContext } from "@/lib/ai/ai-context";
+import { CHAT_GROUP, useChatContext } from "@/lib/ai/chat-context";
 import { clearPersistentGroup } from "@/lib/saves";
 import { useRouter } from "next/navigation";
 
@@ -11,6 +12,7 @@ export default function NewScreenButton() {
       onClick={() => {
         clearPersistentGroup(GROUP_AI);
         resetQuestions();
+        clearPersistentGroup(CHAT_GROUP);
         router.push("/");
       }}
     >

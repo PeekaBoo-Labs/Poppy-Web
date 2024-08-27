@@ -94,6 +94,12 @@ export function getAnswerLabel(question: Question): string | null {
   return answer ? answer.label : null;
 }
 
+export function getRiskList(question: Question): [STI, number][] {
+  const risks = Object.entries(question.riskFactors) as [STI, number][];
+  risks.sort((r1, r2) => r2[1] - r1[1]);
+  return risks;
+}
+
 export const RISK_ALL_STI = (): Record<STI, number> => {
   const riskFactors: Partial<Record<STI, number>> = {};
   for (const sti of Object.values(STI)) {
