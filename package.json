@@ -15,6 +15,7 @@
     "ai": "^3.3.11",
     "autoprefixer": "10.4.14",
     "caniuse-lite": "",
+    "axios": "^1.7.3",
     "clsx": "^2.1.1",
     "eslint": "^8.57.0",
     "eslint-config-next": "latest",
