@@ -35,9 +35,7 @@ export default function QuestionnaireGPT({
     const serializedRequest = JSON.stringify(request);
     const cachedResponse = window.localStorage.getItem(serializedRequest);
     if (cachedResponse) {
-      setTimeout(() => {
-        setResponse(cachedResponse);
-      }, 1500);
+      setResponse(cachedResponse);
       return;
     }
 
