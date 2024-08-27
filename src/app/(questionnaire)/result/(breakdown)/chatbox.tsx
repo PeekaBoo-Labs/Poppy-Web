@@ -90,27 +90,25 @@ export default function ChatBox({ presets }: ChatBoxProps) {
         className="w-full rounded-[13px] px-[30px] pb-[30px] pt-[30px]"
       >
         <motion.div className="mb-[20px] flex flex-wrap gap-[15px]">
-          <AnimatePresence mode="wait">
-            {presets.map((p, i) => (
-              <motion.button
-                variants={blurVariant}
-                type="button"
-                className="box-border rounded-[13px] border border-border bg-white px-[13px] py-[16px] hover:outline hover:outline-[#f1bc00]"
-                key={p.label}
-                onClick={() => {
-                  if (inputRef && inputRef.current) {
-                    append({
-                      id: generateId(),
-                      role: "user",
-                      content: p.value,
-                    });
-                  }
-                }}
-              >
-                {p.label}
-              </motion.button>
-            ))}
-          </AnimatePresence>
+          {presets.map((p, i) => (
+            <motion.button
+              variants={blurVariant}
+              type="button"
+              className="box-border rounded-[13px] border border-border bg-white px-[13px] py-[16px] hover:outline hover:outline-[#f1bc00]"
+              key={p.label}
+              onClick={() => {
+                if (inputRef && inputRef.current) {
+                  append({
+                    id: generateId(),
+                    role: "user",
+                    content: p.value,
+                  });
+                }
+              }}
+            >
+              {p.label}
+            </motion.button>
+          ))}
         </motion.div>
         <motion.input
           variants={fadeUp}

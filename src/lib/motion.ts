@@ -6,6 +6,12 @@ const defaultSpring = {
   stiffness: 200,
 } as const;
 
+const defaultSpringNoBounce = {
+  type: "spring",
+  damping: 25,
+  stiffness: 150,
+};
+
 export const fadeUpParent: Variants = {
   hidden: {
     opacity: 0,
@@ -59,7 +65,7 @@ export const blurVariant: Variants = {
     opacity: 1,
     scale: 1,
     filter: "blur(0px)",
-    transition: defaultSpring,
+    transition: defaultSpringNoBounce,
   },
 };
 
