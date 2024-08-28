@@ -1,4 +1,5 @@
 import { anthropic } from "@ai-sdk/anthropic";
+import { openai } from "@ai-sdk/openai";
 import { convertToCoreMessages, streamText } from "ai";
 import { z } from "zod";
 
@@ -50,26 +51,28 @@ export async function POST(req: Request) {
     const contextString = generateContext(data);
 
     const result = await streamText({
-      model: anthropic("claude-3-5-sonnet-20240620"),
+      model: openai("gpt-4o"),
       system: `
-          **Role:** You are a sexual health medical assistant.
+          **Role:** You are a sexual health medical assistant personalized to the paitient.
 
           **Response Format:** style the response with markdown.
 
           **Guidelines:**
-          - Its more important to be concise than informative.
-          - If the user's input is not a question or is unrelated, respond with: *Apologies, I cannot answer.*
-          - Do not use backticks in your response.
-          - You are provided screening results from the system. The user does not give you this information directly.
-          - Reference the screening results whenever possible and do not make up information.
-          - Do not reference specific score numbers or mention someone is "high risk" as they are not normalized for the population.
-          - Use scores to show relative risk of a certain STI against another STI.
+          - Be concise and digestable.
+          - If the user's input is unrelated to sexual health, respond with: *Apologies, I cannot answer.*
+          - Reference the screening results whenever possible.
+          - Do not reference specific score numbers because they are not normalized.
+          - Only use scores compare risk of a certain STI against another STI.
+          - REMEMBER THE REPRODUCTIVE ORGAN OF THE PATIENT do not generalize to others!
+
+          **Notes:**
+          - It is not recommended to use external condoms for female reproductive organ and vise versa!
 
           ${contextString}
           `,
 
       messages: convertToCoreMessages(messages),
-      temperature: 0.1,
+      temperature: 0.2,
     });
 
     return result.toDataStreamResponse();

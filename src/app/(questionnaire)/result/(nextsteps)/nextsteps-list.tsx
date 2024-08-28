@@ -3,12 +3,16 @@ import { TestKit } from "@/app/api/v2/getTestKits/route";
 import InputField from "@/components/general/input-field";
 import { useCallback, useEffect, useRef, useState } from "react";
 import TestKitItem from "./test-kit";
+import ClinicItem from "./clinic-item";
+import { AnimatePresence } from "framer-motion";
 
 export default function NextStepsList() {
   const zipCodeInput = useRef<HTMLInputElement | null>(null);
 
   const [clinics, setClinics] = useState<Clinic[]>([]);
   const [testKits, setTestKits] = useState<TestKit[]>([]);
+
+  const [clinicLimit, setClinicLimit] = useState<number>(3);
 
   const fetchClinics = useCallback(
     async (location: string) => {
@@ -54,8 +58,25 @@ export default function NextStepsList() {
         <InputField
           ref={zipCodeInput}
           type="text"
-          placeholder="Enter ZIP Code"
+          placeholder="Enter ZIP Code or location"
         />
+
+        <AnimatePresence mode="popLayout">
+          {clinics.slice(0, clinicLimit).map((clinic, i) => (
+            <ClinicItem clinic={clinic} key={i} />
+          ))}
+        </AnimatePresence>
+
+        {clinicLimit < clinics.length ? (
+          <button
+            onClick={() => {
+              setClinicLimit((n) => n + 3);
+            }}
+            className="text-sm text-secondary underline"
+          >
+            Load more clinics
+          </button>
+        ) : null}
       </form>
 
       <div className="flex flex-col gap-[13px]">

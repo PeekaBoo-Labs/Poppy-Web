@@ -1,17 +1,19 @@
 import axios from "axios";
 import OpenAI from "openai";
 
-export interface Clinic {
+export type Clinic = {
   name: string;
   link: string;
   logo_image: string;
   images: string[];
-  services: string[]; // extracted from Yelp // categories
   distance: number; // in meters
-  tags: string[];
-}
+  phone: string;
+  open_now: boolean;
+  city: string;
+  state: string;
+};
 
-interface YelpResponse {
+type YelpResponse = {
   businesses: Array<{
     name: string;
     url: string;
@@ -20,8 +22,16 @@ interface YelpResponse {
       title: string;
     }>;
     distance: number;
+    display_phone: string;
+    business_hours: {
+      is_open_now: boolean;
+    };
+    location: {
+      city: string;
+      state: string;
+    };
   }>;
-}
+};
 
 const ICONS_LIST: string[] = [
   "lgbtq: /rainbow.svg",
@@ -137,24 +147,25 @@ export async function GET(request: Request) {
       },
     );
 
-    const clinics: Clinic[] = await Promise.all(
-      yelpResponse.data.businesses.map(async (business) => {
-        const categories = business.categories.map((c) => c.title);
-        const taggings = await getClinicTagging(categories);
+    const clinics: Clinic[] = yelpResponse.data.businesses.map((business) => {
+      console.log(business);
 
-        return {
-          name: business.name,
-          link: business.url,
-          logo_image: business.image_url,
-          images: [business.image_url], // Assuming only one image is available
-          services: taggings, // Adding the generated taggings
-          distance: business.distance, // Adding distance
-          tags: taggings,
-        };
-      }),
-    );
+      return {
+        name: business.name,
+        link: business.url,
+        logo_image: business.image_url,
+        images: [business.image_url],
+        distance: business.distance / 1609,
+        open_now: business.business_hours?.is_open_now ?? undefined,
+        city: business.location.city,
+        state: business.location.state,
+        phone: business.display_phone,
+      };
+    });
 
-    return new Response(JSON.stringify({ clinics }), {
+    console.log(clinics);
+
+    return new Response(JSON.stringify(clinics), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
@@ -165,6 +176,7 @@ export async function GET(request: Request) {
       },
     });
   } catch (error) {
+    console.error(error.message);
     return new Response(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },

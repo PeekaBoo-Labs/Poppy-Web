@@ -32,14 +32,21 @@ export const PRESETS: Record<Section, readonly ChatPresets[]> = {
   [Section.Breakdown]: [
     {
       behavior: "prompt",
-      label: "What are the stages of syphilis?",
-      value: "What are the different stages of syphilis?",
+      label: "What are my STI risks?",
+      value: "What are my STI risks?",
     },
+
     {
       behavior: "prompt",
-      label: "Give personalized advice.",
+      label: "Give me personalized advice.",
       value:
         "Can you provide actionable steps to enhance my approach for better sexual health?",
+    },
+
+    {
+      behavior: "prompt",
+      label: "What birth control methods can I use?",
+      value: "What birth control methods can I use?",
     },
   ],
   [Section.NextSteps]: [
@@ -51,7 +58,13 @@ export const PRESETS: Record<Section, readonly ChatPresets[]> = {
     {
       behavior: "prompt",
       label: "Which test is best for me?",
-      value: "Which STI should I get tested for first?",
+      value:
+        "Which STI should I get tested for first and which type of test should I look for?",
+    },
+    {
+      behavior: "prompt",
+      label: "Are there low-cost clinics?",
+      value: "Are there low-cost clinics?",
     },
   ],
   [Section.Overview]: [],
@@ -101,7 +114,7 @@ export default function ChatBox({ presets }: ChatBoxProps) {
             <motion.button
               variants={blurVariant}
               type="button"
-              className="box-border rounded-[13px] border border-border bg-white px-[13px] py-[16px] hover:outline hover:outline-[#f1bc00]"
+              className="group relative rounded-[13px] bg-white px-[13px] py-[16px] hover:text-accent-darker"
               key={p.label}
               onClick={() => {
                 if (inputRef && inputRef.current) {
@@ -114,6 +127,8 @@ export default function ChatBox({ presets }: ChatBoxProps) {
               }}
             >
               {p.label}
+
+              <div className="pointer-events-none absolute left-0 top-0 h-full w-full rounded-[13px] border border-border group-hover:border-2 group-hover:border-accent-darker" />
             </motion.button>
           ))}
         </motion.div>
@@ -129,7 +144,7 @@ export default function ChatBox({ presets }: ChatBoxProps) {
         />
 
         <span className="my-2 block w-full text-center text-[13px] text-secondary">
-          Powered by Claude Sonnet 3.5
+          Powered by GPT-4o
           <button
             type="reset"
             className="ml-2 underline"
