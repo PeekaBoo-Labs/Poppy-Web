@@ -7,7 +7,7 @@ export default function ResultPage() {
   return (
     <>
       <ResultContainer />
-      <div className="mx-auto w-full max-w-[1000px] md:mt-10">
+      <div className="mx-auto w-full max-w-[1300px] md:mt-10">
         <Footer />
       </div>
     </>
