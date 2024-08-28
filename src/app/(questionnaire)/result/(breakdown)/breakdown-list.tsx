@@ -5,6 +5,7 @@ import BreakdownCard from "./breakdown-card";
 import Warning from "@/lib/icons/warning";
 import { hasNegibleRisk } from "@/lib/ai/question";
 import WarningCard from "@/components/general/warning-card";
+import PlusCircle from "@/lib/icons/plus-circle";
 
 export default function BreakdownList() {
   const { answeredQuestions, grid } = useAIContext();
@@ -54,12 +55,18 @@ export default function BreakdownList() {
       {!showAllQuestions && (
         <motion.button
           layout
-          className="mx-auto mt-2 inline w-fit rounded-[6px] bg-primary px-[10px] py-[5px] text-xs font-medium text-white"
+          className="group relative flex items-center gap-[21px] rounded-[13px] px-[21px] py-[19px] text-left font-semibold transition-colors duration-700"
           onClick={() => {
             setShowAllQuestions((b) => !b);
           }}
         >
-          Show all questions
+          <span className="flex-1 group-hover:text-accent-darker">
+            Show all questions
+          </span>
+
+          <PlusCircle className="h-[16px] w-[16px] text-primary group-hover:text-accent-darker" />
+
+          <div className="pointer-events-none absolute left-0 box-border h-full w-full rounded-[12px] border border-border transition-all group-hover:border-2 group-hover:border-accent-darker" />
         </motion.button>
       )}
     </motion.div>

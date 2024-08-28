@@ -78,12 +78,7 @@ export default forwardRef(function BreakdownCard(
         {expanded ? (
           <MinuCircle />
         ) : (
-          <PlusCircle
-            className={cn(
-              "h-[16px] w-[16px] text-primary",
-              "group-hover:text-[#F1BC00]",
-            )}
-          />
+          <PlusCircle className="h-[16px] w-[16px] text-primary group-hover:text-[#F1BC00]" />
         )}
       </motion.div>
 
