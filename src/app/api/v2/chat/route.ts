@@ -6,7 +6,7 @@ export const maxDuration = 10;
 
 const minimalQuestionContextSchema = z.object({
   question: z.string().min(1),
-  label: z.string().min(1),
+  answer: z.string().min(1),
 });
 
 const userContextSchema = z.object({
@@ -22,23 +22,24 @@ type MinimalQuestionContext = z.infer<typeof minimalQuestionContextSchema>;
 type UserContext = z.infer<typeof userContextSchema>;
 
 function generateContext(context: UserContext) {
-  let output = "<UserContext>\n";
+  let output = "<Screening Results>\n";
 
   output += `
-  NOTE: score of 0 means little risk high score means high risk.
+  **Risk Assessment (0 = low risk, high score = high risk):**
+  - Risky Behavior Score: ${context.behavior_score};
+  - Risky Symptoms Score: ${context.symptomatic_score};
 
-  Risky Behavior Score: ${context.behavior_score};
-  Risky Symptoms Score: ${context.symptomatic_score};
-  STI SCORES: ${context.sti_score};
+  **STI Risk Scores:**
+  ${context.sti_score.map((s) => `- ${s[0]}: ${s[1]}`).join("\n  ")};
 
-  Unhealthy Screening Results:
-  ${context.risky.map((r) => `${r.question}: ${r.label}`).join("\n")}
+  **Unhealthy Screening Results:**
+  ${context.risky.map((r) => `- ${r.question}: ${r.answer}`).join("\n  ")}
 
-  Healthy Screening Results:
-  ${context.healthy.map((h) => `${h.question}: ${h.label}`).join("\n")}
+  **Healthy Screening Results:**
+  ${context.healthy.map((h) => `- ${h.question}: ${h.answer}`).join("\n  ")}
   `;
 
-  return output + "\n</UserContext>";
+  return output + "\n</Screening Results>";
 }
 
 export async function POST(req: Request) {
@@ -48,17 +49,30 @@ export async function POST(req: Request) {
 
     const contextString = generateContext(data);
 
-    console.log(context);
+    const result = await streamText({
+      model: anthropic("claude-3-5-sonnet-20240620"),
+      system: `
+          **Role:** You are a sexual health medical assistant.
 
-    // const result = await streamText({
-    //   model: anthropic("claude-3-5-sonnet-20240620"),
-    //   system:
-    //     "You are a sexual health medical assistant that responds in Github Flavoured Markdown. You are concise. You do not wrap your response in backticks. If user does not ask a question or is related in any way, just say the phrase: I cannot answer. Do not wrap your res",
-    //
-    //   messages: convertToCoreMessages(messages),
-    // });
+          **Response Format:** style the response with markdown.
 
-    // return result.toDataStreamResponse();
+          **Guidelines:**
+          - Its more important to be concise than informative.
+          - If the user's input is not a question or is unrelated, respond with: *Apologies, I cannot answer.*
+          - Do not use backticks in your response.
+          - You are provided screening results from the system. The user does not give you this information directly.
+          - Reference the screening results whenever possible and do not make up information.
+          - Do not reference specific score numbers or mention someone is "high risk" as they are not normalized for the population.
+          - Use scores to show relative risk of a certain STI against another STI.
+
+          ${contextString}
+          `,
+
+      messages: convertToCoreMessages(messages),
+      temperature: 0.1,
+    });
+
+    return result.toDataStreamResponse();
   } catch (e) {
     if (e instanceof Error) {
       console.error("Something bad:", e.message);
