@@ -11,7 +11,9 @@ import {
   Tag,
   WeightType,
   calculateScore,
+  getAnswerLabel,
   getDefaultScore,
+  hasNegibleRisk,
 } from "./question";
 
 import { persistentKeyExists, usePersistentState } from "../saves";
@@ -27,6 +29,20 @@ type AIContextType = {
   calculateOutput: () => AIOutput;
   getTopQuestion: () => Question | undefined;
   generateGrid: (gridSize: number) => void;
+  getUserContext: () => UserContext;
+};
+
+export type MinimalQuestionContext = {
+  question: string;
+  answer: string;
+};
+
+export type UserContext = {
+  behavior_score: number;
+  symptomatic_score: number;
+  sti_score: [string, number][];
+  risky: MinimalQuestionContext[];
+  healthy: MinimalQuestionContext[];
 };
 
 const AIContext = createContext<AIContextType | null>(null);
@@ -224,6 +240,35 @@ export default function AIContextProvider({
     return start;
   };
 
+  const getUserContext = () => {
+    const scores = calculateOutput();
+
+    const riskyQuestions: MinimalQuestionContext[] = [];
+    const healthyQuestions: MinimalQuestionContext[] = [];
+
+    for (const question of answeredQuestions) {
+      const minimalContext: MinimalQuestionContext = {
+        question: question.label,
+        answer: getAnswerLabel(question) ?? "didn't answer",
+      };
+
+      if (hasNegibleRisk(question)) {
+        healthyQuestions.push(minimalContext);
+      } else {
+        riskyQuestions.push(minimalContext);
+      }
+    }
+
+    return {
+      behavior_score: scores.behavior,
+      symptomatic_score: scores.symptomatic,
+      sti_score: Array.from(scores.risks.entries()),
+
+      risky: riskyQuestions,
+      healthy: healthyQuestions,
+    } as UserContext;
+  };
+
   return (
     <AIContext.Provider
       value={{
@@ -236,6 +281,8 @@ export default function AIContextProvider({
         calculateOutput,
         getTopQuestion,
         generateGrid,
+
+        getUserContext,
       }}
     >
       {children}

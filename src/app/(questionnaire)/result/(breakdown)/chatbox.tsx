@@ -48,6 +48,11 @@ export const PRESETS: Record<Section, readonly ChatPresets[]> = {
       label: "Which STIs are curable?",
       value: "Which STIs on my screening results are curable?",
     },
+    {
+      behavior: "prompt",
+      label: "Which test is best for me?",
+      value: "Which STI should I get tested for first?",
+    },
   ],
   [Section.Overview]: [],
 } as const;
@@ -169,11 +174,11 @@ export default function ChatBox({ presets }: ChatBoxProps) {
               m.role == "assistant" ? (
                 <div
                   key={m.id}
-                  className="rounded-[13px] border border-border px-[35px] py-[20px]"
+                  className="rounded-[13px] border border-border px-[35px] py-[20px] shadow-realistic"
                 >
                   {
                     <Markdown
-                      className="prose prose-sm prose-zinc prose-p:text-sm prose-li:*:my-0"
+                      className="prose prose-sm prose-zinc lg:prose-base prose-p:text-sm prose-li:*:my-0 lg:prose-p:text-base"
                       remarkPlugins={[remarkGfm]}
                     >
                       {m.content}

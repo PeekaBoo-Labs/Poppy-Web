@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 const GARDEN_SIZE = 14;
 export default function ResultLayout({ children }: { children: ReactNode }) {
-  const { grid, generateGrid, questionsLeft } = useAIContext();
+  const { grid, generateGrid, questionsLeft, getUserContext } = useAIContext();
   const router = useRouter();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function ResultLayout({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <ChatContextProvider>
+    <ChatContextProvider getUserContext={getUserContext}>
       <FlowerContextProvider>
         <ResultsScrollProvider>
           <NavBar />

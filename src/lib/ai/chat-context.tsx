@@ -11,6 +11,7 @@ import {
 } from "react";
 import { clearPersistentGroup, getPersistentData, saveData } from "../saves";
 import { ChatRequestOptions } from "ai";
+import { UserContext } from "./ai-context";
 
 type ChatContextType = {
   messages: Message[];
@@ -32,8 +33,10 @@ export const CHAT_GROUP = "AI_CHAT" as const;
 
 export default function ChatContextProvider({
   children,
+  getUserContext,
 }: {
   children: ReactNode;
+  getUserContext: () => UserContext;
 }) {
   const {
     messages,
@@ -46,6 +49,9 @@ export default function ChatContextProvider({
     append,
   } = useChat({
     api: "/api/v2/chat",
+    body: {
+      context: getUserContext(),
+    },
   });
 
   useEffect(() => {

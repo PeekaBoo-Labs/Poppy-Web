@@ -133,7 +133,9 @@ export const RISK_SET = (sti: STI, risk: number): Record<STI, number> => {
 };
 
 export const RISK_MINUS = (sti: STI): Record<STI, number> => {
-  return RISK_SET(sti, 0);
+  const riskFactors = RISK_ALL_STI();
+  riskFactors[sti] = 0;
+  return riskFactors;
 };
 
 export const RISK_NONE = (): Record<STI, number> => {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import OpenAI from "openai";
 
-interface Clinic {
+export interface Clinic {
   name: string;
   link: string;
   logo_image: string;

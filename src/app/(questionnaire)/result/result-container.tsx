@@ -12,6 +12,7 @@ import BreakdownList from "./(breakdown)/breakdown-list";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import ChatBox, { PRESETS } from "./(breakdown)/chatbox";
 import { fadeUpParent } from "@/lib/motion";
+import NextStepsList from "./(nextsteps)/nextsteps-list";
 
 export default function ResultContainer() {
   const { currentSection } = useResultsScrollContext();
@@ -47,20 +48,17 @@ export default function ResultContainer() {
           </ResultSection>
           <ResultSection
             title="Step Two"
-            subtitle="Break down your questions and answers
-"
+            subtitle="Break down your questions and answers"
             section={Section.Breakdown}
           >
             <BreakdownList />
           </ResultSection>
           <ResultSection
             title="Step Three"
-            subtitle="Recommended actions to take
-"
+            subtitle="Recommended actions to take"
             section={Section.NextSteps}
           >
-            <div className="h-[200px] rounded-[13px] border border-border" />
-            <div className="h-[200px] rounded-[13px] border border-border" />
+            <NextStepsList />
           </ResultSection>
         </LayoutGroup>
       </div>
