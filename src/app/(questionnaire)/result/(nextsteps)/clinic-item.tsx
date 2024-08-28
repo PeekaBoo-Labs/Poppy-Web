@@ -16,6 +16,7 @@ export default function ClinicItem({ clinic }: { clinic: Clinic }) {
       exit="hidden"
       className="flex flex-col gap-[16px] overflow-hidden rounded-[13px] border border-border"
       href={clinic.link}
+      target="_blank"
     >
       <img
         src={clinic.images[0]}
