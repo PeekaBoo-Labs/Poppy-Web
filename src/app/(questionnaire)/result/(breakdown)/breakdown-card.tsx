@@ -6,16 +6,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import QuestionnaireGPT from "@/components/results/QuestionnaireGPT";
 import MinuCircle from "@/lib/icons/minus-circle";
+import { forwardRef } from "react";
 
-export default function BreakdownCard({
-  question,
-  expanded,
-  onClick,
-}: {
-  question: Question;
-  expanded: boolean;
-  onClick: () => void;
-}) {
+export default forwardRef(function BreakdownCard(
+  {
+    question,
+    expanded,
+    onClick,
+  }: {
+    question: Question;
+    expanded: boolean;
+    onClick: () => void;
+  },
+  ref,
+) {
   const relevantRisks = getRiskList(question).filter((r) => r[1] > 0);
 
   return (
@@ -93,4 +97,4 @@ export default function BreakdownCard({
       />
     </motion.button>
   );
-}
+});

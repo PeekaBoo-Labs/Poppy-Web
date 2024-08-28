@@ -5,8 +5,6 @@ export async function getInsight(
   answer: string,
   stis_detected: string[],
 ) {
-  console.log("OpenAI API Key", process.env.OPENAI_API_KEY);
-
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
   });
@@ -35,4 +33,3 @@ export async function getInsight(
 
   return response.choices[0].message.content;
 }
-

@@ -13,8 +13,6 @@ export default function BreakdownList() {
 
   const relevantQuestions = answeredQuestions.filter((q) => !hasNegibleRisk(q));
 
-  console.log(answeredQuestions);
-
   return (
     <motion.div className="flex flex-col gap-[10px]">
       <WarningCard

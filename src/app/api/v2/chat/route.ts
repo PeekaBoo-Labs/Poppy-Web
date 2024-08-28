@@ -61,7 +61,7 @@ export async function POST(req: Request) {
           - Be concise and digestable.
           - If the user's input is unrelated to sexual health, respond with: *Apologies, I cannot answer.*
           - Reference the screening results whenever possible.
-          - Do not reference specific score numbers because they are not normalized.
+          - Do not reference specific score numbers or "low risk" "high risk" language because they are not normalized.
           - Only use scores compare risk of a certain STI against another STI.
           - REMEMBER THE REPRODUCTIVE ORGAN OF THE PATIENT do not generalize to others!
 
@@ -72,7 +72,7 @@ export async function POST(req: Request) {
           `,
 
       messages: convertToCoreMessages(messages),
-      temperature: 0.2,
+      temperature: 0,
     });
 
     return result.toDataStreamResponse();

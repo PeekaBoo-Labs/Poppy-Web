@@ -148,8 +148,6 @@ export async function GET(request: Request) {
     );
 
     const clinics: Clinic[] = yelpResponse.data.businesses.map((business) => {
-      console.log(business);
-
       return {
         name: business.name,
         link: business.url,
@@ -162,8 +160,6 @@ export async function GET(request: Request) {
         phone: business.display_phone,
       };
     });
-
-    console.log(clinics);
 
     return new Response(JSON.stringify(clinics), {
       status: 200,
