@@ -13,16 +13,18 @@ import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import ChatBox, { PRESETS } from "./(breakdown)/chatbox";
 import { fadeUpParent } from "@/lib/motion";
 import NextStepsList from "./(nextsteps)/nextsteps-list";
+import Sparkle from "@/lib/icons/sparkle";
+import Link from "next/link";
 
 export default function ResultContainer() {
   const { currentSection } = useResultsScrollContext();
   const { grid } = useAIContext();
 
   return (
-    <div className="relative mx-auto mt-[44px] flex w-[calc(100%-70px)] max-w-[1300px] items-start gap-[20px]">
-      <div className="sticky top-[114px] h-1 min-h-[75vh] w-[60%] basis-auto xl:min-h-[85vh] xl:w-[70%]">
+    <div className="relative mx-auto mt-[20px] flex w-[calc(100%-32px)] max-w-[1300px] flex-col items-start gap-[20px] md:mt-[44px] md:w-[calc(100%-70px)] md:flex-row">
+      <div className="top-[114px] w-full basis-auto md:sticky md:h-1 md:min-h-[75vh] md:w-[60%] xl:min-h-[85vh] xl:w-[70%]">
         <div className="h-full w-full rounded-[20px] border border-border bg-white p-[7px] shadow-realistic">
-          <div className="flex h-full flex-col items-center justify-center overflow-hidden rounded-[13px] border border-border bg-white">
+          <div className="hidden h-full flex-col items-center justify-center overflow-hidden rounded-[13px] border border-border bg-white md:flex">
             <AnimatePresence mode="wait" initial={true}>
               {currentSection == Section.Overview ? (
                 <OverviewMain key={Section.Overview} />
@@ -34,10 +36,13 @@ export default function ResultContainer() {
               )}
             </AnimatePresence>
           </div>
+          <div className="md:hidden">
+            <OverviewMain key={Section.Overview} />
+          </div>
         </div>
       </div>
 
-      <div className="flex flex-grow basis-0 flex-col not-last:pb-[200px]">
+      <div className="flex flex-grow basis-0 flex-col not-last:pb-[50px] md:not-last:pb-[200px]">
         <LayoutGroup>
           <ResultSection
             title="Step One"
@@ -63,7 +68,15 @@ export default function ResultContainer() {
         </LayoutGroup>
       </div>
 
-      <ResultScrollBar section={currentSection} />
+      <ResultScrollBar className="hidden md:flex" section={currentSection} />
+
+      <Link
+        href="/result/ai"
+        prefetch={true}
+        className="fixed bottom-0 right-0 m-4 flex items-center gap-2 rounded-[13px] bg-accent-darker px-4 py-3 font-medium shadow-md shadow-accent md:hidden"
+      >
+        <Sparkle /> Ask AI
+      </Link>
     </div>
   );
 }

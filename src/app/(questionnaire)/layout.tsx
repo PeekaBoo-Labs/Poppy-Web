@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={font.className}>
-      <body>
+      <body className="flex min-h-screen flex-col">
         <AIContextProvider>
           {/* <NavBar /> */}
           {children}

@@ -59,7 +59,7 @@ export async function POST(req: Request) {
 
           **Guidelines:**
           - Be concise and digestable.
-          - If the user's input is unrelated to sexual health, respond with: *Apologies, I cannot answer.*
+          - If the user's input is unrelated to sexual health/wellness, screening, or clinics, respond with: *Apologies, I cannot answer.*
           - Reference the screening results whenever possible.
           - Do not reference specific score numbers or "low risk" "high risk" language because they are not normalized.
           - Only use scores compare risk of a certain STI against another STI.

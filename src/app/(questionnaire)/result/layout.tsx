@@ -32,10 +32,6 @@ export default function ResultLayout({ children }: { children: ReactNode }) {
           <NavBar />
 
           {children}
-
-          <div className="mx-auto w-full max-w-[1000px] bg-secondary-background md:mt-10 md:bg-transparent">
-            <Footer />
-          </div>
         </ResultsScrollProvider>
       </FlowerContextProvider>
     </ChatContextProvider>

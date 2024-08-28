@@ -34,7 +34,7 @@ export default function FlowerCard({
           "group relative flex cursor-pointer flex-col items-center justify-center gap-2 border-t px-[21px] py-[19px] md:rounded-[12px] md:border-none",
         )}
       >
-        <div className="flex items-center gap-[21px]">
+        <div className="flex w-full items-center gap-[21px]">
           <Image
             className="aspect-square object-contain"
             src={IMAGE[type]}
@@ -50,7 +50,7 @@ export default function FlowerCard({
               {DESC[type]}
             </p>
           </div>
-          <ArrowUpRight className="flex-shrink-0 text-primary group-hover:text-[#F1BC00]" />
+          <ArrowUpRight className="hidden flex-shrink-0 text-primary group-hover:text-[#F1BC00] md:block" />
         </div>
 
         <div className="pointer-events-none absolute box-border h-full w-full rounded-[12px] border border-border transition-all group-hover:border-2 group-hover:border-[#F1BC00]" />

@@ -1,7 +1,14 @@
 import { Section } from "@/lib/contexts/ResultsScrollContext";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
-export default function ResultScrollBar({ section }: { section: Section }) {
+export default function ResultScrollBar({
+  section,
+  className,
+}: {
+  section: Section;
+  className?: string;
+}) {
   const page = {
     [Section.Overview]: 0,
     [Section.Breakdown]: 1,
@@ -9,7 +16,12 @@ export default function ResultScrollBar({ section }: { section: Section }) {
   }[section];
 
   return (
-    <div className="sticky top-[114px] flex h-[85vh] w-[4px] flex-col justify-center gap-[13px]">
+    <div
+      className={cn(
+        "sticky top-[114px] flex h-[85vh] w-[4px] flex-col justify-center gap-[13px]",
+        className,
+      )}
+    >
       <div className="relative h-[79px] w-[4px] rounded-full bg-black">
         <motion.div
           initial={{ y: 0 }}

@@ -15,7 +15,7 @@ export default function OverviewList() {
   const sortedResult = flatResult.sort((a, b) => b[1] - a[1]);
 
   return (
-    <div className="flex flex-col md:gap-[13px]">
+    <div className="flex flex-col gap-[13px]">
       {sortedResult.map(([sti]) => {
         const count = grid.filter((e) => e == sti).length;
 

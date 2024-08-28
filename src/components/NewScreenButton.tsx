@@ -16,7 +16,7 @@ export default function NewScreenButton() {
         router.push("/");
       }}
     >
-      <div className="rounded-[10px] bg-[#202221] px-[21px] py-[12px] text-xs font-semibold text-white">
+      <div className="rounded-[10px] bg-[#202221] px-[15px] py-[8px] text-xs font-semibold text-white md:px-[21px] md:py-[12px]">
         New Screen
       </div>
     </button>
