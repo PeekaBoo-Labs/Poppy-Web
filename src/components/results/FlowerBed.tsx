@@ -32,10 +32,7 @@ export default function FlowerBed({ grid }: FlowerBedProps) {
         setFocusedObject(null);
         setFocusState(OverviewFocusState.None);
       }}
-      className={cn(
-        "m-8 border border-b-[3px] bg-white p-2 shadow-lg lg:m-0",
-        "relative rounded-lg duration-[2000ms] ease-velocity",
-      )}
+      className={cn("", "relative rounded-lg duration-[2000ms] ease-velocity")}
       style={
         {
           // transform: `perspective(500px) rotateX(${focusOnMap ? 0 : 10}deg) translateZ(${focusOnMap ? 50 : 0}px)`,
@@ -64,7 +61,7 @@ export default function FlowerBed({ grid }: FlowerBedProps) {
             Math.abs(coord.y - gridSize / 2),
           );
           const defaultOpacity =
-            0.7 * Math.min(1, Math.exp(-distanceFromCenter + gridSize * 0.2));
+            0.7 * Math.min(1, Math.exp(-distanceFromCenter + gridSize * 0.3));
 
           return (
             <Plant
@@ -91,13 +88,8 @@ export default function FlowerBed({ grid }: FlowerBedProps) {
             left: "0",
             width: "190px",
             maxWidth: "190px",
-            background: "white",
-            padding: "10px",
-            borderRadius: "8px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
             zIndex: 1000,
             display: "none",
-            border: "1px solid #d3d3d3", // Light grey border
           }}
         />
       </div>

@@ -63,7 +63,7 @@ export function clearPersistentGroup(group: string) {
   });
 }
 
-export function persistentGroupExists(group: string): boolean {
+function persistentGroupExists(group: string): boolean {
   for (const key in localStorage) {
     if (key.startsWith(`${group}$`)) {
       return true;

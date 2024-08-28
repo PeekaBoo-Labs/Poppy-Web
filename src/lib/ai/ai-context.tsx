@@ -1,25 +1,23 @@
 "use client";
 
+import { createContext, useContext, useEffect } from "react";
 import {
-  WeightType,
   AIOutput,
   EffectType,
   Question,
   QuestionInput,
   STI,
-  Tag,
   ScoreCalculation,
+  Tag,
+  WeightType,
   calculateScore,
+  getAnswerLabel,
   getDefaultScore,
+  hasNegibleRisk,
 } from "./question";
-import { createContext, useContext, useEffect, useState } from "react";
 
+import { persistentKeyExists, usePersistentState } from "../saves";
 import { Question_SexualActivity } from "./questions/behavioral";
-import {
-  persistentGroupExists,
-  persistentKeyExists,
-  usePersistentState,
-} from "../saves";
 
 type AIContextType = {
   grid: (STI | "tree")[];
@@ -31,9 +29,23 @@ type AIContextType = {
   calculateOutput: () => AIOutput;
   getTopQuestion: () => Question | undefined;
   generateGrid: (gridSize: number) => void;
+  getUserContext: () => UserContext;
 };
 
-export const AIContext = createContext<AIContextType | null>(null);
+export type MinimalQuestionContext = {
+  question: string;
+  answer: string;
+};
+
+export type UserContext = {
+  behavior_score: number;
+  symptomatic_score: number;
+  sti_score: [string, number][];
+  risky: MinimalQuestionContext[];
+  healthy: MinimalQuestionContext[];
+};
+
+const AIContext = createContext<AIContextType | null>(null);
 
 export const GROUP_AI = "AI_CONTEXT" as const;
 
@@ -97,7 +109,7 @@ export default function AIContextProvider({
 
     // Distribute the remaining flowers according to their scores
     sti_scores.forEach(([sti, score]) => {
-      const flowerCount = Math.max(1, score);
+      const flowerCount = Math.max(0, score);
       for (let i = 0; i < flowerCount; i++) {
         let placed = false;
         while (!placed) {
@@ -227,6 +239,35 @@ export default function AIContextProvider({
     return start;
   };
 
+  const getUserContext = () => {
+    const scores = calculateOutput();
+
+    const riskyQuestions: MinimalQuestionContext[] = [];
+    const healthyQuestions: MinimalQuestionContext[] = [];
+
+    for (const question of answeredQuestions) {
+      const minimalContext: MinimalQuestionContext = {
+        question: question.label,
+        answer: getAnswerLabel(question) ?? "didn't answer",
+      };
+
+      if (hasNegibleRisk(question)) {
+        healthyQuestions.push(minimalContext);
+      } else {
+        riskyQuestions.push(minimalContext);
+      }
+    }
+
+    return {
+      behavior_score: scores.behavior,
+      symptomatic_score: scores.symptomatic,
+      sti_score: Array.from(scores.risks.entries()),
+
+      risky: riskyQuestions,
+      healthy: healthyQuestions,
+    } as UserContext;
+  };
+
   return (
     <AIContext.Provider
       value={{
@@ -239,6 +280,8 @@ export default function AIContextProvider({
         calculateOutput,
         getTopQuestion,
         generateGrid,
+
+        getUserContext,
       }}
     >
       {children}

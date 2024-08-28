@@ -21,12 +21,11 @@ import { Question_DiscomfortOrUnusualPatternsDuringPeeing } from "./peeing";
 
 export class Question_SexualActivity implements Question {
   label =
-    "In the past 6 months, how many people have you been sexually intimate with, including any non-penetrative genital contact or kissing?";
+    "How many people have you been sexually intimate with, including any non-penetrative genital contact or kissing?";
   //label = "this is a test question for development purposes";
   inputType = InputType.SelectOne;
   inputOptions = [
     { id: "NONE", label: "I've never had a sexual partner", value: 0 },
-    { id: "0", label: "0", value: 0.5 },
     { id: "2", label: "1-2", value: 0.75 },
     { id: "3", label: "3-6", value: 1.5 },
     { id: "4", label: "7-15", value: 2.25 },

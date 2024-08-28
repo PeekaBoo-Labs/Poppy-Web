@@ -9,11 +9,20 @@ type ClinicProps = {
 };
 
 const ICONS: { [key: string]: string } = {
-  lgbtq: "/icons/rainbow.svg",
-  urban: "/icons/building.svg",
-  medical: "/icons/medicalCross.svg",
-  appointment: "/icons/calendar.svg",
-  youth: "/icons/figure.svg",
+  lgbtq: "/icons/health-labels/rainbow.svg",
+  urban: "/icons/health-labels/building.svg",
+  medical: "/icons/health-labels/medicalCross.svg",
+  appointment: "/icons/health-labels/calendar.svg",
+  youth: "/icons/health-labels/figure.svg",
+  blood: "/icons/health-labels/blood.svg",
+  click: "/icons/health-labels/click.svg",
+  desktop: "/icons/health-labels/desktop.svg",
+  glassplus: "/icons/health-labels/glassplus.svg",
+  home: "/icons/health-labels/home.svg",
+  package: "/icons/health-labels/package.svg",
+  step2: "/icons/health-labels/step2.svg",
+  testTube: "/icons/health-labels/testTube.svg",
+  timer: "/icons/health-labels/timer.svg",
 };
 
 export default function Clinic({

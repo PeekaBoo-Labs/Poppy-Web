@@ -1,9 +1,17 @@
+import plugin from "tailwindcss/plugin";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  plugins: [
+    require("@tailwindcss/typography"),
+    plugin(function ({ addVariant }) {
+      addVariant("not-last", "&>*:not(:last-child)");
+    }),
   ],
   theme: {
     fontSize: {
@@ -19,13 +27,14 @@ module.exports = {
       colors: {
         primary: "#202221",
         secondary: "#20222180",
+        tertiary: "rgba(187, 187, 187, 0.15)",
         border: "#d9d9d9",
         "secondary-background": "#f7f7f7",
         accent: "rgb(255, 204, 0)",
         "accent-darker": "rgb(241, 188, 0)",
       },
       transitionTimingFunction: {
-        "velocity": "cubic-bezier(.04,1,.11,.97)"
+        velocity: "cubic-bezier(.04,1,.11,.97)",
       },
       boxShadow: {
         realistic:
@@ -39,4 +48,3 @@ module.exports = {
     },
   },
 };
-

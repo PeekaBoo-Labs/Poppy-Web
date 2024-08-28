@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Dots from "../../../components/general/animated/dots";
 
@@ -57,12 +57,38 @@ export default function QuestionnaireCard() {
       router.push("/result");
   }, [page, currentQuestion, questionsLeft, router]);
 
+  useEffect(() => {
+    if (currentQuestion == null) return;
+
+    const inputOptions = currentQuestion.inputOptions;
+
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.keyCode == 13) {
+        handleNext();
+        return;
+      }
+
+      inputOptions.forEach((option, i) => {
+        if (e.key == String(i + 1)) {
+          setAnswer(option.id);
+          return;
+        }
+      });
+    };
+
+    window.addEventListener("keypress", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keypress", handleKeyPress);
+    };
+  }, [currentQuestion, handleNext]);
+
   return (
     <>
       {!currentQuestion ? null : (
-        <div className="flex flex-grow flex-col md:min-h-[390px] min-h-[calc(100dvh-56px-83px)] pb-8 w-full md:flex-row md:gap-[30px] md:p-8">
-          <div className="flex md:m-0 mx-4 mt-4 flex-grow md:flex-grow-0 basis-auto rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic md:w-[60%]">
-            <div className="flex flex-col justify-center items-center flex-grow rounded-[13px] border border-border p-[20px] md:p-[60px] lg:p-[135px]">
+        <div className="flex min-h-[calc(100dvh-56px-83px)] w-full flex-grow flex-col pb-8 md:min-h-[390px] md:flex-row md:gap-[30px] md:p-8">
+          <div className="mx-4 mt-4 flex flex-grow basis-auto rounded-[20px] border border-border bg-secondary-background p-[7px] shadow-realistic md:m-0 md:w-[60%] md:flex-grow-0">
+            <div className="flex flex-grow flex-col items-center justify-center rounded-[13px] border border-border p-[20px] md:p-[60px] lg:p-[135px]">
               <h1 className="flex items-center justify-center text-center text-xl font-semibold">
                 {currentQuestion.label}
               </h1>
@@ -73,7 +99,7 @@ export default function QuestionnaireCard() {
               /> */}
           </div>
 
-          <div className="flex md:m-0 mx-4 md:flex-grow basis-0 flex-col justify-between gap-4">
+          <div className="mx-4 flex basis-0 flex-col justify-between gap-4 md:m-0 md:flex-grow">
             <div className="mt-[20px] flex flex-col gap-[20px]">
               <p className="max-w-sm text-sm text-secondary">
                 Choose an option
@@ -90,12 +116,11 @@ export default function QuestionnaireCard() {
               <NextButton handleNext={handleNext} />
             </div>
           </div>
-
         </div>
       )}
 
       <Footer border={true} />
-      <div className="sticky px-4 bottom-0 left-0 py-[15px] z-10 flex border-t border-border bg-[#F1EFED] md:hidden">
+      <div className="sticky bottom-0 left-0 z-10 flex border-t border-border bg-[#F1EFED] px-4 py-[15px] md:hidden">
         <NextButton handleNext={handleNext} />
       </div>
     </>
@@ -105,7 +130,8 @@ export default function QuestionnaireCard() {
 function NextButton({ handleNext }: { handleNext: () => void }) {
   return (
     <button
-      className="z-1 group  flex flex-grow items-center justify-between rounded-[13px] border-2 border-primary bg-primary px-[16px] py-[12px] text-white md:relative md:m-0 md:hover:bg-transparent md:hover:text-primary"
+      type="submit"
+      className="z-1 group flex flex-grow items-center justify-between rounded-[13px] border-2 border-primary bg-primary px-[16px] py-[12px] font-medium text-white md:relative md:m-0 md:hover:bg-transparent md:hover:text-primary"
       onClick={handleNext}
     >
       Next
@@ -122,7 +148,7 @@ function NextButton({ handleNext }: { handleNext: () => void }) {
         />
       </svg>
     </button>
-  )
+  );
 }
 
 function LoadingLabel() {

@@ -7,11 +7,12 @@ type TestKitProps = {
 };
 
 const RESOURCE_ICONS: { [key: string]: string } = {
-  "home": "/icons/home.svg",
-  "blood": "/icons/blood.svg",
-  "package": "/icons/package.svg",
-  "rapid": "/icons/timer.svg",
-  "desktop": "/icons/desktop.svg",
+  "home": "/icons/health-labels/home.svg",
+  "blood": "/icons/health-labels/blood.svg",
+  "package": "/icons/health-labels/package.svg",
+  "rapid": "/icons/health-labels/timer.svg",
+  "desktop": "/icons/health-labels/desktop.svg",
+  "cross":"/icons/health-labels/medicalCross.svg"
 };
 
 export default function TestKit({ name, resources, resource_link, logo_image }: TestKitProps) {

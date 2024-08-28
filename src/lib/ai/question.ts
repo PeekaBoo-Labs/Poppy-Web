@@ -84,6 +84,40 @@ export interface Question {
   effects: (input: QuestionInput) => Array<Effect>;
 }
 
+export function getAnswerLabel(question: Question): string | null {
+  if (!question.selected) {
+    return null;
+  }
+  const answer = question.inputOptions.find(
+    (option) => option.id === question.selected,
+  );
+  return answer ? answer.label : null;
+}
+
+export function selectedOption(question: Question): QuestionInput | null {
+  if (!question.selected) return null;
+
+  return question.inputOptions.find((o) => o.id == question.selected) ?? null;
+}
+
+export function getRiskList(question: Question): [STI, number][] {
+  const risks = Object.entries(question.riskFactors) as [STI, number][];
+  risks.sort((r1, r2) => r2[1] - r1[1]);
+  return risks;
+}
+
+export function hasNegibleRisk(question: Question): boolean {
+  const selection = selectedOption(question);
+
+  if (!selection) return false;
+
+  if (question.weightType == WeightType.Additive) {
+    return question.weight * selection.value == 0;
+  } else {
+    return question.weight * selection.value < 1;
+  }
+}
+
 export const RISK_ALL_STI = (): Record<STI, number> => {
   const riskFactors: Partial<Record<STI, number>> = {};
   for (const sti of Object.values(STI)) {
@@ -99,7 +133,9 @@ export const RISK_SET = (sti: STI, risk: number): Record<STI, number> => {
 };
 
 export const RISK_MINUS = (sti: STI): Record<STI, number> => {
-  return RISK_SET(sti, 0);
+  const riskFactors = RISK_ALL_STI();
+  riskFactors[sti] = 0;
+  return riskFactors;
 };
 
 export const RISK_NONE = (): Record<STI, number> => {

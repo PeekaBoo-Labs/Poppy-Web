@@ -31,7 +31,7 @@ export default function ResultSidebar({
   slug: string;
 }) {
   return (
-    <div className="z-10 md:mx-auto border-border max-w-[1300px] bg-secondary-background md:w-[calc(100%-60px)] md:mt-8 md:rounded-[20px] md:border md:p-[7px] md:shadow-realistic">
+    <div className="z-10 max-w-[1300px] border-border bg-secondary-background md:mx-auto md:mt-8 md:w-[calc(100%-60px)] md:rounded-[20px] md:border md:p-[7px] md:shadow-realistic">
       <div className="h-full w-full md:flex md:gap-[100px] md:rounded-[13px] md:border md:border-border md:p-[48px]">
         <div className="relative my-4 flex justify-around md:my-0 md:flex-col md:justify-start md:gap-[16px]">
           {PAGES.map((p, i) => (
@@ -53,12 +53,10 @@ export default function ResultSidebar({
 
           <span className="absolute left-0 right-0 top-[50%] z-[-1] m-auto w-[70%] border-b-2 md:hidden"></span>
         </div>
-        <div className="flex flex-grow flex-col gap-[20px] overflow-visible">
+        <div className="flex flex-grow flex-col gap-[40px] overflow-visible">
           {children}
         </div>
       </div>
-
-
     </div>
   );
 }
