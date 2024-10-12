@@ -1,3 +1,5 @@
+import { verify } from "@/lib/entropy-src";
+
 export type TestKit = {
   name: string;
   resources: [string, string][];
@@ -42,6 +44,11 @@ const test_kit_providers: TestKit[] = [
 ];
 // hard coded values with reliable locations to purchase STI kits
 export async function GET(request: Request) {
+
+  if (!verify("test-kits", request.headers.get("Entropy"))) {
+    return new Response("Um what happened...", { status: 500 });
+  }
+
   return new Response(JSON.stringify(test_kit_providers), {
     status: 200,
     headers: {

@@ -1,5 +1,5 @@
 import { blurVariant } from "@/lib/motion";
-import { getInsight } from "@/lib/openai";
+import secure from "@/lib/entropy"
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -21,14 +21,17 @@ export default function QuestionnaireGPT({
   const [response, setResponse] = useState("");
 
   useEffect(() => {
+    const data = JSON.stringify({ question, answer, stis_detected })
+
     const request = {
       cache: "force-cache",
       next: { revalidate: 60 * 60 * 24 },
 
       method: "POST",
-      body: JSON.stringify({ question, answer, stis_detected }),
+      body: data,
       headers: {
         "Content-Type": "application/json",
+        "Entropy": `${btoa(secure(data))}`
       },
     } as const;
 

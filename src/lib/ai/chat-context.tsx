@@ -1,4 +1,5 @@
 import { Message, useChat } from "ai/react";
+import secure from "@/lib/entropy"
 import {
   ChangeEventHandler,
   Dispatch,
@@ -23,13 +24,16 @@ type ChatContextType = {
   resetChat: () => void;
   append: (
     message: Message,
-    chatRequestOptions?: ChatRequestOptions,
   ) => Promise<string | null | undefined>;
 };
 
 const ChatContext = createContext<ChatContextType | null>(null);
 
 export const CHAT_GROUP = "AI_CHAT" as const;
+
+const removeId = (messages: Message[]) => {
+  return messages.map(m => { return { role: m.role, content: m.content } })
+}
 
 export default function ChatContextProvider({
   children,
@@ -79,10 +83,28 @@ export default function ChatContextProvider({
         messages,
         input,
         handleInputChange,
-        handleSubmit,
+        handleSubmit: (e: { preventDefault: () => void }) => {
+          return handleSubmit(e, {
+            headers: {
+              "Entropy": `${btoa(secure(JSON.stringify({
+                messages: [...removeId(messages), { role: "user", content: input }],
+                context: getUserContext()
+              })))}`
+            },
+          })
+        },
         setInput,
         isLoading,
-        append,
+        append: (message: Message) => {
+          return append(message, {
+            headers: {
+              "Entropy": `${btoa(secure(JSON.stringify({
+                messages: [...removeId(messages), ...removeId([message])],
+                context: getUserContext()
+              })))}`
+            },
+          })
+        },
         resetChat,
       }}
     >

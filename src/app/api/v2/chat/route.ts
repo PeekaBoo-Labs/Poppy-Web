@@ -2,6 +2,7 @@ import { anthropic } from "@ai-sdk/anthropic";
 import { openai } from "@ai-sdk/openai";
 import { convertToCoreMessages, streamText } from "ai";
 import { z } from "zod";
+import { verify } from "@/lib/entropy-src"
 
 export const maxDuration = 10;
 
@@ -46,6 +47,14 @@ function generateContext(context: UserContext) {
 export async function POST(req: Request) {
   try {
     const { messages, context } = await req.json();
+
+    if (!verify(JSON.stringify({
+      messages,
+      context
+    }), req.headers.get("Entropy"))) {
+      return new Response("Um what happened...", { status: 500 });
+    }
+
     const data = userContextSchema.parse(context);
 
     const contextString = generateContext(data);
@@ -78,7 +87,7 @@ export async function POST(req: Request) {
     return result.toDataStreamResponse();
   } catch (e) {
     if (e instanceof Error) {
-      console.error("Something bad:", e.message);
+      console.error("Something bad:", e.message, e);
     }
     return new Response("Um what happened...", { status: 500 });
   }

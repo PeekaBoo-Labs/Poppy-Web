@@ -1,4 +1,5 @@
 import axios from "axios";
+import { verify } from "@/lib/entropy-src";
 import OpenAI from "openai";
 
 export type Clinic = {
@@ -119,7 +120,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const zipcode = searchParams.get("zipcode");
 
-  if (!zipcode) {
+  if (!zipcode || !verify(zipcode, request.headers.get("Entropy"))) {
     return new Response(
       JSON.stringify({ error: "Zipcode is required and must be a string" }),
       {

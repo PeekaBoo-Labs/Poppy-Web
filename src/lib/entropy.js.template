@@ -1,0 +1,9 @@
+function fin(input) {
+  if (!window || !document) {
+    return "bad!"
+  }
+
+  return `SuperSecret --> ${input}`
+}
+
+export default fin;

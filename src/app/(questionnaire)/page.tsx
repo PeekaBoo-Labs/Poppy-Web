@@ -2,6 +2,7 @@
 
 import QuestionnaireForm from "@/app/(questionnaire)/(questionnaire)/QuestionnaireForm";
 import NavBar from "@/components/NavBar";
+import secret from "@/lib/entropy"
 import Image from "next/image";
 import { useEffect, useState } from "react";
 

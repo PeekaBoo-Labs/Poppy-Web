@@ -1,0 +1,8 @@
+function fin(input) {
+  return `SuperSecret --> ${input}`
+}
+
+export function verify(input, hash) {
+  // Hashes should be sent as base64
+  return fin(input) == atob(hash);
+}

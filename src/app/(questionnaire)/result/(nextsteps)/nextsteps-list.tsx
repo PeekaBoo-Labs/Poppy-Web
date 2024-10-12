@@ -1,5 +1,6 @@
 import { Clinic } from "@/app/api/v2/getClinics/route";
 import { TestKit } from "@/app/api/v2/getTestKits/route";
+import secure from "@/lib/entropy"
 import InputField from "@/components/general/input-field";
 import { useCallback, useEffect, useRef, useState } from "react";
 import TestKitItem from "./test-kit";
@@ -20,16 +21,27 @@ export default function NextStepsList() {
         zipcode: location,
       });
 
-      const res = await fetch("/api/v2/getClinics?" + params);
-      const json = (await res.json()) as Clinic[];
+      const res = await fetch("/api/v2/getClinics?" + params, {
+        headers: {
+          "Entropy": `${btoa(secure(location))}`
+        },
+      });
+      if (!res.ok) {
+        return;
+      }
 
+      const json = (await res.json()) as Clinic[];
       setClinics(json);
     },
     [setClinics],
   );
 
   const fetchTestKits = useCallback(async () => {
-    const res = await fetch("/api/v2/getTestKits");
+    const res = await fetch("/api/v2/getTestKits", {
+      headers: {
+        "Entropy": `${btoa(secure("test-kits"))}`
+      },
+    });
     const json = (await res.json()) as TestKit[];
 
     setTestKits(json);
